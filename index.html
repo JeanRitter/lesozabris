@@ -16,10 +16,20 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
-        /* En-tête raffiné */
-        header { background-color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0eadec; }
-        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
-        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
+        /* En-tête raffiné avec double logo */
+        header { background-color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0eadec; position: relative; }
+        .header-top { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 900px; margin: 0 auto 10px auto; }
+        
+        /* Emplacements Logo Gauche et Droite */
+        .logo-placeholder-left, .logo-placeholder-right { width: 90px; height: 90px; background-color: #f4eee3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #7d7568; border: 1px solid var(--accent); font-family: 'Segoe UI', sans-serif; text-transform: uppercase; font-weight: 600; flex-shrink: 0; }
+        
+        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); text-transform: uppercase; }
+        @media (max-width: 768px) { 
+            .header-top { flex-direction: column; gap: 15px; }
+            .logo-text { font-size: 2.2rem; }
+        }
+        
+        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; display: block; }
         
         /* Badges Distinctions */
         .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto 30px auto; font-family: 'Segoe UI', sans-serif; }
@@ -38,14 +48,10 @@
         .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #f0eadec; transition: transform 0.3s; }
         .card:hover { transform: translateY(-5px); }
         
-        /* CARROUSEL DE PHOTOS ÉLÉGANT (PRESTIGE SLIDER) */
-        .slider-container { width: 100%; height: 350px; position: relative; overflow: hidden; border-bottom: 1px solid #f0eadec; background-color: #eae5db; }
-        .slider { display: flex; width: 100%; height: 100%; overflow-x: scroll; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-        .slider::-webkit-scrollbar { display: none; } /* Cache la barre de défilement moche */
-        .slider img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; scroll-snap-align: start; }
-        
-        /* Petite bulle d'aide pour indiquer qu'on peut glisser */
-        .slider-hint { position: absolute; bottom: 15px; right: 15px; background: rgba(18, 38, 58, 0.7); color: #fff; padding: 4px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; border-radius: 20px; letter-spacing: 1px; pointer-events: none; text-transform: uppercase; }
+        /* Zone Photo Fixe Unique */
+        .single-photo-container { width: 100%; height: 350px; background-color: #eae5db; border-bottom: 1px solid #f0eadec; overflow: hidden; position: relative; }
+        .single-photo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-label { position: absolute; bottom: 15px; left: 15px; background: rgba(18, 38, 58, 0.7); color: #fff; padding: 4px 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
         
         .card-content { padding: 35px; }
         .card h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px; }
@@ -78,8 +84,16 @@
 <body>
 
     <header>
-        <div class="logo-text">Les Ozabris</div>
-        <div class="subtitle">Cottages de Prestige & Perles Rares • La Réunion</div>
+        <div class="header-top">
+            <!-- EMBLACEMENT LOGO EXTRÊME GAUCHE -->
+            <div class="logo-placeholder-left">Logo OLO</div>
+            
+            <div class="logo-text">Les Ozabris</div>
+            
+            <!-- EMBLACEMENT LOGO EXTRÊME DROITE -->
+<a href="https://ibb.co/xtsrH1d6"><img src="https://i.ibb.co/W43Rtkjf/IMG-4417.png" alt="IMG-4417" border="0"></a>
+        </div>
+        <span class="subtitle">Cottages de Prestige & Perles Rares • La Réunion</span>
         
         <div class="badges-container">
             <div class="badge">⭐ Classé Meublé de Tourisme <span class="badge-stars">★★★</span></div>
@@ -100,60 +114,10 @@
             
             <!-- LE GRANDZABRIS -->
             <div class="card">
-                <div class="slider-container">
-                    <div class="slider">
-                        <!-- COPIEZ VOS LIENS DE PHOTOS DU GRANDZABRIS ICI -->
-https://ibb.co/Kpvn5dpB
-https://ibb.co/Sw5Y0M0r
-https://ibb.co/gZD71CZs
-https://ibb.co/455pmyh
-https://ibb.co/prP6m86K
-https://ibb.co/fVMmH5j0
-https://ibb.co/JFj2fZr8
-https://ibb.co/JjR8XyGt
-https://ibb.co/LzDRvw3D
-https://ibb.co/Df1zgxDD
-https://ibb.co/84gFs1r3
-https://ibb.co/JwxCWPbD
-https://ibb.co/q3bSTqzm
-https://ibb.co/hJKhshX9
-https://ibb.co/LhDk8h9v
-https://ibb.co/9fqBQ8J
-https://ibb.co/0ysjpmJF
-https://ibb.co/60y6GBb9
-https://ibb.co/xtLxpqHZ
-https://ibb.co/jPsc4BtZ
-https://ibb.co/wrYb8HPN
-https://ibb.co/zybVKT2
-https://ibb.co/F4Xxd2FM
-https://ibb.co/NRZN76q
-https://ibb.co/FLZPQcSZ
-https://ibb.co/9ksG9sm9
-https://ibb.co/S4fD8b0f
-https://ibb.co/QjPyG4gW
-https://ibb.co/XkLCc0bG
-https://ibb.co/jP1DsdgH
-https://ibb.co/PsF9w0sx
-https://ibb.co/WNCDh5DQ
-https://ibb.co/F4HQMxBF
-https://ibb.co/LX9VLCWN
-https://ibb.co/wrP6B42V
-https://ibb.co/DH5x63Kc
-https://ibb.co/svkC2V90
-https://ibb.co/6R2RYDYT
-https://ibb.co/ZzJQzqCX
-https://ibb.co/BYhVtvm
-https://ibb.co/Y7jGY1r6
-https://ibb.co/YTyk8TzN
-https://ibb.co/5WkkwTkh
-https://ibb.co/x8qBPrPz
-https://ibb.co/spSvb9Hn
-https://ibb.co/20VHZ841
-https://ibb.co/SDLmFBg6
-https://ibb.co/PsCtC6GL
-                        <img src="https://unsplash.com" alt="Le Grandzabris Chambre">
-                    </div>
-                    <div class="slider-hint">Défiler ➔</div>
+                <div class="single-photo-container">
+                    <a href="https://ibb.co/JwxCWPbD"><img src="https://i.ibb.co/DHGLPn60/050768a5-aa54-49bd-bfb5-03e414ba1db0-jpg.avif" alt="050768a5-aa54-49bd-bfb5-03e414ba1db0-jpg" border="0"></a>
+                    <img src="https://unsplash.com" alt="Le Grandzabris">
+                    <div class="photo-label">Le Grandzabris</div>
                 </div>
                 <div class="card-content">
                     <h3>Le Grandzabris</h3>
@@ -164,15 +128,12 @@ https://ibb.co/PsCtC6GL
                         Enjoy a generous, noble, and warm atmosphere. A true guest-favorite cottage designed to the finest details, perfect for family getaways or moments with friends.
                     </div>
                     <div class="btn-container">
-                        <a href="#" target="_blank" class="btn">Réserver</a>
-                        <a href="#" target="_blank" class="btn btn-en">Book Online</a>
+                        <a href="http://airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver</a>
+                        <a href="http://airbnb.com/h/legrandzabris" target="_blank" class="btn btn-en">Book Online</a>
                     </div>
                 </div>
             </div>
 
             <!-- LE PTITZABRIS -->
             <div class="card">
-                <div class="slider-container">
-                    <div class="slider">
-                        <!-- COPIEZ VOS LIENS DE PHOTOS DU PTITZABRIS ICI -->
-                        <img src="https://unsplash.com" alt="Le Ptitzabris Lit King Size">
+               <a href="https://ibb.co/LX9VLCWN"><img src="https://i.ibb.co/hJ23PKjY/1cb1df17-6208-4bf6-9c31-e6ae2397f99c-jpeg.avif" alt="1cb1df17-6208-4bf6-9c31-e6ae2397f99c-jpeg" border="0"></a>
