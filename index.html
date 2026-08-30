@@ -16,8 +16,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         header { background-color: var(--white); text-align: center; padding: 40px 20px; border-bottom: 1px solid #f0eadec; }
-        .brand-logo-container { width: 140px; height: 140px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); background: var(--white); }
-        .brand-logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-logo-container { width: 100px; height: 100px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f4eee3; border: 1px solid var(--accent); font-size: 2.2rem; }
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); text-transform: uppercase; margin-bottom: 5px; }
         @media (max-width: 768px) { .logo-text { font-size: 2.2rem; } }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; display: block; }
@@ -32,8 +31,7 @@
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
         .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #f0eadec; transition: transform 0.3s; }
         .card:hover { transform: translateY(-5px); }
-        .single-photo-container { width: 100%; height: 350px; background-color: #eae5db; border-bottom: 1px solid #f0eadec; overflow: hidden; position: relative; }
-        .single-photo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .single-photo-container { width: 100%; height: 250px; background-color: #eae5db; border-bottom: 1px solid #f0eadec; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; }
         .photo-label { position: absolute; bottom: 15px; left: 15px; background: rgba(18, 38, 58, 0.7); color: #fff; padding: 4px 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
         .card-content { padding: 35px; }
         .card h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px; }
@@ -60,10 +58,7 @@
 <body>
 
     <header>
-        <div class="brand-logo-container">
-            <!-- LOGO OR ET BLEU ACCESSIBLE EN TOUT TEMPS SANS LIEN EXPIRÉ -->
-            
-        </div>
+        <div class="brand-logo-container">🌸</div>
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle">Cottages de Prestige & Perles Rares • La Réunion</span>
         <div class="badges-container">
@@ -83,11 +78,7 @@
             
             <!-- LE GRANDZABRIS -->
             <div class="card">
-                <div class="single-photo-container">
-                    <!-- PHOTO MAISON LUMINEUSE IMMÉDIATEMENT RECONNAISSABLE SANS CARRÉ BLEU -->
-                     
-                    <div class="photo-label">Le Grandzabris</div>
-                </div>
+                <div class="single-photo-container">🏡<div class="photo-label">Le Grandzabris</div></div>
                 <div class="card-content">
                     <h3>Le Grandzabris</h3>
                     <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Personnes │ Classé 3★★★</div>
@@ -97,61 +88,33 @@
                         Enjoy a generous, noble, and warm atmosphere. A true guest-favorite cottage designed to the finest details, perfect for family getaways or moments with friends.
                     </div>
                     <div class="btn-container">
-                        <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver</a>
-                        <a href="https://www.airbnb.com/h/legrandzabris" class="btn btn-en">Book Online</a>
+                        <a href="https://airbnb.com" target="_blank" class="btn">Réserver</a>
+                        <a href="https://airbnb.com" target="_blank" class="btn btn-en">Book Online</a>
                     </div>
                 </div>
             </div>
 
             <!-- LE PTITZABRIS -->
             <div class="card">
-                <div class="single-photo-container">
-                    <!-- PHOTO CHAMBRE DESIGN PRESTIGE IMMÉDIATEMENT RECONNAISSABLE SANS CARRÉ BLEU -->
-                     
-                    <div class="photo-label">Le Ptitzabris</div>
-                </div>
+                <div class="single-photo-container">🌿<div class="photo-label">Le Ptitzabris</div></div>
                 <div class="card-content">
                     <h3>Le Ptitzabris</h3>
-                    <div class="specs">✨ Cocon Privatif │ Lit King Size │ Classé 3★★★</div>
+                    <div class="specs">✨ Cocon Privatif │ Lit Queen Size │ Classé 3★★★</div>
                     <p>Un véritable écrin de douceur, d'intimité et de raffinement. Un logement coup de cœur authentique, conçu spécifiquement pour les escapades exclusives et les moments suspendus en amoureux.</p>
                     <div class="lang-en">
-
-<div class="btn-container">
-                        <a href="https://airbnb.com/h/leptitzabris" target="_blank" class="btn">Réserver</a>
-                        <a href="https://airbnb.com/h/leptitzabris" target="_blank" class="btn btn-en">Book Online</a>
+                        <strong>Romantic Hideaway:</strong> Private Cocoon │ Queen Size Bed │ 3-Star Rated<br>
+                        A true sanctuary of sweetness, privacy, and refinement. A rare gem tailored for exclusive romantic getaways and timeless moments together.
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">Réserver</a>
+                        <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn btn-en">Book Online</a>
                     </div>
                 </div>
             </div>
+            
         </div>
 
         <div class="section-title">L'Art de Vivre au Domaine │ Experiences</div>
         <div class="info-block">
             <div class="info-item">
                 <h4>🛁 Espace Bien-être • Softub Spa</h4>
-                <p>Pour votre relaxation absolue, le jacuzzi Softub haut de gamme est à votre entière disposition sur votre terrasse extérieure. Afin de préserver la pureté cristalline de l'eau et votre confort, nous invitons nos voyageurs à se doucher à l'eau claire avant chaque bain et à repositionner délicatement la couverture thermique de protection après usage.</p>
-                <div class="lang-en">For your ultimate relaxation, the premium Softub jacuzzi is at your disposal on your private terrace. To preserve the crystal-clear water purity, guests are kindly requested to rinse with clean water before entering and gently replace the thermal protective cover after use.</div>
-            </div>
-            <div class="info-item">
-                <h4>☀️ Énergie Solaire • Eco-Laundry</h4>
-                <p>Soucieux de préserver la nature sauvage des Hauts, notre domaine fonctionne entièrement à l'énergie photovoltaïque locale. Nous vous remercions chaleureusement de lancer vos cycles de lave-linge et sèche-linge exclusivement en journée, entre 9h00 et 16h00, pour bénéficier d'une électricité 100% propre captée en direct.</p>
-                <div class="lang-en">Mindful of preserving the wilderness of the Highlands, our estate runs entirely on local solar photovoltaic energy. We warmly thank you for running washing machine and dryer cycles exclusively during the day, between 9:00 AM and 4:00 PM, to fully utilize clean, direct solar power.</div>
-            </div>
-            <div class="info-item">
-                <h4>🚗 Stationnement & Éco-Tri • Parking & Waste</h4>
-                <p>Vos places privatives et attitrées vous attendent dès l'entrée de la propriété, signalées par vos plaques métalliques personnalisées. Pour la gestion des déchets, un bac à compost réservé aux matières organiques est mis à votre service sur votre terrasse (et vidé quotidiennement par nos soins). Les bacs de tri et ordures ménagères classiques se situent discrètement au niveau du parking de la résidence.</p>
-                <div class="lang-en">Your private designated parking spaces await you at the entrance, marked with custom plaques. For eco-sorting, a dedicated organic compost bin is at your service on your terrace (emptied daily by the host). Standard recycling and household bins are discreetly located in the parking lot.</div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-logo">LES OZABRIS</div>
-        <p>Domaine de Cottages d'Exception — Les Hauts de l'Île, La Réunion</p>
-        <div class="contact-info">
-            <p>📧 Email : <a href="mailto:jean.ritter@me.com">jean.ritter@me.com</a></p>
-            <p>📞 Ligne d'Urgence Conciergerie : <strong>+262 692 13 87 27</strong></p>
-        </div>
-        <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 35px;">© 2026 Les Ozabris. Édition Prestige Limitée. Tous droits réservés.</p>
-    </footer>
-</body>
-</html>
