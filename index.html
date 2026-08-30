@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Ozabris | Location de Cottages de Charme</title>
+    <style>
+        :root {
+            --primary: #1e3d59;
+            --accent: #17b978;
+            --dark: #222831;
+            --light: #f5f5f5;
+            --white: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        header { background-color: var(--white); text-align: center; padding: 40px 20px; border-bottom: 1px solid #e0e0e0; }
+        .logo-text { font-size: 2.5rem; font-weight: 300; letter-spacing: 4px; color: var(--dark); margin-bottom: 5px; }
+        .subtitle { font-size: 0.9rem; letter-spacing: 2px; color: #666; text-transform: uppercase; margin-bottom: 15px; }
+        .tagline { font-style: italic; color: var(--primary); max-width: 600px; margin: 0 auto; padding-top: 10px; border-top: 1px solid #eee; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+        .card { background: var(--white); border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
+        .card h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .specs { background: #f9f9f9; padding: 12px; border-radius: 4px; margin-bottom: 20px; border-left: 3px solid var(--accent); font-size: 0.95rem; }
+        .btn { display: inline-block; width: 100%; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 5px; text-decoration: none; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; transition: background 0.3s; margin-top: 10px; }
+        .btn:hover { background-color: #13293d; }
+        .btn-accent { background-color: var(--accent); }
+        .btn-accent:hover { background-color: #119961; }
+        .section-title { font-size: 1.8rem; font-weight: 400; color: var(--primary); margin: 50px 0 20px 0; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        .info-block { background: var(--white); border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .info-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .info-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
+        .lang-en { font-style: italic; color: #666; font-size: 0.95rem; margin-top: 4px; }
+        footer { background-color: var(--primary); color: var(--white); text-align: center; padding: 30px 20px; margin-top: 60px; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; }
+        footer a { color: var(--white); text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-text">LES OZABRIS</div>
+        <div class="subtitle">Location de Cottages • La Réunion</div>
+        <div class="tagline">
+            "Une parenthèse d'exception et de sérénité dans les Hauts de l'Île."<br>
+            <span style="font-size: 0.9rem; color: #666;">"An exceptional and peaceful getaway in the Highlands of the Island."</span>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-title">Nos Cottages │ Our Cottages</div>
+        <div class="grid">
+            <!-- LE GRANDZABRIS -->
+            <div class="card">
+                <h3>Le Grandzabris</h3>
+                <div class="specs">
+                    <strong>🏠 Capacité :</strong> 2 chambres (4 personnes)<br>
+                    <span style="font-style: italic; color: #666; font-size: 0.85rem;"><strong>Capacity:</strong> 2 bedrooms (Up to 4 guests)</span>
+                </div>
+                <p>Profitez d'un espace généreux et chaleureux idéal pour les séjours en famille ou entre amis au cœur des Hauts.</p>
+                <p class="lang-en">Enjoy a generous and warm space ideal for families or friends in the heart of the Highlands.</p>
+                <!-- REMPLACEZ LES # PAR VOS LIENS AIRBNB PLUS TARD -->
+                <a href="#" target="_blank" class="btn">Réserver sur Airbnb</a>
+                <a href="#" target="_blank" class="btn lang-en" style="color:white; margin-top:5px; background:#444;">Book on Airbnb</a>
+            </div>
+
+            <!-- LE PTITZABRIS -->
+            <div class="card">
+                <h3>Le Ptitzabris</h3>
+                <div class="specs">
+                    <strong>🏠 Capacité :</strong> 1 chambre (Lit King Size)<br>
+                    <span style="font-style: italic; color: #666; font-size: 0.85rem;"><strong>Capacity:</strong> 1 bedroom (King Size Bed)</span>
+                </div>
+                <p>Un véritable cocon de douceur et d'intimité conçu spécialement pour les escapades en amoureux.</p>
+                <p class="lang-en">A true cocoon of sweetness and intimacy designed especially for romantic getaways.</p>
+                <!-- REMPLACEZ LES # PAR VOS LIENS AIRBNB PLUS TARD -->
+                <a href="#" target="_blank" class="btn">Réserver sur Airbnb</a>
+                <a href="#" target="_blank" class="btn lang-en" style="color:white; margin-top:5px; background:#444;">Book on Airbnb</a>
+            </div>
+        </div>
+
+        <div class="section-title">Vie du Domaine │ Estate Guide</div>
+        <div class="info-block">
+            <!-- PARKING -->
+            <div class="info-item">
+                <h4>🚗 Stationnement │ Parking</h4>
+                <p>Des places de parking privatives et attitrées vous attendent à l'entrée de la résidence (panneaux individuels pour Le Ptitzabris et Le Grandzabris).</p>
+                <p class="lang-en">Private and designated parking spaces await you at the entrance of the residence (individual signs for Le Ptitzabris and Le Grandzabris).</p>
+            </div>
+
+            <!-- SOFTUB -->
+            <div class="info-item">
+                <h4>🛁 Espace Bien-être │ Softub Spa</h4>
+                <p>Pour votre détente, le jacuzzi Softub est à votre entière disposition. Merci de vous doucher à l'eau claire avant chaque bain et de replacer la couverture thermique après usage.</p>
+                <p class="lang-en">For your relaxation, the Softub jacuzzi is at your disposal. Please shower with clean water before entering and replace the thermal cover after use.</p>
+            </div>
+
+            <!-- SOLAIRE / BUANDERIE -->
+            <div class="info-item">
+                <h4>☀️ Énergie Solaire │ Solar Powered Laundry</h4>
+                <p>Le domaine fonctionne à l'énergie photovoltaïque. Merci de lancer vos machines à laver et sèche-linge exclusivement en journée entre 9h00 et 16h00 pour utiliser une électricité 100% propre.</p>
+                <p class="lang-en">The estate runs on solar power. Please run your washing machines and dryers exclusively during the day between 9:00 AM and 4:00 PM to use 100% clean electricity.</p>
+            </div>
+
+            <!-- TRASH -->
+            <div class="info-item">
+                <h4>🌱 Gestion des Déchets │ Trash & Compost</h4>
+                <p>Un bac à compost (vidé par nos soins) est disponible sur votre terrasse pour vos restes alimentaires. Les bacs de tri sélectif et d'ordures ménagères se situent au niveau du parking.</p>
+                <p class="lang-en">A compost bin (emptied by the host) is available on your terrace for food waste. Recycling and household waste bins are located in the parking lot.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p><strong>Les Ozabris</strong> — Domaine de Cottages de Charme</p>
+        <p>En cas d'urgence ou de panne : <strong>+262 692 13 87 27</strong></p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 15px;">© 2026 Les Ozabris. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
