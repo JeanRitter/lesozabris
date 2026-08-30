@@ -6,120 +6,126 @@
     <title>Les Ozabris | Location de Cottages de Charme</title>
     <style>
         :root {
-            --primary: #1e3d59;
-            --accent: #17b978;
-            --dark: #222831;
-            --light: #f5f5f5;
+            --primary: #12263a; /* Bleu nuit luxueux */
+            --accent: #c5a880;  /* Or champagne hôtelier */
+            --text-dark: #2c3e50;
+            --bg-light: #fbfbf9; /* Blanc cassé doux */
             --white: #ffffff;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        header { background-color: var(--white); text-align: center; padding: 40px 20px; border-bottom: 1px solid #e0e0e0; }
-        .logo-text { font-size: 2.5rem; font-weight: 300; letter-spacing: 4px; color: var(--dark); margin-bottom: 5px; }
-        .subtitle { font-size: 0.9rem; letter-spacing: 2px; color: #666; text-transform: uppercase; margin-bottom: 15px; }
-        .tagline { font-style: italic; color: var(--primary); max-width: 600px; margin: 0 auto; padding-top: 10px; border-top: 1px solid #eee; }
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
-        .card { background: var(--white); border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
-        .card h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .specs { background: #f9f9f9; padding: 12px; border-radius: 4px; margin-bottom: 20px; border-left: 3px solid var(--accent); font-size: 0.95rem; }
-        .btn { display: inline-block; width: 100%; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 5px; text-decoration: none; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem; transition: background 0.3s; margin-top: 10px; }
-        .btn:hover { background-color: #13293d; }
-        .btn-accent { background-color: var(--accent); }
-        .btn-accent:hover { background-color: #119961; }
-        .section-title { font-size: 1.8rem; font-weight: 400; color: var(--primary); margin: 50px 0 20px 0; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
-        .info-block { background: var(--white); border-radius: 8px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .info-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
+        
+        /* En-tête raffiné */
+        header { background-color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0eadec; }
+        .logo-container { width: 120px; height: 120px; margin: 0 auto 20px auto; background-color: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #999; border: 1px solid var(--accent); }
+        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
+        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
+        .tagline { font-style: italic; color: #555; max-width: 650px; margin: 0 auto; padding-top: 15px; border-top: 1px solid #f0eadec; font-size: 1.1rem; }
+        
+        .container { max-width: 1100px; margin: 50px auto; padding: 0 25px; }
+        .section-title { font-size: 2rem; font-weight: 300; color: var(--primary); margin: 60px 0 30px 0; text-align: center; text-transform: uppercase; letter-spacing: 3px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); margin: 15px auto 0 auto; }
+        
+        /* Grille des gîtes style Prestige */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; margin-top: 20px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #f0eadec; transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        
+        /* Zone Photo Gîte */
+        .photo-placeholder { width: 100%; height: 300px; background-color: #eae5db; display: flex; align-items: center; justify-content: center; color: #7d7568; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #f0eadec; background-image: linear-gradient(45deg, #eae5db 25%, #e3ded3 25%, #e3ded3 50%, #eae5db 50%, #eae5db 75%, #e3ded3 75%, #e3ded3 100%); background-size: 40px 40px; }
+        
+        .card-content { padding: 35px; }
+        .card h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; font-weight: 400; letter-spacing: 1px; }
+        .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+        .card p { font-size: 1rem; color: #555; margin-bottom: 15px; font-family: 'Segoe UI', sans-serif; }
+        .lang-en { font-style: italic; color: #777; font-size: 0.95rem; border-left: 2px solid var(--accent); padding-left: 15px; margin-top: 15px; font-family: 'Playfair Display', serif; }
+        
+        /* Boutons élégants */
+        .btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 14px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; border: 1px solid var(--primary); transition: all 0.3s; }
+        .btn:hover { background-color: var(--white); color: var(--primary); }
+        .btn-en { background-color: #7d7568; border-color: #7d7568; }
+        .btn-en:hover { background-color: var(--white); color: #7d7568; }
+        
+        /* Bloc infos de vie du domaine */
+        .info-block { background: var(--white); border-radius: 4px; padding: 40px; border: 1px solid #f0eadec; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .info-item { margin-bottom: 35px; padding-bottom: 35px; border-bottom: 1px solid #f5f0e6; }
         .info-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-        .info-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
-        .lang-en { font-style: italic; color: #666; font-size: 0.95rem; margin-top: 4px; }
-        footer { background-color: var(--primary); color: var(--white); text-align: center; padding: 30px 20px; margin-top: 60px; font-size: 0.9rem; }
-        footer p { margin-bottom: 10px; }
-        footer a { color: var(--white); text-decoration: underline; }
+        .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 12px; font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .info-item p { font-family: 'Segoe UI', sans-serif; font-size: 1rem; color: #555; }
+        
+        /* Pied de page Luxe */
+        footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 60px 20px; margin-top: 100px; font-size: 0.95rem; border-top: 3px solid var(--accent); }
+        footer p { margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; letter-spacing: 0.5px; }
+        .footer-logo { font-size: 1.8rem; letter-spacing: 4px; color: var(--white); margin-bottom: 25px; }
+        .contact-info { background: rgba(255,255,255,0.03); max-width: 450px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
+        .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-text">LES OZABRIS</div>
-        <div class="subtitle">Location de Cottages • La Réunion</div>
+        <!-- EMPLACEMENT LOGO CLIENT -->
+        <div class="logo-container">Votre Logo OLO</div>
+        <div class="logo-text">Les Ozabris</div>
+        <div class="subtitle">Location de Cottages de Prestige • La Réunion</div>
         <div class="tagline">
-            "Une parenthèse d'exception et de sérénité dans les Hauts de l'Île."<br>
-            <span style="font-size: 0.9rem; color: #666;">"An exceptional and peaceful getaway in the Highlands of the Island."</span>
+            "Une parenthèse d'exception et de sérénité absolue dans les Hauts de l'Île."<br>
+            <span style="font-size: 0.95rem; color: #888; font-family:'Segoe UI',sans-serif;">"An exceptional and peaceful getaway in the Highlands of the Island."</span>
         </div>
     </header>
 
     <div class="container">
         
-        <div class="section-title">Nos Cottages │ Our Cottages</div>
+        <div class="section-title">Les Hébergements de Charme</div>
         <div class="grid">
             <!-- LE GRANDZABRIS -->
             <div class="card">
-                <h3>Le Grandzabris</h3>
-                <div class="specs">
-                    <strong>🏠 Capacité :</strong> 2 chambres (4 personnes)<br>
-                    <span style="font-style: italic; color: #666; font-size: 0.85rem;"><strong>Capacity:</strong> 2 bedrooms (Up to 4 guests)</span>
+                <div class="photo-placeholder">📸 Emplacement Photo : Le Grandzabris</div>
+                <div class="card-content">
+                    <h3>Le Grandzabris</h3>
+                    <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Personnes</div>
+                    <p>Profitez d'un espace généreux, noble et chaleureux. Une villa pensée dans les moindres détails, idéale pour les séjours en famille ou entre amis au cœur de notre domaine des Hauts.</p>
+                    <div class="lang-en">
+                        <strong>Prestige Living:</strong> 2 Bedrooms │ Up to 4 Guests<br>
+                        Enjoy a generous, noble, and warm atmosphere. A cottage designed to the finest details, perfect for family getaways or moments with friends in the heart of our estate.
+                    </div>
+                    <div class="btn-container">
+                        <a href="#" target="_blank" class="btn">Réserver</a>
+                        <a href="#" target="_blank" class="btn btn-en">Book Online</a>
+                    </div>
                 </div>
-                <p>Profitez d'un espace généreux et chaleureux idéal pour les séjours en famille ou entre amis au cœur des Hauts.</p>
-                <p class="lang-en">Enjoy a generous and warm space ideal for families or friends in the heart of the Highlands.</p>
-                <!-- REMPLACEZ LES # PAR VOS LIENS AIRBNB PLUS TARD -->
-                <a href="#" target="_blank" class="btn">Réserver sur Airbnb</a>
-                <a href="#" target="_blank" class="btn lang-en" style="color:white; margin-top:5px; background:#444;">Book on Airbnb</a>
             </div>
 
             <!-- LE PTITZABRIS -->
             <div class="card">
-                <h3>Le Ptitzabris</h3>
-                <div class="specs">
-                    <strong>🏠 Capacité :</strong> 1 chambre (Lit King Size)<br>
-                    <span style="font-style: italic; color: #666; font-size: 0.85rem;"><strong>Capacity:</strong> 1 bedroom (King Size Bed)</span>
+                <div class="photo-placeholder">📸 Emplacement Photo : Le Ptitzabris</div>
+                <div class="card-content">
+                    <h3>Le Ptitzabris</h3>
+                    <div class="specs">✨ Cocon Privatif │ Lit King Size</div>
+                    <p>Un véritable écrin de douceur, d'intimité et de raffinement. Conçu spécifiquement pour les escapades exclusives et les moments suspendus en amoureux.</p>
+                    <div class="lang-en">
+                        <strong>Romantic Hideaway:</strong> Private Cocoon │ King Size Bed<br>
+                        A true sanctuary of sweetness, privacy, and refinement. Specially tailored for exclusive romantic getaways and timeless moments together.
+                    </div>
+                    <div class="btn-container">
+                        <a href="#" target="_blank" class="btn">Réserver</a>
+                        <a href="#" target="_blank" class="btn btn-en">Book Online</a>
+                    </div>
                 </div>
-                <p>Un véritable cocon de douceur et d'intimité conçu spécialement pour les escapades en amoureux.</p>
-                <p class="lang-en">A true cocoon of sweetness and intimacy designed especially for romantic getaways.</p>
-                <!-- REMPLACEZ LES # PAR VOS LIENS AIRBNB PLUS TARD -->
-                <a href="#" target="_blank" class="btn">Réserver sur Airbnb</a>
-                <a href="#" target="_blank" class="btn lang-en" style="color:white; margin-top:5px; background:#444;">Book on Airbnb</a>
             </div>
         </div>
 
-        <div class="section-title">Vie du Domaine │ Estate Guide</div>
+        <div class="section-title">L'Art de Vivre au Domaine │ Experiences</div>
         <div class="info-block">
-            <!-- PARKING -->
-            <div class="info-item">
-                <h4>🚗 Stationnement │ Parking</h4>
-                <p>Des places de parking privatives et attitrées vous attendent à l'entrée de la résidence (panneaux individuels pour Le Ptitzabris et Le Grandzabris).</p>
-                <p class="lang-en">Private and designated parking spaces await you at the entrance of the residence (individual signs for Le Ptitzabris and Le Grandzabris).</p>
-            </div>
-
             <!-- SOFTUB -->
             <div class="info-item">
-                <h4>🛁 Espace Bien-être │ Softub Spa</h4>
-                <p>Pour votre détente, le jacuzzi Softub est à votre entière disposition. Merci de vous doucher à l'eau claire avant chaque bain et de replacer la couverture thermique après usage.</p>
-                <p class="lang-en">For your relaxation, the Softub jacuzzi is at your disposal. Please shower with clean water before entering and replace the thermal cover after use.</p>
+                <h4>🛁 Espace Bien-être • Softub Spa</h4>
+                <p>Pour votre relaxation absolue, le jacuzzi Softub haut de gamme est à votre entière disposition sur votre terrasse extérieure. Afin de préserver la pureté cristalline de l'eau et votre confort, nous invitons nos voyageurs à se doucher à l'eau claire avant chaque bain et à repositionner délicatement la couverture thermique de protection après usage.</p>
+                <div class="lang-en">For your ultimate relaxation, the premium Softub jacuzzi is at your disposal on your private terrace. To preserve the crystal-clear water purity, guests are kindly requested to rinse with clean water before entering and gently replace the thermal protective cover after use.</div>
             </div>
 
             <!-- SOLAIRE / BUANDERIE -->
             <div class="info-item">
-                <h4>☀️ Énergie Solaire │ Solar Powered Laundry</h4>
-                <p>Le domaine fonctionne à l'énergie photovoltaïque. Merci de lancer vos machines à laver et sèche-linge exclusivement en journée entre 9h00 et 16h00 pour utiliser une électricité 100% propre.</p>
-                <p class="lang-en">The estate runs on solar power. Please run your washing machines and dryers exclusively during the day between 9:00 AM and 4:00 PM to use 100% clean electricity.</p>
-            </div>
-
-            <!-- TRASH -->
-            <div class="info-item">
-                <h4>🌱 Gestion des Déchets │ Trash & Compost</h4>
-                <p>Un bac à compost (vidé par nos soins) est disponible sur votre terrasse pour vos restes alimentaires. Les bacs de tri sélectif et d'ordures ménagères se situent au niveau du parking.</p>
-                <p class="lang-en">A compost bin (emptied by the host) is available on your terrace for food waste. Recycling and household waste bins are located in the parking lot.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>
-        <p><strong>Les Ozabris</strong> — Domaine de Cottages de Charme</p>
-        <p>En cas d'urgence ou de panne : <strong>+262 692 13 87 27</strong></p>
-        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 15px;">© 2026 Les Ozabris. Tous droits réservés.</p>
-    </footer>
-
-</body>
-</html>
+                <h4>☀️ Énergie Solaire • Eco-Laundry</h4>
