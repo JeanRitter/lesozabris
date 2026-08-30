@@ -17,16 +17,18 @@
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
         /* En-tête raffiné avec double logo */
-        header { background-color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0eadec; position: relative; }
-        .header-top { display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 900px; margin: 0 auto 10px auto; }
+        header { background-color: var(--white); text-align: center; padding: 40px 20px; border-bottom: 1px solid #f0eadec; position: relative; }
+        .header-top { display: flex; align-items: center; justify-content: center; gap: 30px; max-width: 1000px; margin: 0 auto 10px auto; }
         
         /* Emplacements Logo Gauche et Droite */
-        .logo-placeholder-left, .logo-placeholder-right { width: 90px; height: 90px; background-color: #f4eee3; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #7d7568; border: 1px solid var(--accent); font-family: 'Segoe UI', sans-serif; text-transform: uppercase; font-weight: 600; flex-shrink: 0; }
+        .logo-box { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid var(--accent); flex-shrink: 0; background: var(--white); }
+        .logo-box img { width: 100%; height: 100%; object-fit: contain; }
         
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); text-transform: uppercase; }
         @media (max-width: 768px) { 
             .header-top { flex-direction: column; gap: 15px; }
             .logo-text { font-size: 2.2rem; }
+            .logo-box { width: 80px; height: 80px; }
         }
         
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; display: block; }
@@ -85,13 +87,17 @@
 
     <header>
         <div class="header-top">
-            https://ibb.co/XrKp77FX
-            <div class="logo-placeholder-left">Logo OLO</div>
+            <!-- LOGO GAUCHE -->
+            <div class="logo-box">
+                <img src="https://ibb.co" alt="Logo OLO">
+            </div>
             
             <div class="logo-text">Les Ozabris</div>
             
-            https://ibb.co/zL8Xb4p
-<a href="https://ibb.co/xtsrH1d6"><img src="https://i.ibb.co/W43Rtkjf/IMG-4417.png" alt="IMG-4417" border="0"></a>
+            <!-- LOGO DROITE -->
+            <div class="logo-box">
+                <img src="https://ibb.co" alt="Logo OLO">
+            </div>
         </div>
         <span class="subtitle">Cottages de Prestige & Perles Rares • La Réunion</span>
         
@@ -115,8 +121,8 @@
             <!-- LE GRANDZABRIS -->
             <div class="card">
                 <div class="single-photo-container">
-                    <a href="https://ibb.co/JwxCWPbD"><img src="https://i.ibb.co/DHGLPn60/050768a5-aa54-49bd-bfb5-03e414ba1db0-jpg.avif" alt="050768a5-aa54-49bd-bfb5-03e414ba1db0-jpg" border="0"></a>
-                    <img src="https://unsplash.com" alt="Le Grandzabris">
+                    <!-- VOTRE PHOTO FINALE DU GRANDZABRIS -->
+                    <img src="https://ibb.co" alt="Le Grandzabris">
                     <div class="photo-label">Le Grandzabris</div>
                 </div>
                 <div class="card-content">
@@ -128,12 +134,12 @@
                         Enjoy a generous, noble, and warm atmosphere. A true guest-favorite cottage designed to the finest details, perfect for family getaways or moments with friends.
                     </div>
                     <div class="btn-container">
-                        <a href="http://airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver</a>
-                        <a href="http://airbnb.com/h/legrandzabris" target="_blank" class="btn btn-en">Book Online</a>
+                        <a href="http://airbnb.com" target="_blank" class="btn">Réserver</a>
+                        <a href="http://airbnb.com" target="_blank" class="btn btn-en">Book Online</a>
                     </div>
                 </div>
             </div>
 
             <!-- LE PTITZABRIS -->
             <div class="card">
-               https://ibb.co/LzDRvw3D
+                <div class="single-photo-container">
