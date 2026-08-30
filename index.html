@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Ozabris | Location de Cottages de Charme</title>
+    <title>Les Ozabris | Location de Cottages d'Exception</title>
     <style>
         :root {
             --primary: #12263a; /* Bleu nuit luxueux */
@@ -11,16 +11,22 @@
             --text-dark: #2c3e50;
             --bg-light: #fbfbf9; /* Blanc cassé doux */
             --white: #ffffff;
+            --gold: #dfb76c;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
         /* En-tête raffiné */
         header { background-color: var(--white); text-align: center; padding: 60px 20px; border-bottom: 1px solid #f0eadec; }
-        .logo-container { width: 120px; height: 120px; margin: 0 auto 20px auto; background-color: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #999; border: 1px solid var(--accent); }
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
-        .tagline { font-style: italic; color: #555; max-width: 650px; margin: 0 auto; padding-top: 15px; border-top: 1px solid #f0eadec; font-size: 1.1rem; }
+        
+        /* Badges Distinctions */
+        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 800px; margin: 0 auto 30px auto; font-family: 'Segoe UI', sans-serif; }
+        .badge { background: #f4eee3; color: #7d7568; padding: 8px 16px; border-radius: 2px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(197,168,128,0.3); display: inline-flex; align-items: center; gap: 5px; }
+        .badge-stars { color: var(--gold); font-size: 0.9rem; }
+        
+        .tagline { font-style: italic; color: #555; max-width: 650px; margin: 0 auto; padding-top: 25px; border-top: 1px solid #f0eadec; font-size: 1.1rem; }
         
         .container { max-width: 1100px; margin: 50px auto; padding: 0 25px; }
         .section-title { font-size: 2rem; font-weight: 300; color: var(--primary); margin: 60px 0 30px 0; text-align: center; text-transform: uppercase; letter-spacing: 3px; position: relative; }
@@ -66,13 +72,19 @@
 <body>
 
     <header>
-        <!-- EMPLACEMENT LOGO CLIENT -->
-        <div class="logo-container">Votre Logo OLO</div>
         <div class="logo-text">Les Ozabris</div>
-        <div class="subtitle">Location de Cottages de Prestige • La Réunion</div>
+        <div class="subtitle">Cottages de Prestige & Perles Rares • La Réunion</div>
+        
+        <!-- BANDEROLE DES LABELS ET DISTINCTIONS -->
+        <div class="badges-container">
+            <div class="badge">⭐ Classé Meublé de Tourisme <span class="badge-stars">★★★</span></div>
+            <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
+            <div class="badge">🏆 Excellence 5/5 Étoiles depuis 2019</div>
+        </div>
+
         <div class="tagline">
-            "Une parenthèse d'exception et de sérénité absolue dans les Hauts de l'Île."<br>
-            <span style="font-size: 0.95rem; color: #888; font-family:'Segoe UI',sans-serif;">"An exceptional and peaceful getaway in the Highlands of the Island."</span>
+            "Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."<br>
+            <span style="font-size: 0.95rem; color: #888; font-family:'Segoe UI',sans-serif;">"An exceptional, award-winning getaway in the Highlands of the Island."</span>
         </div>
     </header>
 
@@ -85,11 +97,11 @@
                 <div class="photo-placeholder">📸 Emplacement Photo : Le Grandzabris</div>
                 <div class="card-content">
                     <h3>Le Grandzabris</h3>
-                    <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Personnes</div>
-                    <p>Profitez d'un espace généreux, noble et chaleureux. Une villa pensée dans les moindres détails, idéale pour les séjours en famille ou entre amis au cœur de notre domaine des Hauts.</p>
+                    <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Personnes │ Classé 3★★★</div>
+                    <p>Profitez d'un espace généreux, noble et chaleureux. Une véritable perle rare pensée dans les moindres détails, idéale pour les séjours d'exception en famille ou entre amis au cœur de notre domaine.</p>
                     <div class="lang-en">
-                        <strong>Prestige Living:</strong> 2 Bedrooms │ Up to 4 Guests<br>
-                        Enjoy a generous, noble, and warm atmosphere. A cottage designed to the finest details, perfect for family getaways or moments with friends in the heart of our estate.
+                        <strong>Prestige Living:</strong> 2 Bedrooms │ Up to 4 Guests │ 3-Star Rated<br>
+                        Enjoy a generous, noble, and warm atmosphere. A true guest-favorite cottage designed to the finest details, perfect for family getaways or moments with friends.
                     </div>
                     <div class="btn-container">
                         <a href="#" target="_blank" class="btn">Réserver</a>
@@ -103,11 +115,11 @@
                 <div class="photo-placeholder">📸 Emplacement Photo : Le Ptitzabris</div>
                 <div class="card-content">
                     <h3>Le Ptitzabris</h3>
-                    <div class="specs">✨ Cocon Privatif │ Lit King Size</div>
-                    <p>Un véritable écrin de douceur, d'intimité et de raffinement. Conçu spécifiquement pour les escapades exclusives et les moments suspendus en amoureux.</p>
+                    <div class="specs">✨ Cocon Privatif │ Lit King Size │ Classé 3★★★</div>
+                    <p>Un véritable écrin de douceur, d'intimité et de raffinement. Un logement coup de cœur authentique, conçu spécifiquement pour les escapades exclusives et les moments suspendus en amoureux.</p>
                     <div class="lang-en">
-                        <strong>Romantic Hideaway:</strong> Private Cocoon │ King Size Bed<br>
-                        A true sanctuary of sweetness, privacy, and refinement. Specially tailored for exclusive romantic getaways and timeless moments together.
+                        <strong>Romantic Hideaway:</strong> Private Cocoon │ King Size Bed │ 3-Star Rated<br>
+                        A true sanctuary of sweetness, privacy, and refinement. A rare gem tailored for exclusive romantic getaways and timeless moments together.
                     </div>
                     <div class="btn-container">
                         <a href="#" target="_blank" class="btn">Réserver</a>
@@ -122,10 +134,3 @@
             <!-- SOFTUB -->
             <div class="info-item">
                 <h4>🛁 Espace Bien-être • Softub Spa</h4>
-                <p>Pour votre relaxation absolue, le jacuzzi Softub haut de gamme est à votre entière disposition sur votre terrasse extérieure. Afin de préserver la pureté cristalline de l'eau et votre confort, nous invitons nos voyageurs à se doucher à l'eau claire avant chaque bain et à repositionner délicatement la couverture thermique de protection après usage.</p>
-                <div class="lang-en">For your ultimate relaxation, the premium Softub jacuzzi is at your disposal on your private terrace. To preserve the crystal-clear water purity, guests are kindly requested to rinse with clean water before entering and gently replace the thermal protective cover after use.</div>
-            </div>
-
-            <!-- SOLAIRE / BUANDERIE -->
-            <div class="info-item">
-                <h4>☀️ Énergie Solaire • Eco-Laundry</h4>
