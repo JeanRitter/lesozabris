@@ -370,7 +370,11 @@
             document.getElementById("wifi-text").innerText = `Cottage : ${data.cottage}`;
             document.getElementById("wifi-qr-img").src = data.qrWifi;
         }
-
+<div style="text-align: center; margin: 40px 0;">
+    <button onclick="location.reload();" style="background-color: #333; color: #fff; border: none; padding: 12px 25px; font-family: 'Segoe UI', sans-serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        VERROUILLER L'ACCÈS / RETOUR
+    </button>
+</div>
         function logoutPortal() {
             sessionStorage.removeItem("ozabris_auth");
             sessionStorage.removeItem("ozabris_voyageur_data");
@@ -378,10 +382,7 @@
             document.getElementById("guest-portal").style.display = "none";
             document.getElementById("pinCode").value = "";
         }
-    <div style="text-align: center; margin: 40px 0;">
-    <button onclick="location.reload();" style="background-color: #333; color: #fff; border: none; padding: 12px 25px; font-family: 'Segoe UI', sans-serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        VERROUILLER L'ACCÈS / RETOUR
-    </button>
-</div>    </script>
+    
+</script>
 </body>
 </html>
