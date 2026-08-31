@@ -357,7 +357,7 @@
         }
 
         // Recherche du code PIN correspondant dans le tableau
-        const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
+        const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
                 
                 if(voyageurTrouve) {
                     sessionStorage.setItem("ozabris_auth", "true");
