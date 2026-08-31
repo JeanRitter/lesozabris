@@ -53,10 +53,10 @@
         .card p { font-size: 1rem; color: #555; margin-bottom: 15px; font-family: 'Segoe UI', sans-serif; }
         .lang-en { font-style: italic; color: #777; font-size: 0.95rem; border-left: 2px solid var(--accent); padding-left: 15px; margin-top: 15px; font-family: 'Playfair Display', serif; }
         
-        /* Calendrier widget style */
-        .calendar-widget { background: #fdfbf7; border: 1px dashed var(--accent); padding: 12px 15px; border-radius: 2px; margin: 20px 0; display: flex; align-items: center; justify-content: space-between; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--primary); }
-        .calendar-widget span { font-weight: 600; }
-        .calendar-link { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.2s; }
+        /* Calendrier widget style corrigé pour mobile */
+        .calendar-widget { background: #fdfbf7; border: 1px dashed var(--accent); padding: 12px 15px; border-radius: 2px; margin: 20px 0; display: flex; align-items: center; justify-content: space-between; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--primary); gap: 10px; }
+        .calendar-widget span { font-weight: 600; white-space: nowrap; }
+        .calendar-link { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; transition: color 0.2s; }
         .calendar-link:hover { color: var(--primary); }
 
         .btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
@@ -97,7 +97,6 @@
     
     <div class="container">
         
-        <!-- Banderole services classe -->
         <div class="amenities-banner">
             <div class="amenity-item">
                 <span class="amenity-icon">🅿️</span> Parking Gratuit sur place
@@ -109,7 +108,6 @@
 
         <div class="section-title">Les Hébergements de Charme</div>
         <div class="grid">
-            <!-- Le Grandzabris -->
             <div class="card">
                 <div class="single-photo-container"><img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris"><div class="photo-label">Le Grandzabris</div></div>
                 <div class="card-content">
@@ -117,10 +115,9 @@
                     <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Personnes │ Ecolodge & Brasero │ Classé 2★★</div>
                     <p>Profitez d'un espace généreux, noble et chaleureux. Une véritable perle rare pensée dans les moindres détails, idéale pour les séjours d'exception en famille ou entre amis au cœur de notre domaine verdoyant.</p>
                     
-                    <!-- Report visuel calendrier Airbnb distinct avec lien iCal / Airbnb -->
                     <div class="calendar-widget">
-                        <span>📅 Calendrier Le Grandzabris</span>
-                        <a href="https://www.airbnb.com/calendar/ical/24303152.ics?t=06b22600074f4d9b8849e494192a6fde&locale=fr" target="_blank" class="calendar-link" title="Télécharger / Voir le calendrier iCal">Synchro iCal ↗</a>
+                        <span>📅 Grandzabris</span>
+                        <a href="https://www.airbnb.com/calendar/ical/24303152.ics?t=06b22600074f4d9b8849e494192a6fde&locale=fr" target="_blank" class="calendar-link">Synchro iCal ↗</a>
                     </div>
 
                     <div class="lang-en">
@@ -134,7 +131,6 @@
                 </div>
             </div>
 
-            <!-- Le Ptitzabris -->
             <div class="card">
                 <div class="single-photo-container"><img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris"><div class="photo-label">Le Ptitzabris</div></div>
                 <div class="card-content">
@@ -142,10 +138,9 @@
                     <div class="specs">✨ 1 Chambre │ Jusqu'à 2 Personnes - King Size │ Ecolodge & Brasero │ Classé 3★★★</div>                    
                     <p>Un véritable écrin de douceur, d'intimité et de raffinement. Un logement coup de cœur authentique, conçu spécifiquement pour les escapades exclusives et les moments suspendus en amoureux.</p>
                     
-                    <!-- Report visuel calendrier Airbnb distinct avec lien iCal / Airbnb -->
                     <div class="calendar-widget">
-                        <span>📅 Calendrier Le Ptitzabris</span>
-                        <a href="https://www.airbnb.com/calendar/ical/38249028.ics?t=ed344e7664d54a57b1293ea1b45561d3&locale=fr" target="_blank" class="calendar-link" title="Télécharger / Voir le calendrier iCal">Synchro iCal ↗</a>
+                        <span>📅 Ptitzabris</span>
+                        <a href="https://www.airbnb.com/calendar/ical/38249028.ics?t=ed344e7664d54a57b1293ea1b45561d3&locale=fr" target="_blank" class="calendar-link">Synchro iCal ↗</a>
                     </div>
 
                     <div class="lang-en">
