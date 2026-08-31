@@ -103,6 +103,10 @@
             <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
             <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
         </div>
+        <div style="text-align: center; margin: 40px 0;">
+                <button onclick="location.reload();" style="background-color: #333; color: #fff; border: none; padding: 12px 25px; font-family: 'Segoe UI', sans-serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    VERROUILLER L'ACCÈS / RETOUR
+                </button>
         <div class="brand-logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
         </div>
@@ -357,6 +361,7 @@
             }
         }
 
+        
         function showPortal(data) {
             document.getElementById("login-container").style.display = "none";
             const portal = document.getElementById("guest-portal");
@@ -370,11 +375,7 @@
             document.getElementById("wifi-text").innerText = `Cottage : ${data.cottage}`;
             document.getElementById("wifi-qr-img").src = data.qrWifi;
         }
-<div style="text-align: center; margin: 40px 0;">
-    <button onclick="location.reload();" style="background-color: #333; color: #fff; border: none; padding: 12px 25px; font-family: 'Segoe UI', sans-serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        VERROUILLER L'ACCÈS / RETOUR
-    </button>
-</div>
+                    
         function logoutPortal() {
             sessionStorage.removeItem("ozabris_auth");
             sessionStorage.removeItem("ozabris_voyageur_data");
