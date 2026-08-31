@@ -135,11 +135,11 @@
                 <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
                 <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome and stay instructions.</p>
                 
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <input type="password" id="pinCode" class="pin-input" placeholder="PIN" maxlength="6">
-                    <button onclick="checkPin()" class="pin-btn lang-fr">Entrer</button>
-                    <button onclick="checkPin()" class="pin-btn lang-en" style="display:none;">Enter</button>
-                </div>
+                    <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+        <input type="password" id="pinCode" placeholder="Code PIN">
+        <button type="button" ontouchstart="checkPin()" onclick="checkPin()">ENTRER</button>
+    </div>
+
                 <div id="errorMsg" class="error-msg lang-fr">Code incorrect. Vérifiez votre message de bienvenue.</div>
                 <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code. Please check your welcome message.</div>
             </div>
