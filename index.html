@@ -328,22 +328,16 @@
         }
 
         async function checkPin() {
-            const entered = document.getElementById("pinCode").value.trim();
-            const errorBoxFr = document.getElementById("errorMsg");
-            const errorBoxEn = document.getElementById("errorMsg-en");
-            
-            async function checkPin() {
     const entered = document.getElementById("pinCode").value.trim();
     const errorBoxFr = document.getElementById("errorMsg");
     const errorBoxEn = document.getElementById("errorMsg-en");
 
-    // Si le champ est vide, on affiche l'erreur et on arrête tout
     if (!entered) {
-        errorBoxFr.style.display = "block";
-        errorBoxEn.style.display = "block";
+        if (errorBoxFr) errorBoxFr.style.display = "block";
+        if (errorBoxEn) errorBoxEn.style.display = "block";
         return;
+    }
     
-
                try {
         // Interrogation en direct de votre Google Sheets (Format CSV)
         const response = await fetch(sheetApiUrl);
