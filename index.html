@@ -384,22 +384,25 @@ console.log("Code PIN recherché :", entered);
             }
         }
 
-        
-        // Personnalisation dynamique avec les en-têtes de votre Sheets
-        document.getElementById("welcome-message").innerText = (currentLang === 'fr')
-            ? `Bienvenue, ${data["Prénoms"]} !`
-            : `Welcome, ${data["Prénoms"]}!`;
+        unction showPortal(data) {
+    document.getElementById("login-container").style.display = "none";
+    
+    // Masquer le reste de la page principale pour garder l'espace privé isolé
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.style.display = "none";
 
-        document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
-        document.getElementById("wifi-qr-img").src = data["QrWifi"];
+    const portal = document.getElementById("guest-portal");
+    portal.style.display = "block";
 
-
+    // Personnalisation dynamique propre avec vos en-têtes de Google Sheets
     document.getElementById("welcome-message").innerText = (currentLang === 'fr')
-        ? `Bienvenue chez vous, ${prenom} !`
-        : `Welcome home, ${prenom}!`;
+        ? `Bienvenue chez vous, ${data["Prénoms"]} !`
+        : `Welcome home, ${data["Prénoms"]}!`;
 
-    document.getElementById("wifi-text").innerText = `Cottage : ${cottage}`;
+    document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
+    document.getElementById("wifi-qr-img").src = data["QrWifi"];
 }
+
                     
         function logoutPortal() {
             sessionStorage.removeItem("ozabris_auth");
