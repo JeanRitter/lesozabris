@@ -39,7 +39,7 @@
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
-        /* --- ACCÈS VOYAGEURS (PLACÉ EN HAUT) --- */
+        /* --- ACCÈS VOYAGEURS --- */
         .top-portal-wrapper { background: #f4eee3; border-bottom: 2px solid var(--accent); padding: 25px 20px; text-align: center; }
         .portal-login-box { max-width: 500px; margin: 0 auto; background: var(--white); padding: 30px; border-radius: 4px; border: 1px solid var(--accent); box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
         .portal-login-box h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; font-weight: 400; }
@@ -49,7 +49,7 @@
         .pin-btn:hover { background: var(--accent); }
         .error-msg { color: #b94a48; font-size: 0.8rem; margin-top: 10px; display: none; font-family: 'Segoe UI', sans-serif; }
 
-        /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
+        /* --- CONTENU DE LA PAGE VOYAGEUR --- */
         #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
@@ -57,9 +57,6 @@
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
         .guide-box p, .guide-box ul { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
         .guide-box ul { padding-left: 18px; }
-        .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 4px; border: 1px dashed var(--accent); margin-top: 10px; }
-        .wifi-img-box img { max-width: 140px; height: auto; margin-bottom: 8px; }
-        .instruction-img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #ddd; margin-top: 10px; }
 
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
@@ -86,15 +83,198 @@
 
         .btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
-        
-        /* Style pour la section ZenAbris mise en avant avec photo */
-        .zenabris-banner { background: var(--white); border: 2px solid var(--accent); border-radius: 6px; overflow: hidden; margin-top: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
-        .zenabris-img-container { width: 100%; height: 350px; background-color: #eae5db; position: relative; }
-        .zenabris-img-container img { width: 100%; height: 100%; object-fit: cover; }
-        .zenabris-content { padding: 35px; text-align: center; }
-        .zenabris-banner h3 { color: var(--primary); font-size: 1.8rem; font-weight: 300; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
-        .zenabris-banner p { font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; color: #555; max-width: 800px; margin: 0 auto 15px auto; }
-        .zenabris-tag { display: inline-block; background: #f4eee3; color: var(--primary); border: 1px solid var(--accent); padding: 6px 16px; border-radius: 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; }
 
-        /* Style pour la section Écolodge & Énergie */
-        .ecolodge-banner { background: #fdfbf
+        /* Sections complémentaires (ZenAbris & Ecolodge) */
+        .zenabris-banner, .ecolodge-banner { background: var(--white); border: 2px solid var(--accent); border-radius: 6px; overflow: hidden; margin-top: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); padding: 35px; text-align: center; }
+        .zenabris-banner h3, .ecolodge-banner h3 { color: var(--primary); font-size: 1.8rem; font-weight: 300; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .zenabris-banner p, .ecolodge-banner p { font-family: 'Segoe UI', sans-serif; font-size: 0.95rem; color: #555; max-width: 800px; margin: 0 auto 15px auto; }
+        
+        footer { text-align: center; padding: 40px; font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #7d7568; border-top: 1px solid #f0eadec; margin-top: 60px; background: var(--white); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLanguage('fr')">FR</button> | 
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        </div>
+        <div class="logo-text">Les Ozabris</div>
+        <span class="subtitle lang-fr">Cottages d'Exception &bull; La Réunion</span>
+        <span class="subtitle lang-en" style="display:none;">Exceptional Cottages &bull; Reunion Island</span>
+        
+        <div class="badges-container">
+            <div class="badge"><span class="badge-stars">&#9733;&#9733;&#9733;&#9733;</span> Meublé de Tourisme 4*</div>
+            <div class="badge">&#127810; Jardin Tropical & Animaux</div>
+            <div class="badge">&#9989; Parking Privé Gratuit</div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- ACCÈS VOYAGEURS PAR CODE PIN -->
+        <div class="top-portal-wrapper">
+            <div class="portal-login-box">
+                <h3 class="lang-fr">Espace Voyageurs</h3>
+                <h3 class="lang-en" style="display:none;">Guests Portal</h3>
+                <p class="lang-fr">Entrez votre code PIN pour accéder aux instructions de séjour, Wi-Fi et guides pratiques.</p>
+                <p class="lang-en" style="display:none;">Enter your PIN code to access stay instructions, Wi-Fi, and practical guides.</p>
+                <div>
+                    <input type="password" id="pin-code" class="pin-input" placeholder="PIN">
+                    <button onclick="checkPin()" class="pin-btn lang-fr">Accéder</button>
+                    <button onclick="checkPin()" class="pin-btn lang-en" style="display:none;">Enter</button>
+                </div>
+                <div id="pin-error" class="error-msg lang-fr">Code PIN incorrect. Veuillez réessayer.</div>
+                <div id="pin-error-en" class="error-msg lang-en" style="display:none;">Incorrect PIN code. Please try again.</div>
+            </div>
+        </div>
+
+        <!-- PORTAIL DÉBLOQUÉ -->
+        <div id="guest-portal">
+            <h2 class="welcome-title lang-fr">Bienvenue chez vous !</h2>
+            <h2 class="welcome-title lang-en" style="display:none;">Welcome to your home!</h2>
+            <p style="text-align:center; font-family:'Segoe UI', sans-serif; color:#666; margin-bottom:20px;">
+                Voici toutes les informations utiles pour un séjour parfait aux Ozabris.
+            </p>
+            <div class="guide-grid">
+                <div class="guide-box">
+                    <h5 class="lang-fr">&#128243; Connexion Wi-Fi</h5>
+                    <h5 class="lang-en" style="display:none;">&#128243; Wi-Fi Connection</h5>
+                    <p><strong>Réseau :</strong> Ozabris_Guest</p>
+                    <p><strong>Mot de passe :</strong> Bienvenue974</p>
+                </div>
+                <div class="guide-box">
+                    <h5 class="lang-fr">&#128719; Confort & Équipements</h5>
+                    <h5 class="lang-en" style="display:none;">&#128719; Comfort & Amenities</h5>
+                    <p class="lang-fr">Les clés de coffre, la climatisation et les équipements de cuisine sont à votre disposition. Contactez-nous en cas de besoin.</p>
+                    <p class="lang-en" style="display:none;">Safe keys, air conditioning, and kitchen equipment are at your disposal. Contact us if needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BANNIÈRE AVANTAGES -->
+        <div class="amenities-banner">
+            <div class="amenity-item">&#127359; Parking Gratuit Sécurisé</div>
+            <div class="amenity-item">&#9728;&#65039; Énergie Solaire & Éco-responsable</div>
+            <div class="amenity-item">&#127796; Environnement Calme & Naturel</div>
+        </div>
+
+        <h2 class="section-title lang-fr">Nos Deux Cottages</h2>
+        <h2 class="section-title lang-en" style="display:none;">Our Two Cottages</h2>
+
+        <!-- GRILLE DES COTTAGES -->
+        <div class="grid">
+            
+            <!-- LE PTITZABRIS -->
+            <div class="card">
+                <div class="single-photo-container">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80" alt="Le Ptitzabris">
+                    <div class="photo-label">Le Ptitzabris</div>
+                </div>
+                <div class="card-content">
+                    <h3>Le Ptitzabris</h3>
+                    <div class="specs lang-fr">Cottage de charme &bull; 2 Voyageurs</div>
+                    <div class="specs lang-en" style="display:none;">Charming Cottage &bull; 2 Guests</div>
+                    <p class="lang-fr">Un cocon intime et raffiné, idéal pour un séjour en couple au cœur de la nature tropicale.</p>
+                    <p class="lang-en" style="display:none;">An intimate and refined cocoon, ideal for a couple's stay in the heart of tropical nature.</p>
+                    
+                    <div class="availability-box">
+                        <p class="lang-fr">Consulter les disponibilités en direct :</p>
+                        <p class="lang-en" style="display:none;">Check live availability:</p>
+                        <a href="https://www.airbnb.fr" target="_blank" class="availability-btn">Calendrier Airbnb Ptitzabris</a>
+                    </div>
+
+                    <div class="btn-container">
+                        <a href="mailto:lesozabris@icloud.com?subject=Réservation Ptitzabris" class="btn">Réserver / Contact</a>
+                        <a href="tel:+262692138727" class="btn">Appeler</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LE GRANDZABRIS -->
+            <div class="card">
+                <div class="single-photo-container">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Le Grandzabris">
+                    <div class="photo-label">Le Grandzabris</div>
+                </div>
+                <div class="card-content">
+                    <h3>Le Grandzabris</h3>
+                    <div class="specs lang-fr">Grand Cottage &bull; 4 à 6 Voyageurs</div>
+                    <div class="specs lang-en" style="display:none;">Large Cottage &bull; 4 to 6 Guests</div>
+                    <p class="lang-fr">Vaste espace lumineux doté de tout le confort moderne, parfait pour les familles ou entre amis.</p>
+                    <p class="lang-en" style="display:none;">Spacious and bright area with all modern comforts, perfect for families or friends.</p>
+                    
+                    <div class="availability-box">
+                        <p class="lang-fr">Consulter les disponibilités en direct :</p>
+                        <p class="lang-en" style="display:none;">Check live availability:</p>
+                        <a href="https://www.airbnb.fr" target="_blank" class="availability-btn">Calendrier Airbnb Grandzabris</a>
+                    </div>
+
+                    <div class="btn-container">
+                        <a href="mailto:lesozabris@icloud.com?subject=Réservation Grandzabris" class="btn">Réserver / Contact</a>
+                        <a href="tel:+262692138727" class="btn">Appeler</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ESPACE ZENABRIS -->
+        <div class="zenabris-banner">
+            <h3 class="lang-fr">Espace ZenAbris</h3>
+            <h3 class="lang-en" style="display:none;">ZenAbris Space</h3>
+            <p class="lang-fr">Profitez de notre espace bien-être et de détente partagé pour vous ressourcer au calme après vos excursions sur l'île.</p>
+            <p class="lang-en" style="display:none;">Enjoy our shared wellness and relaxation area to recharge in peace after your island excursions.</p>
+        </div>
+
+        <!-- ESPACE ECOLODGE -->
+        <div class="ecolodge-banner">
+            <h3 class="lang-fr">Démarche Écolodge & Solaire</h3>
+            <h3 class="lang-en" style="display:none;">Ecolodge & Solar Initiative</h3>
+            <p class="lang-fr">Les Ozabris s'engagent pour l'environnement grâce à une production d'énergie solaire photovoltaïque et un chauffe-eau éco-performant.</p>
+            <p class="lang-en" style="display:none;">Les Ozabris are committed to the environment through photovoltaic solar energy production and an eco-efficient water heater.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Les Ozabris &bull; Ptitzabris & Grandzabris &bull; Contact : lesozabris@icloud.com</p>
+    </footer>
+
+    <script>
+        // Gestion du code PIN voyageur
+        function checkPin() {
+            var pin = document.getElementById('pin-code').value;
+            // Vous pouvez modifier le code PIN ci-dessous (ex: "2026")
+            if (pin === "2026" || pin === "974") {
+                document.getElementById('guest-portal').style.display = 'block';
+                document.getElementById('pin-error').style.display = 'none';
+                document.getElementById('pin-error-en').style.display = 'none';
+                window.scrollTo({ top: document.getElementById('guest-portal').offsetTop - 20, behavior: 'smooth' });
+            } else {
+                document.getElementById('pin-error').style.display = 'block';
+                document.getElementById('pin-error-en').style.display = 'block';
+            }
+        }
+
+        // Gestion du changement de langue FR / EN
+        function setLanguage(lang) {
+            const frElements = document.querySelectorAll('.lang-fr');
+            const enElements = document.querySelectorAll('.lang-en');
+            const buttons = document.querySelectorAll('.lang-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (lang === 'fr') {
+                frElements.forEach(el => el.style.display = el.tagName === 'TITLE' ? 'block' : '');
+                enElements.forEach(el => el.style.display = 'none');
+                event.target.classList.add('active');
+            } else {
+                frElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = el.tagName === 'TITLE' ? 'block' : '');
+                event.target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
