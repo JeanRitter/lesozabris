@@ -419,28 +419,71 @@
             }
         }
 
-        async function checkPin() {
-            const entered = document.getElementById("pinCode").value.trim();
-            if (!entered) return;
+        sync function checkPin() {
+    const entered = document.getElementById("pinCode").value.trim();
+    if (!entered) return;
 
-            try {
-                const response = await fetch(sheetApiUrl + "&t=" + new Date().getTime());
-                const csvText = await response.text();
+    try {
+        // Ajout d'un paramètre anti-cache pour forcer le téléchargement du nouveau CSV
+        const response = await fetch(sheetApiUrl + "&t=" + new Date().getTime());
+        const csvText = await response.text();
 
-                const lines = csvText.split('\n');
-                const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
-                
-                const voyageurs = [];
-                for (let i = 1; i < lines.length; i++) {
-                    if (!lines[i].trim()) continue;
-                    const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    const obj = {};
-                    for (let j = 0; j < headers.length; j++) {
-                        let val = currentLine[j] ? currentLine[j].trim() : '';
-                        obj[headers[j]] = val.replace(/^"|"$/g, '');
-                    }
-                    voyageurs.push(obj);
+        const lines = csvText.split('\n');
+        if (lines.length < 2) {
+            alert("Le tableau est vide.");
+            return;
+        }
+
+        const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+        const pinIndex = headers.findIndex(h => h.toLowerCase().includes("pin"));
+
+        if (pinIndex === -1) {
+            alert("Erreur : Colonne 'Code PIN' introuvable dans le Google Sheets.");
+            return;
+        }
+
+        const voyageurs = [];
+        for (let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            // Découpage sécurisé des lignes CSV
+            const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            const obj = {};
+            for (let j = 0; j < headers.length; j++) {
+                let val = currentLine[j] ? currentLine[j].trim() : '';
+                obj[headers[j]] = val.replace(/^"|"$/g, '');
+            }
+            voyageurs.push(obj);
+        }
+
+        // Recherche souple du code PIN (converti en texte brut sans espaces)
+        const voyageurTrouve = voyageurs.find(v => {
+            const pinColKey = Object.keys(v).find(k => k.toLowerCase().includes("pin"));
+            if (!pinColKey) return false;
+            return String(v[pinColKey]).trim() === entered;
+        });
+
+        if (voyageurTrouve) {
+            sessionStorage.setItem("ozabris_auth", "true");
+            sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+            showPortal(voyageurTrouve);
+
+            const langKey = Object.keys(voyageurTrouve).find(k => k.toLowerCase().includes("lang"));
+            if (langKey && voyageurTrouve[langKey]) {
+                const langVal = voyageurTrouve[langKey].toLowerCase();
+                if (langVal.includes('en') || langVal.includes('english')) {
+                    setLanguage('en');
                 }
+            }
+        } else {
+            document.getElementById("errorMsg").style.display = "block";
+            document.getElementById("errorMsg-en").style.display = "block";
+            document.getElementById("pinCode").value = "";
+        }
+    } catch(e) {
+        console.error("Erreur de connexion", e);
+        alert("Erreur de liaison avec le tableau de bord. Vérifiez votre connexion.");
+    }
+}
 
                 const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
 
