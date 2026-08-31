@@ -168,7 +168,6 @@
                     <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
                     <p id="wifi-text" style="font-size: 0.85rem; font-weight: bold; color: var(--primary);">Cottage : -</p>
                     <div class="wifi-img-box">
-                        <!-- L'image du QR code changera dynamiquement selon le cottage -->
                         <img id="wifi-qr-img" src="" alt="QR Code Wifi">
                         <p style="font-size: 0.75rem; color: #555;" class="lang-fr">Scannez pour vous connecter en un clic</p>
                         <p style="font-size: 0.75rem; color: #555; display:none;" class="lang-en">Scan to connect in one click</p>
@@ -181,7 +180,6 @@
                     <h5 class="lang-en" style="display:none;">♻️ Trash & Recycling</h5>
                     <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur à La Réunion. Respectez les consignes du domaine situées près du portail.</p>
                     <p class="lang-en" style="display:none; font-size: 0.85rem;">Sorting is mandatory in La Réunion. Please follow the instructions near the main gate.</p>
-                    <!-- Image de l'affiche poubelles (à remplacer par votre lien d'image si besoin) -->
                     <div style="background:#fff; padding:10px; border-radius:4px; text-align:center; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
                         🗑️ <strong>Poubelle Jaune :</strong> Emballages & Plastiques<br>
                         🟢 <strong>Poubelle Verte :</strong> Verre<br>
@@ -201,7 +199,6 @@
                             <p class="lang-en" style="font-size: 0.85rem; display:none;">No wipes, diapers, or sanitary products under any circumstances.</p>
                         </div>
                         <div style="flex: 1; min-width: 250px; text-align: center;">
-                            <!-- Intégration de l'affiche Sanibroyeur que vous avez transmise (image_7 ou 6) -->
                             <img src="https://i.postimg.cc/8c3K5J3z/sanibroyeur.png" alt="Consignes Sanibroyeur" class="instruction-img" style="max-height: 180px; object-fit: contain;">
                         </div>
                     </div>
@@ -300,12 +297,8 @@
     </footer>
 
     <script>
-        // --- BASE DE DONNÉES SIMULÉE DES VOYAGEURS (Remplaçable par Google Sheets plus tard) ---
-        // Vous pouvez ajouter autant de codes PIN que vous le souhaitez ici :
-        const databaseVoyageurs = {
-            "2845": { prenom: "Marie & Thomas", cottage: "Ptitzabris", qrWifi: "https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" }, // Remplacer par le lien de l'image du QR code Ptitzabris
-            "9012": { prenom: "John & Sarah", cottage: "Grandzabris", qrWifi: "https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" }  // Remplacer par le lien de l'image du QR code Grandzabris
-        };
+        // URL de votre Google Sheets relié
+        const sheetApiUrl = "https://script.google.com/macros/s/AKfycbxwyJoGp2dL5XP4dJl6ntXk-_k0AuBKWwKLimjP8Zh0VU5yoAB5-n_jPx8GEfjW6jjp/exec";
 
         let currentLang = 'fr';
 
@@ -321,24 +314,46 @@
         window.onload = function() {
             if(sessionStorage.getItem("ozabris_auth") === "true") {
                 const savedData = JSON.parse(sessionStorage.getItem("ozabris_voyageur_data"));
-                if(savedData) showPortal(savedData);
+                if(savedData) {
+                    showPortal(savedData);
+                    if(savedData.langue && (savedData.langue.toLowerCase() === 'en' || savedData.langue.toLowerCase() === 'english')) {
+                        setLanguage('en');
+                    }
+                }
             }
         }
 
-        function checkPin() {
+        async function checkPin() {
             const entered = document.getElementById("pinCode").value.trim();
             const errorBoxFr = document.getElementById("errorMsg");
             const errorBoxEn = document.getElementById("errorMsg-en");
             
-            if(databaseVoyageurs[entered]) {
-                const data = databaseVoyageurs[entered];
-                sessionStorage.setItem("ozabris_auth", "true");
-                sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(data));
-                showPortal(data);
-            } else {
-                errorBoxFr.style.display = "block";
-                errorBoxEn.style.display = "block";
-                document.getElementById("pinCode").value = "";
+            if(!entered) return;
+
+            try {
+                // Interrogation en direct de votre Google Sheets
+                const response = await fetch(sheetApiUrl);
+                const voyageurs = await response.json();
+                
+                // Recherche du code PIN correspondant dans le tableau
+                const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
+                
+                if(voyageurTrouve) {
+                    sessionStorage.setItem("ozabris_auth", "true");
+                    sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+                    showPortal(voyageurTrouve);
+                    
+                    if(voyageurTrouve.langue && (voyageurTrouve.langue.toLowerCase() === 'en' || voyageurTrouve.langue.toLowerCase() === 'english')) {
+                        setLanguage('en');
+                    }
+                } else {
+                    errorBoxFr.style.display = "block";
+                    errorBoxEn.style.display = "block";
+                    document.getElementById("pinCode").value = "";
+                }
+            } catch(e) {
+                console.error("Erreur de connexion à la base de données", e);
+                alert("Erreur de liaison avec le tableau de bord. Vérifiez votre connexion.");
             }
         }
 
@@ -347,7 +362,7 @@
             const portal = document.getElementById("guest-portal");
             portal.style.display = "block";
             
-            // Personnalisation dynamique avec le prénom et le cottage
+            // Personnalisation dynamique avec le prénom récupéré du Sheets
             document.getElementById("welcome-message").innerText = (currentLang === 'fr') 
                 ? `Bienvenue chez vous, ${data.prenom} !` 
                 : `Welcome home, ${data.prenom}!`;
