@@ -424,7 +424,7 @@
             if (!entered) return;
 
             try {
-                const response = await fetch(sheetApiUrl);
+                const response = await fetch(sheetApiUrl + "&t=" + new Date().getTime());
                 const csvText = await response.text();
 
                 const lines = csvText.split('\n');
