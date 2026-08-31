@@ -327,62 +327,25 @@
             }
         }
 
-        async function checkPin() {
-    const entered = document.getElementById("pinCode").value.trim();
-    const errorBoxFr = document.getElementById("errorMsg");
-    const errorBoxEn = document.getElementById("errorMsg-en");
-
-    if (!entered) {
-        if (errorBoxFr) errorBoxFr.style.display = "block";
-        if (errorBoxEn) errorBoxEn.style.display = "block";
-        return;
-    }
+        function showPortal(data) {
+    document.getElementById("login-container").style.display = "none";
     
-               try {
-        // Interrogation en direct de votre Google Sheets (Format CSV)
-        const response = await fetch(sheetApiUrl);
-        const csvText = await response.text();
+    // Masquer le reste de la page principale pour garder l'espace privé isolé
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.style.display = "none";
 
-        // Conversion du CSV en un tableau d'objets JavaScript
-        const lines = csvText.split('\n');
-        const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
-        
-        const voyageurs = [];
-        for (let i = 1; i < lines.length; i++) {
-            if (!lines[i].trim()) continue;
-            // Gestion basique des virgules dans le CSV
-            const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            const obj = {};
-            for (let j = 0; j < headers.length; j++) {
-                let val = currentLine[j] ? currentLine[j].trim() : '';
-                obj[headers[j]] = val.replace(/^"|"$/g, '');
-            }
-            voyageurs.push(obj);
-        }
+    const portal = document.getElementById("guest-portal");
+    portal.style.display = "block";
 
-        // Recherche du code PIN correspondant dans le tableau
-        const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
-console.log("Données lues du Google Sheet :", voyageurs);
-console.log("Code PIN recherché :", entered);
-                   
-                if(voyageurTrouve) {
-                    sessionStorage.setItem("ozabris_auth", "true");
-                    sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
-                    showPortal(voyageurTrouve);
-                    
-                    if(voyageurTrouve.langue && (voyageurTrouve.langue.toLowerCase() === 'en' || voyageurTrouve.langue.toLowerCase() === 'english')) {
-                        setLanguage('en');
-                    }
-                } else {
-                    errorBoxFr.style.display = "block";
-                    errorBoxEn.style.display = "block";
-                    document.getElementById("pinCode").value = "";
-                }
-            } catch(e) {
-                console.error("Erreur de connexion à la base de données", e);
-                alert("Erreur de liaison avec le tableau de bord. Vérifiez votre connexion.");
-            }
-        }
+    // Personnalisation dynamique propre avec vos en-têtes de Google Sheets
+    document.getElementById("welcome-message").innerText = (currentLang === 'fr')
+        ? `Bienvenue chez vous, ${data["Prénoms"]} !`
+        : `Welcome home, ${data["Prénoms"]}!`;
+
+    document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
+    document.getElementById("wifi-qr-img").src = data["QrWifi"];
+}
+
 
         function showPortal(data) {
     document.getElementById("login-container").style.display = "none";
