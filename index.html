@@ -385,15 +385,14 @@ console.log("Code PIN recherché :", entered);
         }
 
         
-        function showPortal(data) {
-    document.getElementById("login-container").style.display = "none";
-    const portal = document.getElementById("guest-portal");
-    portal.style.display = "block";
+        // Personnalisation dynamique avec les en-têtes de votre Sheets
+        document.getElementById("welcome-message").innerText = (currentLang === 'fr')
+            ? `Bienvenue, ${data["Prénoms"]} !`
+            : `Welcome, ${data["Prénoms"]}!`;
 
-    // Récupération sécurisée par position des colonnes (index 2 pour le nom, 3 pour le cottage)
-    const keys = Object.keys(data);
-    const prenom = data[keys[2]] || "Voyageur";
-    const cottage = data[keys[3]] || "";
+        document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
+        document.getElementById("wifi-qr-img").src = data["QrWifi"];
+
 
     document.getElementById("welcome-message").innerText = (currentLang === 'fr')
         ? `Bienvenue chez vous, ${prenom} !`
