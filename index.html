@@ -358,7 +358,9 @@
 
         // Recherche du code PIN correspondant dans le tableau
         const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
-                
+console.log("Données lues du Google Sheet :", voyageurs);
+console.log("Code PIN recherché :", entered);
+                   
                 if(voyageurTrouve) {
                     sessionStorage.setItem("ozabris_auth", "true");
                     sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
