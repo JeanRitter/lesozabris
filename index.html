@@ -133,7 +133,10 @@
                 
                 <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
                     <input type="password" id="pinCode" class="pin-input" placeholder="Code PIN">
-                    <button type="button" class="pin-btn" ontouchstart="checkPin()" onclick="checkPin()">ENTRER</button>
+                    <button type="button" class="pin-btn" ontouchstart="checkPin()" onclick="checkPin()">
+                        <span class="lang-fr">ENTRER</span>
+                        <span class="lang-en" style="display:none;">ENTER</span>
+                    </button>
                 </div>
 
                 <div id="errorMsg" class="error-msg lang-fr">Code incorrect. Vérifiez votre message de bienvenue.</div>
@@ -182,9 +185,12 @@
                     <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur à La Réunion. Respectez les consignes du domaine situées près du portail.</p>
                     <p class="lang-en" style="display:none; font-size: 0.85rem;">Sorting is mandatory in La Réunion. Please follow the instructions near the main gate.</p>
                     <div style="background:#fff; padding:10px; border-radius:4px; text-align:center; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
-                        🗑️ <strong>Poubelle Jaune :</strong> Emballages & Plastiques<br>
-                        🟢 <strong>Poubelle Verte :</strong> Verre<br>
-                        ⚫ <strong>Ordures Ménagères :</strong> Le reste
+                        🗑️ <span class="lang-fr"><strong>Poubelle Jaune :</strong> Emballages & Plastiques</span>
+                           <span class="lang-en" style="display:none;"><strong>Yellow Bin:</strong> Packaging & Plastics</span><br>
+                        🟢 <span class="lang-fr"><strong>Poubelle Verte :</strong> Verre</span>
+                           <span class="lang-en" style="display:none;"><strong>Green Bin:</strong> Glass</span><br>
+                        ⚫ <span class="lang-fr"><strong>Ordures Ménagères :</strong> Le reste</span>
+                           <span class="lang-en" style="display:none;"><strong>General Waste:</strong> The rest</span>
                     </div>
                 </div>
 
@@ -195,7 +201,7 @@
                     <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
                         <div style="flex: 1; min-width: 250px;">
                             <p class="lang-fr" style="color: #b94a48; font-weight: bold;">⚠️ Papier toilette uniquement !</p>
-                            <p class="lang-en" style="color: #b94a48; font-weight: bold;">⚠️ Toilet paper only!</p>
+                            <p class="lang-en" style="color: #b94a48; font-weight: bold; display:none;">⚠️ Toilet paper only!</p>
                             <p class="lang-fr" style="font-size: 0.85rem;">Interdiction absolue de jeter des lingettes, couches ou protections hygiéniques au risque de bloquer l'installation.</p>
                             <p class="lang-en" style="font-size: 0.85rem; display:none;">No wipes, diapers, or sanitary products under any circumstances.</p>
                         </div>
@@ -245,7 +251,10 @@
                             <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
-                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver / Book</a>
+                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">
+                                <span class="lang-fr">Réserver</span>
+                                <span class="lang-en" style="display:none;">Book</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -268,7 +277,10 @@
                             <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
-                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">Réserver / Book</a>
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">
+                                <span class="lang-fr">Réserver</span>
+                                <span class="lang-en" style="display:none;">Book</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -301,7 +313,7 @@
     </footer>
 
     <script>
-        // URL de votre Google Sheets relié
+        // URL de votre Google Sheets relié (inchangé)
         const sheetApiUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7JPAhHvmDg7A9g0rQ5EDGTjWSHJdJOBKVuiU9udYtyEDjdFjeJwoGpoHSIpfSgpUKzENcvrDEV0Z0/pub?output=csv";
 
         let currentLang = 'fr';
@@ -309,10 +321,10 @@
         function setLanguage(lang) {
             currentLang = lang;
             
-            // On cache tout
+            // On cache tout (fr, en)
             document.querySelectorAll('.lang-fr, .lang-en').forEach(el => el.style.display = 'none');
             
-            // On réaffiche la langue choisie en adaptant l'affichage selon le type d'élément pour préserver le design
+            // On réaffiche la langue choisie
             document.querySelectorAll('.lang-' + lang).forEach(el => {
                 if (el.tagName === 'TITLE') {
                     el.style.display = 'block';
@@ -330,17 +342,14 @@
         }
 
         window.onload = function() {
-            if(sessionStorage.getItem("ozabris_auth") === "true") {
-                const savedData = JSON.parse(sessionStorage.getItem("ozabris_voyageur_data"));
+            // Restauration de la session si le voyageur est déjà connecté
+            if(localStorage.getItem("ozabris_auth") === "true") {
+                const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
                 if(savedData) {
                     showPortal(savedData);
-                    if(savedData.langue && (savedData.langue.toLowerCase() === 'en' || savedData.langue.toLowerCase() === 'english')) {
-                        setLanguage('en');
-                    }
                 }
             }
 
-            // Écouteur pour la touche Entrée sur le champ PIN
             const pinInput = document.getElementById("pinCode");
             if (pinInput) {
                 pinInput.addEventListener("keypress", function(event) {
@@ -378,18 +387,13 @@
                 const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
 
                 if (voyageurTrouve) {
-                    sessionStorage.setItem("ozabris_auth", "true");
-                    sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+                    localStorage.setItem("ozabris_auth", "true");
+                    localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
                     showPortal(voyageurTrouve);
-
-                    if (voyageurTrouve.langue && (voyageurTrouve.langue.toLowerCase() === 'en' || voyageurTrouve.langue.toLowerCase() === 'english')) {
-                        setLanguage('en');
-                    }
                 } else {
-                    const errorBoxFr = document.getElementById("errorMsg");
-                    const errorBoxEn = document.getElementById("errorMsg-en");
-                    if (errorBoxFr) errorBoxFr.style.display = "block";
-                    if (errorBoxEn) errorBoxEn.style.display = "block";
+                    document.querySelectorAll('.error-msg').forEach(el => el.style.display = "none");
+                    const errorBox = document.getElementById(currentLang === 'fr' ? "errorMsg" : "errorMsg-en");
+                    if (errorBox) errorBox.style.display = "block";
                     document.getElementById("pinCode").value = "";
                 }
             } catch(e) {
@@ -401,29 +405,29 @@
         function showPortal(data) {
             document.getElementById("login-container").style.display = "none";
             
-            // Masque complètement la page principale (les hébergements, parking, etc.)
             const mainContent = document.getElementById("main-content");
             if (mainContent) mainContent.style.display = "none";
 
             const portal = document.getElementById("guest-portal");
             portal.style.display = "block";
 
-            // Personnalisation dynamique
-            document.getElementById("welcome-message").innerText = (currentLang === 'fr')
-                ? `Bienvenue chez vous, ${data["Prénoms"]} !`
-                : `Welcome home, ${data["Prénoms"]}!`;
+            // Personnalisation du message de bienvenue selon la langue sélectionnée par le visiteur
+            let welcomeText = `Bienvenue chez vous, ${data["Prénoms"]} !`;
+            if (currentLang === 'en') {
+                welcomeText = `Welcome home, ${data["Prénoms"]}!`;
+            }
+            document.getElementById("welcome-message").innerText = welcomeText;
 
             document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
             document.getElementById("wifi-qr-img").src = data["QrWifi"];
         }
                     
         function logoutPortal() {
-            sessionStorage.removeItem("ozabris_auth");
-            sessionStorage.removeItem("ozabris_voyageur_data");
+            localStorage.removeItem("ozabris_auth");
+            localStorage.removeItem("ozabris_voyageur_data");
             document.getElementById("login-container").style.display = "block";
             document.getElementById("guest-portal").style.display = "none";
             
-            // Réafficher la page principale lors de la déconnexion
             const mainContent = document.getElementById("main-content");
             if (mainContent) mainContent.style.display = "block";
 
@@ -432,4 +436,3 @@
     </script>
 </body>
 </html>
-
