@@ -103,10 +103,7 @@
             <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
             <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
         </div>
-        <div style="text-align: center; margin: 40px 0;">
-                <button onclick="location.reload();" style="background-color: #333; color: #fff; border: none; padding: 12px 25px; font-family: 'Segoe UI', sans-serif; font-size: 14px; letter-spacing: 1px; cursor: pointer; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    VERROUILLER L'ACCÈS / RETOUR
-                </button>
+        
         <div class="brand-logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
         </div>
@@ -124,21 +121,20 @@
         <div class="tagline lang-en" style="display:none;">"An exceptional, award-winning getaway in the Highlands of the Island."</div>
     </header>
 
-            <!-- --- ZONE D'ACCÈS SÉCURISÉ VOYAGEURS --- -->
-        <div class="top-portal-wrapper">
-            <div id="login-container">
-                <div class="portal-login-box">
-
+    <!-- --- ZONE D'ACCÈS SÉCURISÉ VOYAGEURS --- -->
+    <div class="top-portal-wrapper">
+        <div id="login-container">
+            <div class="portal-login-box">
                 <h3 class="lang-fr">🔑 Espace Réservé Voyageurs</h3>
                 <h3 class="lang-en" style="display:none;">🔑 Guest Private Area</h3>
                 
                 <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
                 <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome and stay instructions.</p>
                 
-                    <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
-        <input type="password" id="pinCode" placeholder="Code PIN">
-        <button type="button" ontouchstart="checkPin()" onclick="checkPin()">ENTRER</button>
-    </div>
+                <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
+                    <input type="password" id="pinCode" class="pin-input" placeholder="Code PIN">
+                    <button type="button" class="pin-btn" ontouchstart="checkPin()" onclick="checkPin()">ENTRER</button>
+                </div>
 
                 <div id="errorMsg" class="error-msg lang-fr">Code incorrect. Vérifiez votre message de bienvenue.</div>
                 <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code. Please check your welcome message.</div>
@@ -167,7 +163,7 @@
                     </p>
                 </div>
 
-                <!-- 2. Connexion Wi-Fi (Dynamique selon le cottage) -->
+                <!-- 2. Connexion Wi-Fi -->
                 <div class="guide-box">
                     <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
                     <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
@@ -219,71 +215,74 @@
         </div>
     </div>
     
-    <div class="container">
-        <div class="amenities-banner">
-            <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span></div>
-            <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span></div>
-        </div>
+    <!-- --- TOUT LE CONTENU PRINCIPAL ENGLOBÉ DANS #main-content --- -->
+    <div id="main-content">
+        <div class="container">
+            <div class="amenities-banner">
+                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span></div>
+                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span></div>
+            </div>
 
-        <div class="section-title lang-fr">Les Hébergements de Charme</div>
-        <div class="section-title lang-en" style="display:none;">Our Charming Cottages</div>
-        
-        <div class="grid">
-            <!-- Le Grandzabris -->
-            <div class="card">
-                <div class="single-photo-container">
-                    <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
-                    <div class="photo-label">Le Grandzabris</div>
-                </div>
-                <div class="card-content">
-                    <h3>Le Grandzabris</h3>
-                    <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Pers. │ Classé 2★★</div>
-                    <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
-                    <p class="lang-en" style="display:none;">Generous and warm atmosphere, ideal for exceptional family getaways.</p>
-                    
-                    <div class="availability-box">
-                        <p class="lang-fr">📅 Disponibilités en temps réel</p>
-                        <p class="lang-en" style="display:none;">📅 Real-time availability</p>
-                        <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
+            <div class="section-title lang-fr">Les Hébergements de Charme</div>
+            <div class="section-title lang-en" style="display:none;">Our Charming Cottages</div>
+            
+            <div class="grid">
+                <!-- Le Grandzabris -->
+                <div class="card">
+                    <div class="single-photo-container">
+                        <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
+                        <div class="photo-label">Le Grandzabris</div>
                     </div>
-                    <div class="btn-container">
-                        <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver / Book</a>
+                    <div class="card-content">
+                        <h3>Le Grandzabris</h3>
+                        <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Pers. │ Classé 2★★</div>
+                        <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
+                        <p class="lang-en" style="display:none;">Generous and warm atmosphere, ideal for exceptional family getaways.</p>
+                        
+                        <div class="availability-box">
+                            <p class="lang-fr">📅 Disponibilités en temps réel</p>
+                            <p class="lang-en" style="display:none;">📅 Real-time availability</p>
+                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
+                        </div>
+                        <div class="btn-container">
+                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">Réserver / Book</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Le Ptitzabris -->
+                <div class="card">
+                    <div class="single-photo-container">
+                        <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
+                        <div class="photo-label">Le Ptitzabris</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Le Ptitzabris</h3>
+                        <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
+                        <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
+                        <p class="lang-en" style="display:none;">A sanctuary of privacy and refinement tailored for romantic getaways.</p>
+                        
+                        <div class="availability-box">
+                            <p class="lang-fr">📅 Disponibilités en temps réel</p>
+                            <p class="lang-en" style="display:none;">📅 Real-time availability</p>
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
+                        </div>
+                        <div class="btn-container">
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">Réserver / Book</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Le Ptitzabris -->
-            <div class="card">
-                <div class="single-photo-container">
-                    <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
-                    <div class="photo-label">Le Ptitzabris</div>
+            <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
+            <div class="section-title lang-en" style="display:none;">The Art of Living</div>        
+            <div class="info-block">
+                <div class="info-item">
+                    <h4 class="lang-fr">🛁 Espace Bien-être (Le ZenAbris)</h4>
+                    <h4 class="lang-en" style="display:none;">🛁 Wellness Area (Le ZenAbris)</h4>
+                    <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise.</p>
+                    <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature.</p>
                 </div>
-                <div class="card-content">
-                    <h3>Le Ptitzabris</h3>
-                    <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
-                    <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
-                    <p class="lang-en" style="display:none;">A sanctuary of privacy and refinement tailored for romantic getaways.</p>
-                    
-                    <div class="availability-box">
-                        <p class="lang-fr">📅 Disponibilités en temps réel</p>
-                        <p class="lang-en" style="display:none;">📅 Real-time availability</p>
-                        <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
-                    </div>
-                    <div class="btn-container">
-                        <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">Réserver / Book</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
-        <div class="section-title lang-en" style="display:none;">The Art of Living</div>        
-        <div class="info-block">
-            <div class="info-item">
-                <h4 class="lang-fr">🛁 Espace Bien-être (Le ZenAbris)</h4>
-                <h4 class="lang-en" style="display:none;">🛁 Wellness Area (Le ZenAbris)</h4>
-                <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise.</p>
-                <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature.</p>
             </div>
         </div>
     </div>
@@ -326,41 +325,96 @@
                     }
                 }
             }
+
+            // Écouteur pour la touche Entrée sur le champ PIN
+            const pinInput = document.getElementById("pinCode");
+            if (pinInput) {
+                pinInput.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        checkPin();
+                    }
+                });
+            }
+        }
+
+        async function checkPin() {
+            const entered = document.getElementById("pinCode").value.trim();
+            if (!entered) return;
+
+            try {
+                const response = await fetch(sheetApiUrl);
+                const csvText = await response.text();
+
+                const lines = csvText.split('\n');
+                const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+                
+                const voyageurs = [];
+                for (let i = 1; i < lines.length; i++) {
+                    if (!lines[i].trim()) continue;
+                    const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    const obj = {};
+                    for (let j = 0; j < headers.length; j++) {
+                        let val = currentLine[j] ? currentLine[j].trim() : '';
+                        obj[headers[j]] = val.replace(/^"|"$/g, '');
+                    }
+                    voyageurs.push(obj);
+                }
+
+                const voyageurTrouve = voyageurs.find(v => String(v["Code PIN"]).trim() === entered);
+
+                if (voyageurTrouve) {
+                    sessionStorage.setItem("ozabris_auth", "true");
+                    sessionStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+                    showPortal(voyageurTrouve);
+
+                    if (voyageurTrouve.langue && (voyageurTrouve.langue.toLowerCase() === 'en' || voyageurTrouve.langue.toLowerCase() === 'english')) {
+                        setLanguage('en');
+                    }
+                } else {
+                    const errorBoxFr = document.getElementById("errorMsg");
+                    const errorBoxEn = document.getElementById("errorMsg-en");
+                    if (errorBoxFr) errorBoxFr.style.display = "block";
+                    if (errorBoxEn) errorBoxEn.style.display = "block";
+                    document.getElementById("pinCode").value = "";
+                }
+            } catch(e) {
+                console.error("Erreur de connexion", e);
+                alert("Erreur de liaison avec le tableau de bord. Vérifiez votre connexion.");
+            }
         }
 
         function showPortal(data) {
-    document.getElementById("login-container").style.display = "none";
-    
-    // Masque complètement la page principale (les hébergements, parking, etc.)
-    const mainContent = document.getElementById("main-content");
-    if (mainContent) mainContent.style.display = "none";
+            document.getElementById("login-container").style.display = "none";
+            
+            // Masque complètement la page principale (les hébergements, parking, etc.)
+            const mainContent = document.getElementById("main-content");
+            if (mainContent) mainContent.style.display = "none";
 
-    const portal = document.getElementById("guest-portal");
-    portal.style.display = "block";
+            const portal = document.getElementById("guest-portal");
+            portal.style.display = "block";
 
-    // Personnalisation dynamique
-    document.getElementById("welcome-message").innerText = (currentLang === 'fr')
-        ? `Bienvenue chez vous, ${data["Prénoms"]} !`
-        : `Welcome home, ${data["Prénoms"]}!`;
+            // Personnalisation dynamique
+            document.getElementById("welcome-message").innerText = (currentLang === 'fr')
+                ? `Bienvenue chez vous, ${data["Prénoms"]} !`
+                : `Welcome home, ${data["Prénoms"]}!`;
 
-    document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
-    document.getElementById("wifi-qr-img").src = data["QrWifi"];
-}
-
+            document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
+            document.getElementById("wifi-qr-img").src = data["QrWifi"];
+        }
                     
         function logoutPortal() {
-    sessionStorage.removeItem("ozabris_auth");
-    sessionStorage.removeItem("ozabris_voyageur_data");
-    document.getElementById("login-container").style.display = "block";
-    document.getElementById("guest-portal").style.display = "none";
-    
-    // Réafficher la page principale lors de la déconnexion
-    const mainContent = document.getElementById("main-content");
-    if (mainContent) mainContent.style.display = "block";
+            sessionStorage.removeItem("ozabris_auth");
+            sessionStorage.removeItem("ozabris_voyageur_data");
+            document.getElementById("login-container").style.display = "block";
+            document.getElementById("guest-portal").style.display = "none";
+            
+            // Réafficher la page principale lors de la déconnexion
+            const mainContent = document.getElementById("main-content");
+            if (mainContent) mainContent.style.display = "block";
 
-    document.getElementById("pinCode").value = "";
-}
-    
-</script>
+            document.getElementById("pinCode").value = "";
+        }
+    </script>
 </body>
 </html>
