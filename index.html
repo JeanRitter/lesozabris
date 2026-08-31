@@ -330,14 +330,14 @@
         function showPortal(data) {
     document.getElementById("login-container").style.display = "none";
     
-    // Masquer le reste de la page principale pour garder l'espace privé isolé
+    // Masque complètement la page principale (les hébergements, parking, etc.)
     const mainContent = document.getElementById("main-content");
     if (mainContent) mainContent.style.display = "none";
 
     const portal = document.getElementById("guest-portal");
     portal.style.display = "block";
 
-    // Personnalisation dynamique propre avec vos en-têtes de Google Sheets
+    // Personnalisation dynamique
     document.getElementById("welcome-message").innerText = (currentLang === 'fr')
         ? `Bienvenue chez vous, ${data["Prénoms"]} !`
         : `Welcome home, ${data["Prénoms"]}!`;
