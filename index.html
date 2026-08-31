@@ -386,14 +386,13 @@ console.log("Code PIN recherché :", entered);
             const portal = document.getElementById("guest-portal");
             portal.style.display = "block";
             
-            // Personnalisation dynamique avec le prénom récupéré du Sheets
-            document.getElementById("welcome-message").innerText = (currentLang === 'fr') 
-                ? `Bienvenue chez vous, ${data.prenom} !` 
-                : `Welcome home, ${data.prenom}!`;
-                
-            document.getElementById("wifi-text").innerText = `Cottage : ${data.cottage}`;
-            document.getElementById("wifi-qr-img").src = data.qrWifi;
-        }
+            // Personnalisation dynamique avec les données du Sheets
+        document.getElementById("welcome-message").innerText = (currentLang === 'fr')
+            ? `Bienvenue chez vous, ${data["Prénoms"]} !`
+            : `Welcome home, ${data["Prénoms"]}!`;
+
+        document.getElementById("wifi-text").innerText = `Cottage : ${data["Cottage"]}`;
+        document.getElementById("wifi-qr-img").src = data["QrWifi"];
                     
         function logoutPortal() {
             sessionStorage.removeItem("ozabris_auth");
