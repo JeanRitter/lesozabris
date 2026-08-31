@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title class="lang-fr">Les Ozabris | Location de Cottages d'Exception</title>
     <title class="lang-en" style="display:none;">Les Ozabris | Exceptional Cottages Rental</title>
+    <title class="lang-de" style="display:none;">Les Ozabris | Außergewöhnliche Cottages Vermietung</title>
     <style>
         :root {
             --primary: #12263a;
@@ -101,7 +102,8 @@
     <header>
         <div class="lang-switch">
             <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
-            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button> | 
+            <button onclick="setLanguage('de')" id="btn-de" class="lang-btn">DE</button>
         </div>
         
         <div class="brand-logo-container">
@@ -110,6 +112,7 @@
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle lang-fr">Cottages de Prestige & Perles Rares • La Réunion</span>
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
+        <span class="subtitle lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</span>
         
         <div class="badges-container">
             <div class="badge">⭐ Classé Meublé de Tourisme <span class="badge-stars">★★★</span></div>
@@ -119,6 +122,7 @@
         
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
         <div class="tagline lang-en" style="display:none;">"An exceptional, award-winning getaway in the Highlands of the Island."</div>
+        <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
     <!-- --- ZONE D'ACCÈS SÉCURISÉ VOYAGEURS --- -->
@@ -127,20 +131,24 @@
             <div class="portal-login-box">
                 <h3 class="lang-fr">🔑 Espace Réservé Voyageurs</h3>
                 <h3 class="lang-en" style="display:none;">🔑 Guest Private Area</h3>
+                <h3 class="lang-de" style="display:none;">🔑 Privater Gäste-Bereich</h3>
                 
                 <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
                 <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome and stay instructions.</p>
+                <p class="lang-de" style="display:none;">Geben Sie Ihren persönlichen PIN-Code ein, um auf Ihre persönliche Begrüßung und Aufenthaltsinfos zuzugreifen.</p>
                 
                 <div style="display: flex; justify-content: center; gap: 10px; align-items: center;">
                     <input type="password" id="pinCode" class="pin-input" placeholder="Code PIN">
                     <button type="button" class="pin-btn" ontouchstart="checkPin()" onclick="checkPin()">
                         <span class="lang-fr">ENTRER</span>
                         <span class="lang-en" style="display:none;">ENTER</span>
+                        <span class="lang-de" style="display:none;">EINTRAGEN</span>
                     </button>
                 </div>
 
                 <div id="errorMsg" class="error-msg lang-fr">Code incorrect. Vérifiez votre message de bienvenue.</div>
                 <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code. Please check your welcome message.</div>
+                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code. Bitte überprüfen Sie Ihre Willkommensnachricht.</div>
             </div>
         </div>
 
@@ -150,6 +158,7 @@
             <p style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
                 <span class="lang-en" style="display:none;">Find below all the essential information for your stay at Les Ozabris.</span>
+                <span class="lang-de" style="display:none;">Hier finden Sie alle nützlichen Informationen für Ihren Aufenthalt in Les Ozabris.</span>
             </p>
             
             <div class="guide-grid">
@@ -157,12 +166,15 @@
                 <div class="guide-box">
                     <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
                     <h5 class="lang-en" style="display:none;">🥂 Welcome Aperitif</h5>
+                    <h5 class="lang-de" style="display:none;">🥂 Willkommens-Aperitif</h5>
                     <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances.</p>
                     <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right.</p>
-                    <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span></strong> 19h30</p>
+                    <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen.</p>
+                    <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span><span class="lang-de" style="display:none;">Uhrzeit:</span></strong> 19h30</p>
                     <p style="font-style: italic; color: #777; font-size: 0.85rem;">
                         <span class="lang-fr">Rendez-vous près de l'espace commun / brasero.</span>
                         <span class="lang-en" style="display:none;">Meet us near the common area / fire pit.</span>
+                        <span class="lang-de" style="display:none;">Treffpunkt am Gemeinschaftsbereich / Feuerstelle.</span>
                     </p>
                 </div>
 
@@ -170,11 +182,13 @@
                 <div class="guide-box">
                     <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
                     <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
+                    <h5 class="lang-de" style="display:none;">📶 WLAN-Verbindung</h5>
                     <p id="wifi-text" style="font-size: 0.85rem; font-weight: bold; color: var(--primary);">Cottage : -</p>
                     <div class="wifi-img-box">
                         <img id="wifi-qr-img" src="" alt="QR Code Wifi">
                         <p style="font-size: 0.75rem; color: #555;" class="lang-fr">Scannez pour vous connecter en un clic</p>
                         <p style="font-size: 0.75rem; color: #555; display:none;" class="lang-en">Scan to connect in one click</p>
+                        <p style="font-size: 0.75rem; color: #555; display:none;" class="lang-de">Scannen, um sich mit einem Klick zu verbinden</p>
                     </div>
                 </div>
 
@@ -182,15 +196,20 @@
                 <div class="guide-box">
                     <h5 class="lang-fr">♻️ Consignes Poubelles</h5>
                     <h5 class="lang-en" style="display:none;">♻️ Trash & Recycling</h5>
+                    <h5 class="lang-de" style="display:none;">♻️ Mülltrennung</h5>
                     <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur à La Réunion. Respectez les consignes du domaine situées près du portail.</p>
                     <p class="lang-en" style="display:none; font-size: 0.85rem;">Sorting is mandatory in La Réunion. Please follow the instructions near the main gate.</p>
+                    <p class="lang-de" style="display:none; font-size: 0.85rem;">Mülltrennung ist auf La Réunion Pflicht. Bitte beachten Sie die Hinweise am Haupttor.</p>
                     <div style="background:#fff; padding:10px; border-radius:4px; text-align:center; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
                         🗑️ <span class="lang-fr"><strong>Poubelle Jaune :</strong> Emballages & Plastiques</span>
-                           <span class="lang-en" style="display:none;"><strong>Yellow Bin:</strong> Packaging & Plastics</span><br>
+                           <span class="lang-en" style="display:none;"><strong>Yellow Bin:</strong> Packaging & Plastics</span>
+                           <span class="lang-de" style="display:none;"><strong>Gelbe Tonne:</strong> Verpackungen & Plastik</span><br>
                         🟢 <span class="lang-fr"><strong>Poubelle Verte :</strong> Verre</span>
-                           <span class="lang-en" style="display:none;"><strong>Green Bin:</strong> Glass</span><br>
+                           <span class="lang-en" style="display:none;"><strong>Green Bin:</strong> Glass</span>
+                           <span class="lang-de" style="display:none;"><strong>Grüne Tonne:</strong> Glas</span><br>
                         ⚫ <span class="lang-fr"><strong>Ordures Ménagères :</strong> Le reste</span>
                            <span class="lang-en" style="display:none;"><strong>General Waste:</strong> The rest</span>
+                           <span class="lang-de" style="display:none;"><strong>Restmüll:</strong> Alles andere</span>
                     </div>
                 </div>
 
@@ -198,12 +217,15 @@
                 <div class="guide-box" style="grid-column: 1 / -1;">
                     <h5 class="lang-fr">🚽 Utilisation des Sanibroyeurs</h5>
                     <h5 class="lang-en" style="display:none;">🚽 Macerator Toilet Instructions</h5>
+                    <h5 class="lang-de" style="display:none;">🚽 Hinweise zur Hebeanlage-Toilette</h5>
                     <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
                         <div style="flex: 1; min-width: 250px;">
                             <p class="lang-fr" style="color: #b94a48; font-weight: bold;">⚠️ Papier toilette uniquement !</p>
                             <p class="lang-en" style="color: #b94a48; font-weight: bold; display:none;">⚠️ Toilet paper only!</p>
+                            <p class="lang-de" style="color: #b94a48; font-weight: bold; display:none;">⚠️ Nur Toilettenpapier!</p>
                             <p class="lang-fr" style="font-size: 0.85rem;">Interdiction absolue de jeter des lingettes, couches ou protections hygiéniques au risque de bloquer l'installation.</p>
                             <p class="lang-en" style="font-size: 0.85rem; display:none;">No wipes, diapers, or sanitary products under any circumstances.</p>
+                            <p class="lang-de" style="font-size: 0.85rem; display:none;">Keinesfalls Feuchttücher, Windeln oder Hygieneartikel hineinwerfen, um Verstopfungen zu vermeiden.</p>
                         </div>
                         <div style="flex: 1; min-width: 250px; text-align: center;">
                             <img src="https://i.postimg.cc/FRZkRwQW/IMG-4415.jpg" alt="Consignes Sanibroyeur" class="instruction-img" style="max-height: 180px; object-fit: contain;">
@@ -216,6 +238,7 @@
                 <button onclick="logoutPortal()" class="availability-btn" style="background: #fff; color: #7d7568; border-color: #ccc;">
                     <span class="lang-fr">Verrouiller l'accès</span>
                     <span class="lang-en" style="display:none;">Lock Access</span>
+                    <span class="lang-de" style="display:none;">Zugang sperren</span>
                 </button>
             </div>
         </div>
@@ -225,12 +248,13 @@
     <div id="main-content">
         <div class="container">
             <div class="amenities-banner">
-                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span></div>
-                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span></div>
+                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span><span class="lang-de" style="display:none;">Kostenloses Parken</span></div>
+                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner</span></div>
             </div>
 
             <div class="section-title lang-fr">Les Hébergements de Charme</div>
             <div class="section-title lang-en" style="display:none;">Our Charming Cottages</div>
+            <div class="section-title lang-de" style="display:none;">Unsere Charmanten Cottages</div>
             
             <div class="grid">
                 <!-- Le Grandzabris -->
@@ -244,16 +268,19 @@
                         <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Pers. │ Classé 2★★</div>
                         <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
                         <p class="lang-en" style="display:none;">Generous and warm atmosphere, ideal for exceptional family getaways.</p>
+                        <p class="lang-de" style="display:none;">Großzügiges und warmes Ambiente, ideal für außergewöhnliche Familienurlaube.</p>
                         
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
+                            <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
                             <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
                             <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">
                                 <span class="lang-fr">Réserver</span>
                                 <span class="lang-en" style="display:none;">Book</span>
+                                <span class="lang-de" style="display:none;">Buchen</span>
                             </a>
                         </div>
                     </div>
@@ -270,16 +297,19 @@
                         <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
                         <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
                         <p class="lang-en" style="display:none;">A sanctuary of privacy and refinement tailored for romantic getaways.</p>
+                        <p class="lang-de" style="display:none;">Ein Refugium der Privatsphäre und Raffinesse, maßgeschneidert für romantische Auszeiten.</p>
                         
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
+                            <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
                             <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
                             <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">
                                 <span class="lang-fr">Réserver</span>
                                 <span class="lang-en" style="display:none;">Book</span>
+                                <span class="lang-de" style="display:none;">Buchen</span>
                             </a>
                         </div>
                     </div>
@@ -288,12 +318,15 @@
 
             <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
             <div class="section-title lang-en" style="display:none;">The Art of Living</div>        
+            <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
             <div class="info-block">
                 <div class="info-item">
                     <h4 class="lang-fr">🛁 Espace Bien-être (Le ZenAbris)</h4>
                     <h4 class="lang-en" style="display:none;">🛁 Wellness Area (Le ZenAbris)</h4>
+                    <h4 class="lang-de" style="display:none;">🛁 Wellnessbereich (Le ZenAbris)</h4>
                     <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise.</p>
                     <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature.</p>
+                    <p class="lang-de" style="display:none;">Ein privater Bereich mit unserem Softub-Spa zum Entspannen inmitten der Natur.</p>
                 </div>
             </div>
         </div>
@@ -303,9 +336,11 @@
         <div class="footer-logo">Les Ozabris</div>
         <p class="lang-fr">Cottages d'Exception & Perles Rares • La Réunion</p>
         <p class="lang-en" style="display:none;">Exceptional Cottages & Rare Pearls • La Réunion</p>
+        <p class="lang-de" style="display:none;">Außergewöhnliche Cottages & Seltene Perlen • La Réunion</p>
         <div class="contact-info">
             <p class="lang-fr">Contactez-nous :</p>
             <p class="lang-en" style="display:none;">Contact us:</p>
+            <p class="lang-de" style="display:none;">Kontaktieren Sie uns:</p>
             <p style="margin: 8px 0;">📧 <a href="mailto:lesozabris@icloud.com">lesozabris@icloud.com</a></p>
             <p style="margin: 8px 0;">📞 <a href="tel:+262692138727">+262 6 92 13 87 27</a></p>
         </div>
@@ -313,7 +348,6 @@
     </footer>
 
     <script>
-        // URL de votre Google Sheets relié (inchangé)
         const sheetApiUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7JPAhHvmDg7A9g0rQ5EDGTjWSHJdJOBKVuiU9udYtyEDjdFjeJwoGpoHSIpfSgpUKzENcvrDEV0Z0/pub?output=csv";
 
         let currentLang = 'fr';
@@ -321,8 +355,8 @@
         function setLanguage(lang) {
             currentLang = lang;
             
-            // On cache tout (fr, en)
-            document.querySelectorAll('.lang-fr, .lang-en').forEach(el => el.style.display = 'none');
+            // On cache tout (fr, en, de)
+            document.querySelectorAll('.lang-fr, .lang-en, .lang-de').forEach(el => el.style.display = 'none');
             
             // On réaffiche la langue choisie
             document.querySelectorAll('.lang-' + lang).forEach(el => {
@@ -339,10 +373,10 @@
             
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-de').classList.toggle('active', lang === 'de');
         }
 
         window.onload = function() {
-            // Restauration de la session si le voyageur est déjà connecté
             if(localStorage.getItem("ozabris_auth") === "true") {
                 const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
                 if(savedData) {
@@ -392,7 +426,11 @@
                     showPortal(voyageurTrouve);
                 } else {
                     document.querySelectorAll('.error-msg').forEach(el => el.style.display = "none");
-                    const errorBox = document.getElementById(currentLang === 'fr' ? "errorMsg" : "errorMsg-en");
+                    let errorId = "errorMsg";
+                    if (currentLang === 'en') errorId = "errorMsg-en";
+                    if (currentLang === 'de') errorId = "errorMsg-de";
+                    
+                    const errorBox = document.getElementById(errorId);
                     if (errorBox) errorBox.style.display = "block";
                     document.getElementById("pinCode").value = "";
                 }
@@ -411,10 +449,11 @@
             const portal = document.getElementById("guest-portal");
             portal.style.display = "block";
 
-            // Personnalisation du message de bienvenue selon la langue sélectionnée par le visiteur
             let welcomeText = `Bienvenue chez vous, ${data["Prénoms"]} !`;
             if (currentLang === 'en') {
                 welcomeText = `Welcome home, ${data["Prénoms"]}!`;
+            } else if (currentLang === 'de') {
+                welcomeText = `Willkommen zu Hause, ${data["Prénoms"]}!`;
             }
             document.getElementById("welcome-message").innerText = welcomeText;
 
