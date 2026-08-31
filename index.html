@@ -348,12 +348,17 @@
 
                     
         function logoutPortal() {
-            sessionStorage.removeItem("ozabris_auth");
-            sessionStorage.removeItem("ozabris_voyageur_data");
-            document.getElementById("login-container").style.display = "block";
-            document.getElementById("guest-portal").style.display = "none";
-            document.getElementById("pinCode").value = "";
-        }
+    sessionStorage.removeItem("ozabris_auth");
+    sessionStorage.removeItem("ozabris_voyageur_data");
+    document.getElementById("login-container").style.display = "block";
+    document.getElementById("guest-portal").style.display = "none";
+    
+    // Réafficher la page principale lors de la déconnexion
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) mainContent.style.display = "block";
+
+    document.getElementById("pinCode").value = "";
+}
     
 </script>
 </body>
