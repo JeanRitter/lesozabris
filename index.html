@@ -334,13 +334,30 @@
             
             if(!entered) return;
 
-            try {
-                // Interrogation en direct de votre Google Sheets
-                const response = await fetch(sheetApiUrl);
-                const voyageurs = await response.json();
-                
-                // Recherche du code PIN correspondant dans le tableau
-                const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
+               try {
+        // Interrogation en direct de votre Google Sheets (Format CSV)
+        const response = await fetch(sheetApiUrl);
+        const csvText = await response.text();
+
+        // Conversion du CSV en un tableau d'objets JavaScript
+        const lines = csvText.split('\n');
+        const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+        
+        const voyageurs = [];
+        for (let i = 1; i < lines.length; i++) {
+            if (!lines[i].trim()) continue;
+            // Gestion basique des virgules dans le CSV
+            const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+            const obj = {};
+            for (let j = 0; j < headers.length; j++) {
+                let val = currentLine[j] ? currentLine[j].trim() : '';
+                obj[headers[j]] = val.replace(/^"|"$/g, '');
+            }
+            voyageurs.push(obj);
+        }
+
+        // Recherche du code PIN correspondant dans le tableau
+        const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
                 
                 if(voyageurTrouve) {
                     sessionStorage.setItem("ozabris_auth", "true");
