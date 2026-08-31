@@ -1,103 +1,112 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title class="lang-fr">Les Ozabris | Location de Cottages d'Exception</title>
-    <title class="lang-en" style="display:none;">Les Ozabris | Exceptional Cottages Rental</title>
-    <title class="lang-de" style="display:none;">Les Ozabris | Außergewöhnliche Cottages Vermietung</title>
+    <title>Les Ozabris - Gîtes & Écolodges</title>
     <style>
         :root {
-            --primary: #12263a;
-            --accent: #c5a880;
-            --text-dark: #2c3e50;
-            --bg-light: #fbfbf9;
-            --white: #ffffff;
-            --gold: #dfb76c;
+            --primary-color: #2c5e3b;
+            --secondary-color: #f4f1ea;
+            --accent-color: #d4a373;
+            --text-color: #333333;
+            --light-bg: #ffffff;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
-        header { background-color: var(--white); text-align: center; padding: 30px 20px; border-bottom: 1px solid #f0eadec; position: relative; }
-        
-        /* Sélecteur de langue */
-        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; }
-        .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.5; padding: 2px 5px; }
-        .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--primary); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--secondary-color); color: var(--text-color); line-height: 1.6; }
+        header { background-color: var(--primary-color); color: white; padding: 20px; text-align: center; position: relative; }
+        .lang-selector { position: absolute; top: 20px; right: 20px; }
+        .lang-selector select { padding: 5px; border-radius: 4px; border: none; background: white; color: var(--text-color); cursor: pointer; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: var(--light-bg); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1, h2 { color: var(--primary-color); margin-bottom: 15px; }
+        .banner { background-color: #e9edc9; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold; margin-bottom: 20px; color: #386641; }
+        .section { margin-bottom: 30px; }
+        .image-container { text-align: center; margin: 15px 0; }
+        .image-container img { max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .contact-box { background: #fdf0d5; padding: 20px; border-radius: 6px; text-align: center; margin-top: 20px; }
+        .contact-box a { color: var(--primary-color); font-weight: bold; text-decoration: none; }
+        .contact-box a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 20px; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
 
-        .brand-logo-container { max-width: 260px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .brand-logo-container img { width: 100%; height: auto; object-fit: contain; }
-        
-        .logo-text { font-size: 2.8rem; font-weight: 300; letter-spacing: 5px; color: var(--primary); text-transform: uppercase; margin-bottom: 3px; }
-        @media (max-width: 768px) { 
-            .logo-text { font-size: 2.0rem; } 
-            .brand-logo-container { max-width: 180px; }
+    <header>
+        <div class="lang-selector">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+        <h1 id="site-title">Les Ozabris - Gîtes & Écolodges</h1>
+        <p id="site-subtitle">Grandzabris & Ptitzabris</p>
+    </header>
+
+    <div class="container">
+        <!-- Bandeau Parking & Avantages -->
+        <div class="banner" id="parking-banner">
+            🚗 Parking gratuit inclus sur place pour votre séjour
+        </div>
+
+        <!-- Section ZenAbris -->
+        <div class="section">
+            <h2 id="zen-title">Espace Bien-être ZenAbris</h2>
+            <p id="zen-desc">Profitez de notre espace détente et bien-être intégré au cœur de la nature pour un lâcher-prise total.</p>
+            <div class="image-container">
+                <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
+            </div>
+        </div>
+
+        <!-- Section Contact Direct -->
+        <div class="contact-box">
+            <p id="contact-text">Une question ou besoin d'informations complémentaires ? Contactez-nous directement :</p>
+            <p><a href="mailto:lesozabris@icloud.com">lesozabris@icloud.com</a> | Tél : +262 692 13 87 27</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Les Ozabris - Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                title: "Les Ozabris - Gîtes & Écolodges",
+                subtitle: "Grandzabris & Ptitzabris",
+                parking: "🚗 Parking gratuit inclus sur place pour votre séjour",
+                zenTitle: "Espace Bien-être ZenAbris",
+                zenDesc: "Profitez de notre espace détente et bien-être intégré au cœur de la nature pour un lâcher-prise total.",
+                contactText: "Une question ou besoin d'informations complémentaires ? Contactez-nous directement :"
+            },
+            en: {
+                title: "Les Ozabris - Cottages & Ecolodges",
+                subtitle: "Grandzabris & Ptitzabris",
+                parking: "🚗 Free on-site parking included for your stay",
+                zenTitle: "ZenAbris Wellness Area",
+                zenDesc: "Enjoy our relaxation and wellness space nestled in nature for total unwinding.",
+                contactText: "Any questions or need further information? Contact us directly:"
+            },
+            de: {
+                title: "Les Ozabris - Ferienhäuser & Ecolodges",
+                subtitle: "Grandzabris & Ptitzabris",
+                parking: "🚗 Kostenlose Parkplätze vor Ort für Ihren Aufenthalt inklusive",
+                zenTitle: "ZenAbris Wellnessbereich",
+                zenDesc: "Genießen Sie unseren Entspannungs- und Wellnessbereich inmitten der Natur.",
+                contactText: "Haben Sie Fragen oder benötigen Sie weitere Informationen? Kontaktieren Sie uns direkt:"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            document.getElementById('site-title').innerText = translations[lang].title;
+            document.getElementById('site-subtitle').innerText = translations[lang].subtitle;
+            document.getElementById('parking-banner').innerText = translations[lang].parking;
+            document.getElementById('zen-title').innerText = translations[lang].zenTitle;
+            document.getElementById('zen-desc').innerText = translations[lang].zenDesc;
+            document.getElementById('contact-text').innerText = translations[lang].contactText;
         }
-        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
-        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 750px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
-        .badge { background: #f4eee3; color: #7d7568; padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(197,168,128,0.3); display: inline-flex; align-items: center; gap: 5px; }
-        .badge-stars { color: var(--gold); font-size: 0.9rem; }
-        .tagline { font-style: italic; color: #555; max-width: 600px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #f0eadec; font-size: 1rem; }
-        
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
-        
-        /* --- ACCÈS VOYAGEURS (PLACÉ EN HAUT) --- */
-        .top-portal-wrapper { background: #f4eee3; border-bottom: 2px solid var(--accent); padding: 25px 20px; text-align: center; }
-        .portal-login-box { max-width: 500px; margin: 0 auto; background: var(--white); padding: 30px; border-radius: 4px; border: 1px solid var(--accent); box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
-        .portal-login-box h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; font-weight: 400; }
-        .portal-login-box p { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: #666; margin-bottom: 20px; }
-        .pin-input { padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 2px; width: 160px; text-align: center; letter-spacing: 3px; margin-right: 8px; font-family: 'Segoe UI', sans-serif; }
-        .pin-btn { background: var(--primary); color: #fff; border: none; padding: 10px 18px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; cursor: pointer; font-family: 'Segoe UI', sans-serif; }
-        .pin-btn:hover { background: var(--accent); }
-        .error-msg { color: #b94a48; font-size: 0.8rem; margin-top: 10px; display: none; font-family: 'Segoe UI', sans-serif; }
+    </script>
 
-        /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
-        #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
-        .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
-        .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; padding: 25px; }
-        .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
-        .guide-box p, .guide-box ul { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
-        .guide-box ul { padding-left: 18px; }
-        .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 4px; border: 1px dashed var(--accent); margin-top: 10px; }
-        .wifi-img-box img { max-width: 140px; height: auto; margin-bottom: 8px; }
-        .instruction-img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #ddd; margin-top: 10px; }
-
-        .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
-        
-        .amenities-banner { background: var(--white); border: 1px solid #f0eadec; border-radius: 4px; padding: 20px; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); font-family: 'Segoe UI', sans-serif; }
-        .amenity-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 35px; margin-top: 20px; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-        
-        .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid #f0eadec; }
-        .single-photo-container { width: 100%; height: 320px; background-color: #eae5db; overflow: hidden; position: relative; }
-        .single-photo-container img { width: 100%; height: 100%; object-fit: cover; }
-        .photo-label { position: absolute; bottom: 12px; left: 12px; background: rgba(18, 38, 58, 0.7); color: #fff; padding: 4px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
-        .card-content { padding: 30px; }
-        .card h3 { color: var(--primary); font-size: 1.6rem; margin-bottom: 8px; font-weight: 400; }
-        .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
-        .card p { font-size: 0.95rem; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; }
-        
-        .availability-box { background: #fdfbf7; border: 1px solid rgba(197, 168, 128, 0.4); border-radius: 4px; padding: 15px; margin: 18px 0; text-align: center; font-family: 'Segoe UI', sans-serif; }
-        .availability-box p { font-size: 0.85rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
-        .availability-btn { display: inline-block; background-color: var(--white); color: var(--primary); border: 1px solid var(--accent); padding: 8px 18px; border-radius: 2px; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; }
-        .availability-btn:hover { background-color: var(--primary); color: var(--white); }
-
-        .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
-        .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
-        
-        /* Bannière photo vedette / ambiance domaine */
-        .domain-showcase { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; margin-top: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
-        .domain-showcase img { width: 100%; max-height: 420px; object-fit: cover; }
-        .domain-showcase-content { padding: 35px; }
-
-        .info-block { background: var(--white); border-radius: 4px; padding: 35px; border: 1px solid #f0eadec; margin-top: 35px; }
-        .info-item { margin-bottom: 30px; }
-        .info-item:last-child { margin-bottom: 0; }
-        .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 10px; font-size: 0.95rem; }
-        .info-item p { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: #555; }
-        
-        footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 50px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 3px solid var(--accent); }
-        .contact-info { background: rgba(255,255,255,0.03); max-width: 5
+</body>
+</html>
