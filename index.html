@@ -85,11 +85,18 @@
         .availability-btn { display: inline-block; background-color: var(--white); color: var(--primary); border: 1px solid var(--accent); padding: 8px 18px; border-radius: 2px; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; }
         .availability-btn:hover { background-color: var(--primary); color: var(--white); }
 
-        .btn-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+        .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
         
+        /* Bannière photo vedette / ambiance domaine */
+        .domain-showcase { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; margin-top: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
+        .domain-showcase img { width: 100%; max-height: 420px; object-fit: cover; }
+        .domain-showcase-content { padding: 35px; }
+
         .info-block { background: var(--white); border-radius: 4px; padding: 35px; border: 1px solid #f0eadec; margin-top: 35px; }
-        .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 10px; font-size: 0.9rem; }
+        .info-item { margin-bottom: 30px; }
+        .info-item:last-child { margin-bottom: 0; }
+        .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 10px; font-size: 0.95rem; }
         .info-item p { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: #555; }
         
         footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 50px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 3px solid var(--accent); }
@@ -244,12 +251,31 @@
         </div>
     </div>
     
-    <!-- --- TOUT LE CONTENU PRINCIPAL ENGLOBÉ DANS #main-content --- -->
+    <!-- --- CONTENU PRINCIPAL --- -->
     <div id="main-content">
         <div class="container">
             <div class="amenities-banner">
                 <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span><span class="lang-de" style="display:none;">Kostenloses Parken</span></div>
                 <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner</span></div>
+            </div>
+
+            <!-- Photo classe / Ambiance du domaine -->
+            <div class="domain-showcase">
+                <div class="single-photo-container" style="height: 380px;">
+                    <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Ambiance Les Ozabris">
+                    <div class="photo-label lang-fr">Le Domaine des Ozabris</div>
+                    <div class="photo-label lang-en" style="display:none;">Les Ozabris Domain</div>
+                    <div class="photo-label lang-de" style="display:none;">Anwesen Les Ozabris</div>
+                </div>
+                <div class="domain-showcase-content">
+                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400;" class="lang-fr">Une immersion authentique dans les Hauts</h3>
+                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400; display:none;" class="lang-en">An authentic immersion in the Highlands</h3>
+                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400; display:none;" class="lang-de">Ein authentisches Eintauchen ins Hochland</h3>
+                    
+                    <p class="lang-fr">Niché au cœur d'une nature luxuriante, notre domaine conjugue le charme de l'authentique et le confort moderne pour vous offrir une halte reposante et inspirante.</p>
+                    <p class="lang-en" style="display:none; display:none;" class="lang-en">Nestled in lush nature, our estate combines authentic charm with modern comfort to offer you a relaxing and inspiring stay.</p>
+                    <p class="lang-de" style="display:none;" class="lang-de">Eingebettet in üppige Natur verbindet unser Anwesen authentischen Charme mit modernem Komfort für einen erholsamen Aufenthalt.</p>
+                </div>
             </div>
 
             <div class="section-title lang-fr">Les Hébergements de Charme</div>
@@ -319,14 +345,40 @@
             <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
             <div class="section-title lang-en" style="display:none;">The Art of Living</div>        
             <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
+            
             <div class="info-block">
+                <!-- Espace ZenAbris -->
                 <div class="info-item">
                     <h4 class="lang-fr">🛁 Espace Bien-être (Le ZenAbris)</h4>
                     <h4 class="lang-en" style="display:none;">🛁 Wellness Area (Le ZenAbris)</h4>
                     <h4 class="lang-de" style="display:none;">🛁 Wellnessbereich (Le ZenAbris)</h4>
-                    <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise.</p>
-                    <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature.</p>
-                    <p class="lang-de" style="display:none;">Ein privater Bereich mit unserem Softub-Spa zum Entspannen inmitten der Natur.</p>
+                    <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise, après une belle journée de randonnée.</p>
+                    <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature after a great day of hiking.</p>
+                    <p class="lang-de" style="display:none;">Ein privater Bereich mit unserem Softub-Spa zum Entspannen inmitten der Natur nach einer herrlichen Wandertour.</p>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
+
+                <!-- Nos animaux -->
+                <div class="info-item">
+                    <h4 class="lang-fr">🐾 Nos Amis les Animaux</h4>
+                    <h4 class="lang-en" style="display:none;">🐾 Our Animal Friends</h4>
+                    <h4 class="lang-de" style="display:none;">🐾 Unsere Tierischen Freunde</h4>
+                    <p class="lang-fr">Ici, les animaux occupent une place toute particulière dans nos cœurs et font partie intégrante de notre famille et de notre quotidien au domaine.</p>
+                    <p class="lang-en" style="display:none;">Here, animals hold a very special place in our hearts and are an integral part of our family and daily life on the estate.</p>
+                    <p class="lang-de" style="display:none;">Hier haben Tiere einen ganz besonderen Platz in unseren Herzen und sind ein fester Bestandteil unserer Familie.</p>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
+
+                <!-- Engagement Écologique -->
+                <div class="info-item">
+                    <h4 class="lang-fr">🌱 Notre Contribution à l'Écologie</h4>
+                    <h4 class="lang-en" style="display:none;">🌱 Our Ecological Commitment</h4>
+                    <h4 class="lang-de" style="display:none;">🌱 Unser Ökologischer Beitrag</h4>
+                    <p class="lang-fr">Préserver l'environnement exceptionnel de La Réunion est une priorité pour nous. Nous mettons en œuvre des gestes écoresponsables au quotidien (tri, gestion raisonnée de l'eau et de l'énergie, produits adaptés) pour un tourisme plus respectueux de la nature.</p>
+                    <p class="lang-en" style="display:none;">Preserving La Réunion's exceptional environment is a priority. We implement daily eco-friendly practices (sorting, sustainable water and energy management) for a more responsible tourism.</p>
+                    <p class="lang-de" style="display:none;">Der Schutz der außergewöhnlichen Umwelt von La Réunion hat für uns Priorität. Wir setzen auf umweltfreundliche Alltagspraktiken für einen nachhaltigeren Tourismus.</p>
                 </div>
             </div>
         </div>
@@ -355,10 +407,8 @@
         function setLanguage(lang) {
             currentLang = lang;
             
-            // On cache tout (fr, en, de)
             document.querySelectorAll('.lang-fr, .lang-en, .lang-de').forEach(el => el.style.display = 'none');
             
-            // On réaffiche la langue choisie
             document.querySelectorAll('.lang-' + lang).forEach(el => {
                 if (el.tagName === 'TITLE') {
                     el.style.display = 'block';
