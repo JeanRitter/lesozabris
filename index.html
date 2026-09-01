@@ -17,26 +17,38 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
-        header { background-color: var(--white); text-align: center; padding: 30px 20px; border-bottom: 1px solid #f0eadec; position: relative; }
+        
+        /* En-tête avec la nouvelle vue aérienne du jardin en fond */
+        header { 
+            background: linear-gradient(rgba(18, 38, 58, 0.65), rgba(18, 38, 58, 0.75)), url('https://i.postimg.cc/hvNGHwj0/IMG-1687.jpg') no-repeat center center; 
+            background-size: cover;
+            text-align: center; 
+            padding: 60px 20px 50px 20px; 
+            border-bottom: 2px solid var(--accent); 
+            position: relative; 
+            color: var(--white);
+        }
         
         /* Sélecteur de langue */
-        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; }
-        .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.5; padding: 2px 5px; }
-        .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--primary); }
+        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 4px; }
+        .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 5px; color: var(--white); }
+        .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        .brand-logo-container { max-width: 260px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .brand-logo-container img { width: 100%; height: auto; object-fit: contain; }
+        .brand-logo-container { max-width: 240px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid var(--accent); }
+        .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
         
-        .logo-text { font-size: 2.8rem; font-weight: 300; letter-spacing: 5px; color: var(--primary); text-transform: uppercase; margin-bottom: 3px; }
+        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         @media (max-width: 768px) { 
-            .logo-text { font-size: 2.0rem; } 
-            .brand-logo-container { max-width: 180px; }
+            .logo-text { font-size: 2.1rem; } 
+            .brand-logo-container { max-width: 160px; }
         }
-        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
+        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        
         .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 750px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
-        .badge { background: #f4eee3; color: #7d7568; padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(197,168,128,0.3); display: inline-flex; align-items: center; gap: 5px; }
+        .badge { background: rgba(255, 255, 255, 0.9); color: var(--primary); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         .badge-stars { color: var(--gold); font-size: 0.9rem; }
-        .tagline { font-style: italic; color: #555; max-width: 600px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #f0eadec; font-size: 1rem; }
+        
+        .tagline { font-style: italic; color: #f0eadec; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.4); font-size: 1.05rem; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
@@ -74,7 +86,7 @@
         .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid #f0eadec; }
         .single-photo-container { width: 100%; height: 320px; background-color: #eae5db; overflow: hidden; position: relative; }
         .single-photo-container img { width: 100%; height: 100%; object-fit: cover; }
-        .photo-label { position: absolute; bottom: 12px; left: 12px; background: rgba(18, 38, 58, 0.7); color: #fff; padding: 4px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
+        .photo-label { position: absolute; bottom: 12px; left: 12px; background: rgba(18, 38, 58, 0.75); color: #fff; padding: 4px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
         .card-content { padding: 30px; }
         .card h3 { color: var(--primary); font-size: 1.6rem; margin-bottom: 8px; font-weight: 400; }
         .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
@@ -273,8 +285,8 @@
                     <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400; display:none;" class="lang-de">Ein authentisches Eintauchen ins Hochland</h3>
                     
                     <p class="lang-fr">Niché au cœur d'une nature luxuriante, notre domaine conjugue le charme de l'authentique et le confort moderne pour vous offrir une halte reposante et inspirante.</p>
-                    <p class="lang-en" style="display:none;" class="lang-en">Nestled in lush nature, our estate combines authentic charm with modern comfort to offer you a relaxing and inspiring stay.</p>
-                    <p class="lang-de" style="display:none;" class="lang-de">Eingebettet in üppige Natur verbindet unser Anwesen authentischen Charme mit modernem Komfort für einen erholsamen Aufenthalt.</p>
+                    <p class="lang-en" style="display:none;">Nestled in lush nature, our estate combines authentic charm with modern comfort to offer you a relaxing and inspiring stay.</p>
+                    <p class="lang-de" style="display:none;">Eingebettet in üppige Natur verbindet unser Anwesen authentischen Charme mit modernem Komfort für einen erholsamen Aufenthalt.</p>
                 </div>
             </div>
 
@@ -283,10 +295,10 @@
             <div class="section-title lang-de" style="display:none;">Unsere Charmanten Cottages</div>
             
             <div class="grid">
-                <!-- Le Grandzabris -->
+                <!-- Le Grandzabris (Photo distincte dédiée) -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
+                        <img src="https://i.postimg.cc/k47Zf9qL/DJI-0453.jpg" alt="Le Grandzabris">
                         <div class="photo-label">Le Grandzabris</div>
                     </div>
                     <div class="card-content">
@@ -347,14 +359,14 @@
             <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
             
             <div class="info-block">
-                <!-- Espace ZenAbris avec photo -->
+                <!-- Espace ZenAbris avec photo et clarification d'accès -->
                 <div class="info-item">
-                    <h4 class="lang-fr">🛁 Espace Bien-être (Le ZenAbris)</h4>
-                    <h4 class="lang-en" style="display:none;">🛁 Wellness Area (Le ZenAbris)</h4>
-                    <h4 class="lang-de" style="display:none;">🛁 Wellnessbereich (Le ZenAbris)</h4>
-                    <p class="lang-fr">Un espace privilégié avec notre Softub Spa pour lâcher prise au cœur de la nature réunionnaise, après une belle journée de randonnée.</p>
-                    <p class="lang-en" style="display:none;">A privileged space featuring our Softub Spa to let go amidst nature after a great day of hiking.</p>
-                    <p class="lang-de" style="display:none;">Ein privater Bereich mit unserem Softub-Spa zum Entspannen inmitten der Natur nach einer herrlichen Wandertour.</p>
+                    <h4 class="lang-fr">🌿 Espace Bien-être (Le ZenAbris) — Accès Gratuit & Partagé</h4>
+                    <h4 class="lang-en" style="display:none;">🌿 Wellness Area (Le ZenAbris) — Free & Shared Access</h4>
+                    <h4 class="lang-de" style="display:none;">🌿 Wellnessbereich (Le ZenAbris) — Kostenloser & Gemeinsamer Zugang</h4>
+                    <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Cet espace de détente est <strong>entièrement gratuit</strong> et mis à disposition partagée des voyageurs de nos deux cottages (Le Ptitzabris et Le Grandzabris). Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
+                    <p class="lang-en" style="display:none;">Nestled in the heart of our lush large garden, the ZenAbris area and its Softub Spa offer you an absolute moment of letting go after a great day of hiking. This relaxation area is <strong>completely free</strong> and shared for the guests of both our cottages (Le Ptitzabris and Le Grandzabris). An ideal haven of peace to recharge your batteries in complete serenity!</p>
+                    <p class="lang-de" style="display:none;">Eingebettet in unseren großen, üppigen Garten bieten Ihnen der ZenAbris-Bereich und sein Softub-Spa einen absoluten Moment der Entspannung nach einer herrlichen Wandertour. Dieser Entspannungsbereich ist <strong>völlig kostenlos</strong> und wird von den Gästen unserer beiden Cottages (Le Ptitzabris und Le Grandzabris) gemeinsam genutzt. Eine ideale Oase der Ruhe zum Auftanken in völliger Gelassenheit!</p>
                     
                     <div class="single-photo-container" style="height: 300px; margin-top: 15px; border-radius: 4px;">
                         <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
@@ -378,14 +390,14 @@
 
                 <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
 
-                <!-- Engagement Écologique -->
+                <!-- Engagement Écologique & Énergétique -->
                 <div class="info-item">
-                    <h4 class="lang-fr">🌱 Notre Contribution à l'Écologie & au Jardin</h4>
-                    <h4 class="lang-en" style="display:none;">🌱 Our Ecological Commitment & Garden</h4>
-                    <h4 class="lang-de" style="display:none;">🌱 Unser Ökologischer Beitrag & Garten</h4>
-                    <p class="lang-fr">Préserver l'environnement exceptionnel de La Réunion est une priorité absolue. Au sein de notre grand jardin luxuriant, nous mettons en œuvre des gestes écoresponsables au quotidien (tri sélectif rigoureux, gestion raisonnée de l'eau, produits d'entretien respectueux de l'environnement et préservation de la biodiversité locale) pour un tourisme plus vert et authentique.</p>
-                    <p class="lang-en" style="display:none;">Preserving La Réunion's exceptional environment is an absolute priority. Within our lush large garden, we implement daily eco-friendly practices (rigorous sorting, sustainable water management, eco-friendly cleaning products, and local biodiversity conservation) for greener and more authentic tourism.</p>
-                    <p class="lang-de" style="display:none;">Der Schutz der außergewöhnlichen Umwelt von La Réunion hat absolute Priorität. In unserem großen, üppigen Garten setzen wir auf umweltfreundliche Alltagspraktiken (strenge Mülltrennung, nachhaltiges Wassermanagement, umweltfreundliche Reinigungsprodukte und den Schutz der lokalen Biodiversität) für einen grüneren und authentischeren Tourismus.</p>
+                    <h4 class="lang-fr">🌱 Engagement Écologique & Harmonie Solaire</h4>
+                    <h4 class="lang-en" style="display:none;">🌱 Ecological Commitment & Solar Harmony</h4>
+                    <h4 class="lang-de" style="display:none;">🌱 Ökologisches Engagement & Solare Harmonie</h4>
+                    <p class="lang-fr">Aux Ozabris, le luxe rime avec conscience environnementale. Notre domaine fonctionne en parfaite harmonie avec le soleil réunionnais grâce à une installation photovoltaïque de pointe couplée à un stockage sur batteries, assurant une autonomie énergétique vertueuse. Cette énergie propre alimente nos climatiseurs réversibles inverter pour un confort thermique idéal en toute saison, tandis que notre chauffe-eau solaire capte chaque rayon pour la production d'eau chaude sanitaire. Tri sélectif rigoureux, gestion raisonnée de l'eau et préservation de la biodiversité complètent cet engagement pour un tourisme authentique et durable.</p>
+                    <p class="lang-en" style="display:none;">At Les Ozabris, luxury goes hand in hand with environmental awareness. Our estate operates in complete harmony with the Reunionese sun through an advanced photovoltaic installation paired with battery storage, ensuring virtuous energy autonomy. This clean energy powers our inverter reversible air conditioners for ideal thermal comfort in all seasons, while our solar water heater captures every ray for domestic hot water. Rigorous sorting, sustainable water management, and biodiversity preservation complete this commitment to authentic and sustainable tourism.</p>
+                    <p class="lang-de" style="display:none;">In Les Ozabris geht Luxus Hand in Hand mit Umweltbewusstsein. Unser Anwesen arbeitet in voller Harmonie mit der Sonne von La Réunion dank einer fortschrittlichen Photovoltaikanlage gekoppelt mit Batteriespeicher, die eine tugendhafte Energieautonomie gewährleistet. Diese saubere Energie versorgt unsere Inverter-Klimaanlagen für idealen thermischen Komfort zu jeder Jahreszeit, während unser Solar-Warmwasserbereiter jeden Strahl für Warmwasser nutzt. Strenge Mülltrennung, nachhaltiges Wassermanagement und der Schutz der Biodiversität runden dieses Engagement für einen authentischen und nachhaltigen Tourismus ab.</p>
                 </div>
             </div>
         </div>
