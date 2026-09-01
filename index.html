@@ -18,8 +18,9 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
+        /* Banderole de l'entête mise à jour avec la nouvelle photo */
         header { 
-            background: linear-gradient(rgba(18, 38, 58, 0.55), rgba(26, 54, 93, 0.55)), url('https://i.postimg.cc/m227V1Jq/IMG-4249.jpg');
+            background: linear-gradient(rgba(18, 38, 58, 0.55), rgba(26, 54, 93, 0.55)), url('https://i.postimg.cc/T25RKT3J/Image.jpg');
             background-size: cover;
             background-position: center;
             text-align: center; 
@@ -100,7 +101,7 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Style pour l'encadré Écologique à côté du ZenAbris */
+        /* Style pour l'encadré Écologique */
         .eco-card { background: var(--white); border-radius: 4px; padding: 30px; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
         .eco-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid var(--accent); padding-bottom: 12px; }
         .eco-icon { font-size: 2.2rem; background: #f4eee3; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; }
@@ -339,7 +340,7 @@
                 <!-- 3. Espace ZenAbris -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
+                        <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Espace ZenAbris">
                         <div class="photo-label">Le ZenAbris</div>
                     </div>
                     <div class="card-content">
@@ -351,7 +352,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Encadré Écologique à côté du ZenAbris -->
+                <!-- 4. Encadré Écologique -->
                 <div class="eco-card">
                     <div>
                         <div class="eco-header">
@@ -363,21 +364,21 @@
                                 <div class="specs" style="margin-bottom:0;">🌱 Tourisme Durable à La Réunion</div>
                             </div>
                         </div>
-                        <p class="lang-fr">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries et un chauffe-eau solaire.</p>
-                        <p class="lang-en" style="display:none;">At Les Ozabris, we combine hospitality with the preservation of our magnificent island. Our estate operates in total harmony with the sun thanks to photovoltaic panels paired with batteries and a solar water heater.</p>
-                        <p class="lang-de" style="display:none;">In Les Ozabris verbinden wir Gastfreundschaft mit dem Schutz unserer herrlichen Insel. Unser Anwesen arbeitet in voller Harmonie mit der Sonne dank Photovoltaikanlagen mit Batteriespeicher und Solar-Warmwasserbereitern.</p>
+                        <p class="lang-fr">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries. Chaque Zabris (le Grandzabris et le Ptitzabris) dispose par ailleurs de son propre chauffe-eau solaire.</p>
+                        <p class="lang-en" style="display:none;">At Les Ozabris, we combine hospitality with the preservation of our magnificent island. Our estate operates in total harmony with the sun thanks to photovoltaic panels paired with batteries. Each Zabris (Le Grandzabris and Le Ptitzabris) is also equipped with its own solar water heater.</p>
+                        <p class="lang-de" style="display:none;">In Les Ozabris verbinden wir Gastfreundschaft mit dem Schutz unserer herrlichen Insel. Unser Anwesen arbeitet in voller Harmonie mit der Sonne dank Photovoltaikanlagen mit Batteriespeicher. Jedes Zabris (Le Grandzabris und Le Ptitzabris) verfügt zudem über einen eigenen Solar-Warmwasserbereiter.</p>
                         <p class="lang-fr">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique. Tri sélectif, gestion rigoureuse de l'eau et amour de la nature guident chacun de nos pas pour un séjour vertueux.</p>
                         <p class="lang-en" style="display:none;">All our rooms feature high-efficiency inverter reversible air conditioners. Selective sorting, rigorous water management, and a love of nature guide our steps for a virtuous stay.</p>
                         <p class="lang-de" style="display:none;">Alle unsere Zimmer sind mit harten, energieeffizienten Inverter-Klimaanlagen ausgestattet. Mülltrennung und Liebe zur Natur leiten unsere Schritte für einen nachhaltigen Aufenthalt.</p>
                     </div>
                     <div style="text-align: center; margin-top: 15px; padding-top: 12px; border-top: 1px dashed var(--accent);">
-                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary);" class="lang-fr">"Pour que la beauté de La Réunion perdure."</span>
-                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display:none;" class="lang-en">"Preserving the timeless beauty of La Réunion."</span>
-                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display:none;" class="lang-de">"Damit die Schönheit von La Réunion erhalten bleibt."</span>
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display: block;" class="lang-fr">"Florebo quocunque ferar" — "Je fleurirai partout où je serai porté" (Devise de La Réunion)</span>
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display: block;" class="lang-en">"Florebo quocunque ferar" — "I shall flourish wherever I am led" (Motto of La Réunion)</span>
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display: block;" class="lang-de">"Florebo quocunque ferar" — "Ich werde blühen, wohin ich auch getragen werde" (Wahlspruch von La Réunion)</span>
                     </div>
                 </div>
 
-                <!-- 5. Carte Accès & Waze (Avec votre photo d'allée exacte) -->
+                <!-- 5. Carte Accès & Waze -->
                 <div class="card" style="grid-column: 1 / -1;">
                     <div style="display: flex; flex-wrap: wrap;">
                         <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -389,10 +390,10 @@
                                 <h3 class="lang-fr">🚗 Accès & Itinéraire Waze</h3>
                                 <h3 class="lang-en" style="display:none;">🚗 Access & Waze Directions</h3>
                                 <h3 class="lang-de" style="display:none;">🚗 Anfahrt & Waze-Wegbeschreibung</h3>
-                                <div class="specs">📍 Arrivée sereine au domaine</div>
-                                <p class="lang-fr" style="margin-bottom: 12px;">Laissez-vous guider facilement jusqu'à notre entrée en un clic grâce à l'application Waze.</p>
-                                <p class="lang-en" style="margin-bottom: 12px; display:none;">Let Waze guide you easily straight to our entrance in one click.</p>
-                                <p class="lang-de" style="margin-bottom: 12px; display:none;">Lassen Sie sich mit Waze ganz einfach direkt zu unserem Eingang leiten.</p>
+                                <div class="specs">📍 162 rue fond coche Mahot</div>
+                                <p class="lang-fr" style="margin-bottom: 12px;">Laissez-vous guider facilement jusqu'aux Ozabris en un clic depuis votre position actuelle grâce à Waze.</p>
+                                <p class="lang-en" style="margin-bottom: 12px; display:none;">Let Waze guide you easily straight to Les Ozabris from your current location in one click.</p>
+                                <p class="lang-de" style="margin-bottom: 12px; display:none;">Lassen Sie sich mit Waze ganz einfach von Ihrem aktuellen Standort zu Les Ozabris leiten.</p>
                                 
                                 <div style="background: #fdfbf7; border: 1px solid rgba(185, 74, 72, 0.3); border-left: 4px solid #b94a48; padding: 12px 15px; border-radius: 2px; margin-bottom: 15px;">
                                     <p class="lang-fr" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px;">⚠️ Consigne indispensable pour le parking :</p>
@@ -406,7 +407,7 @@
                             </div>
 
                             <div style="text-align: left;">
-                                <a href="https://waze.com/ul?ll=-20.999999,55.555555&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 10px 22px; background: #33ccff; color: #12263a;">
+                                <a href="https://waze.com/ul?q=162%20rue%20fond%20coche%20Mahot&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 10px 22px; background: #33ccff; color: #12263a;">
                                     <span class="lang-fr">📍 Lancer l'itinéraire Waze ↗</span>
                                     <span class="lang-en" style="display:none;">📍 Open in Waze ↗</span>
                                     <span class="lang-de" style="display:none;">📍 In Waze öffnen ↗</span>
