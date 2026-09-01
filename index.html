@@ -18,9 +18,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
-        /* En-tête avec la photo du jardin en fond et un voile sombre élégant pour la lisibilité */
         header { 
-            background: linear-gradient(rgba(18, 38, 58, 0.75), rgba(26, 54, 93, 0.75)), url('https://i.postimg.cc/m227V1Jq/IMG-4249.jpg');
+            background: linear-gradient(rgba(18, 38, 58, 0.75), rgba(26, 54, 93, 0.75)), url('https://i.postimg.cc/13yj8PKc/Image.jpg');
             background-size: cover;
             background-position: center;
             text-align: center; 
@@ -30,7 +29,6 @@
             color: var(--white);
         }
         
-        /* Sélecteur de langue */
         .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 4px; }
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 5px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
@@ -53,7 +51,7 @@
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
-        /* --- ACCÈS VOYAGEURS (PLACÉ EN HAUT) --- */
+        /* --- ACCÈS VOYAGEURS --- */
         .top-portal-wrapper { background: #f4eee3; border-bottom: 2px solid var(--accent); padding: 25px 20px; text-align: center; }
         .portal-login-box { max-width: 500px; margin: 0 auto; background: var(--white); padding: 30px; border-radius: 4px; border: 1px solid var(--accent); box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
         .portal-login-box h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 10px; font-weight: 400; }
@@ -64,7 +62,8 @@
         .error-msg { color: #b94a48; font-size: 0.8rem; margin-top: 10px; display: none; font-family: 'Segoe UI', sans-serif; }
 
         /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
-        #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 30px 40px 40px 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+        .portal-header-top { display: flex; justify-content: flex-end; margin-bottom: 15px; }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
         .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; padding: 25px; }
@@ -81,17 +80,17 @@
         .amenities-banner { background: var(--white); border: 1px solid #f0eadec; border-radius: 4px; padding: 20px; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); font-family: 'Segoe UI', sans-serif; }
         .amenity-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 35px; margin-top: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; margin-top: 20px; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
         
-        .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid #f0eadec; }
-        .single-photo-container { width: 100%; height: 320px; background-color: #eae5db; overflow: hidden; position: relative; }
+        .card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.02); border: 1px solid #f0eadec; display: flex; flex-direction: column; justify-content: space-between; }
+        .single-photo-container { width: 100%; height: 260px; background-color: #eae5db; overflow: hidden; position: relative; }
         .single-photo-container img { width: 100%; height: 100%; object-fit: cover; }
         .photo-label { position: absolute; bottom: 12px; left: 12px; background: rgba(18, 38, 58, 0.75); color: #fff; padding: 4px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
         .card-content { padding: 30px; }
-        .card h3 { color: var(--primary); font-size: 1.6rem; margin-bottom: 8px; font-weight: 400; }
-        .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
-        .card p { font-size: 0.95rem; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; }
+        .card h3 { color: var(--primary); font-size: 1.5rem; margin-bottom: 8px; font-weight: 400; }
+        .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
+        .card p { font-size: 0.9rem; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; }
         
         .availability-box { background: #fdfbf7; border: 1px solid rgba(197, 168, 128, 0.4); border-radius: 4px; padding: 15px; margin: 18px 0; text-align: center; font-family: 'Segoe UI', sans-serif; }
         .availability-box p { font-size: 0.85rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
@@ -169,6 +168,14 @@
 
         <!-- --- CONTENU PERSONNALISÉ DU VOYAGEUR --- -->
         <div id="guest-portal" style="display: none;">
+            <div class="portal-header-top">
+                <button onclick="logoutPortal()" class="availability-btn" style="background: #fff; color: #7d7568; border-color: #ccc; margin: 0;">
+                    <span class="lang-fr">🔒 Verrouiller l'accès</span>
+                    <span class="lang-en" style="display:none;">🔒 Lock Access</span>
+                    <span class="lang-de" style="display:none;">🔒 Zugang sperren</span>
+                </button>
+            </div>
+
             <h2 class="welcome-title" id="welcome-message">Bienvenue !</h2>
             <p style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
@@ -248,14 +255,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <button onclick="logoutPortal()" class="availability-btn" style="background: #fff; color: #7d7568; border-color: #ccc;">
-                    <span class="lang-fr">Verrouiller l'accès</span>
-                    <span class="lang-en" style="display:none;">Lock Access</span>
-                    <span class="lang-de" style="display:none;">Zugang sperren</span>
-                </button>
-            </div>
         </div>
     </div>
     
@@ -267,15 +266,30 @@
                 <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner</span></div>
             </div>
 
-            <div class="section-title lang-fr">Les Hébergements de Charme</div>
-            <div class="section-title lang-en" style="display:none;">Our Charming Cottages</div>
-            <div class="section-title lang-de" style="display:none;">Unsere Charmanten Cottages</div>
+            <div class="section-title lang-fr">Le Domaine & Nos Hébergements</div>
+            <div class="section-title lang-en" style="display:none;">The Estate & Our Accommodations</div>
+            <div class="section-title lang-de" style="display:none;">Das Anwesen & Unsere Unterkünfte</div>
             
             <div class="grid">
-                <!-- Le Grandzabris (Photo du Domaine des Ozabris replacée ici) -->
+                <!-- 1. Espace ZenAbris -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Le Grandzabris">
+                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
+                        <div class="photo-label">Le ZenAbris</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Espace ZenAbris</h3>
+                        <div class="specs">🌿 Bien-être │ Accès Gratuit & Partagé</div>
+                        <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
+                        <p class="lang-en" style="display:none;">Nestled in our lush garden, the ZenAbris area and its Softub Spa offer an absolute moment of relaxation after hiking. An ideal haven of peace to recharge!</p>
+                        <p class="lang-de" style="display:none;">Eingebettet in unseren üppigen Garten bieten der ZenAbris-Bereich und sein Softub-Spa pure Entspannung nach einer Wanderung. Eine ideale Oase der Ruhe!</p>
+                    </div>
+                </div>
+
+                <!-- 2. Le Grandzabris -->
+                <div class="card">
+                    <div class="single-photo-container">
+                        <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
                         <div class="photo-label">Le Grandzabris</div>
                     </div>
                     <div class="card-content">
@@ -289,10 +303,11 @@
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
-                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
+                            <!-- target="_blank" et rel="noopener noreferrer" permettent d'ouvrir dans un nouvel onglet sans perdre le site d'origine -->
+                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" rel="noopener noreferrer" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
-                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" class="btn">
+                            <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" rel="noopener noreferrer" class="btn">
                                 <span class="lang-fr">Réserver</span>
                                 <span class="lang-en" style="display:none;">Book</span>
                                 <span class="lang-de" style="display:none;">Buchen</span>
@@ -301,7 +316,7 @@
                     </div>
                 </div>
 
-                <!-- Le Ptitzabris -->
+                <!-- 3. Le Ptitzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
@@ -318,10 +333,11 @@
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
-                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="availability-btn">Airbnb ↗</a>
+                            <!-- target="_blank" et rel="noopener noreferrer" pour le confort sur smartphone -->
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
-                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" class="btn">
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="btn">
                                 <span class="lang-fr">Réserver</span>
                                 <span class="lang-en" style="display:none;">Book</span>
                                 <span class="lang-de" style="display:none;">Buchen</span>
@@ -336,18 +352,6 @@
             <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
             
             <div class="info-block">
-                <!-- Espace ZenAbris -->
-                <div class="info-item">
-                    <h4 class="lang-fr">🌿 Espace Bien-être (Le ZenAbris) — Accès Gratuit & Partagé</h4>
-                    <h4 class="lang-en" style="display:none;">🌿 Wellness Area (Le ZenAbris) — Free & Shared Access</h4>
-                    <h4 class="lang-de" style="display:none;">🌿 Wellnessbereich (Le ZenAbris) — Kostenloser & Gemeinsamer Zugang</h4>
-                    <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Cet espace de détente est <strong>entièrement gratuit</strong> et mis à disposition partagée des voyageurs de nos deux cottages (Le Ptitzabris et Le Grandzabris). Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
-                    <p class="lang-en" style="display:none;">Nestled in the heart of our lush large garden, the ZenAbris area and its Softub Spa offer you an absolute moment of letting go after a great day of hiking. This relaxation area is <strong>completely free</strong> and shared for the guests of both our cottages (Le Ptitzabris and Le Grandzabris). An ideal haven of peace to recharge your batteries in complete serenity!</p>
-                    <p class="lang-de" style="display:none;">Eingebettet in unseren großen, üppigen Garten bieten Ihnen der ZenAbris-Bereich und sein Softub-Spa einen absoluten Moment der Entspannung nach einer herrlichen Wandertour. Dieser Entspannungsbereich ist <strong>völlig kostenlos</strong> und wird von den Gästen unserer beiden Cottages (Le Ptitzabris und Le Grandzabris) gemeinsam genutzt. Eine ideale Oase der Ruhe zum Auftanken in völliger Gelassenheit!</p>
-                </div>
-
-                <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
-
                 <!-- Nos animaux -->
                 <div class="info-item">
                     <h4 class="lang-fr">🐾 Nos Amis les Animaux</h4>
