@@ -18,12 +18,13 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
-        /* En-tête avec la nouvelle vue aérienne du jardin en fond */
+        /* En-tête avec la photo du jardin en fond et un voile sombre élégant pour la lisibilité */
         header { 
-            background: linear-gradient(rgba(18, 38, 58, 0.65), rgba(18, 38, 58, 0.75)), url('https://i.postimg.cc/hvNGHwj0/IMG-1687.jpg') no-repeat center center; 
+            background: linear-gradient(rgba(18, 38, 58, 0.75), rgba(26, 54, 93, 0.75)), url('https://i.postimg.cc/m227V1Jq/IMG-4249.jpg');
             background-size: cover;
+            background-position: center;
             text-align: center; 
-            padding: 60px 20px 50px 20px; 
+            padding: 70px 20px 60px 20px; 
             border-bottom: 2px solid var(--accent); 
             position: relative; 
             color: var(--white);
@@ -99,11 +100,6 @@
 
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
-        
-        /* Bannière photo vedette / ambiance domaine */
-        .domain-showcase { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; margin-top: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
-        .domain-showcase img { width: 100%; max-height: 420px; object-fit: cover; }
-        .domain-showcase-content { padding: 35px; }
 
         .info-block { background: var(--white); border-radius: 4px; padding: 35px; border: 1px solid #f0eadec; margin-top: 35px; }
         .info-item { margin-bottom: 30px; }
@@ -271,34 +267,15 @@
                 <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner</span></div>
             </div>
 
-            <!-- Photo classe / Ambiance du domaine -->
-            <div class="domain-showcase">
-                <div class="single-photo-container" style="height: 380px;">
-                    <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Ambiance Les Ozabris">
-                    <div class="photo-label lang-fr">Le Domaine des Ozabris</div>
-                    <div class="photo-label lang-en" style="display:none;">Les Ozabris Domain</div>
-                    <div class="photo-label lang-de" style="display:none;">Anwesen Les Ozabris</div>
-                </div>
-                <div class="domain-showcase-content">
-                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400;" class="lang-fr">Une immersion authentique dans les Hauts</h3>
-                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400; display:none;" class="lang-en">An authentic immersion in the Highlands</h3>
-                    <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; font-weight: 400; display:none;" class="lang-de">Ein authentisches Eintauchen ins Hochland</h3>
-                    
-                    <p class="lang-fr">Niché au cœur d'une nature luxuriante, notre domaine conjugue le charme de l'authentique et le confort moderne pour vous offrir une halte reposante et inspirante.</p>
-                    <p class="lang-en" style="display:none;">Nestled in lush nature, our estate combines authentic charm with modern comfort to offer you a relaxing and inspiring stay.</p>
-                    <p class="lang-de" style="display:none;">Eingebettet in üppige Natur verbindet unser Anwesen authentischen Charme mit modernem Komfort für einen erholsamen Aufenthalt.</p>
-                </div>
-            </div>
-
             <div class="section-title lang-fr">Les Hébergements de Charme</div>
             <div class="section-title lang-en" style="display:none;">Our Charming Cottages</div>
             <div class="section-title lang-de" style="display:none;">Unsere Charmanten Cottages</div>
             
             <div class="grid">
-                <!-- Le Grandzabris (Photo distincte dédiée) -->
+                <!-- Le Grandzabris (Photo du Domaine des Ozabris replacée ici) -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/k47Zf9qL/DJI-0453.jpg" alt="Le Grandzabris">
+                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Le Grandzabris">
                         <div class="photo-label">Le Grandzabris</div>
                     </div>
                     <div class="card-content">
@@ -359,7 +336,7 @@
             <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
             
             <div class="info-block">
-                <!-- Espace ZenAbris avec photo et clarification d'accès -->
+                <!-- Espace ZenAbris -->
                 <div class="info-item">
                     <h4 class="lang-fr">🌿 Espace Bien-être (Le ZenAbris) — Accès Gratuit & Partagé</h4>
                     <h4 class="lang-en" style="display:none;">🌿 Wellness Area (Le ZenAbris) — Free & Shared Access</h4>
@@ -367,13 +344,6 @@
                     <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Cet espace de détente est <strong>entièrement gratuit</strong> et mis à disposition partagée des voyageurs de nos deux cottages (Le Ptitzabris et Le Grandzabris). Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
                     <p class="lang-en" style="display:none;">Nestled in the heart of our lush large garden, the ZenAbris area and its Softub Spa offer you an absolute moment of letting go after a great day of hiking. This relaxation area is <strong>completely free</strong> and shared for the guests of both our cottages (Le Ptitzabris and Le Grandzabris). An ideal haven of peace to recharge your batteries in complete serenity!</p>
                     <p class="lang-de" style="display:none;">Eingebettet in unseren großen, üppigen Garten bieten Ihnen der ZenAbris-Bereich und sein Softub-Spa einen absoluten Moment der Entspannung nach einer herrlichen Wandertour. Dieser Entspannungsbereich ist <strong>völlig kostenlos</strong> und wird von den Gästen unserer beiden Cottages (Le Ptitzabris und Le Grandzabris) gemeinsam genutzt. Eine ideale Oase der Ruhe zum Auftanken in völliger Gelassenheit!</p>
-                    
-                    <div class="single-photo-container" style="height: 300px; margin-top: 15px; border-radius: 4px;">
-                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
-                        <div class="photo-label lang-fr">ZenAbris</div>
-                        <div class="photo-label lang-en" style="display:none;">ZenAbris</div>
-                        <div class="photo-label lang-de" style="display:none;">ZenAbris</div>
-                    </div>
                 </div>
 
                 <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
