@@ -62,7 +62,7 @@
         .error-msg { color: #b94a48; font-size: 0.8rem; margin-top: 10px; display: none; font-family: 'Segoe UI', sans-serif; }
 
         /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
-        #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 30px 40px 40px 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+        #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 6px; padding: 30px 40px 40px 40px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; text-align: left; }
         .portal-header-top { display: flex; justify-content: flex-end; margin-bottom: 15px; }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
@@ -71,8 +71,7 @@
         .guide-box p, .guide-box ul { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
         .guide-box ul { padding-left: 18px; }
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 4px; border: 1px dashed var(--accent); margin-top: 10px; }
-        .wifi-img-box img { max-width: 140px; height: auto; margin-bottom: 8px; }
-        .instruction-img { width: 100%; max-height: 220px; object-fit: contain; border-radius: 4px; border: 1px solid #ddd; margin-top: 10px; background: #fff; padding: 5px; }
+        .wifi-img-box img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; margin: 0 auto; }
 
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
@@ -197,21 +196,21 @@
             </p>
             
             <div class="guide-grid">
-                <!-- 1. Apéro d'accueil (19h30) -->
+                <!-- 1. Apéro d'accueil (19h30, min 3 nuits, parking) -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
                         <h5 class="lang-en" style="display:none;">🥂 Welcome Aperitif</h5>
                         <h5 class="lang-de" style="display:none;">🥂 Willkommens-Aperitif</h5>
-                        <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances.</p>
-                        <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right.</p>
-                        <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen.</p>
+                        <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances <em>(proposé pour tout séjour de 3 nuits minimum)</em>.</p>
+                        <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right <em>(offered for stays of 3 nights minimum)</em>.</p>
+                        <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen <em>(ab einem Aufenthalt von mindestens 3 Nächten)</em>.</p>
                         <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span><span class="lang-de" style="display:none;">Uhrzeit:</span></strong> 19h30</p>
                     </div>
                     <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 15px;">
-                        <span class="lang-fr">Rendez-vous près de l'espace commun / brasero.</span>
-                        <span class="lang-en" style="display:none;">Meet us near the common area / fire pit.</span>
-                        <span class="lang-de" style="display:none;">Treffpunkt am Gemeinschaftsbereich / Feuerstelle.</span>
+                        <span class="lang-fr">Rendez-vous sur le parking.</span>
+                        <span class="lang-en" style="display:none;">Meet us at the parking area.</span>
+                        <span class="lang-de" style="display:none;">Treffpunkt auf dem Parkplatz.</span>
                     </p>
                 </div>
 
@@ -225,9 +224,9 @@
                     </div>
                     <div class="wifi-img-box">
                         <img id="wifi-qr-img" src="" alt="QR Code Wifi">
-                        <p style="font-size: 0.75rem; color: #555;" class="lang-fr">Scannez pour vous connecter en un clic</p>
-                        <p style="font-size: 0.75rem; color: #555; display:none;" class="lang-en">Scan to connect in one click</p>
-                        <p style="font-size: 0.75rem; color: #555; display:none;" class="lang-de">Scannen, um sich mit einem Klick zu verbinden</p>
+                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px;" class="lang-fr">Scannez pour vous connecter en un clic</p>
+                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px; display:none;" class="lang-en">Scan to connect in one click</p>
+                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px; display:none;" class="lang-de">Scannen, um sich mit einem Klick zu verbinden</p>
                     </div>
                 </div>
 
@@ -258,8 +257,47 @@
                         <p class="lang-en" style="color: #b94a48; font-weight: bold; font-size: 0.85rem; display:none;">⚠️ Toilet paper only! No wipes or sanitary products.</p>
                         <p class="lang-de" style="color: #b94a48; font-weight: bold; font-size: 0.85rem; display:none;">⚠️ Nur Toilettenpapier! Keine Feuchttücher.</p>
                     </div>
-                    <div style="text-align: center; margin-top: 10px;">
-                        <img src="https://i.postimg.cc/FRZkRwQW/IMG-4415.jpg" alt="Consignes Sanibroyeur" class="instruction-img">
+                    <div class="wifi-img-box">
+                        <img src="https://i.postimg.cc/FRZkRwQW/IMG-4415.jpg" alt="Consignes Sanibroyeur">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Carte Accès & Waze -->
+            <div style="margin-top: 30px;" class="card">
+                <div style="display: flex; flex-wrap: wrap;">
+                    <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
+                        <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
+                        <div class="photo-label">Accès Parking & Sécurité</div>
+                    </div>
+                    <div class="card-content" style="flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 class="lang-fr">🚗 Accès & Itinéraire Waze</h3>
+                            <h3 class="lang-en" style="display:none;">🚗 Access & Waze Directions</h3>
+                            <h3 class="lang-de" style="display:none;">🚗 Anfahrt & Waze-Wegbeschreibung</h3>
+                            <div class="specs">📍 162 rue fond coche Mahot</div>
+                            <p class="lang-fr" style="margin-bottom: 12px;">Laissez-vous guider facilement jusqu'aux Ozabris en un clic depuis votre position actuelle grâce à Waze.</p>
+                            <p class="lang-en" style="margin-bottom: 12px; display:none;">Let Waze guide you easily straight to Les Ozabris from your current location in one click.</p>
+                            <p class="lang-de" style="margin-bottom: 12px; display:none;">Lassen Sie sich mit Waze ganz einfach von Ihrem aktuellen Standort zu Les Ozabris leiten.</p>
+                            
+                            <div style="background: #fdfbf7; border: 1px solid rgba(185, 74, 72, 0.3); border-left: 4px solid #b94a48; padding: 12px 15px; border-radius: 2px; margin-bottom: 15px;">
+                                <p class="lang-fr" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px;">⚠️ Consigne indispensable pour le parking :</p>
+                                <p class="lang-en" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Essential parking instruction:</p>
+                                <p class="lang-de" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Wichtiger Hinweis zum Parken:</p>
+                                
+                                <p class="lang-fr" style="font-size: 0.83rem; color: #444; margin-bottom: 0;">L'accès au parking doit obligatoirement se faire <strong>en marche en arrière</strong>. La route principale étant très fréquentée, stationner ainsi vous garantira une sortie fluide, sécurisée et sans difficulté !</p>
+                                <p class="lang-en" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">You must back into the parking space upon arrival. Because the main road is very busy, parking this way ensures a smooth and safe exit!</p>
+                                <p class="lang-de" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">Bitte parken Sie unbedingt rückwärts ein. Da die Hauptstraße sehr befahren ist, ermöglicht dies eine sichere und stressfreie Ausfahrt!</p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: left;">
+                            <a href="https://waze.com/ul?q=162%20rue%20fond%20coche%20Mahot&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 10px 22px; background: #33ccff; color: #12263a;">
+                                <span class="lang-fr">📍 Lancer l'itinéraire Waze ↗</span>
+                                <span class="lang-en" style="display:none;">📍 Open in Waze ↗</span>
+                                <span class="lang-de" style="display:none;">📍 In Waze öffnen ↗</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -378,45 +416,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Carte Accès & Waze -->
-                <div class="card" style="grid-column: 1 / -1;">
-                    <div style="display: flex; flex-wrap: wrap;">
-                        <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
-                            <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
-                            <div class="photo-label">Accès Parking & Sécurité</div>
-                        </div>
-                        <div class="card-content" style="flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-                            <div>
-                                <h3 class="lang-fr">🚗 Accès & Itinéraire Waze</h3>
-                                <h3 class="lang-en" style="display:none;">🚗 Access & Waze Directions</h3>
-                                <h3 class="lang-de" style="display:none;">🚗 Anfahrt & Waze-Wegbeschreibung</h3>
-                                <div class="specs">📍 162 rue fond coche Mahot</div>
-                                <p class="lang-fr" style="margin-bottom: 12px;">Laissez-vous guider facilement jusqu'aux Ozabris en un clic depuis votre position actuelle grâce à Waze.</p>
-                                <p class="lang-en" style="margin-bottom: 12px; display:none;">Let Waze guide you easily straight to Les Ozabris from your current location in one click.</p>
-                                <p class="lang-de" style="margin-bottom: 12px; display:none;">Lassen Sie sich mit Waze ganz einfach von Ihrem aktuellen Standort zu Les Ozabris leiten.</p>
-                                
-                                <div style="background: #fdfbf7; border: 1px solid rgba(185, 74, 72, 0.3); border-left: 4px solid #b94a48; padding: 12px 15px; border-radius: 2px; margin-bottom: 15px;">
-                                    <p class="lang-fr" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px;">⚠️ Consigne indispensable pour le parking :</p>
-                                    <p class="lang-en" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Essential parking instruction:</p>
-                                    <p class="lang-de" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Wichtiger Hinweis zum Parken:</p>
-                                    
-                                    <p class="lang-fr" style="font-size: 0.83rem; color: #444; margin-bottom: 0;">L'accès au parking doit obligatoirement se faire <strong>en marche en arrière</strong>. La route principale étant très fréquentée, stationner ainsi vous garantira une sortie fluide, sécurisée et sans difficulté !</p>
-                                    <p class="lang-en" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">You must back into the parking space upon arrival. Because the main road is very busy, parking this way ensures a smooth and safe exit!</p>
-                                    <p class="lang-de" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">Bitte parken Sie unbedingt rückwärts ein. Da die Hauptstraße sehr befahren ist, ermöglicht dies eine sichere und stressfreie Ausfahrt!</p>
-                                </div>
-                            </div>
-
-                            <div style="text-align: left;">
-                                <a href="https://waze.com/ul?q=162%20rue%20fond%20coche%20Mahot&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 10px 22px; background: #33ccff; color: #12263a;">
-                                    <span class="lang-fr">📍 Lancer l'itinéraire Waze ↗</span>
-                                    <span class="lang-en" style="display:none;">📍 Open in Waze ↗</span>
-                                    <span class="lang-de" style="display:none;">📍 In Waze öffnen ↗</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
             <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
@@ -430,29 +429,29 @@
                     <h4 class="lang-en" style="display:none;">🐾 Our Animal Friends</h4>
                     <h4 class="lang-de" style="display:none;">🐾 Unsere Tierischen Freunde</h4>
                     <p class="lang-fr">Niché au cœur d’une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur. Ils font partie intégrante de l'âme des Ozabris et apportent une touche de vie supplémentaire au cœur de notre grand jardin arboré, au plus près de la nature.</p>
-                    <p class="lang-en" style="display:none; display:none;">Nestled in the heart of lush nature and offering a sea view, the estate welcomes our animal friends who share our daily lives with gentleness...</p>
-                    <p class="lang-de" style="display:none; display:none;">Eingebettet in üppige Natur und mit Meerblick heißt das Anwesen unsere tierischen Freunde willkommen...</p>
+                    <p class="lang-en" style="display:none;">Nestled in the heart of lush nature and offering a sea view, the estate welcomes our animal friends who share our daily lives with gentleness...</p>
+                    <p class="lang-de" style="display:none;">Eingebettet in üppige Natur und mit Meerblick heißt das Anwesen unsere tierischen Freunde willkommen...</p>
                     
                     <div class="animals-gallery">
                         <div class="animal-card">
-                            <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Tahaa">
-                            <div class="animal-name">Tahaa</div>
+                            <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Coco & Moorea">
+                            <div class="animal-name">Coco & Moorea</div>
                         </div>
                         <div class="animal-card">
                             <img src="https://i.postimg.cc/cLW1JNSN/418.jpg" alt="Chachoune">
                             <div class="animal-name">Chachoune</div>
                         </div>
                         <div class="animal-card">
-                            <img src="https://i.postimg.cc/LsbMLcrY/IMG-4257.jpg" alt="Perroquets">
-                            <div class="animal-name">Coco & Moorea</div>
+                            <img src="https://i.postimg.cc/LsbMLcrY/IMG-4257.jpg" alt="Tahaa">
+                            <div class="animal-name">Tahaa</div>
                         </div>
                         <div class="animal-card">
-                            <img src="https://i.postimg.cc/DyPkBJ9Z/Image.jpg" alt="Tortues">
-                            <div class="animal-name">Les Tortues</div>
+                            <img src="https://i.postimg.cc/DyPkBJ9Z/Image.jpg" alt="Les Caméléons">
+                            <div class="animal-name">Les Caméléons</div>
                         </div>
                         <div class="animal-card">
-                            <img src="https://i.postimg.cc/FRyDNcgz/a7eb1867-ede3-4cf5-8466-916d3da56916.jpg" alt="Compagnons">
-                            <div class="animal-name">Les Ozabris</div>
+                            <img src="https://i.postimg.cc/FRyDNcgz/a7eb1867-ede3-4cf5-8466-916d3da56916.jpg" alt="Chachoune">
+                            <div class="animal-name">Chachoune</div>
                         </div>
                     </div>
                 </div>
