@@ -19,37 +19,35 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
-        /* Banderole de l'entête */
+        /* Banderole de l'entête (fond uni et sobre) */
         header { 
-            background: linear-gradient(rgba(18, 38, 58, 0.55), rgba(26, 54, 93, 0.55)), url('https://i.postimg.cc/xC0z0c2p/Image.jpg');
-            background-size: cover;
-            background-position: center;
+            background: var(--primary);
             text-align: center; 
-            padding: 70px 20px 60px 20px; 
+            padding: 50px 20px 40px 20px; 
             border-bottom: 2px solid var(--accent); 
             position: relative; 
             color: var(--white);
         }
         
-        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 4px; }
+        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 4px; }
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 5px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        .brand-logo-container { max-width: 240px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid var(--accent); }
+        .brand-logo-container { max-width: 220px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
         .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
         
-        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; }
         @media (max-width: 768px) { 
             .logo-text { font-size: 2.1rem; } 
-            .brand-logo-container { max-width: 160px; }
+            .brand-logo-container { max-width: 150px; }
         }
-        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
         .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 750px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
-        .badge { background: rgba(255, 255, 255, 0.9); color: var(--primary); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
         .badge-stars { color: var(--gold); font-size: 0.9rem; }
         
-        .tagline { font-style: italic; color: #f0eadec; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.4); font-size: 1.05rem; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
+        .tagline { font-style: italic; color: #eae5db; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.3); font-size: 1.05rem; }
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
@@ -68,13 +66,13 @@
         .portal-header-top { display: flex; justify-content: flex-end; margin-bottom: 15px; }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
-        .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; padding: 25px; }
+        .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
         .guide-box p, .guide-box ul { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
         .guide-box ul { padding-left: 18px; }
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 4px; border: 1px dashed var(--accent); margin-top: 10px; }
         .wifi-img-box img { max-width: 140px; height: auto; margin-bottom: 8px; }
-        .instruction-img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #ddd; margin-top: 10px; }
+        .instruction-img { width: 100%; max-height: 220px; object-fit: contain; border-radius: 4px; border: 1px solid #ddd; margin-top: 10px; background: #fff; padding: 5px; }
 
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
@@ -115,6 +113,12 @@
         .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 10px; font-size: 0.95rem; }
         .info-item p { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: #555; }
         
+        /* Galerie animaux */
+        .animals-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-top: 20px; }
+        .animal-card { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; overflow: hidden; text-align: center; }
+        .animal-card img { width: 100%; height: 110px; object-fit: cover; display: block; }
+        .animal-name { font-size: 0.75rem; font-weight: 600; color: var(--primary); padding: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+
         footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 50px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 3px solid var(--accent); }
         .contact-info { background: rgba(255,255,255,0.03); max-width: 550px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
@@ -195,14 +199,16 @@
             <div class="guide-grid">
                 <!-- 1. Apéro d'accueil (19h30) -->
                 <div class="guide-box">
-                    <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
-                    <h5 class="lang-en" style="display:none;">🥂 Welcome Aperitif</h5>
-                    <h5 class="lang-de" style="display:none;">🥂 Willkommens-Aperitif</h5>
-                    <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances.</p>
-                    <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right.</p>
-                    <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen.</p>
-                    <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span><span class="lang-de" style="display:none;">Uhrzeit:</span></strong> 19h30</p>
-                    <p style="font-style: italic; color: #777; font-size: 0.85rem;">
+                    <div>
+                        <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
+                        <h5 class="lang-en" style="display:none;">🥂 Welcome Aperitif</h5>
+                        <h5 class="lang-de" style="display:none;">🥂 Willkommens-Aperitif</h5>
+                        <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances.</p>
+                        <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right.</p>
+                        <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen.</p>
+                        <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span><span class="lang-de" style="display:none;">Uhrzeit:</span></strong> 19h30</p>
+                    </div>
+                    <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 15px;">
                         <span class="lang-fr">Rendez-vous près de l'espace commun / brasero.</span>
                         <span class="lang-en" style="display:none;">Meet us near the common area / fire pit.</span>
                         <span class="lang-de" style="display:none;">Treffpunkt am Gemeinschaftsbereich / Feuerstelle.</span>
@@ -211,10 +217,12 @@
 
                 <!-- 2. Connexion Wi-Fi -->
                 <div class="guide-box">
-                    <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
-                    <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
-                    <h5 class="lang-de" style="display:none;">📶 WLAN-Verbindung</h5>
-                    <p id="wifi-text" style="font-size: 0.85rem; font-weight: bold; color: var(--primary);">Cottage : -</p>
+                    <div>
+                        <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
+                        <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
+                        <h5 class="lang-de" style="display:none;">📶 WLAN-Verbindung</h5>
+                        <p id="wifi-text" style="font-size: 0.85rem; font-weight: bold; color: var(--primary);">Cottage : -</p>
+                    </div>
                     <div class="wifi-img-box">
                         <img id="wifi-qr-img" src="" alt="QR Code Wifi">
                         <p style="font-size: 0.75rem; color: #555;" class="lang-fr">Scannez pour vous connecter en un clic</p>
@@ -225,42 +233,33 @@
 
                 <!-- 3. Consignes Poubelles -->
                 <div class="guide-box">
-                    <h5 class="lang-fr">♻️ Consignes Poubelles</h5>
-                    <h5 class="lang-en" style="display:none;">♻️ Trash & Recycling</h5>
-                    <h5 class="lang-de" style="display:none;">♻️ Mülltrennung</h5>
-                    <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur à La Réunion. Respectez les consignes du domaine situées près du portail.</p>
-                    <p class="lang-en" style="display:none; font-size: 0.85rem;">Sorting is mandatory in La Réunion. Please follow the instructions near the main gate.</p>
-                    <p class="lang-de" style="display:none; font-size: 0.85rem;">Mülltrennung ist auf La Réunion Pflicht. Bitte beachten Sie die Hinweise am Haupttor.</p>
-                    <div style="background:#fff; padding:10px; border-radius:4px; text-align:center; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
-                        🗑️ <span class="lang-fr"><strong>Poubelle Jaune :</strong> Emballages & Plastiques</span>
-                           <span class="lang-en" style="display:none;"><strong>Yellow Bin:</strong> Packaging & Plastics</span>
-                           <span class="lang-de" style="display:none;"><strong>Gelbe Tonne:</strong> Verpackungen & Plastik</span><br>
-                        🟢 <span class="lang-fr"><strong>Poubelle Verte :</strong> Verre</span>
-                           <span class="lang-en" style="display:none;"><strong>Green Bin:</strong> Glass</span>
-                           <span class="lang-de" style="display:none;"><strong>Grüne Tonne:</strong> Glas</span><br>
-                        ⚫ <span class="lang-fr"><strong>Ordures Ménagères :</strong> Le reste</span>
-                           <span class="lang-en" style="display:none;"><strong>General Waste:</strong> The rest</span>
-                           <span class="lang-de" style="display:none;"><strong>Restmüll:</strong> Alles andere</span>
+                    <div>
+                        <h5 class="lang-fr">♻️ Consignes Poubelles & Compost</h5>
+                        <h5 class="lang-en" style="display:none;">♻️ Trash, Recycling & Compost</h5>
+                        <h5 class="lang-de" style="display:none;">♻️ Mülltrennung & Kompost</h5>
+                        <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur. Petites poubelles de compost dispo sur chaque terrasse pour vos déchets organiques.</p>
+                        <p class="lang-en" style="font-size: 0.85rem; display:none;">Sorting is mandatory. Small compost bins available on each terrace for organic waste.</p>
+                        <p class="lang-de" style="font-size: 0.85rem; display:none;">Mülltrennung ist Pflicht. Kleine Komposteimer stehen auf jeder Terrasse zur Verfügung.</p>
+                        <div style="background:#fff; padding:10px; border-radius:4px; text-align:left; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
+                            🗑️ <span class="lang-fr"><strong>Jaune :</strong> Emballages & Plastiques</span><br>
+                            🟡 <span class="lang-fr"><strong>Conteneur verres (en métal et jaune) :</strong> Sur le parking au début de la descente des escaliers. <em>(Mettre les bouteilles Dodo dans un sac plastique à côté).</em></span><br>
+                            ⚫ <span class="lang-fr"><strong>Ordures ménagères :</strong> Le reste</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 4. Consignes Sanibroyeur -->
-                <div class="guide-box" style="grid-column: 1 / -1;">
-                    <h5 class="lang-fr">🚽 Utilisation des Sanibroyeurs</h5>
-                    <h5 class="lang-en" style="display:none;">🚽 Macerator Toilet Instructions</h5>
-                    <h5 class="lang-de" style="display:none;">🚽 Hinweise zur Hebeanlage-Toilette</h5>
-                    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
-                        <div style="flex: 1; min-width: 250px;">
-                            <p class="lang-fr" style="color: #b94a48; font-weight: bold;">⚠️ Papier toilette uniquement !</p>
-                            <p class="lang-en" style="color: #b94a48; font-weight: bold; display:none;">⚠️ Toilet paper only!</p>
-                            <p class="lang-de" style="color: #b94a48; font-weight: bold; display:none;">⚠️ Nur Toilettenpapier!</p>
-                            <p class="lang-fr" style="font-size: 0.85rem;">Interdiction absolue de jeter des lingettes, couches ou protections hygiéniques au risque de bloquer l'installation.</p>
-                            <p class="lang-en" style="font-size: 0.85rem; display:none;">No wipes, diapers, or sanitary products under any circumstances.</p>
-                            <p class="lang-de" style="font-size: 0.85rem; display:none;">Keinesfalls Feuchttücher, Windeln oder Hygieneartikel hineinwerfen, um Verstopfungen zu vermeiden.</p>
-                        </div>
-                        <div style="flex: 1; min-width: 250px; text-align: center;">
-                            <img src="https://i.postimg.cc/FRZkRwQW/IMG-4415.jpg" alt="Consignes Sanibroyeur" class="instruction-img" style="max-height: 180px; object-fit: contain;">
-                        </div>
+                <div class="guide-box">
+                    <div>
+                        <h5 class="lang-fr">🚽 Utilisation Sanibroyeur</h5>
+                        <h5 class="lang-en" style="display:none;">🚽 Macerator Toilet Instructions</h5>
+                        <h5 class="lang-de" style="display:none;">🚽 Hebeanlage-Toilette</h5>
+                        <p class="lang-fr" style="color: #b94a48; font-weight: bold; font-size: 0.85rem;">⚠️ Papier toilette uniquement ! Interdiction de jeter lingettes ou protections.</p>
+                        <p class="lang-en" style="color: #b94a48; font-weight: bold; font-size: 0.85rem; display:none;">⚠️ Toilet paper only! No wipes or sanitary products.</p>
+                        <p class="lang-de" style="color: #b94a48; font-weight: bold; font-size: 0.85rem; display:none;">⚠️ Nur Toilettenpapier! Keine Feuchttücher.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <img src="https://i.postimg.cc/FRZkRwQW/IMG-4415.jpg" alt="Consignes Sanibroyeur" class="instruction-img">
                     </div>
                 </div>
             </div>
@@ -425,14 +424,37 @@
             <div class="section-title lang-de" style="display:none;">Lebensart auf dem Anwesen</div>        
             
             <div class="info-block">
-                <!-- Nos animaux -->
+                <!-- Nos animaux avec vignettes -->
                 <div class="info-item">
                     <h4 class="lang-fr">🐾 Nos Amis les Animaux</h4>
                     <h4 class="lang-en" style="display:none;">🐾 Our Animal Friends</h4>
                     <h4 class="lang-de" style="display:none;">🐾 Unsere Tierischen Freunde</h4>
-                    <p class="lang-fr">Le domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur. Ils font partie intégrante de l'âme des Ozabris et apportent une touche de vie supplémentaire au cœur de notre grand jardin arboré, au plus près de la nature.</p>
-                    <p class="lang-en" style="display:none;">The estate welcomes our animal friends who share our daily lives with gentleness. They are an integral part of the soul of Les Ozabris and add an extra touch of life to the heart of our large tree-filled garden, close to nature.</p>
-                    <p class="lang-de" style="display:none;">Das Anwesen heißt unsere tierischen Freunde willkommen, die unseren Alltag mit Sanftmut bereichern. Sie sind ein fester Bestandteil der Seele von Les Ozabris und verleihen unserem großen, baumbestandenen Garten mitten in der Natur eine ganz besondere Note.</p>
+                    <p class="lang-fr">Niché au cœur d’une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur. Ils font partie intégrante de l'âme des Ozabris et apportent une touche de vie supplémentaire au cœur de notre grand jardin arboré, au plus près de la nature.</p>
+                    <p class="lang-en" style="display:none; display:none;">Nestled in the heart of lush nature and offering a sea view, the estate welcomes our animal friends who share our daily lives with gentleness...</p>
+                    <p class="lang-de" style="display:none; display:none;">Eingebettet in üppige Natur und mit Meerblick heißt das Anwesen unsere tierischen Freunde willkommen...</p>
+                    
+                    <div class="animals-gallery">
+                        <div class="animal-card">
+                            <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Tahaa">
+                            <div class="animal-name">Tahaa</div>
+                        </div>
+                        <div class="animal-card">
+                            <img src="https://i.postimg.cc/cLW1JNSN/418.jpg" alt="Chachoune">
+                            <div class="animal-name">Chachoune</div>
+                        </div>
+                        <div class="animal-card">
+                            <img src="https://i.postimg.cc/LsbMLcrY/IMG-4257.jpg" alt="Perroquets">
+                            <div class="animal-name">Coco & Moorea</div>
+                        </div>
+                        <div class="animal-card">
+                            <img src="https://i.postimg.cc/DyPkBJ9Z/Image.jpg" alt="Tortues">
+                            <div class="animal-name">Les Tortues</div>
+                        </div>
+                        <div class="animal-card">
+                            <img src="https://i.postimg.cc/FRyDNcgz/a7eb1867-ede3-4cf5-8466-916d3da56916.jpg" alt="Compagnons">
+                            <div class="animal-name">Les Ozabris</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
