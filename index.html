@@ -19,7 +19,7 @@
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
         header { 
-            background: linear-gradient(rgba(18, 38, 58, 0.75), rgba(26, 54, 93, 0.75)), url('https://i.postimg.cc/13yj8PKc/Image.jpg');
+            background: linear-gradient(rgba(18, 38, 58, 0.55), rgba(26, 54, 93, 0.55)), url('https://i.postimg.cc/m227V1Jq/IMG-4249.jpg');
             background-size: cover;
             background-position: center;
             text-align: center; 
@@ -99,6 +99,13 @@
 
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+        /* Style pour l'encadré Écologique à côté du ZenAbris */
+        .eco-card { background: var(--white); border-radius: 4px; padding: 30px; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
+        .eco-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid var(--accent); padding-bottom: 12px; }
+        .eco-icon { font-size: 2.2rem; background: #f4eee3; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; }
+        .eco-card h3 { color: var(--primary); font-size: 1.3rem; font-family: 'Playfair Display', serif; font-weight: 400; }
+        .eco-card p { font-size: 0.88rem; color: #555; margin-bottom: 12px; line-height: 1.6; }
 
         .info-block { background: var(--white); border-radius: 4px; padding: 35px; border: 1px solid #f0eadec; margin-top: 35px; }
         .info-item { margin-bottom: 30px; }
@@ -271,18 +278,32 @@
             <div class="section-title lang-de" style="display:none;">Das Anwesen & Unsere Unterkünfte</div>
             
             <div class="grid">
-                <!-- 1. Espace ZenAbris -->
+                <!-- 1. Le Ptitzabris -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
-                        <div class="photo-label">Le ZenAbris</div>
+                        <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
+                        <div class="photo-label">Le Ptitzabris</div>
                     </div>
                     <div class="card-content">
-                        <h3>Espace ZenAbris</h3>
-                        <div class="specs">🌿 Bien-être │ Accès Gratuit & Partagé</div>
-                        <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
-                        <p class="lang-en" style="display:none;">Nestled in our lush garden, the ZenAbris area and its Softub Spa offer an absolute moment of relaxation after hiking. An ideal haven of peace to recharge!</p>
-                        <p class="lang-de" style="display:none;">Eingebettet in unseren üppigen Garten bieten der ZenAbris-Bereich und sein Softub-Spa pure Entspannung nach einer Wanderung. Eine ideale Oase der Ruhe!</p>
+                        <h3>Le Ptitzabris</h3>
+                        <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
+                        <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
+                        <p class="lang-en" style="display:none;">A sanctuary of privacy and refinement tailored for romantic getaways.</p>
+                        <p class="lang-de" style="display:none;">Ein Refugium der Privatsphäre und Raffinesse, maßgeschneidert für romantische Auszeiten.</p>
+                        
+                        <div class="availability-box">
+                            <p class="lang-fr">📅 Disponibilités en temps réel</p>
+                            <p class="lang-en" style="display:none;">📅 Real-time availability</p>
+                            <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="availability-btn">Airbnb ↗</a>
+                        </div>
+                        <div class="btn-container">
+                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="btn">
+                                <span class="lang-fr">Réserver</span>
+                                <span class="lang-en" style="display:none;">Book</span>
+                                <span class="lang-de" style="display:none;">Buchen</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -303,7 +324,6 @@
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
-                            <!-- target="_blank" et rel="noopener noreferrer" permettent d'ouvrir dans un nouvel onglet sans perdre le site d'origine -->
                             <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" rel="noopener noreferrer" class="availability-btn">Airbnb ↗</a>
                         </div>
                         <div class="btn-container">
@@ -316,35 +336,86 @@
                     </div>
                 </div>
 
-                <!-- 3. Le Ptitzabris -->
+                <!-- 3. Espace ZenAbris -->
                 <div class="card">
                     <div class="single-photo-container">
-                        <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
-                        <div class="photo-label">Le Ptitzabris</div>
+                        <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
+                        <div class="photo-label">Le ZenAbris</div>
                     </div>
                     <div class="card-content">
-                        <h3>Le Ptitzabris</h3>
-                        <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
-                        <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
-                        <p class="lang-en" style="display:none;">A sanctuary of privacy and refinement tailored for romantic getaways.</p>
-                        <p class="lang-de" style="display:none;">Ein Refugium der Privatsphäre und Raffinesse, maßgeschneidert für romantische Auszeiten.</p>
-                        
-                        <div class="availability-box">
-                            <p class="lang-fr">📅 Disponibilités en temps réel</p>
-                            <p class="lang-en" style="display:none;">📅 Real-time availability</p>
-                            <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
-                            <!-- target="_blank" et rel="noopener noreferrer" pour le confort sur smartphone -->
-                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="availability-btn">Airbnb ↗</a>
+                        <h3>Espace ZenAbris</h3>
+                        <div class="specs">🌿 Bien-être │ Accès Gratuit & Partagé</div>
+                        <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
+                        <p class="lang-en" style="display:none;">Nestled in our lush garden, the ZenAbris area and its Softub Spa offer an absolute moment of relaxation after hiking. An ideal haven of peace to recharge!</p>
+                        <p class="lang-de" style="display:none;">Eingebettet in unseren üppigen Garten bieten der ZenAbris-Bereich und sein Softub-Spa pure Entspannung nach einer Wanderung. Eine ideale Oase der Ruhe!</p>
+                    </div>
+                </div>
+
+                <!-- 4. Encadré Écologique à côté du ZenAbris -->
+                <div class="eco-card">
+                    <div>
+                        <div class="eco-header">
+                            <div class="eco-icon">🌍</div>
+                            <div>
+                                <h3 class="lang-fr">Empreinte Écologique & Solaire</h3>
+                                <h3 class="lang-en" style="display:none;">Ecological & Solar Commitment</h3>
+                                <h3 class="lang-de" style="display:none;">Ökologisches & Solares Engagement</h3>
+                                <div class="specs" style="margin-bottom:0;">🌱 Tourisme Durable à La Réunion</div>
+                            </div>
                         </div>
-                        <div class="btn-container">
-                            <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="btn">
-                                <span class="lang-fr">Réserver</span>
-                                <span class="lang-en" style="display:none;">Book</span>
-                                <span class="lang-de" style="display:none;">Buchen</span>
-                            </a>
+                        <p class="lang-fr">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries et un chauffe-eau solaire.</p>
+                        <p class="lang-en" style="display:none;">At Les Ozabris, we combine hospitality with the preservation of our magnificent island. Our estate operates in total harmony with the sun thanks to photovoltaic panels paired with batteries and a solar water heater.</p>
+                        <p class="lang-de" style="display:none;">In Les Ozabris verbinden wir Gastfreundschaft mit dem Schutz unserer herrlichen Insel. Unser Anwesen arbeitet in voller Harmonie mit der Sonne dank Photovoltaikanlagen mit Batteriespeicher und Solar-Warmwasserbereitern.</p>
+                        <p class="lang-fr">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique. Tri sélectif, gestion rigoureuse de l'eau et amour de la nature guident chacun de nos pas pour un séjour vertueux.</p>
+                        <p class="lang-en" style="display:none;">All our rooms feature high-efficiency inverter reversible air conditioners. Selective sorting, rigorous water management, and a love of nature guide our steps for a virtuous stay.</p>
+                        <p class="lang-de" style="display:none;">Alle unsere Zimmer sind mit harten, energieeffizienten Inverter-Klimaanlagen ausgestattet. Mülltrennung und Liebe zur Natur leiten unsere Schritte für einen nachhaltigen Aufenthalt.</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 15px; padding-top: 12px; border-top: 1px dashed var(--accent);">
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary);" class="lang-fr">"Pour que la beauté de La Réunion perdure."</span>
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display:none;" class="lang-en">"Preserving the timeless beauty of La Réunion."</span>
+                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display:none;" class="lang-de">"Damit die Schönheit von La Réunion erhalten bleibt."</span>
+                    </div>
+                </div>
+
+                <!-- 5. Carte Accès & Waze (Avec votre photo d'allée exacte) -->
+                <div class="card" style="grid-column: 1 / -1;">
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
+                            <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
+                            <div class="photo-label">Accès Parking & Sécurité</div>
+                        </div>
+                        <div class="card-content" style="flex: 1.5; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between;">
+                            <div>
+                                <h3 class="lang-fr">🚗 Accès & Itinéraire Waze</h3>
+                                <h3 class="lang-en" style="display:none;">🚗 Access & Waze Directions</h3>
+                                <h3 class="lang-de" style="display:none;">🚗 Anfahrt & Waze-Wegbeschreibung</h3>
+                                <div class="specs">📍 Arrivée sereine au domaine</div>
+                                <p class="lang-fr" style="margin-bottom: 12px;">Laissez-vous guider facilement jusqu'à notre entrée en un clic grâce à l'application Waze.</p>
+                                <p class="lang-en" style="margin-bottom: 12px; display:none;">Let Waze guide you easily straight to our entrance in one click.</p>
+                                <p class="lang-de" style="margin-bottom: 12px; display:none;">Lassen Sie sich mit Waze ganz einfach direkt zu unserem Eingang leiten.</p>
+                                
+                                <div style="background: #fdfbf7; border: 1px solid rgba(185, 74, 72, 0.3); border-left: 4px solid #b94a48; padding: 12px 15px; border-radius: 2px; margin-bottom: 15px;">
+                                    <p class="lang-fr" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px;">⚠️ Consigne indispensable pour le parking :</p>
+                                    <p class="lang-en" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Essential parking instruction:</p>
+                                    <p class="lang-de" style="font-size: 0.85rem; color: #b94a48; font-weight: bold; margin-bottom: 4px; display:none;">⚠️ Wichtiger Hinweis zum Parken:</p>
+                                    
+                                    <p class="lang-fr" style="font-size: 0.83rem; color: #444; margin-bottom: 0;">L'accès au parking doit obligatoirement se faire <strong>en marche en arrière</strong>. La route principale étant très fréquentée, stationner ainsi vous garantira une sortie fluide, sécurisée et sans difficulté !</p>
+                                    <p class="lang-en" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">You must back into the parking space upon arrival. Because the main road is very busy, parking this way ensures a smooth and safe exit!</p>
+                                    <p class="lang-de" style="font-size: 0.83rem; color: #444; margin-bottom: 0; display:none;">Bitte parken Sie unbedingt rückwärts ein. Da die Hauptstraße sehr befahren ist, ermöglicht dies eine sichere und stressfreie Ausfahrt!</p>
+                                </div>
+                            </div>
+
+                            <div style="text-align: left;">
+                                <a href="https://waze.com/ul?ll=-20.999999,55.555555&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 10px 22px; background: #33ccff; color: #12263a;">
+                                    <span class="lang-fr">📍 Lancer l'itinéraire Waze ↗</span>
+                                    <span class="lang-en" style="display:none;">📍 Open in Waze ↗</span>
+                                    <span class="lang-de" style="display:none;">📍 In Waze öffnen ↗</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
@@ -360,18 +431,6 @@
                     <p class="lang-fr">Le domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur. Ils font partie intégrante de l'âme des Ozabris et apportent une touche de vie supplémentaire au cœur de notre grand jardin arboré, au plus près de la nature.</p>
                     <p class="lang-en" style="display:none;">The estate welcomes our animal friends who share our daily lives with gentleness. They are an integral part of the soul of Les Ozabris and add an extra touch of life to the heart of our large tree-filled garden, close to nature.</p>
                     <p class="lang-de" style="display:none;">Das Anwesen heißt unsere tierischen Freunde willkommen, die unseren Alltag mit Sanftmut bereichern. Sie sind ein fester Bestandteil der Seele von Les Ozabris und verleihen unserem großen, baumbestandenen Garten mitten in der Natur eine ganz besondere Note.</p>
-                </div>
-
-                <hr style="border: none; border-top: 1px solid #f0eadec; margin: 25px 0;">
-
-                <!-- Engagement Écologique & Énergétique -->
-                <div class="info-item">
-                    <h4 class="lang-fr">🌱 Engagement Écologique & Harmonie Solaire</h4>
-                    <h4 class="lang-en" style="display:none;">🌱 Ecological Commitment & Solar Harmony</h4>
-                    <h4 class="lang-de" style="display:none;">🌱 Ökologisches Engagement & Solare Harmonie</h4>
-                    <p class="lang-fr">Aux Ozabris, le luxe rime avec conscience environnementale. Notre domaine fonctionne en parfaite harmonie avec le soleil réunionnais grâce à une installation photovoltaïque de pointe couplée à un stockage sur batteries, assurant une autonomie énergétique vertueuse. Cette énergie propre alimente nos climatiseurs réversibles inverter pour un confort thermique idéal en toute saison, tandis que notre chauffe-eau solaire capte chaque rayon pour la production d'eau chaude sanitaire. Tri sélectif rigoureux, gestion raisonnée de l'eau et préservation de la biodiversité complètent cet engagement pour un tourisme authentique et durable.</p>
-                    <p class="lang-en" style="display:none;">At Les Ozabris, luxury goes hand in hand with environmental awareness. Our estate operates in complete harmony with the Reunionese sun through an advanced photovoltaic installation paired with battery storage, ensuring virtuous energy autonomy. This clean energy powers our inverter reversible air conditioners for ideal thermal comfort in all seasons, while our solar water heater captures every ray for domestic hot water. Rigorous sorting, sustainable water management, and biodiversity preservation complete this commitment to authentic and sustainable tourism.</p>
-                    <p class="lang-de" style="display:none;">In Les Ozabris geht Luxus Hand in Hand mit Umweltbewusstsein. Unser Anwesen arbeitet in voller Harmonie mit der Sonne von La Réunion dank einer fortschrittlichen Photovoltaikanlage gekoppelt mit Batteriespeicher, die eine tugendhafte Energieautonomie gewährleistet. Diese saubere Energie versorgt unsere Inverter-Klimaanlagen für idealen thermischen Komfort zu jeder Jahreszeit, während unser Solar-Warmwasserbereiter jeden Strahl für Warmwasser nutzt. Strenge Mülltrennung, nachhaltiges Wassermanagement und der Schutz der Biodiversität runden dieses Engagement für einen authentischen und nachhaltigen Tourismus ab.</p>
                 </div>
             </div>
         </div>
