@@ -561,7 +561,14 @@
             document.getElementById("welcome-message").innerText = welcomeText;
 
             document.getElementById("wifi-text").innerText = `Cottage : ${data.cottage}`;
-            document.getElementById("wifi-qr-img").src = data.qrWifi;
+            
+            // Attribution automatique du QR code Wi-Fi selon le cottage du voyageur
+            let qrUrl = "https://i.postimg.cc/NMsgCSvQ/IMG-4404.jpg"; // Par défaut Ptitzabris
+            const cottageLower = String(data.cottage).toLowerCase();
+            if (cottageLower.includes("grandzabris")) {
+                qrUrl = "https://i.postimg.cc/kXbdsqRb/IMG-4408.jpg";
+            }
+            document.getElementById("wifi-qr-img").src = qrUrl;
         }
                     
         function logoutPortal() {
@@ -578,4 +585,3 @@
     </script>
 </body>
 </html>
-
