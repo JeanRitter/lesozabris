@@ -99,18 +99,21 @@
 
         /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
         #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; text-align: left; }
-        .portal-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
-        .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         
-        /* Design du bouton WhatsApp en logo rond avec descriptif */
-        .whatsapp-container { display: flex; align-items: center; gap: 10px; background: #fdfbf7; border: 1px solid #25d366; padding: 6px 15px 6px 6px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
+        /* En-tête du portail voyageur centré et bien agencé */
+        .portal-header-top { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 25px; gap: 15px; }
+        
+        /* Design du bouton WhatsApp en logo rond avec descriptif (centré) */
+        .whatsapp-container { display: inline-flex; align-items: center; gap: 10px; background: #fdfbf7; border: 1px solid #25d366; padding: 6px 15px 6px 6px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
         .whatsapp-container:hover { background: #eef9f2; }
         .whatsapp-icon-circle { width: 38px; height: 38px; background-color: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex-shrink: 0; }
         .whatsapp-icon-circle svg { width: 22px; height: 22px; fill: white; }
-        .whatsapp-text-box { display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; }
+        .whatsapp-text-box { display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; text-align: left; }
         .whatsapp-title { font-size: 0.8rem; font-weight: bold; color: #12263a; text-transform: uppercase; letter-spacing: 0.5px; }
         .whatsapp-subtitle { font-size: 0.72rem; color: #555; }
 
+        .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
+        
         /* Alerte de départ dynamique */
         .checkout-alert { background: #fff8e8; border: 1px solid var(--accent); border-left: 4px solid var(--gold); padding: 20px; border-radius: 6px; margin-bottom: 25px; font-family: 'Segoe UI', sans-serif; display: none; text-align: center; }
         .checkout-alert h4 { color: var(--primary); font-size: 1.1rem; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
@@ -173,8 +176,8 @@
         .contact-info { background: rgba(255,255,255,0.03); max-width: 550px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
         
-        /* Widget météo discret */
-        .weather-widget { background: #fdfbf7; border: 1px solid var(--accent); padding: 12px 15px; border-radius: 6px; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; text-align: center; }
+        /* Widget météo dynamique avec pictogramme */
+        .weather-widget { background: #fdfbf7; border: 1px solid var(--accent); padding: 12px 15px; border-radius: 6px; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; color: var(--primary); margin-bottom: 15px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
         
         /* Espace Administrateur / Hôte */
         #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 40px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
@@ -252,7 +255,7 @@
             <!-- Bouton d'accès direct au Google Form -->
             <div class="admin-stat-card" style="text-align: center; background: #fff;">
                 <p style="font-size: 1rem; color: var(--primary); margin-bottom: 12px;">📝 <strong>Base de Données Voyageurs :</strong></p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-VOTRE-LIEN-GOOGLE-FORM/viewform" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 12px 25px; background: var(--primary); color: white; font-size: 0.8rem;">
+                <a href="https://forms.gle/2bhaUu7D6X3ye9HS9" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 12px 25px; background: var(--primary); color: white; font-size: 0.8rem;">
                     ➕ Ajouter / Mettre à jour un voyageur (Google Form) ↗
                 </a>
             </div>
@@ -263,7 +266,7 @@
         <!-- --- CONTENU PERSONNALISÉ DU VOYAGEUR --- -->
         <div id="guest-portal" style="display: none;">
             <div class="portal-header-top">
-                <!-- Bouton WhatsApp élégant (Logo rond + descriptif appel direct) -->
+                <!-- Bouton WhatsApp élégant (Centré) -->
                 <a href="https://wa.me/262692138727?text=Bonjour,%20je%20suis%20dans%20votre%20gîte%20aux%20Ozabris." target="_blank" class="whatsapp-container">
                     <div class="whatsapp-icon-circle">
                         <!-- Icône SVG officielle WhatsApp -->
@@ -275,6 +278,7 @@
                     </div>
                 </a>
                 
+                <!-- Bouton Verrouiller l'accès (Centré) -->
                 <button onclick="logoutPortal()" class="availability-btn" style="background: #fff; color: #7d7568; border-color: #ccc; margin: 0;">
                     <span class="lang-fr">🔒 Verrouiller l'accès</span>
                     <span class="lang-en" style="display:none;">🔒 Lock Access</span>
@@ -294,9 +298,9 @@
                 </div>
             </div>
 
-            <!-- Météo en direct La Saline (97422) -->
+            <!-- Météo en direct La Saline (97422) avec pictogramme dynamique -->
             <div class="weather-widget">
-                🌤️ <strong>Météo La Saline (97422) :</strong> <span id="weather-info">Chargement du temps en direct...</span>
+                <span id="weather-icon">🌤️</span> <strong>Météo La Saline (97422) :</strong> <span id="weather-info">Chargement du temps en direct...</span>
             </div>
 
             <h2 class="welcome-title" id="welcome-message">Bienvenue !</h2>
@@ -603,11 +607,40 @@
                 const data = await response.json();
                 if (data && data.current_weather) {
                     const temp = data.current_weather.temperature;
-                    document.getElementById("weather-info").innerText = `${temp}°C - Doux et ensoleillé`;
+                    const code = data.current_weather.weathercode;
+                    
+                    // Traduction du code météo météo en pictogramme et texte adapté
+                    let weatherEmoji = "☀️";
+                    let weatherDesc = "Ensoleillé";
+
+                    if (code === 0) {
+                        weatherEmoji = "☀️";
+                        weatherDesc = "Grand soleil et ciel clair";
+                    } else if (code >= 1 && code <= 3) {
+                        weatherEmoji = "⛅";
+                        weatherDesc = "Passages nuageux et belles éclaircies";
+                    } else if (code >= 45 && code <= 48) {
+                        weatherEmoji = "🌫️";
+                        weatherDesc = "Brume ou brouillard matinal";
+                    } else if (code >= 51 && code <= 67) {
+                        weatherEmoji = "🌧️";
+                        weatherDesc = "Averses tropicales éparses";
+                    } else if (code >= 71 && code <= 77) {
+                        weatherEmoji = "❄️";
+                        weatherDesc = "Neige";
+                    } else if (code >= 95) {
+                        weatherEmoji = "⚡";
+                        weatherDesc = "Risque d'orage";
+                    }
+
+                    document.getElementById("weather-icon").innerText = weatherEmoji;
+                    document.getElementById("weather-info").innerText = `${temp}°C - ${weatherDesc}`;
                 } else {
+                    document.getElementById("weather-icon").innerText = "☀️";
                     document.getElementById("weather-info").innerText = "26°C - Ensoleillé";
                 }
             } catch (e) {
+                document.getElementById("weather-icon").innerText = "🌴";
                 document.getElementById("weather-info").innerText = "26°C - Idéal pour profiter du domaine";
             }
         }
