@@ -1,19 +1,94 @@
-<div id="auth-container">
-  <h3>Espace Voyageur - Connexion</h3>
-  <input type="text" id="pin-input" placeholder="Entrez votre PIN à 6 chiffres" maxlength="6">
-  <button onclick="verifierPin()">Valider</button>
-  <p id="error-msg" style="color: red;"></p>
-</div>
+<style>
+  .oz-auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f9f9f6;
+    padding: 20px;
+  }
+  .oz-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+  .oz-card h3, .oz-card h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  .oz-input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .oz-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  .oz-btn:hover {
+    background-color: #219653;
+  }
+  .oz-error {
+    color: #e74c3c;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .oz-info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f2f6;
+    font-size: 15px;
+    color: #555;
+  }
+  .oz-info-row strong {
+    color: #2c3e50;
+  }
+</style>
 
-<div id="result-container" style="display: none;">
-  <h2>Bienvenue <span id="res-prenom"></span> !</h2>
-  <p><strong>Cottage :</strong> <span id="res-cottage"></span></p>
-  <p><strong>Arrivée :</strong> <span id="res-arrivee"></span></p>
-  <p><strong>Départ :</strong> <span id="res-depart"></span></p>
-  
-  <!-- Zone pour afficher dynamiquement le QR code ou l'image selon le cottage -->
-  <div id="cottage-media" style="margin-top: 20px;">
-    <!-- L'image ou le QR code s'insérera ici automatiquement -->
+<div class="oz-auth-wrapper">
+  <div id="auth-container" class="oz-card">
+    <h3>🔐 Espace Voyageur</h3>
+    <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Entrez votre code PIN à 6 chiffres pour accéder à votre carnet de séjour.</p>
+    <input type="text" id="pin-input" class="oz-input" placeholder="• • • • • •" maxlength="6">
+    <button onclick="verifierPin()" class="oz-btn">Accéder à mon espace</button>
+    <p id="error-msg" class="oz-error"></p>
+  </div>
+
+  <div id="result-container" class="oz-card" style="display: none;">
+    <h2>Bienvenue <span id="res-prenom" style="color: #27ae60;"></span> !</h2>
+    <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 20px;">Cottage : <strong id="res-cottage"></strong></p>
+    
+    <div class="oz-info-row">
+      <span>Arrivée :</span>
+      <strong id="res-arrivee"></strong>
+    </div>
+    <div class="oz-info-row">
+      <span>Départ :</span>
+      <strong id="res-depart"></strong>
+    </div>
+    
+    <div id="cottage-media" style="margin-top: 25px;"></div>
   </div>
 </div>
 
@@ -43,17 +118,12 @@
         document.getElementById("res-arrivee").innerText = voyageur.arrivee;
         document.getElementById("res-depart").innerText = voyageur.depart;
         
-        // Gestion dynamique des images / liens PostImage selon le cottage
+        // Affichage dynamique du QR code / image Wi-Fi selon le lien dans le Sheet
         const mediaContainer = document.getElementById("cottage-media");
-        if (voyageur.cottage.includes("Ptitzabris")) {
+        if (voyageur.qrWifi) {
           mediaContainer.innerHTML = `
-            <p><strong>Votre QR Code / Infos Wi-Fi :</strong></p>
-            <img src="${voyageur.qrWifi}" alt="QR Code Wifi Ptitzabris" style="max-width: 200px; border-radius: 8px;">
-          `;
-        } else {
-          mediaContainer.innerHTML = `
-            <p><strong>Votre QR Code / Infos Wi-Fi :</strong></p>
-            <img src="${voyageur.qrWifi}" alt="QR Code Wifi Grandzabris" style="max-width: 200px; border-radius: 8px;">
+            <p style="font-size: 14px; font-weight: bold; color: #2c3e50; margin-bottom: 10px;">📲 Votre accès Wi-Fi / Infos :</p>
+            <img src="${voyageur.qrWifi}" alt="QR Code Wifi" style="max-width: 180px; border-radius: 8px; border: 1px solid #ddd; padding: 5px; background: white;">
           `;
         }
         
