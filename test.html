@@ -243,11 +243,21 @@
                     🔒 Quitter l'admin
                 </button>
             </div>
+            
             <div class="admin-stat-card">
                 <p style="font-size: 1rem; color: var(--primary); margin-bottom: 8px;">📊 <strong>Statistiques d'accès au portail :</strong></p>
                 <p style="font-size: 1.5rem; color: var(--accent); font-weight: bold;"><span id="admin-visit-count">0</span> visites voyageurs enregistrées</p>
             </div>
-            <p style="font-size: 0.85rem; color: #666;">Cet espace est strictement réservé à la gestion de votre domaine des Ozabris.</p>
+
+            <!-- Bouton d'accès direct au Google Form -->
+            <div class="admin-stat-card" style="text-align: center; background: #fff;">
+                <p style="font-size: 1rem; color: var(--primary); margin-bottom: 12px;">📝 <strong>Base de Données Voyageurs :</strong></p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-VOTRE-LIEN-GOOGLE-FORM/viewform" target="_blank" rel="noopener noreferrer" class="btn" style="display: inline-block; width: auto; padding: 12px 25px; background: var(--primary); color: white; font-size: 0.8rem;">
+                    ➕ Ajouter / Mettre à jour un voyageur (Google Form) ↗
+                </a>
+            </div>
+
+            <p style="font-size: 0.85rem; color: #666; margin-top: 15px;">Cet espace est strictement réservé à la gestion de votre domaine des Ozabris.</p>
         </div>
 
         <!-- --- CONTENU PERSONNALISÉ DU VOYAGEUR --- -->
@@ -679,31 +689,26 @@
             }
             document.getElementById("wifi-qr-img").src = qrUrl;
 
-            // --- GESTION INTELLIGENTE DU RAPPEL DE DÉPART (Actif uniquement la veille ou le jour J) ---
             if (data.depart) {
                 const todayStr = new Date().toISOString().split('T')[0];
                 const banner = document.getElementById("checkout-banner");
                 const textElem = document.getElementById("checkout-text");
                 const reviewBox = document.getElementById("review-cta-box");
                 
-                // Calcul de la date de la veille du départ
                 const departDate = new Date(data.depart);
                 const veilleDepart = new Date(departDate);
                 veilleDepart.setDate(departDate.getDate() - 1);
                 const veilleStr = veilleDepart.toISOString().split('T')[0];
 
                 if (todayStr === data.depart) {
-                    // Jour du départ
                     banner.style.display = "block";
                     textElem.innerText = `C'est votre jour de départ ! Merci de libérer le cottage pour 11h au plus tard. Bon retour parmi nous !`;
-                    reviewBox.style.display = "block"; // Affiche l'avis Google le jour J
+                    reviewBox.style.display = "block";
                 } else if (todayStr === veilleStr) {
-                    // Veille du départ
                     banner.style.display = "block";
                     textElem.innerText = `Votre départ est prévu demain. Nous espérons que votre séjour aux Ozabris a été exceptionnel !`;
                     reviewBox.style.display = "none";
                 } else {
-                    // Si le séjour vient de commencer (ex: Gérard arrivé hier), l'alerte reste masquée !
                     banner.style.display = "none";
                 }
             }
