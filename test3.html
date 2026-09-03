@@ -814,7 +814,7 @@
                 const response = await fetch(sheetApiUrl);
                 const voyageurs = await response.json();
 
-                if (!voyageurs || voyageurs.length === 0) {
+                if (!voyageurs || voyageurs.length ===0) {
                     tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Aucun voyageur enregistré dans la base pour le moment.</td></tr>`;
                     return;
                 }
@@ -851,9 +851,9 @@
                         const cottage = v.cottage || "N/A";
                         const pin = v.pin || "N/A";
                         
-                        // Récupération et nettoyage du numéro (supporte 'telephone' ou 'tel' dans la feuille)
+                        // Nettoyage rigoureux : supprime tout sauf les chiffres pour WhatsApp desktop
                         let tel = v.telephone || v.tel || "";
-                        tel = tel.toString().replace(/[\s\-\(\)]/g, '');
+                        tel = tel.toString().replace(/\D/g, ''); 
 
                         const veilleArrivee = new Date(arrDate);
                         veilleArrivee.setDate(arrDate.getDate() - 1);
@@ -864,8 +864,8 @@
                         const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nLes Ozabris`;
                         
                         const encodedMsg = encodeURIComponent(msgText);
-                        // Le lien utilise directement le numéro international fourni dans la base de données
-                        const whatsappLink = tel ? `https://wa.me/${tel}?text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
+                        // Lien adapté pour l'application WhatsApp de bureau
+                        const whatsappLink = tel ? `whatsapp://send?phone=${tel}&text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
 
                         const btnClass = canSend ? "btn-whatsapp" : "btn-whatsapp disabled";
                         const btnText = canSend ? "💬 WhatsApp" : "⏳ En attente";
@@ -881,7 +881,7 @@
                             <td>${formattedDep}</td>
                             <td><code>${pin}</code></td>
                             <td>
-                                <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
+                                <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? '' : ''}>${btnText}</a>
                             </td>
                         </tr>`;
                     }
