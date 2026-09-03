@@ -19,7 +19,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', 'Didot', 'Georgia', serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; }
         
-        /* Banderole de l'entête (fond uni et sobre) */
         header { 
             background: var(--primary);
             text-align: center; 
@@ -43,15 +42,13 @@
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
-        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 750px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
+        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 950px; margin: 0 auto 20px auto; font-family: 'Segoe UI', sans-serif; }
         .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
-        .badge-stars { color: var(--gold); font-size: 0.9rem; }
-        
+
         .tagline { font-style: italic; color: #eae5db; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.3); font-size: 1.05rem; }
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
-        /* --- ACCÈS VOYAGEURS (DESIGN MODERNE ET CENTRÉ) --- */
         .top-portal-wrapper { background: #f4eee3; border-bottom: 2px solid var(--accent); padding: 40px 20px; text-align: center; }
         .oz-card {
             background: #ffffff;
@@ -97,17 +94,109 @@
         .oz-btn:hover { background-color: var(--accent); }
         .error-msg { color: #b94a48; font-size: 0.85rem; margin-top: 15px; display: none; font-family: 'Segoe UI', sans-serif; }
 
-        /* --- CONTENU DE LA PAGE VOYAGEUR (DÉBLOQUÉ) --- */
+        .top-return-bar { margin-bottom: 20px; text-align: right; }
+        .btn-return-top {
+            display: inline-block;
+            color: var(--primary);
+            background-color: #ffffff;
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Segoe UI', sans-serif;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-return-top:hover { background-color: var(--primary); color: #ffffff; }
+
         #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; text-align: left; }
-        .portal-header-top { display: flex; justify-content: flex-end; margin-bottom: 15px; }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
-        .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; font-family: 'Segoe UI', sans-serif; }
+        
+        .weather-compact {
+            background: var(--bg-light);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 0 auto 20px auto;
+            max-width: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .weather-compact span { font-size: 0.95rem; color: var(--primary); font-weight: 600; display: block; }
+        .weather-compact p { font-size: 0.8rem; color: #555; margin: 0; }
+
+        .departure-container { background: var(--bg-light); padding: 25px; border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 4px 15px rgba(18, 38, 58, 0.08); margin-bottom: 25px; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        .departure-header h2 { color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 4px; }
+        .subtitle-text { font-style: italic; color: #666; margin-bottom: 15px; font-size: 0.85rem; }
+        .departure-section { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #eee; text-align: center; }
+        .departure-section h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+        .review-box { background: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent); text-align: center; margin-top: 10px; }
+        .btn-primary-review { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
+        .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
+
+        .farewell-box {
+            background: #fdfbf7;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .farewell-box h3 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        .creole-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 12px;
+            border: 1px solid var(--accent);
+        }
+
+        .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; font-family: 'Segoe UI', sans-serif; }
         .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
         .guide-box p, .guide-box ul { font-size: 0.9rem; color: #555; margin-bottom: 10px; }
         .guide-box ul { padding-left: 18px; }
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); margin-top: 10px; }
         .wifi-img-box img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
+
+        #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 1100px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
+        .admin-title { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; font-weight: 400; font-family: 'Playfair Display', serif; text-align: center; }
+        .admin-subtitle { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 30px; }
+        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 25px; }
+        .admin-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+        .admin-box h5 { color: var(--primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 6px; }
+        .admin-box p { font-size: 0.88rem; color: #555; margin-bottom: 15px; }
+        .admin-link-btn { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 10px 15px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; text-align: center; letter-spacing: 1px; transition: background 0.3s; }
+        .admin-link-btn:hover { background-color: var(--accent); color: var(--primary); }
+
+        .admin-schedule-section { background: var(--bg-light); border: 1px solid var(--accent); border-radius: 8px; padding: 25px; margin-top: 20px; }
+        .admin-schedule-section h3 { color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
+        .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left; }
+        .schedule-table th, .schedule-table td { padding: 10px 12px; border-bottom: 1px solid #e2ded6; }
+        .schedule-table th { color: var(--primary); font-weight: 600; background: #f4eee3; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+        .schedule-table tr:hover { background-color: rgba(197, 168, 128, 0.05); }
+
+        .btn-whatsapp { display: inline-block; background-color: #25d366; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; border: none; cursor: pointer; }
+        .btn-whatsapp:hover { background-color: #20ba5a; }
+        .btn-whatsapp.disabled { background-color: #bdc3c7; color: #7f8c8d; cursor: not-allowed; opacity: 0.6; pointer-events: none; }
 
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
@@ -135,33 +224,22 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Style pour l'encadré Écologique */
-        .eco-card { background: var(--white); border-radius: 4px; padding: 30px; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
-        .eco-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; border-bottom: 1px solid var(--accent); padding-bottom: 12px; }
+        .eco-card { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
+        .eco-header { display: flex; align-items: center; gap: 15px; padding: 25px 30px 15px 30px; border-bottom: 1px solid var(--accent); }
         .eco-icon { font-size: 2.2rem; background: #f4eee3; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; }
+        .eco-card-body { padding: 20px 30px 30px 30px; }
         .eco-card h3 { color: var(--primary); font-size: 1.3rem; font-family: 'Playfair Display', serif; font-weight: 400; }
         .eco-card p { font-size: 0.88rem; color: #555; margin-bottom: 12px; line-height: 1.6; }
-
-        .info-block { background: var(--white); border-radius: 4px; padding: 35px; border: 1px solid #f0eadec; margin-top: 35px; }
-        .info-item { margin-bottom: 30px; }
-        .info-item:last-child { margin-bottom: 0; }
-        .info-item h4 { font-family: 'Segoe UI', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 10px; font-size: 0.95rem; }
-        .info-item p { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: #555; }
-        
-        /* Galerie animaux */
-        .animals-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-top: 20px; }
-        .animal-card { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 4px; overflow: hidden; text-align: center; }
-        .animal-card img { width: 100%; height: 110px; object-fit: cover; display: block; }
-        .animal-name { font-size: 0.75rem; font-weight: 600; color: var(--primary); padding: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 50px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 3px solid var(--accent); }
         .contact-info { background: rgba(255,255,255,0.03); max-width: 550px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        .visit-counter { margin-top: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'Segoe UI', sans-serif; letter-spacing: 1px; opacity: 0.85; }
     </style>
 </head>
 <body>
 
-    <header>
+    <header id="top-header">
         <div class="lang-switch">
             <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
             <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button> | 
@@ -177,9 +255,9 @@
         <span class="subtitle lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</span>
         
         <div class="badges-container">
-            <div class="badge">⭐ Classé Meublé de Tourisme <span class="badge-stars">★★★</span></div>
+            <div class="badge">⭐ Ptitzabris (Meublé de Tourisme 3 Étoiles)</div>
+            <div class="badge">⭐ Grandzabris (Meublé de Tourisme 2 Étoiles)</div>
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
-            <div class="badge">🏆 Excellence 5/5 Étoiles depuis 2019</div>
         </div>
         
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
@@ -187,7 +265,6 @@
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
-    <!-- --- ZONE D'ACCÈS SÉCURISÉ VOYAGEURS --- -->
     <div class="top-portal-wrapper">
         <div id="login-container">
             <div class="oz-card">
@@ -195,9 +272,9 @@
                 <h3 class="lang-en" style="display:none;">🔐 Guest Private Area</h3>
                 <h3 class="lang-de" style="display:none;">🔐 Privater Gäste-Bereich</h3>
                 
-                <p class="lang-fr">Entrez votre code PIN personnel à 6 chiffres pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
-                <p class="lang-en" style="display:none;">Enter your personal 6-digit PIN code to access your personalized welcome and stay instructions.</p>
-                <p class="lang-de" style="display:none;">Geben Sie Ihren persönlichen 6-stelligen PIN-Code ein, um auf Ihre persönliche Begrüßung zuzugreifen.</p>
+                <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé.</p>
+                <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome.</p>
+                <p class="lang-de" style="display:none;">Geben Sie Ihren PIN-Code ein, um auf Ihre Begrüßung zuzugreifen.</p>
                 
                 <input type="password" id="pinCode" class="oz-input" placeholder="• • • • • •" maxlength="6">
                 <button type="button" class="oz-btn" ontouchstart="checkPin()" onclick="checkPin()">
@@ -206,70 +283,76 @@
                     <span class="lang-de" style="display:none;">Zu meinem Bereich</span>
                 </button>
 
-                <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour introuvable.</div>
-                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or stay not found.</div>
-                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder Aufenthalt nicht gefunden.</div>
+                <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour expiré.</div>
+                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or expired stay.</div>
+                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder abgelaufener Aufenthalt.</div>
             </div>
         </div>
 
-        <!-- --- CONTENU PERSONNALISÉ DU VOYAGEUR --- -->
         <div id="guest-portal" style="display: none;">
-            <div class="portal-header-top">
-                <button onclick="logoutPortal()" class="availability-btn" style="background: #fff; color: #7d7568; border-color: #ccc; margin: 0;">
-                    <span class="lang-fr">🔒 Verrouiller l'accès</span>
-                    <span class="lang-en" style="display:none;">🔒 Lock Access</span>
-                    <span class="lang-de" style="display:none;">🔒 Zugang sperren</span>
-                </button>
+            <div class="top-return-bar">
+                <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
+            </div>
+
+            <!-- WIDGET MÉTÉO COMPACT, CENTRÉ ET AJUSTÉ -->
+            <div class="weather-compact">
+                <div style="font-size: 1.8rem;">☀️</div>
+                <div>
+                    <span>La Saline les Hauts (97422)</span>
+                    <p>Grand soleil et douce brise sur les hauteurs</p>
+                </div>
+            </div>
+
+            <!-- BLOC DE FIN DE SÉJOUR -->
+            <div id="checkout-departure-card" class="departure-container" style="display: none;">
+                <div class="departure-header">
+                    <h2>Votre départ est proche</h2>
+                    <p class="subtitle-text">Précisions concernant la fin de votre séjour</p>
+                </div>
+
+                <div class="departure-section">
+                    <p id="departure-date-text" style="font-weight: 600; color: var(--primary); font-size: 1.05rem;">-</p>
+                </div>
+
+                <div class="departure-section">
+                    <h3>👋 Notre rendez-vous pour votre départ</h3>
+                    <p style="font-size: 0.88rem; color: #555;">Le point de rendez-vous est fixé sur le parking pour la remise des clés.</p>
+                </div>
+
+                <div class="departure-section">
+                    <h3>🛏️ Consignes pour le linge de maison</h3>
+                    <p style="font-size: 0.88rem; color: #555;">Déposer le linge de lit et les serviettes utilisés au pied du lit.</p>
+                </div>
+
+                <div class="review-box">
+                    <h3>⭐ Votre avis compte énormément</h3>
+                    <p style="font-size: 0.85rem; color: #555;">Si vous avez apprécié votre séjour, un grand merci de nous laisser un mot sur Google :</p>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJ8UOOyTt4Q4sRo0FMRBi4REw" target="_blank" class="btn-primary-review">
+                        Laisser un avis sur Google
+                    </a>
+                </div>
             </div>
 
             <h2 class="welcome-title" id="welcome-message">Bienvenue !</h2>
-            <p style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
+            <p id="welcome-subtitle-text" style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
-                <span class="lang-en" style="display:none;">Find below all the essential information for your stay at Les Ozabris.</span>
-                <span class="lang-de" style="display:none;">Hier finden Sie alle nützlichen Informationen für Ihren Aufenthalt in Les Ozabris.</span>
             </p>
             
-            <div class="guide-grid">
-                <!-- 1. Apéro d'accueil -->
-                <div class="guide-box">
-                    <div>
-                        <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
-                        <h5 class="lang-en" style="display:none;">🥂 Welcome Aperitif</h5>
-                        <h5 class="lang-de" style="display:none;">🥂 Willkommens-Aperitif</h5>
-                        <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances <em>(proposé pour tout séjour de 3 nuits minimum)</em>.</p>
-                        <p class="lang-en" style="display:none;">We invite you to a friendly gathering to start your holidays right <em>(offered for stays of 3 nights minimum)</em>.</p>
-                        <p class="lang-de" style="display:none;">Wir laden Sie zu einem geselligen Beisammensein ein, um Ihren Urlaub perfekt zu beginnen <em>(ab einem Aufenthalt von mindestens 3 Nächten)</em>.</p>
-                        <p><strong><span class="lang-fr">Heure :</span><span class="lang-en" style="display:none;">Time:</span><span class="lang-de" style="display:none;">Uhrzeit:</span></strong> 19h30</p>
-                    </div>
-                    <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 15px;">
-                        <span class="lang-fr">Rendez-vous sur le parking.</span>
-                        <span class="lang-en" style="display:none;">Meet us at the parking area.</span>
-                        <span class="lang-de" style="display:none;">Treffpunkt auf dem Parkplatz.</span>
-                    </p>
-                </div>
-
-                <!-- 2. Connexion Wi-Fi -->
+            <div class="guide-grid" id="guide-grid-container">
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
-                        <h5 class="lang-en" style="display:none;">📶 Wi-Fi Connection</h5>
-                        <h5 class="lang-de" style="display:none;">📶 WLAN-Verbindung</h5>
                         <p id="wifi-text" style="font-size: 0.85rem; font-weight: bold; color: var(--primary);">Cottage : -</p>
                     </div>
                     <div class="wifi-img-box">
                         <img id="wifi-qr-img" src="" alt="QR Code Wifi">
-                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px;" class="lang-fr">Scannez pour vous connecter en un clic</p>
-                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px; display:none;" class="lang-en">Scan to connect in one click</p>
-                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px; display:none;" class="lang-de">Scannen, um sich mit einem Klick zu verbinden</p>
+                        <p style="font-size: 0.75rem; color: #555; margin-top: 8px;">Scannez pour vous connecter en un clic</p>
                     </div>
                 </div>
 
-                <!-- 3. Consignes Poubelles & Compost -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">♻️ Consignes Poubelles & Compost</h5>
-                        <h5 class="lang-en" style="display:none;">♻️ Trash, Recycling & Compost</h5>
-                        <h5 class="lang-de" style="display:none;">♻️ Mülltrennung & Kompost</h5>
                         <p class="lang-fr" style="font-size: 0.85rem;">Le tri sélectif est de rigueur. Une petite poubelle est à votre disposition sur chaque terrasse pour vos déchets organiques.</p>
                         
                         <div style="background:#fdfbf7; padding:10px; border-radius:4px; text-align:left; margin-top:10px; font-size:0.8rem; border:1px solid var(--accent);">
@@ -278,7 +361,6 @@
                                 <li><strong>Au Ptitzabris :</strong> Au début de la passerelle.</li>
                                 <li><strong>Au Grandzabris :</strong> Au début de la passerelle, à côté de la cage des perroquets.</li>
                             </ul>
-                            <span style="font-style: italic; font-size: 0.75rem; color: #666; display: block; margin-top: 4px;">Elle sera vidée dans le compost par mes soins !</span>
                         </div>
 
                         <div style="background:#fff; padding:10px; border-radius:4px; text-align:left; margin-top:10px; font-size:0.8rem; border:1px solid #ddd;">
@@ -289,12 +371,9 @@
                     </div>
                 </div>
 
-                <!-- 4. Consignes Sanibroyeur -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">🚽 Utilisation Sanibroyeur</h5>
-                        <h5 class="lang-en" style="display:none;">🚽 Macerator Toilet Instructions</h5>
-                        <h5 class="lang-de" style="display:none;">🚽 Hebeanlage-Toilette</h5>
                         <p class="lang-fr" style="color: #b94a48; font-weight: bold; font-size: 0.85rem;">⚠️ Papier toilette uniquement ! Interdiction de jeter lingettes ou protections.</p>
                     </div>
                     <div class="wifi-img-box">
@@ -303,8 +382,8 @@
                 </div>
             </div>
 
-            <!-- 5. Carte Accès & Waze -->
-            <div style="margin-top: 30px;" class="card">
+            <!-- ENCADRÉ ACCÈS WAZE (Masqué automatiquement si départ proche) -->
+            <div style="margin-top: 30px;" class="card" id="waze-card-box">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
                         <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
@@ -330,21 +409,100 @@
                     </div>
                 </div>
             </div>
+
+            <!-- NOUVEL ENCADRÉ DE FIN (S'affiche uniquement quand le départ est proche) -->
+            <div id="farewell-message-box" class="farewell-box" style="display: none;">
+                <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
+                <div class="creole-badge">NAR TROUV'</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
+            </div>
+        </div>
+
+        <div id="admin-dashboard" style="display: none;">
+            <div class="top-return-bar">
+                <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
+            </div>
+
+            <h2 class="admin-title">🛠️ Tableau de Bord Propriétaire</h2>
+            <p class="admin-subtitle">Espace d'administration exclusif - Domaine Les Ozabris</p>
+
+            <div class="admin-grid">
+                <div class="admin-box">
+                    <div>
+                        <h5>📝 Google Forms (Saisie Séjour)</h5>
+                        <p>Ajoutez ou mettez à jour en direct les fiches voyageurs de votre base de données.</p>
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCO3OScdjsEhJ8Zihl8tNLlseeBPo9kpxibbU6_1Mm7ubOow/viewform?usp=header" target="_blank" class="admin-link-btn">Ouvrir le Formulaire ↗</a>
+                </div>
+
+                <div class="admin-box">
+                    <div>
+                        <h5>📊 Fichier Google Sheets</h5>
+                        <p>Consultez la base de données brute et l'historique complet des réservations.</p>
+                    </div>
+                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
+                </div>
+
+                <div class="admin-box">
+                    <div>
+                        <h5>⭐ Tableau de Bord Google</h5>
+                        <p>Accédez à votre profil d'établissement Google pour consulter vos statistiques et avis.</p>
+                    </div>
+                    <a href="https://business.google.com" target="_blank" class="admin-link-btn">Mon Dashboard Google ↗</a>
+                </div>
+
+                <div class="admin-box">
+                    <div>
+                        <h5>📈 Trafic & Visites</h5>
+                        <p>Nombre total de consultations enregistrées sur cet espace numérique :</p>
+                        <p style="font-size: 1.3rem; font-weight: bold; color: var(--primary);" id="admin-visit-count">-</p>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #888; font-style: italic;">Suivi en temps réel</span>
+                </div>
+            </div>
+
+            <div class="admin-schedule-section">
+                <h3>📅 Prochaines Arrivées (7 Jours) & Envoi WhatsApp</h3>
+                <div style="overflow-x: auto;">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Voyageur</th>
+                                <th>Cottage</th>
+                                <th>Arrivée</th>
+                                <th>Départ</th>
+                                <th>Code PIN</th>
+                                <th>WhatsApp / SMS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-schedule-body">
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: #777;">Chargement du planning...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button type="button" onclick="scrollToTop()" class="btn-return-top" style="background: var(--primary); color: white;">Fermer et retourner au site public</button>
+            </div>
         </div>
     </div>
     
-    <!-- --- CONTENU PRINCIPAL DE LA PAGE WEB --- -->
     <div id="main-content">
         <div class="container">
             <div class="amenities-banner">
-                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span><span class="lang-de" style="display:none;">Kostenloses Parken</span></div>
-                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span><span class="lang-en" style="display:none;">Free Laundry</span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner</span></div>
+                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span></div>
+                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits</span></div>
             </div>
 
             <div class="section-title lang-fr">Le Domaine & Nos Hébergements</div>
             
             <div class="grid">
-                <!-- 1. Le Ptitzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
@@ -352,7 +510,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Le Ptitzabris</h3>
-                        <div class="specs">✨ 1 Chambre King Size │ Classé 3★★★</div>                    
+                        <div class="specs">✨ 1 Chambre King Size │ Meublé de Tourisme 3 Étoiles</div>    
                         <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
@@ -366,7 +524,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Le Grandzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
@@ -374,7 +531,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Le Grandzabris</h3>
-                        <div class="specs">✨ 2 Chambres │ Jusqu'à 4 Pers. │ Classé 2★★</div>
+                        <div class="specs">✨ 2 Chambres │ Meublé de Tourisme 2 Étoiles</div>
                         <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
@@ -388,7 +545,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Espace ZenAbris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
@@ -397,58 +553,66 @@
                     <div class="card-content">
                         <h3>Espace ZenAbris</h3>
                         <div class="specs">🌿 Bien-être │ Accès Gratuit & Partagé</div>
-                        <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée. Un havre de paix idéal pour se ressourcer en toute sérénité !</p>
+                        <p class="lang-fr">Niché au cœur de notre grand jardin luxuriant, l'espace ZenAbris et son Softub Spa vous offrent un moment de lâcher-prise absolu après une belle journée de randonnée.</p>
                     </div>
                 </div>
 
-                <!-- 4. Encadré Écologique -->
-                <div class="eco-card">
-                    <div>
+                <!-- SECTION L'ART DE VIVRE AU DOMAINE : NOS AMIS LES ANIMAUX -->
+                <div style="grid-column: 1 / -1; margin-top: 40px;">
+                    <div class="section-title lang-fr" style="margin-top: 0;">L'Art de Vivre au Domaine</div>
+                    
+                    <div class="eco-card" style="margin-top: 20px;">
                         <div class="eco-header">
-                            <div class="eco-icon">🌍</div>
+                            <div class="eco-icon">🐾</div>
                             <div>
-                                <h3 class="lang-fr">Empreinte Écologique & Solaire</h3>
-                                <div class="specs" style="margin-bottom:0;">🌱 Tourisme Durable à La Réunion</div>
+                                <h3 class="lang-fr" style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;">Nos Amis les Animaux</h3>
                             </div>
                         </div>
-                        <p class="lang-fr">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries. Chaque Zabris dispose par ailleurs de son propre chauffe-eau solaire.</p>
-                        <p class="lang-fr">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique.</p>
-                    </div>
-                    <div style="text-align: center; margin-top: 15px; padding-top: 12px; border-top: 1px dashed var(--accent);">
-                        <span style="font-size: 0.8rem; font-style: italic; color: var(--primary); display: block;" class="lang-fr">"Florebo quocunque ferar" — "Je fleurirai partout où je serai porté" (Devise de La Réunion)</span>
+                        <div class="eco-card-body">
+                            <p class="lang-fr" style="margin-bottom: 20px;">Niché au cœur d'une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur.</p>
+                            
+                            <!-- Grille des 5 photos d'animaux -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px;">
+                                <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
+                                    <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Coco & Moorea">
+                                    <div class="photo-label" style="font-size: 0.6rem;">Coco & Moorea</div>
+                                </div>
+                                <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
+                                    <img src="https://i.postimg.cc/bJx3pbHd/2b9d89c8-1518-4f2b-90ef-fd253dabea72.jpg" alt="Chachoune">
+                                    <div class="photo-label" style="font-size: 0.6rem;">Chachoune</div>
+                                </div>
+                                <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
+                                    <img src="https://i.postimg.cc/LsbMLcrY/IMG-4257.jpg" alt="Tahaa">
+                                    <div class="photo-label" style="font-size: 0.6rem;">Tahaa</div>
+                                </div>
+                                <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
+                                    <img src="https://i.postimg.cc/DyPkBJ9Z/Image.jpg" alt="Les Caméléons">
+                                    <div class="photo-label" style="font-size: 0.6rem;">Les Caméléons</div>
+                                </div>
+                                <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
+                                    <img src="https://i.postimg.cc/cLW1JNSN/418.jpg" alt="Chachoune">
+                                    <div class="photo-label" style="font-size: 0.6rem;">Chachoune</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="section-title lang-fr">L'Art de Vivre au Domaine</div>        
-            
-            <div class="info-block">
-                <!-- Nos animaux avec vignettes -->
-                <div class="info-item">
-                    <h4 class="lang-fr">🐾 Nos Amis les Animaux</h4>
-                    <p class="lang-fr">Niché au cœur d’une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur.</p>
-                    
-                    <div class="animals-gallery">
-                        <div class="animal-card">
-                            <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Coco & Moorea">
-                            <div class="animal-name">Coco & Moorea</div>
+                <!-- ENCADRÉ ÉCOLOGIQUE & SOLAIRE -->
+                <div class="eco-card" style="grid-column: 1 / -1;">
+                    <div class="eco-header">
+                        <div class="eco-icon">🌍</div>
+                        <div>
+                            <h3 class="lang-fr">Empreinte Écologique & Solaire</h3>
+                            <div class="specs" style="margin-bottom:0;">🌱 Tourisme Durable à La Réunion</div>
                         </div>
-                        <div class="animal-card">
-                            <img src="https://i.postimg.cc/cLW1JNSN/418.jpg" alt="Chachoune">
-                            <div class="animal-name">Chachoune</div>
-                        </div>
-                        <div class="animal-card">
-                            <img src="https://i.postimg.cc/LsbMLcrY/IMG-4257.jpg" alt="Tahaa">
-                            <div class="animal-name">Tahaa</div>
-                        </div>
-                        <div class="animal-card">
-                            <img src="https://i.postimg.cc/DyPkBJ9Z/Image.jpg" alt="Les Caméléons">
-                            <div class="animal-name">Les Caméléons</div>
-                        </div>
-                        <div class="animal-card">
-                            <img src="https://i.postimg.cc/FRyDNcgz/a7eb1867-ede3-4cf5-8466-916d3da56916.jpg" alt="Chachoune">
-                            <div class="animal-name">Chachoune</div>
+                    </div>
+                    <div class="eco-card-body">
+                        <p class="lang-fr" style="margin-bottom: 12px;">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries. Chaque Zabris dispose par ailleurs de son propre chauffe-eau solaire.</p>
+                        <p class="lang-fr" style="margin-bottom: 15px;">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique.</p>
+                        
+                        <div style="border-top: 1px dashed var(--accent); padding-top: 15px; text-align: center; font-style: italic; font-size: 0.85rem; color: #666;">
+                            "Florebo quocunque ferar" — "Je fleurirai partout où je serai porté" <span style="font-size: 0.75rem; text-transform: uppercase; font-style: normal; display: block; margin-top: 3px; color: var(--accent); font-weight: 600;">(Devise de La Réunion)</span>
                         </div>
                     </div>
                 </div>
@@ -464,7 +628,12 @@
             <p style="margin: 8px 0;">📧 <a href="mailto:lesozabris@icloud.com">lesozabris@icloud.com</a></p>
             <p style="margin: 8px 0;">📞 <a href="tel:+262692138727">+262 6 92 13 87 27</a></p>
         </div>
-        <p style="margin-top: 25px; font-size: 0.75rem; opacity: 0.7;">© 2026 Les Ozabris - Tous droits réservés.</p>
+        
+        <div class="visit-counter">
+            👀 Visites de la page : <span id="visit-count">Chargement...</span>
+        </div>
+
+        <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.7;">© 2026 Les Ozabris - Tous droits réservés.</p>
     </footer>
 
     <script>
@@ -474,33 +643,31 @@
 
         function setLanguage(lang) {
             currentLang = lang;
-            
             document.querySelectorAll('.lang-fr, .lang-en, .lang-de').forEach(el => el.style.display = 'none');
-            
             document.querySelectorAll('.lang-' + lang).forEach(el => {
-                if (el.tagName === 'TITLE') {
-                    el.style.display = 'block';
-                } else if (el.tagName === 'SPAN' && el.classList.contains('subtitle')) {
+                if (el.tagName === 'TITLE' || el.tagName === 'SPAN') {
                     el.style.display = 'block';
                 } else if (el.classList.contains('badge') || el.classList.contains('amenity-item')) {
-                    el.style.display = 'inline-flex';
+                    el.style.display = 'inline-block';
                 } else {
                     el.style.display = ''; 
                 }
             });
-            
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+
+            const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
+            if (savedData && !savedData.isAdmin) {
+                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom);
+            }
         }
 
         window.onload = function() {
-            if(localStorage.getItem("ozabris_auth") === "true") {
-                const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
-                if(savedData) {
-                    showPortal(savedData);
-                }
-            }
+            let visits = localStorage.getItem("ozabris_visit_count") || 1240;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem("ozabris_visit_count", visits);
+            document.getElementById("visit-count").innerText = visits.toLocaleString();
 
             const pinInput = document.getElementById("pinCode");
             if (pinInput) {
@@ -513,28 +680,74 @@
             }
         }
 
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById("login-container").style.display = "block";
+            document.getElementById("guest-portal").style.display = "none";
+            document.getElementById("admin-dashboard").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+            document.getElementById("pinCode").value = "";
+        }
+
         async function checkPin() {
             const entered = document.getElementById("pinCode").value.trim();
             if (!entered) return;
 
+            if (entered === "140769") {
+                document.getElementById("login-container").style.display = "none";
+                document.getElementById("main-content").style.display = "none";
+                document.getElementById("guest-portal").style.display = "none";
+                document.getElementById("admin-dashboard").style.display = "block";
+                
+                let visits = localStorage.getItem("ozabris_visit_count") || 1240;
+                document.getElementById("admin-visit-count").innerText = visits.toLocaleString() + " vues";
+
+                loadAdminSchedule();
+                return;
+            }
+
             try {
                 const response = await fetch(sheetApiUrl);
                 const voyageurs = await response.json();
-
                 const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
 
                 if (voyageurTrouve) {
-                    localStorage.setItem("ozabris_auth", "true");
-                    localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
-                    showPortal(voyageurTrouve);
-                } else {
-                    document.querySelectorAll('.error-msg').forEach(el => el.style.display = "none");
-                    let errorId = "errorMsg";
-                    if (currentLang === 'en') errorId = "errorMsg-en";
-                    if (currentLang === 'de') errorId = "errorMsg-de";
+                    const departStr = voyageurTrouve.dateDepart || voyageurTrouve.depart;
+                    if (departStr) {
+                        const depDate = new Date(departStr);
+                        const today = new Date();
+                        depDate.setHours(0, 0, 0, 0);
+                        today.setHours(0, 0, 0, 0);
+
+                        const limitDate = new Date(depDate);
+                        limitDate.setDate(limitDate.getDate() + 1);
+
+                        if (today > limitDate) {
+                            document.getElementById("errorMsg").style.display = "block";
+                            document.getElementById("pinCode").value = "";
+                            return;
+                        }
+                    }
+
+                    document.getElementById("login-container").style.display = "none";
+                    document.getElementById("main-content").style.display = "none";
+                    document.getElementById("admin-dashboard").style.display = "none";
+                    document.getElementById("guest-portal").style.display = "block";
+
+                    document.getElementById("wifi-text").innerText = `Cottage : ${voyageurTrouve.cottage}`;
                     
-                    const errorBox = document.getElementById(errorId);
-                    if (errorBox) errorBox.style.display = "block";
+                    let qrUrl = "https://i.postimg.cc/NMsgCSvQ/IMG-4404.jpg"; 
+                    const cottageLower = String(voyageurTrouve.cottage).toLowerCase();
+                    if (cottageLower.includes("grandzabris")) {
+                        qrUrl = "https://i.postimg.cc/kXbdsqRb/IMG-4408.jpg";
+                    }
+                    document.getElementById("wifi-qr-img").src = qrUrl;
+
+                    localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+                    renderDepartureCard(departStr, voyageurTrouve.prenom);
+
+                } else {
+                    document.getElementById("errorMsg").style.display = "block";
                     document.getElementById("pinCode").value = "";
                 }
             } catch(e) {
@@ -543,44 +756,148 @@
             }
         }
 
-        function showPortal(data) {
-            document.getElementById("login-container").style.display = "none";
-            
-            const mainContent = document.getElementById("main-content");
-            if (mainContent) mainContent.style.display = "none";
+        function renderDepartureCard(dateStr, prenom) {
+            const departureCard = document.getElementById('checkout-departure-card');
+            const welcomeTitle = document.getElementById('welcome-message');
+            const welcomeSubText = document.getElementById('welcome-subtitle-text');
+            const wazeCardBox = document.getElementById('waze-card-box');
+            const farewellBox = document.getElementById('farewell-message-box');
 
-            const portal = document.getElementById("guest-portal");
-            portal.style.display = "block";
-
-            let welcomeText = `Bienvenue, ${data.prenom} !`;
-            if (currentLang === 'en') {
-                welcomeText = `Welcome, ${data.prenom}!`;
-            } else if (currentLang === 'de') {
-                welcomeText = `Willkommen, ${data.prenom}!`;
+            if (!dateStr) {
+                departureCard.style.display = 'none';
+                welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
+                welcomeSubText.style.display = 'block';
+                wazeCardBox.style.display = 'block';
+                farewellBox.style.display = 'none';
+                return;
             }
-            document.getElementById("welcome-message").innerText = welcomeText;
 
-            document.getElementById("wifi-text").innerText = `Cottage : ${data.cottage}`;
-            
-            // Attribution automatique du QR code Wi-Fi selon le cottage du voyageur
-            let qrUrl = "https://i.postimg.cc/NMsgCSvQ/IMG-4404.jpg"; // Par défaut Ptitzabris
-            const cottageLower = String(data.cottage).toLowerCase();
-            if (cottageLower.includes("grandzabris")) {
-                qrUrl = "https://i.postimg.cc/kXbdsqRb/IMG-4408.jpg";
+            const depDate = new Date(dateStr);
+            const today = new Date();
+            depDate.setHours(0,0,0,0);
+            today.setHours(0,0,0,0);
+
+            const diffTime = depDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays >= -1 && diffDays <= 2) {
+                departureCard.style.display = 'block';
+                welcomeTitle.innerText = prenom;
+                welcomeSubText.style.display = 'none';
+
+                // Masquage de l'accès Waze et affichage du message "NAR TROUV'"
+                wazeCardBox.style.display = 'none';
+                farewellBox.style.display = 'block';
+
+                let locale = 'fr-FR';
+                if (currentLang === 'en') locale = 'en-US';
+                if (currentLang === 'de') locale = 'de-DE';
+
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = depDate.toLocaleDateString(locale, options);
+
+                let text = `Votre départ est prévu le : ${formattedDate}`;
+                if (currentLang === 'en') text = `Your departure is scheduled for: ${formattedDate}`;
+                if (currentLang === 'de') text = `Ihre Abreise ist geplant für: ${formattedDate}`;
+
+                document.getElementById('departure-date-text').innerText = text;
+            } else {
+                departureCard.style.display = 'none';
+                welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
+                welcomeSubText.style.display = 'block';
+                wazeCardBox.style.display = 'block';
+                farewellBox.style.display = 'none';
             }
-            document.getElementById("wifi-qr-img").src = qrUrl;
         }
-                    
-        function logoutPortal() {
-            localStorage.removeItem("ozabris_auth");
-            localStorage.removeItem("ozabris_voyageur_data");
-            document.getElementById("login-container").style.display = "block";
-            document.getElementById("guest-portal").style.display = "none";
-            
-            const mainContent = document.getElementById("main-content");
-            if (mainContent) mainContent.style.display = "block";
 
-            document.getElementById("pinCode").value = "";
+        async function loadAdminSchedule() {
+            const tbody = document.getElementById("admin-schedule-body");
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Chargement des données en cours...</td></tr>`;
+
+            try {
+                const response = await fetch(sheetApiUrl);
+                const voyageurs = await response.json();
+
+                if (!voyageurs || voyageurs.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Aucun voyageur enregistré dans la base pour le moment.</td></tr>`;
+                    return;
+                }
+
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const limitDate = new Date(today);
+                limitDate.setDate(today.getDate() + 7);
+
+                let html = "";
+                let displayedCount = 0;
+
+                voyageurs.forEach(v => {
+                    const arriveeStr = v.dateArrivee || v.arrivee;
+                    const departStr = v.dateDepart || v.depart;
+
+                    if (!arriveeStr || !departStr) return;
+
+                    const arrDate = new Date(arriveeStr);
+                    const depDate = new Date(departStr);
+                    arrDate.setHours(0, 0, 0, 0);
+                    depDate.setHours(0, 0, 0, 0);
+
+                    const lendemainDepart = new Date(depDate);
+                    lendemainDepart.setDate(depDate.getDate() + 1);
+
+                    const isPassed = today > lendemainDepart;
+                    const isUpcomingSoon = arrDate <= limitDate;
+
+                    if (!isPassed && isUpcomingSoon) {
+                        displayedCount++;
+                        const prenom = v.prenom || "N/A";
+                        const cottage = v.cottage || "N/A";
+                        const pin = v.pin || "N/A";
+                        
+                        let tel = v.telephone || v.tel || "";
+                        tel = tel.toString().replace(/\D/g, ''); 
+
+                        const veilleArrivee = new Date(arrDate);
+                        veilleArrivee.setDate(arrDate.getDate() - 1);
+
+                        const canSend = today >= veilleArrivee && today <= depDate;
+
+                        const siteUrl = window.location.href.split('?')[0];
+                        const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nLes Ozabris`;
+                        
+                        const encodedMsg = encodeURIComponent(msgText);
+                        const whatsappLink = tel ? `https://wa.me/${tel}?text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
+
+                        const btnClass = canSend ? "btn-whatsapp" : "btn-whatsapp disabled";
+                        const btnText = canSend ? "💬 WhatsApp" : "⏳ En attente";
+
+                        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                        const formattedArr = isNaN(arrDate) ? arriveeStr : arrDate.toLocaleDateString('fr-FR', options);
+                        const formattedDep = isNaN(depDate) ? departStr : depDate.toLocaleDateString('fr-FR', options);
+
+                        html += `<tr>
+                            <td><strong>${prenom}</strong></td>
+                            <td>${cottage}</td>
+                            <td>${formattedArr}</td>
+                            <td>${formattedDep}</td>
+                            <td><code>${pin}</code></td>
+                            <td>
+                                <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
+                            </td>
+                        </tr>`;
+                    }
+                });
+
+                if (displayedCount === 0) {
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Aucune arrivée prévue dans les 7 prochains jours.</td></tr>`;
+                } else {
+                    tbody.innerHTML = html;
+                }
+            } catch (err) {
+                console.error("Erreur de chargement du planning", err);
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #b94a48;">Impossible de charger les arrivées depuis Google Sheets. Vérifiez l'API.</td></tr>`;
+            }
         }
     </script>
 </body>
