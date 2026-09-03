@@ -141,34 +141,6 @@
         .btn-primary-review { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
         .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
 
-        .farewell-box {
-            background: #fdfbf7;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            padding: 25px;
-            text-align: center;
-            margin-top: 30px;
-            font-family: 'Segoe UI', sans-serif;
-        }
-        .farewell-box h3 {
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-        }
-        .creole-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-top: 12px;
-            border: 1px solid var(--accent);
-        }
-
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; font-family: 'Segoe UI', sans-serif; }
         .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
@@ -177,7 +149,7 @@
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); margin-top: 10px; }
         .wifi-img-box img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
 
-        #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 1100px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
+        #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 950px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
         .admin-title { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; font-weight: 400; font-family: 'Playfair Display', serif; text-align: center; }
         .admin-subtitle { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 30px; }
         .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 25px; }
@@ -193,10 +165,6 @@
         .schedule-table th, .schedule-table td { padding: 10px 12px; border-bottom: 1px solid #e2ded6; }
         .schedule-table th { color: var(--primary); font-weight: 600; background: #f4eee3; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
         .schedule-table tr:hover { background-color: rgba(197, 168, 128, 0.05); }
-
-        .btn-whatsapp { display: inline-block; background-color: #25d366; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; border: none; cursor: pointer; }
-        .btn-whatsapp:hover { background-color: #20ba5a; }
-        .btn-whatsapp.disabled { background-color: #bdc3c7; color: #7f8c8d; cursor: not-allowed; opacity: 0.6; pointer-events: none; }
 
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
@@ -338,9 +306,8 @@
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
             </p>
             
-            <div class="guide-grid" id="guide-grid-container">
-                <!-- APÉRO D'ACCUEIL (Masqué automatiquement si départ proche) -->
-                <div class="guide-box" id="apero-box">
+            <div class="guide-grid">
+                <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
                         <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances <em>(proposé pour tout séjour de 3 nuits minimum)</em>.</p>
@@ -392,8 +359,7 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ ACCÈS WAZE (Masqué automatiquement si départ proche) -->
-            <div style="margin-top: 30px;" class="card" id="waze-card-box">
+            <div style="margin-top: 30px;" class="card">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
                         <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
@@ -418,12 +384,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- NOUVEL ENCADRÉ DE FIN (S'affiche uniquement quand le départ est proche) -->
-            <div id="farewell-message-box" class="farewell-box" style="display: none;">
-                <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
-                <div class="creole-badge">NAR TROUV'</div>
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
@@ -475,7 +435,7 @@
             </div>
 
             <div class="admin-schedule-section">
-                <h3>📅 Prochaines Arrivées (7 Jours) & Envoi WhatsApp</h3>
+                <h3>📅 Prochaines Arrivées & Départs (Base de Données)</h3>
                 <div style="overflow-x: auto;">
                     <table class="schedule-table">
                         <thead>
@@ -485,12 +445,11 @@
                                 <th>Arrivée</th>
                                 <th>Départ</th>
                                 <th>Code PIN</th>
-                                <th>WhatsApp / SMS</th>
                             </tr>
                         </thead>
                         <tbody id="admin-schedule-body">
                             <tr>
-                                <td colspan="6" style="text-align: center; color: #777;">Chargement du planning...</td>
+                                <td colspan="5" style="text-align: center; color: #777;">Chargement du planning...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -581,7 +540,7 @@
                         <div class="eco-card-body">
                             <p class="lang-fr" style="margin-bottom: 20px;">Niché au cœur d'une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur.</p>
                             
-                            <!-- Grille des 5 photos d'animaux -->
+                            <!-- Grille des 5 photos d'animaux avec les liens exacts -->
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px;">
                                 <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
                                     <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Coco & Moorea">
@@ -753,17 +712,11 @@
             const departureCard = document.getElementById('checkout-departure-card');
             const welcomeTitle = document.getElementById('welcome-message');
             const welcomeSubText = document.getElementById('welcome-subtitle-text');
-            const aperoBox = document.getElementById('apero-box');
-            const wazeCardBox = document.getElementById('waze-card-box');
-            const farewellBox = document.getElementById('farewell-message-box');
 
             if (!dateStr) {
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
-                aperoBox.style.display = 'flex';
-                wazeCardBox.style.display = 'block';
-                farewellBox.style.display = 'none';
                 return;
             }
 
@@ -779,10 +732,6 @@
                 departureCard.style.display = 'block';
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
-
-                aperoBox.style.display = 'none';
-                wazeCardBox.style.display = 'none';
-                farewellBox.style.display = 'block';
 
                 let locale = 'fr-FR';
                 if (currentLang === 'en') locale = 'en-US';
@@ -800,101 +749,43 @@
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
-                aperoBox.style.display = 'flex';
-                wazeCardBox.style.display = 'block';
-                farewellBox.style.display = 'none';
             }
         }
 
         async function loadAdminSchedule() {
             const tbody = document.getElementById("admin-schedule-body");
-            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Chargement des données en cours...</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #777;">Chargement des données en cours...</td></tr>`;
 
             try {
                 const response = await fetch(sheetApiUrl);
                 const voyageurs = await response.json();
 
-                if (!voyageurs || voyageurs.length ===0) {
-                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Aucun voyageur enregistré dans la base pour le moment.</td></tr>`;
+                if (!voyageurs || voyageurs.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #777;">Aucun voyageur enregistré dans la base pour le moment.</td></tr>`;
                     return;
                 }
 
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-
-                const limitDate = new Date(today);
-                limitDate.setDate(today.getDate() + 7);
-
                 let html = "";
-                let displayedCount = 0;
-
                 voyageurs.forEach(v => {
-                    const arriveeStr = v.dateArrivee || v.arrivee;
-                    const departStr = v.dateDepart || v.depart;
+                    const prenom = v.prenom || "N/A";
+                    const cottage = v.cottage || "N/A";
+                    const arrivee = v.dateArrivee || v.arrivee || "Non renseignée";
+                    const depart = v.dateDepart || v.depart || "Non renseignée";
+                    const pin = v.pin || "N/A";
 
-                    if (!arriveeStr || !departStr) return;
-
-                    const arrDate = new Date(arriveeStr);
-                    const depDate = new Date(departStr);
-                    arrDate.setHours(0, 0, 0, 0);
-                    depDate.setHours(0, 0, 0, 0);
-
-                    const lendemainDepart = new Date(depDate);
-                    lendemainDepart.setDate(depDate.getDate() + 1);
-
-                    const isPassed = today >= lendemainDepart;
-                    const isUpcomingSoon = arrDate <= limitDate;
-
-                    if (!isPassed && isUpcomingSoon) {
-                        displayedCount++;
-                        const prenom = v.prenom || "N/A";
-                        const cottage = v.cottage || "N/A";
-                        const pin = v.pin || "N/A";
-                        
-                        // Nettoyage rigoureux : supprime tout sauf les chiffres pour WhatsApp desktop
-                        let tel = v.telephone || v.tel || "";
-                        tel = tel.toString().replace(/\D/g, ''); 
-
-                        const veilleArrivee = new Date(arrDate);
-                        veilleArrivee.setDate(arrDate.getDate() - 1);
-
-                        const canSend = today >= veilleArrivee && today <= depDate;
-
-                        const siteUrl = window.location.href.split('?')[0];
-                        const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nLes Ozabris`;
-                        
-                        const encodedMsg = encodeURIComponent(msgText);
-                        // Lien adapté pour l'application WhatsApp de bureau
-                        const whatsappLink = tel ? `whatsapp://send?phone=${tel}&text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
-
-                        const btnClass = canSend ? "btn-whatsapp" : "btn-whatsapp disabled";
-                        const btnText = canSend ? "💬 WhatsApp" : "⏳ En attente";
-
-                        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                        const formattedArr = isNaN(arrDate) ? arriveeStr : arrDate.toLocaleDateString('fr-FR', options);
-                        const formattedDep = isNaN(depDate) ? departStr : depDate.toLocaleDateString('fr-FR', options);
-
-                        html += `<tr>
-                            <td><strong>${prenom}</strong></td>
-                            <td>${cottage}</td>
-                            <td>${formattedArr}</td>
-                            <td>${formattedDep}</td>
-                            <td><code>${pin}</code></td>
-                            <td>
-                                <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? '' : ''}>${btnText}</a>
-                            </td>
-                        </tr>`;
-                    }
+                    html += `<tr>
+                        <td><strong>${prenom}</strong></td>
+                        <td>${cottage}</td>
+                        <td>${arrivee}</td>
+                        <td>${depart}</td>
+                        <td><code>${pin}</code></td>
+                    </tr>`;
                 });
 
-                if (displayedCount === 0) {
-                    tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #777;">Aucune arrivée prévue dans les 7 prochains jours.</td></tr>`;
-                } else {
-                    tbody.innerHTML = html;
-                }
+                tbody.innerHTML = html;
             } catch (err) {
                 console.error("Erreur de chargement du planning", err);
-                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #b94a48;">Impossible de charger les arrivées depuis Google Sheets. Vérifiez l'API.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #b94a48;">Impossible de charger les arrivées depuis Google Sheets. Vérifiez l'API.</td></tr>`;
             }
         }
     </script>
