@@ -42,11 +42,26 @@
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
-        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 950px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
+        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 950px; margin: 0 auto 20px auto; font-family: 'Segoe UI', sans-serif; }
         .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
         
+        /* MISE EN VALEUR DE LA DEVISE SUR LA PAGE PRINCIPALE */
+        .motto-brass { 
+            font-family: 'Segoe UI', sans-serif; 
+            font-size: 1rem; 
+            letter-spacing: 3px; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 15px auto 25px auto; 
+            font-weight: 700; 
+            background: rgba(197, 168, 128, 0.1); 
+            padding: 8px 20px; 
+            border-radius: 4px; 
+            display: inline-block; 
+            border: 1px dashed var(--accent); 
+        }
+
         .tagline { font-style: italic; color: #eae5db; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.3); font-size: 1.05rem; }
-        .motto-brass { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-top: 10px; font-weight: 600; }
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
@@ -121,13 +136,16 @@
             border: 1px solid var(--accent);
             border-radius: 8px;
             padding: 12px 20px;
-            margin-bottom: 25px;
+            margin: 0 auto 25px auto;
+            max-width: 450px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
             font-family: 'Segoe UI', sans-serif;
         }
-        .weather-compact span { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
+        .weather-compact span { font-size: 0.95rem; color: var(--primary); font-weight: 600; display: block; }
         .weather-compact p { font-size: 0.8rem; color: #555; margin: 0; }
 
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; font-family: 'Segoe UI', sans-serif; }
@@ -226,13 +244,16 @@
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
         </div>
         
+        <!-- Devise de l'île en laiton mise bien en avant sur la page principale -->
+        <div>
+            <div class="motto-brass lang-fr">✨ "La Réunion nou lé capab" ✨</div>
+            <div class="motto-brass lang-en" style="display:none;">✨ "La Réunion: We are capable" ✨</div>
+            <div class="motto-brass lang-de" style="display:none;">✨ "La Réunion: Wir schaffen das" ✨</div>
+        </div>
+        
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
         <div class="tagline lang-en" style="display:none;">"An exceptional, award-winning getaway in the Highlands of the Island."</div>
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
-        
-        <div class="motto-brass lang-fr">"La Réunion nou lé capab"</div>
-        <div class="motto-brass lang-en" style="display:none;">"La Réunion: We are capable"</div>
-        <div class="motto-brass lang-de" style="display:none;">"La Réunion: Wir schaffen das"</div>
     </header>
 
     <div class="top-portal-wrapper">
@@ -264,12 +285,13 @@
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
+            <!-- WIDGET MÉTÉO COMPACT, CENTRÉ ET AJUSTÉ -->
             <div class="weather-compact">
+                <div style="font-size: 1.8rem;">☀️</div>
                 <div>
-                    <span>🌤️ La Saline les Hauts (97422)</span>
+                    <span>La Saline les Hauts (97422)</span>
                     <p>Grand soleil et douce brise sur les hauteurs</p>
                 </div>
-                <img src="https://i.postimg.cc/9Q5112X5/meteo.jpg" alt="Météo" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent);" onerror="this.src='https://images.unsplash.com/photo-1601297183305-6df142704ea2?w=100'">
             </div>
 
             <h2 class="welcome-title" id="welcome-message">Bienvenue !</h2>
@@ -414,7 +436,7 @@
                         <h5>📊 Fichier Google Sheets</h5>
                         <p>Consultez la base de données brute et l'historique complet des réservations.</p>
                     </div>
-                    <a href="https://docs.google.com/spreadsheets" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
                 </div>
 
                 <div class="admin-box">
@@ -571,7 +593,7 @@
                 if (el.tagName === 'TITLE' || el.tagName === 'SPAN') {
                     el.style.display = 'block';
                 } else if (el.classList.contains('badge') || el.classList.contains('amenity-item') || el.classList.contains('motto-brass')) {
-                    el.style.display = 'inline-flex';
+                    el.style.display = 'inline-block';
                 } else {
                     el.style.display = ''; 
                 }
@@ -737,4 +759,3 @@
     </script>
 </body>
 </html>
-
