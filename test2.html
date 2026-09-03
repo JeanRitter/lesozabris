@@ -6,10 +6,10 @@
     <title>Les Ozabris - Cottages de Prestige & Perles Rares</title>
     <style>
         :root {
-            --primary-color: #12263a; /* Deep Midnight Blue */
-            --accent-color: #c5a880;  /* Warm Taupe / Gold */
-            --bg-color: #fbfbf9;      /* Off-White / Linen */
-            --text-color: #2c3e50;    /* Slate Dark */
+            --primary-color: #12263a;
+            --accent-color: #c5a880;
+            --bg-color: #fbfbf9;
+            --text-color: #2c3e50;
             --card-bg: #ffffff;
         }
 
@@ -57,9 +57,8 @@
             font-size: 1.1rem;
         }
 
-        /* BADGES DE PRESTIGE & ORIGINE DES CLASSEMENTS */
         .badges-container {
-            max-width: 700px;
+            max-width: 720px;
             margin: 20px auto;
             display: flex;
             flex-direction: column;
@@ -90,7 +89,6 @@
             opacity: 0.9;
         }
 
-        /* ESPACE RÉSERVÉ VOYAGEURS */
         .traveler-space {
             background: var(--bg-color);
             border-top-left-radius: 20px;
@@ -104,7 +102,6 @@
             margin: 0 auto;
         }
 
-        /* BOUTON RETOUR HAUT DE PAGE */
         .top-return-bar {
             margin-bottom: 20px;
         }
@@ -128,7 +125,6 @@
             color: #ffffff;
         }
 
-        /* SECTION PIN / ACCÈS */
         .pin-section {
             background: var(--card-bg);
             padding: 25px;
@@ -176,7 +172,6 @@
             padding-bottom: 8px;
         }
 
-        /* BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) */
         .departure-container {
             background: var(--card-bg);
             padding: 25px;
@@ -261,16 +256,15 @@
 <body>
 
     <header id="top-header">
-        <!-- Logo officiel -->
         <div class="logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Logo Les Ozabris">
         </div>
         <h1>LES OZABRIS</h1>
         <p>COTTAGES DE PRESTIGE & PERLES RARES • LA RÉUNION</p>
 
-        <!-- Badges officiels avec origine et organismes des classements -->
+        <!-- Précision officielle des classements avec les organismes -->
         <div class="badges-container">
-            <div class="badge-pill">⭐ CLASSEMENT MEUBLÉS : Ptitzabris (3⭐ Clévacances depuis 2025) & Grandzabris (2⭐ Gîtes de France depuis 2024)</div>
+            <div class="badge-pill">⭐ CLASSEMENT MEUBLÉS : Le Ptitzabris (3 Étoiles Clévacances depuis 2025) & Le Grandzabris (2 Étoiles Gîtes de France depuis 2024)</div>
             <div class="badge-pill">❤️ COUP DE CŒUR VOYAGEURS AIRBNB</div>
             <div class="badge-pill">🏆 EXCELLENCE 5/5 ÉTOILES DEPUIS 2019</div>
         </div>
@@ -280,16 +274,15 @@
         </div>
     </header>
 
-    <!-- ESPACE RÉSERVÉ VOYAGEURS -->
     <div class="traveler-space">
         <div class="container">
 
-            <!-- Bouton Retour Accueil en haut de l'espace voyageur -->
+            <!-- Bouton Retour Accueil -->
             <div class="top-return-bar">
                 <a href="#top-header" class="btn-return-top">⬅️ Retour à l'accueil</a>
             </div>
 
-            <!-- Contrôle d'accès administrateur / PIN -->
+            <!-- Accès Admin PIN : 140769 -->
             <div class="pin-section" id="admin-pin-container">
                 <h3>🔐 Accès Sécurisé Voyageurs</h3>
                 <p>Veuillez entrer votre code d'accès :</p>
@@ -297,14 +290,13 @@
                 <button onclick="checkPin()" class="btn-pin">Valider</button>
             </div>
 
-            <!-- Contenu protégé affiché après validation du code PIN -->
             <div id="protected-content" style="display: none;">
                 <section class="welcome-section">
                     <h2>Bienvenue aux Ozabris</h2>
                     <p>Retrouvez ci-dessous toutes vos informations de séjour personnalisées, les accès, ainsi que les consignes pratiques pour votre confort.</p>
                 </section>
 
-                <!-- BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) -->
+                <!-- BLOC DE FIN DE SÉJOUR -->
                 <div id="checkout-departure-card" class="departure-container" style="display: none;">
                     
                     <div class="departure-header">
@@ -312,19 +304,16 @@
                         <p id="departure-subtitle" class="subtitle-text"></p>
                     </div>
 
-                    <!-- 1. Rendez-vous de départ / Au revoir -->
                     <div class="departure-section">
                         <h3>👋 Votre rendez-vous « Au revoir »</h3>
                         <p>Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
                     </div>
 
-                    <!-- 2. Consignes concernant le linge et les draps -->
                     <div class="departure-section">
                         <h3>🛏️ Consignes pour le linge de maison</h3>
                         <p>Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
                     </div>
 
-                    <!-- 3. Demande d'avis Google (Lien direct personnalisé) -->
                     <div class="departure-section review-box">
                         <h3>⭐ Votre avis compte énormément</h3>
                         <p id="review-text"></p>
@@ -333,7 +322,6 @@
                         </a>
                     </div>
 
-                    <!-- 4. Bouton Retour en bas -->
                     <div class="departure-footer">
                         <a href="#top-header" class="btn-secondary">⬅️ Retour à l'accueil</a>
                     </div>
@@ -345,7 +333,6 @@
     </div>
 
     <script>
-        // Gestion de la sécurité PIN (140769)
         function checkPin() {
             const pin = document.getElementById('pin-input').value;
             if (pin === '140769') {
@@ -356,11 +343,8 @@
             }
         }
 
-        // Détection de l'abri (ex: ?abri=grandzabris ou ?abri=ptitzabris)
         const urlParams = new URLSearchParams(window.location.search);
         const abriType = urlParams.get('abri') || 'ptitzabris'; 
-        
-        // Condition d'affichage (activée ici pour le test de fin de séjour)
         const isDayBeforeDeparture = true; 
 
         if (isDayBeforeDeparture) {
