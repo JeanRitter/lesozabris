@@ -780,7 +780,6 @@
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
 
-                // Masquer l'apéro et l'accès Waze car ils partent, et afficher le message de fin
                 aperoBox.style.display = 'none';
                 wazeCardBox.style.display = 'none';
                 farewellBox.style.display = 'block';
@@ -851,8 +850,9 @@
                         const prenom = v.prenom || "N/A";
                         const cottage = v.cottage || "N/A";
                         const pin = v.pin || "N/A";
+                        
+                        // Récupération et nettoyage du numéro (supporte 'telephone' ou 'tel' dans la feuille)
                         let tel = v.telephone || v.tel || "";
-
                         tel = tel.toString().replace(/[\s\-\(\)]/g, '');
 
                         const veilleArrivee = new Date(arrDate);
@@ -864,6 +864,7 @@
                         const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nLes Ozabris`;
                         
                         const encodedMsg = encodeURIComponent(msgText);
+                        // Le lien utilise directement le numéro international fourni dans la base de données
                         const whatsappLink = tel ? `https://wa.me/${tel}?text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
 
                         const btnClass = canSend ? "btn-whatsapp" : "btn-whatsapp disabled";
