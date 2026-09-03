@@ -6,8 +6,8 @@
     <title>Les Ozabris - Cottages de Prestige & Perles Rares</title>
     <style>
         :root {
-            --primary-color: #12263a; /* Bleu Nuit / Deep Midnight Blue */
-            --accent-color: #c5a880;  /* Or / Warm Taupe */
+            --primary-color: #12263a; /* Deep Midnight Blue */
+            --accent-color: #c5a880;  /* Warm Taupe / Gold */
             --bg-color: #fbfbf9;      /* Off-White / Linen */
             --text-color: #2c3e50;    /* Slate Dark */
             --card-bg: #ffffff;
@@ -107,7 +107,7 @@
             margin-top: 10px;
         }
 
-        /* BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) */
+        /* BLOC DE FIN DE SÉJOUR */
         .departure-container {
             background: var(--card-bg);
             padding: 25px;
@@ -198,29 +198,27 @@
 
     <div class="container">
 
-        <!-- PAGE D'ACCUEIL : PRÉSENTATION & CLASSEMENTS OFFICIELS -->
+        <!-- ACCUEIL & CLASSEMENTS OFFICIELS -->
         <section class="welcome-section">
             <h2>Bienvenue dans notre sanctuaire</h2>
-            <p>Niché dans les hauts de l'Ouest, notre domaine vous invite à une parenthèse d'exception, alliant confort de prestige et respect de l'environnement.</p>
+            <p>Niché dans les hauts de l'Ouest, notre domaine vous invite à une parenthèse d'exception, alliant confort de prestige et sérénité absolue.</p>
             
             <div class="cottages-grid">
-                <!-- Le Ptitzabris -->
                 <div class="cottage-card">
                     <h3>Le Ptitzabris</h3>
-                    <p>Un cocon intime suspendu dans la verdure avec vue sur les cimes et les couchers de soleil.</p>
+                    <p>Un cocon intime suspendu dans la verdure, idéal pour admirer les couchers de soleil.</p>
                     <div class="badge-stars">⭐⭐⭐ 3 Étoiles (Clévacances)</div>
                 </div>
 
-                <!-- Le Grandzabris -->
                 <div class="cottage-card">
                     <h3>Le Grandzabris</h3>
-                    <p>Un espace de charme spacieux et chaleureux, idéal pour se ressourcer en pleine nature.</p>
+                    <p>Un espace spacieux et chaleureux, parfaitement intégré dans son écrin de nature tropicale.</p>
                     <div class="badge-stars">⭐⭐ 2 Étoiles (Gîtes de France)</div>
                 </div>
             </div>
         </section>
 
-        <!-- BLOC DE FIN DE SÉJOUR (Affiché dynamiquement la veille du départ) -->
+        <!-- BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) -->
         <div id="checkout-departure-card" class="departure-container" style="display: none;">
             
             <div class="departure-header">
@@ -228,19 +226,16 @@
                 <p id="departure-subtitle" class="subtitle-text"></p>
             </div>
 
-            <!-- 1. Rendez-vous de départ / Au revoir -->
             <div class="departure-section">
                 <h3>👋 Votre rendez-vous « Au revoir »</h3>
                 <p>Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
             </div>
 
-            <!-- 2. Consignes concernant le linge et les draps -->
             <div class="departure-section">
                 <h3>🛏️ Consignes pour le linge de maison</h3>
                 <p>Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
             </div>
 
-            <!-- 3. Demande d'avis Google (Lien direct personnalisé) -->
             <div class="departure-section review-box">
                 <h3>⭐ Votre avis compte énormément</h3>
                 <p id="review-text"></p>
@@ -249,7 +244,7 @@
                 </a>
             </div>
 
-            <!-- 4. Bouton Retour à l'accueil -->
+            <!-- BOUTON RETOUR À L'ACCUEIL -->
             <div class="departure-footer">
                 <a href="#" class="btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">⬅️ Retour à l'accueil</a>
             </div>
@@ -259,11 +254,11 @@
     </div>
 
     <script>
-        // Détection de l'abri concerné via l'URL (ex: ?abri=grandzabris ou ?abri=ptitzabris)
+        // Détection de l'abri (ex: ?abri=grandzabris ou ?abri=ptitzabris)
         const urlParams = new URLSearchParams(window.location.search);
         const abriType = urlParams.get('abri') || 'ptitzabris'; 
         
-        // Simulation de la condition d'affichage (true = affiché, par exemple testé la veille du départ)
+        // Condition d'affichage (activée ici pour le test)
         const isDayBeforeDeparture = true; 
 
         if (isDayBeforeDeparture) {
@@ -278,7 +273,6 @@
                 subtitleEl.innerText = "Merci d'avoir séjourné au Grandzabris (Classé 2 étoiles) ! Votre parenthèse s'achève.";
                 reviewTextEl.innerText = "Si vous avez apprécié le calme et le confort du Grandzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
             } else {
-                // Par défaut Le Ptitzabris
                 titleEl.innerText = "Au revoir du Ptitzabris";
                 subtitleEl.innerText = "Merci d'avoir séjourné au Ptitzabris (Classé 3 étoiles) ! Votre escapade s'achève.";
                 reviewTextEl.innerText = "Si vous avez apprécié l'atmosphère et les prestations du Ptitzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
