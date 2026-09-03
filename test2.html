@@ -95,11 +95,7 @@
         .oz-btn:hover { background-color: var(--accent); }
         .error-msg { color: #b94a48; font-size: 0.85rem; margin-top: 15px; display: none; font-family: 'Segoe UI', sans-serif; }
 
-        /* BOUTON RETOUR HAUT DE PAGE */
-        .top-return-bar {
-            margin-bottom: 20px;
-            text-align: left;
-        }
+        .top-return-bar { margin-bottom: 20px; text-align: left; }
         .btn-return-top {
             display: inline-block;
             color: var(--primary);
@@ -115,16 +111,11 @@
             transition: all 0.3s;
             cursor: pointer;
         }
-        .btn-return-top:hover {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
+        .btn-return-top:hover { background-color: var(--primary); color: #ffffff; }
 
-        /* ESPACE VOYAGEUR */
         #guest-portal { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; text-align: left; }
         .welcome-title { color: var(--primary); font-size: 2rem; margin-bottom: 10px; text-align: center; font-weight: 300; }
         
-        /* WIDGET MÉTÉO COMPACT EN HAUT DE L'ESPACE VOYAGEUR */
         .weather-compact {
             background: var(--bg-light);
             border: 1px solid var(--accent);
@@ -157,7 +148,6 @@
         .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
         .departure-footer { text-align: center; margin-top: 25px; }
 
-        /* ESPACE PROPRIÉTAIRE (ADMIN) */
         #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 950px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
         .admin-title { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; font-weight: 400; font-family: 'Playfair Display', serif; text-align: center; }
         .admin-subtitle { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 30px; }
@@ -227,8 +217,9 @@
         </div>
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle lang-fr">Cottages de Prestige & Perles Rares • La Réunion</span>
+        <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
+        <span class="subtitle lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</span>
         
-        <!-- Badges officiels -->
         <div class="badges-container">
             <div class="badge">⭐ Ptitzabris (3 Étoiles Clévacances depuis 2025)</div>
             <div class="badge">⭐ Grandzabris (2 Étoiles Gîtes de France depuis 2024)</div>
@@ -239,35 +230,40 @@
         <div class="tagline lang-en" style="display:none;">"An exceptional, award-winning getaway in the Highlands of the Island."</div>
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
         
-        <!-- Devise de l'île de la Réunion en laiton traduite -->
         <div class="motto-brass lang-fr">"La Réunion nou lé capab"</div>
         <div class="motto-brass lang-en" style="display:none;">"La Réunion: We are capable"</div>
         <div class="motto-brass lang-de" style="display:none;">"La Réunion: Wir schaffen das"</div>
     </header>
 
-    <!-- --- ZONE D'ACCÈS SÉCURISÉ --- -->
     <div class="top-portal-wrapper">
         <div id="login-container">
             <div class="oz-card">
                 <h3 class="lang-fr">🔐 Espace Réservé Voyageurs</h3>
+                <h3 class="lang-en" style="display:none;">🔐 Guest Private Area</h3>
+                <h3 class="lang-de" style="display:none;">🔐 Privater Gäste-Bereich</h3>
+                
                 <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé.</p>
+                <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome.</p>
+                <p class="lang-de" style="display:none;">Geben Sie Ihren PIN-Code ein, um auf Ihre Begrüßung zuzugreifen.</p>
                 
                 <input type="password" id="pinCode" class="oz-input" placeholder="• • • • • •" maxlength="6">
                 <button type="button" class="oz-btn" ontouchstart="checkPin()" onclick="checkPin()">
                     <span class="lang-fr">Accéder à mon espace</span>
+                    <span class="lang-en" style="display:none;">Access my space</span>
+                    <span class="lang-de" style="display:none;">Zu meinem Bereich</span>
                 </button>
 
                 <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour introuvable.</div>
+                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or stay not found.</div>
+                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder Aufenthalt nicht gefunden.</div>
             </div>
         </div>
 
-        <!-- --- ESPACE VOYAGEUR --- -->
         <div id="guest-portal" style="display: none;">
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
-            <!-- WIDGET MÉTÉO COMPACT EN HAUT DE L'ESPACE VOYAGEUR -->
             <div class="weather-compact">
                 <div>
                     <span>🌤️ La Saline les Hauts (97422)</span>
@@ -282,7 +278,6 @@
             </p>
             
             <div class="guide-grid">
-                <!-- 1. Apéro d'accueil -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
@@ -292,7 +287,6 @@
                     <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 15px;">Rendez-vous sur le parking.</p>
                 </div>
 
-                <!-- 2. Connexion Wi-Fi -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
@@ -304,7 +298,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Consignes Poubelles & Compost -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">♻️ Consignes Poubelles & Compost</h5>
@@ -326,7 +319,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Consignes Sanibroyeur -->
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">🚽 Utilisation Sanibroyeur</h5>
@@ -338,7 +330,6 @@
                 </div>
             </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR (AFFICHÉ SEULEMENT DANS LES 2 DERNIERS JOURS) -->
             <div id="checkout-departure-card" class="departure-container" style="display: none;">
                 <div class="departure-header">
                     <h2>Votre départ est proche</h2>
@@ -373,7 +364,6 @@
                 </div>
             </div>
 
-            <!-- 5. Carte Accès & Waze -->
             <div style="margin-top: 30px;" class="card">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -402,7 +392,6 @@
             </div>
         </div>
 
-        <!-- --- TABLEAU DE BORD ADMINISTRATEUR (CODE 140769) --- -->
         <div id="admin-dashboard" style="display: none;">
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
@@ -474,7 +463,6 @@
         </div>
     </div>
     
-    <!-- --- CONTENU PRINCIPAL DE LA PAGE WEB --- -->
     <div id="main-content">
         <div class="container">
             <div class="amenities-banner">
@@ -485,7 +473,6 @@
             <div class="section-title lang-fr">Le Domaine & Nos Hébergements</div>
             
             <div class="grid">
-                <!-- 1. Le Ptitzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
@@ -507,7 +494,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Le Grandzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
@@ -529,7 +515,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Espace ZenAbris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
@@ -542,7 +527,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Encadré Écologique complet avec contribution solaire -->
                 <div class="eco-card">
                     <div>
                         <div class="eco-header">
@@ -596,7 +580,6 @@
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
 
-            // Mise à jour dynamique de la phrase de départ si le portail est ouvert
             const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
             if (savedData && !savedData.isAdmin) {
                 renderDepartureCard(savedData.dateDepart || savedData.depart);
@@ -754,3 +737,4 @@
     </script>
 </body>
 </html>
+
