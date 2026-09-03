@@ -283,9 +283,9 @@
                     <span class="lang-de" style="display:none;">Zu meinem Bereich</span>
                 </button>
 
-                <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour introuvable.</div>
-                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or stay not found.</div>
-                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder Aufenthalt nicht gefunden.</div>
+                <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour expiré.</div>
+                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or expired stay.</div>
+                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder abgelaufener Aufenthalt.</div>
             </div>
         </div>
 
@@ -454,7 +454,7 @@
                         <h5>📊 Fichier Google Sheets</h5>
                         <p>Consultez la base de données brute et l'historique complet des réservations.</p>
                     </div>
-                    <a href="https://google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
                 </div>
 
                 <div class="admin-box">
@@ -723,6 +723,26 @@
                 const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
 
                 if (voyageurTrouve) {
+                    // VÉRIFICATION DE LA VALIDITÉ (Expire 24h après la date de départ, soit le lendemain du départ)
+                    const departStr = voyageurTrouve.dateDepart || voyageurTrouve.depart;
+                    if (departStr) {
+                        const depDate = new Date(departStr);
+                        const today = new Date();
+                        depDate.setHours(0, 0, 0, 0);
+                        today.setHours(0, 0, 0, 0);
+
+                        // Date limite d'accès = lendemain du départ (24h après)
+                        const limitDate = new Date(depDate);
+                        limitDate.setDate(limitDate.getDate() + 1);
+
+                        // Si aujourd'hui dépasse le lendemain du départ, le code est expiré
+                        if (today > limitDate) {
+                            document.getElementById("errorMsg").style.display = "block";
+                            document.getElementById("pinCode").value = "";
+                            return;
+                        }
+                    }
+
                     document.getElementById("login-container").style.display = "none";
                     document.getElementById("main-content").style.display = "none";
                     document.getElementById("admin-dashboard").style.display = "none";
@@ -738,7 +758,7 @@
                     document.getElementById("wifi-qr-img").src = qrUrl;
 
                     localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
-                    renderDepartureCard(voyageurTrouve.dateDepart || voyageurTrouve.depart, voyageurTrouve.prenom);
+                    renderDepartureCard(departStr, voyageurTrouve.prenom);
 
                 } else {
                     document.getElementById("errorMsg").style.display = "block";
@@ -776,12 +796,12 @@
             const diffTime = depDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            if (diffDays >= 0 && diffDays <= 2) {
+            // S'affiche si on est dans les 2 jours avant le départ, le jour même, ou le jour suivant (les 24h après)
+            if (diffDays >= -1 && diffDays <= 2) {
                 departureCard.style.display = 'block';
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
 
-                // Masquage forcé des blocs d'arrivée (Apéro et Waze) et affichage du message de fin
                 aperoBox.style.display = 'none';
                 wazeCardBox.style.display = 'none';
                 farewellBox.style.display = 'block';
@@ -844,7 +864,7 @@
                     const lendemainDepart = new Date(depDate);
                     lendemainDepart.setDate(depDate.getDate() + 1);
 
-                    const isPassed = today >= lendemainDepart;
+                    const isPassed = today > lendemainDepart;
                     const isUpcomingSoon = arrDate <= limitDate;
 
                     if (!isPassed && isUpcomingSoon) {
