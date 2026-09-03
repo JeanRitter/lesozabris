@@ -59,7 +59,7 @@
 
         /* BADGES DE PRESTIGE & ORIGINE DES CLASSEMENTS */
         .badges-container {
-            max-width: 650px;
+            max-width: 680px;
             margin: 20px auto;
             display: flex;
             flex-direction: column;
@@ -131,7 +131,7 @@
         /* SECTION PIN / ACCÈS */
         .pin-section {
             background: var(--card-bg);
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
             text-align: center;
             margin-bottom: 25px;
@@ -268,9 +268,9 @@
         <h1>LES OZABRIS</h1>
         <p>COTTAGES DE PRESTIGE & PERLES RARES • LA RÉUNION</p>
 
-        <!-- Badges officiels avec origine et dates des classements -->
+        <!-- Badges officiels avec origine et organismes des classements -->
         <div class="badges-container">
-            <div class="badge-pill">⭐ CLASSEMENT MEUBLÉS : Ptitzabris (3⭐ Clévacances depuis 2025) & Grandzabris (2⭐ Gîtes de France depuis 2024)</div>
+            <div class="badge-pill">⭐ CLASSEMENT MEUBLÉS : Le Ptitzabris (3⭐ Clévacances depuis 2025) & Le Grandzabris (2⭐ Gîtes de France depuis 2024)</div>
             <div class="badge-pill">❤️ COUP DE CŒUR VOYAGEURS AIRBNB</div>
             <div class="badge-pill">🏆 EXCELLENCE 5/5 ÉTOILES DEPUIS 2019</div>
         </div>
@@ -289,9 +289,9 @@
                 <a href="#top-header" class="btn-return-top">⬅️ Retour à l'accueil</a>
             </div>
 
-            <!-- Contrôle d'accès administrateur (PIN: 140769) -->
+            <!-- Contrôle d'accès administrateur / PIN -->
             <div class="pin-section" id="admin-pin-container">
-                <h3>🔐 Accès Administrateur / Voyageur</h3>
+                <h3>🔐 Accès Sécurisé Voyageurs</h3>
                 <p>Veuillez entrer votre code d'accès :</p>
                 <input type="password" id="pin-input" class="pin-input" placeholder="Code PIN">
                 <button onclick="checkPin()" class="btn-pin">Valider</button>
@@ -304,7 +304,7 @@
                     <p>Retrouvez ci-dessous toutes vos informations de séjour personnalisées, les accès, ainsi que les consignes pratiques pour votre confort.</p>
                 </section>
 
-                <!-- BLOC DE FIN DE SÉJOUR (Affiché dynamiquement la veille du départ) -->
+                <!-- BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) -->
                 <div id="checkout-departure-card" class="departure-container" style="display: none;">
                     
                     <div class="departure-header">
