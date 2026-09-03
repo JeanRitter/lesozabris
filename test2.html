@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--primary-color); /* Fond harmonisé */
+            background-color: var(--primary-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
@@ -57,9 +57,9 @@
             font-size: 1.1rem;
         }
 
-        /* BADGES DE PRESTIGE & CLASSEMENTS */
+        /* BADGES DE PRESTIGE & ORIGINE DES CLASSEMENTS */
         .badges-container {
-            max-width: 500px;
+            max-width: 650px;
             margin: 20px auto;
             display: flex;
             flex-direction: column;
@@ -74,7 +74,7 @@
             padding: 12px 20px;
             border-radius: 6px;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             letter-spacing: 0.5px;
             font-weight: 500;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -90,19 +90,73 @@
             opacity: 0.9;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        /* ESPACE RÉSERVÉ VOYAGEURS & BLOCS */
+        /* ESPACE RÉSERVÉ VOYAGEURS */
         .traveler-space {
             background: var(--bg-color);
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             padding: 30px 20px;
             min-height: 500px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* BOUTON RETOUR HAUT DE PAGE */
+        .top-return-bar {
+            margin-bottom: 20px;
+        }
+
+        .btn-return-top {
+            display: inline-block;
+            color: var(--primary-color);
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .btn-return-top:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        /* SECTION PIN / ACCÈS */
+        .pin-section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(18, 38, 58, 0.05);
+        }
+
+        .pin-input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 150px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .btn-pin {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         .welcome-section {
@@ -181,7 +235,6 @@
             color: var(--primary-color);
         }
 
-        /* BOUTON RETOUR PAGE D'ACCUEIL */
         .departure-footer {
             text-align: center;
             margin-top: 25px;
@@ -207,7 +260,7 @@
 </head>
 <body>
 
-    <header>
+    <header id="top-header">
         <!-- Logo officiel -->
         <div class="logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Logo Les Ozabris">
@@ -215,9 +268,9 @@
         <h1>LES OZABRIS</h1>
         <p>COTTAGES DE PRESTIGE & PERLES RARES • LA RÉUNION</p>
 
-        <!-- Badges unifiés (Classements & Récompenses) -->
+        <!-- Badges officiels avec origine et dates des classements -->
         <div class="badges-container">
-            <div class="badge-pill">⭐ CLASSEMÉ MEUBLÉ DE TOURISME (3 & 2 Étoiles)</div>
+            <div class="badge-pill">⭐ CLASSEMENT MEUBLÉS : Ptitzabris (3⭐ Clévacances depuis 2025) & Grandzabris (2⭐ Gîtes de France depuis 2024)</div>
             <div class="badge-pill">❤️ COUP DE CŒUR VOYAGEURS AIRBNB</div>
             <div class="badge-pill">🏆 EXCELLENCE 5/5 ÉTOILES DEPUIS 2019</div>
         </div>
@@ -231,51 +284,78 @@
     <div class="traveler-space">
         <div class="container">
 
-            <section class="welcome-section">
-                <h2>🔐 Espace Réservé Voyageurs</h2>
-                <p>Retrouvez ci-dessous toutes vos informations de séjour personnalisées, les accès, ainsi que les consignes pratiques pour votre confort.</p>
-            </section>
+            <!-- Bouton Retour Accueil en haut de l'espace voyageur -->
+            <div class="top-return-bar">
+                <a href="#top-header" class="btn-return-top">⬅️ Retour à l'accueil</a>
+            </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR (Affiché dynamiquement la veille du départ) -->
-            <div id="checkout-departure-card" class="departure-container" style="display: none;">
-                
-                <div class="departure-header">
-                    <h2 id="departure-title"></h2>
-                    <p id="departure-subtitle" class="subtitle-text"></p>
+            <!-- Contrôle d'accès administrateur (PIN: 140769) -->
+            <div class="pin-section" id="admin-pin-container">
+                <h3>🔐 Accès Administrateur / Voyageur</h3>
+                <p>Veuillez entrer votre code d'accès :</p>
+                <input type="password" id="pin-input" class="pin-input" placeholder="Code PIN">
+                <button onclick="checkPin()" class="btn-pin">Valider</button>
+            </div>
+
+            <!-- Contenu protégé affiché après validation du code PIN -->
+            <div id="protected-content" style="display: none;">
+                <section class="welcome-section">
+                    <h2>Bienvenue aux Ozabris</h2>
+                    <p>Retrouvez ci-dessous toutes vos informations de séjour personnalisées, les accès, ainsi que les consignes pratiques pour votre confort.</p>
+                </section>
+
+                <!-- BLOC DE FIN DE SÉJOUR (Affiché dynamiquement la veille du départ) -->
+                <div id="checkout-departure-card" class="departure-container" style="display: none;">
+                    
+                    <div class="departure-header">
+                        <h2 id="departure-title"></h2>
+                        <p id="departure-subtitle" class="subtitle-text"></p>
+                    </div>
+
+                    <!-- 1. Rendez-vous de départ / Au revoir -->
+                    <div class="departure-section">
+                        <h3>👋 Votre rendez-vous « Au revoir »</h3>
+                        <p>Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
+                    </div>
+
+                    <!-- 2. Consignes concernant le linge et les draps -->
+                    <div class="departure-section">
+                        <h3>🛏️ Consignes pour le linge de maison</h3>
+                        <p>Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
+                    </div>
+
+                    <!-- 3. Demande d'avis Google (Lien direct personnalisé) -->
+                    <div class="departure-section review-box">
+                        <h3>⭐ Votre avis compte énormément</h3>
+                        <p id="review-text"></p>
+                        <a id="google-review-btn" href="https://search.google.com/local/writereview?placeid=ChIJ8UOOyTt4Q4sRo0FMRBi4REw" target="_blank" class="btn-primary">
+                            Laisser un avis sur Google
+                        </a>
+                    </div>
+
+                    <!-- 4. Bouton Retour en bas -->
+                    <div class="departure-footer">
+                        <a href="#top-header" class="btn-secondary">⬅️ Retour à l'accueil</a>
+                    </div>
+
                 </div>
-
-                <!-- 1. Rendez-vous de départ / Au revoir -->
-                <div class="departure-section">
-                    <h3>👋 Votre rendez-vous « Au revoir »</h3>
-                    <p>Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
-                </div>
-
-                <!-- 2. Consignes concernant le linge et les draps -->
-                <div class="departure-section">
-                    <h3>🛏️ Consignes pour le linge de maison</h3>
-                    <p>Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
-                </div>
-
-                <!-- 3. Demande d'avis Google (Lien direct personnalisé) -->
-                <div class="departure-section review-box">
-                    <h3>⭐ Votre avis compte énormément</h3>
-                    <p id="review-text"></p>
-                    <a id="google-review-btn" href="https://search.google.com/local/writereview?placeid=ChIJ8UOOyTt4Q4sRo0FMRBi4REw" target="_blank" class="btn-primary">
-                        Laisser un avis sur Google
-                    </a>
-                </div>
-
-                <!-- 4. Bouton Retour à l'accueil -->
-                <div class="departure-footer">
-                    <a href="#" class="btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">⬅️ Retour à l'accueil</a>
-                </div>
-
             </div>
 
         </div>
     </div>
 
     <script>
+        // Gestion de la sécurité PIN (140769)
+        function checkPin() {
+            const pin = document.getElementById('pin-input').value;
+            if (pin === '140769') {
+                document.getElementById('admin-pin-container').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+            } else {
+                alert('Code incorrect, veuillez réessayer.');
+            }
+        }
+
         // Détection de l'abri (ex: ?abri=grandzabris ou ?abri=ptitzabris)
         const urlParams = new URLSearchParams(window.location.search);
         const abriType = urlParams.get('abri') || 'ptitzabris'; 
@@ -292,11 +372,11 @@
 
             if (abriType === 'grandzabris') {
                 titleEl.innerText = "Au revoir du Grandzabris";
-                subtitleEl.innerText = "Merci d'avoir séjourné au Grandzabris (Classé 2 étoiles) ! Votre parenthèse s'achève.";
+                subtitleEl.innerText = "Merci d'avoir séjourné au Grandzabris (Classé 2 étoiles par Gîtes de France depuis 2024) ! Votre parenthèse s'achève.";
                 reviewTextEl.innerText = "Si vous avez apprécié le calme et le confort du Grandzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
             } else {
                 titleEl.innerText = "Au revoir du Ptitzabris";
-                subtitleEl.innerText = "Merci d'avoir séjourné au Ptitzabris (Classé 3 étoiles) ! Votre escapade s'achève.";
+                subtitleEl.innerText = "Merci d'avoir séjourné au Ptitzabris (Classé 3 étoiles par Clévacances depuis 2025) ! Votre escapade s'achève.";
                 reviewTextEl.innerText = "Si vous avez apprécié l'atmosphère et les prestations du Ptitzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
             }
         }
