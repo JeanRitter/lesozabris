@@ -42,7 +42,7 @@
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
-        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 850px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
+        .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 900px; margin: 0 auto 25px auto; font-family: 'Segoe UI', sans-serif; }
         .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
         .badge-stars { color: var(--gold); font-size: 0.9rem; }
         
@@ -98,6 +98,7 @@
         /* BOUTON RETOUR HAUT DE PAGE */
         .top-return-bar {
             margin-bottom: 20px;
+            text-align: left;
         }
         .btn-return-top {
             display: inline-block;
@@ -112,6 +113,7 @@
             font-family: 'Segoe UI', sans-serif;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             transition: all 0.3s;
+            cursor: pointer;
         }
         .btn-return-top:hover {
             background-color: var(--primary);
@@ -129,7 +131,7 @@
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); margin-top: 10px; }
         .wifi-img-box img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
 
-        /* BLOC DE FIN DE SÉJOUR */
+        /* BLOC DE FIN DE SÉJOUR (CENTRÉ) */
         .departure-container {
             background: var(--white);
             padding: 30px;
@@ -138,6 +140,7 @@
             box-shadow: 0 4px 15px rgba(18, 38, 58, 0.08);
             margin-top: 35px;
             font-family: 'Segoe UI', sans-serif;
+            text-align: center;
         }
         .departure-header h2 {
             color: var(--primary);
@@ -155,6 +158,7 @@
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
+            text-align: center;
         }
         .departure-section h3 {
             font-size: 1.05rem;
@@ -164,9 +168,10 @@
         }
         .review-box {
             background: #f4f1ea;
-            padding: 15px;
+            padding: 20px;
             border-radius: 8px;
             border-left: 4px solid var(--accent);
+            text-align: center;
         }
         .btn-primary-review {
             display: inline-block;
@@ -176,7 +181,7 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -237,6 +242,16 @@
         footer { background-color: var(--primary); color: #eae5db; text-align: center; padding: 50px 20px; margin-top: 80px; font-size: 0.9rem; border-top: 3px solid var(--accent); }
         .contact-info { background: rgba(255,255,255,0.03); max-width: 550px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
+        
+        /* STYLE DU COMPTEUR DE VISITES */
+        .visit-counter {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
     </style>
 </head>
 <body>
@@ -256,9 +271,9 @@
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
         <span class="subtitle lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</span>
         
-        <!-- Badges officiels avec origine, organismes et dates des classements -->
+        <!-- Badges officiels épurés -->
         <div class="badges-container">
-            <div class="badge">⭐ Ptitzabris (3 Étoiles Clévacances depuis 2025) & Grandzabris (2 Étoiles Gîtes de France depuis 2024)</div>
+            <div class="badge">⭐ Ptitzabris (Meublé de Tourisme 3 Étoiles) & Grandzabris (Meublé de Tourisme 2 Étoiles)</div>
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
             <div class="badge">🏆 Excellence 5/5 Étoiles depuis 2019</div>
         </div>
@@ -276,9 +291,9 @@
                 <h3 class="lang-en" style="display:none;">🔐 Guest Private Area</h3>
                 <h3 class="lang-de" style="display:none;">🔐 Privater Gäste-Bereich</h3>
                 
-                <p class="lang-fr">Entrez votre code PIN personnel à 6 chiffres pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
-                <p class="lang-en" style="display:none;">Enter your personal 6-digit PIN code to access your personalized welcome and stay instructions.</p>
-                <p class="lang-de" style="display:none;">Geben Sie Ihren persönlichen 6-stelligen PIN-Code ein, um auf Ihre persönliche Begrüßung zuzugreifen.</p>
+                <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé et vos instructions de séjour.</p>
+                <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome and stay instructions.</p>
+                <p class="lang-de" style="display:none;">Geben Sie Ihren PIN-Code ein, um auf Ihre persönliche Begrüßung zuzugreifen.</p>
                 
                 <input type="password" id="pinCode" class="oz-input" placeholder="• • • • • •" maxlength="6">
                 <button type="button" class="oz-btn" ontouchstart="checkPin()" onclick="checkPin()">
@@ -296,9 +311,9 @@
         <!-- --- CONTENU PERSONNALISÉ DU VOYAGEUR --- -->
         <div id="guest-portal" style="display: none;">
             
-            <!-- Bouton Retour en haut -->
+            <!-- Bouton Retour en haut fonctionnel -->
             <div class="top-return-bar">
-                <a href="#top-header" class="btn-return-top">⬅️ Retour à l'accueil</a>
+                <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
             <div class="portal-header-top">
@@ -390,7 +405,7 @@
                 </div>
             </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR (Affiché la veille du départ) -->
+            <!-- BLOC DE FIN DE SÉJOUR (CENTRÉ) -->
             <div id="checkout-departure-card" class="departure-container" style="display: none;">
                 <div class="departure-header">
                     <h2 id="departure-title"></h2>
@@ -416,7 +431,7 @@
                 </div>
 
                 <div class="departure-footer">
-                    <a href="#top-header" class="btn-secondary" style="display: inline-block; color: var(--primary); background-color: transparent; border: 1px solid var(--primary); padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: 500;">⬅️ Retour à l'accueil</a>
+                    <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
                 </div>
             </div>
 
@@ -581,7 +596,13 @@
             <p style="margin: 8px 0;">📧 <a href="mailto:lesozabris@icloud.com">lesozabris@icloud.com</a></p>
             <p style="margin: 8px 0;">📞 <a href="tel:+262692138727">+262 6 92 13 87 27</a></p>
         </div>
-        <p style="margin-top: 25px; font-size: 0.75rem; opacity: 0.7;">© 2026 Les Ozabris - Tous droits réservés.</p>
+        
+        <!-- COMPTEUR DE VISITES DISCRET -->
+        <div class="visit-counter">
+            👀 Visites de la page : <span id="visit-count">Chargement...</span>
+        </div>
+
+        <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.7;">© 2026 Les Ozabris - Tous droits réservés.</p>
     </footer>
 
     <script>
@@ -628,17 +649,32 @@
                     }
                 });
             }
+
+            // Gestion du compteur de visites local (compte chaque chargement d'appareil)
+            let visits = localStorage.getItem("ozabris_visit_count");
+            if (!visits) {
+                visits = 1240; // Valeur de départ initiale personnalisable
+            } else {
+                visits = parseInt(visits) + 1;
+            }
+            localStorage.setItem("ozabris_visit_count", visits);
+            document.getElementById("visit-count").innerText = visits.toLocaleString();
+        }
+
+        // Fonction pour remonter fluidement en haut de la page (Bouton Retour)
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         async function checkPin() {
             const entered = document.getElementById("pinCode").value.trim();
             if (!entered) return;
 
-            // CODE ADMINISTRATEUR UNIVERSEL (140769)
+            // MODE ADMINISTRATEUR DIRECT EN DUR (140769)
             if (entered === "140769") {
                 const adminData = {
-                    prenom: "Gérard (Admin)",
-                    cottage: "Le Ptitzabris & Le Grandzabris"
+                    prenom: "Administrateur",
+                    cottage: "Espace Propriétaire / Domaine Les Ozabris"
                 };
                 localStorage.setItem("ozabris_auth", "true");
                 localStorage.setItem("ozabris_voyageur_data", JSON.stringify(adminData));
@@ -709,11 +745,15 @@
 
                 if (cottageLower.includes("grandzabris")) {
                     titleEl.innerText = "Au revoir du Grandzabris";
-                    subtitleEl.innerText = "Merci d'avoir séjourné au Grandzabris (Classé 2 étoiles par Gîtes de France depuis 2024) ! Votre parenthèse s'achève.";
+                    subtitleEl.innerText = "Merci d'avoir séjourné au Grandzabris (Meublé de Tourisme 2 Étoiles) ! Votre parenthèse s'achève.";
                     reviewTextEl.innerText = "Si vous avez apprécié le calme et le confort du Grandzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
+                } else if (cottageLower.includes("domaine") || data.prenom.includes("Administrateur")) {
+                    titleEl.innerText = "Espace Propriétaire • Les Ozabris";
+                    subtitleEl.innerText = "Mode Administration Actif - Consultation de l'espace de séjour numérique des voyageurs.";
+                    reviewTextEl.innerText = "Accès direct à la gestion du domaine et des fiches d'accueil.";
                 } else {
                     titleEl.innerText = "Au revoir du Ptitzabris";
-                    subtitleEl.innerText = "Merci d'avoir séjourné au Ptitzabris (Classé 3 étoiles par Clévacances depuis 2025) ! Votre escapade s'achève.";
+                    subtitleEl.innerText = "Merci d'avoir séjourné au Ptitzabris (Meublé de Tourisme 3 Étoiles) ! Votre escapade s'achève.";
                     reviewTextEl.innerText = "Si vous avez apprécié l'atmosphère et les prestations du Ptitzabris, un grand merci de nous laisser un mot sur Google pour soutenir notre engagement de Superhost :";
                 }
             }
