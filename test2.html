@@ -44,21 +44,6 @@
         
         .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 950px; margin: 0 auto 20px auto; font-family: 'Segoe UI', sans-serif; }
         .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
-        
-        .motto-brass { 
-            font-family: 'Segoe UI', sans-serif; 
-            font-size: 1rem; 
-            letter-spacing: 3px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin: 15px auto 25px auto; 
-            font-weight: 700; 
-            background: rgba(197, 168, 128, 0.1); 
-            padding: 8px 20px; 
-            border-radius: 4px; 
-            display: inline-block; 
-            border: 1px dashed var(--accent); 
-        }
 
         .tagline { font-style: italic; color: #eae5db; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.3); font-size: 1.05rem; }
         
@@ -240,12 +225,6 @@
             <div class="badge">⭐ Ptitzabris (Meublé de Tourisme 3 Étoiles)</div>
             <div class="badge">⭐ Grandzabris (Meublé de Tourisme 2 Étoiles)</div>
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
-        </div>
-        
-        <div>
-            <div class="motto-brass lang-fr">✨ "La Réunion nou lé capab" ✨</div>
-            <div class="motto-brass lang-en" style="display:none;">✨ "La Réunion: We are capable" ✨</div>
-            <div class="motto-brass lang-de" style="display:none;">✨ "La Réunion: Wir schaffen das" ✨</div>
         </div>
         
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
@@ -561,7 +540,7 @@
                     </div>
                 </div>
 
-                <!-- ENCADRÉ ÉCOLOGIQUE -->
+                <!-- ENCADRÉ ÉCOLOGIQUE & SOLAIRE MIS À JOUR -->
                 <div class="eco-card">
                     <div>
                         <div class="eco-header">
@@ -571,7 +550,12 @@
                                 <div class="specs" style="margin-bottom:0;">🌱 Tourisme Durable à La Réunion</div>
                             </div>
                         </div>
-                        <p class="lang-fr">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île grâce à l'énergie solaire et des équipements éco-responsables.</p>
+                        <p class="lang-fr" style="margin-bottom: 12px;">Aux Ozabris, nous conjuguons art de recevoir et préservation de notre magnifique île. Notre domaine fonctionne en harmonie totale avec le soleil grâce à des panneaux photovoltaïques couplés à des batteries. Chaque Zabris dispose par ailleurs de son propre chauffe-eau solaire.</p>
+                        <p class="lang-fr" style="margin-bottom: 15px;">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique.</p>
+                        
+                        <div style="border-top: 1px dashed var(--accent); padding-top: 15px; text-align: center; font-style: italic; font-size: 0.85rem; color: #666;">
+                            "Florebo quocunque ferar" — "Je fleurirai partout où je serai porté" <span style="font-size: 0.75rem; text-transform: uppercase; font-style: normal; display: block; margin-top: 3px; color: var(--accent); font-weight: 600;">(Devise de La Réunion)</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -605,7 +589,7 @@
             document.querySelectorAll('.lang-' + lang).forEach(el => {
                 if (el.tagName === 'TITLE' || el.tagName === 'SPAN') {
                     el.style.display = 'block';
-                } else if (el.classList.contains('badge') || el.classList.contains('amenity-item') || el.classList.contains('motto-brass')) {
+                } else if (el.classList.contains('badge') || el.classList.contains('amenity-item')) {
                     el.style.display = 'inline-block';
                 } else {
                     el.style.display = ''; 
