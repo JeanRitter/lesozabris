@@ -141,6 +141,34 @@
         .btn-primary-review { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
         .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
 
+        .farewell-box {
+            background: #fdfbf7;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .farewell-box h3 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        .creole-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 12px;
+            border: 1px solid var(--accent);
+        }
+
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; font-family: 'Segoe UI', sans-serif; }
         .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
@@ -310,8 +338,9 @@
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
             </p>
             
-            <div class="guide-grid">
-                <div class="guide-box">
+            <div class="guide-grid" id="guide-grid-container">
+                <!-- APÉRO D'ACCUEIL (Masqué automatiquement si départ proche) -->
+                <div class="guide-box" id="apero-box">
                     <div>
                         <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
                         <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances <em>(proposé pour tout séjour de 3 nuits minimum)</em>.</p>
@@ -363,7 +392,8 @@
                 </div>
             </div>
 
-            <div style="margin-top: 30px;" class="card">
+            <!-- ENCADRÉ ACCÈS WAZE (Masqué automatiquement si départ proche) -->
+            <div style="margin-top: 30px;" class="card" id="waze-card-box">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
                         <img src="https://i.postimg.cc/7L2PvXzp/IMG-4328.jpg" alt="Allée menant au parking Les Ozabris">
@@ -388,6 +418,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- NOUVEL ENCADRÉ DE FIN (S'affiche uniquement quand le départ est proche) -->
+            <div id="farewell-message-box" class="farewell-box" style="display: none;">
+                <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
+                <div class="creole-badge">NAR TROUV'</div>
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
@@ -417,7 +453,7 @@
                         <h5>📊 Fichier Google Sheets</h5>
                         <p>Consultez la base de données brute et l'historique complet des réservations.</p>
                     </div>
-                    <a href="https://google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
                 </div>
 
                 <div class="admin-box">
@@ -717,11 +753,17 @@
             const departureCard = document.getElementById('checkout-departure-card');
             const welcomeTitle = document.getElementById('welcome-message');
             const welcomeSubText = document.getElementById('welcome-subtitle-text');
+            const aperoBox = document.getElementById('apero-box');
+            const wazeCardBox = document.getElementById('waze-card-box');
+            const farewellBox = document.getElementById('farewell-message-box');
 
             if (!dateStr) {
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
+                aperoBox.style.display = 'flex';
+                wazeCardBox.style.display = 'block';
+                farewellBox.style.display = 'none';
                 return;
             }
 
@@ -737,6 +779,11 @@
                 departureCard.style.display = 'block';
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
+
+                // Masquer l'apéro et l'accès Waze car ils partent, et afficher le message de fin
+                aperoBox.style.display = 'none';
+                wazeCardBox.style.display = 'none';
+                farewellBox.style.display = 'block';
 
                 let locale = 'fr-FR';
                 if (currentLang === 'en') locale = 'en-US';
@@ -754,6 +801,9 @@
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
+                aperoBox.style.display = 'flex';
+                wazeCardBox.style.display = 'block';
+                farewellBox.style.display = 'none';
             }
         }
 
@@ -803,7 +853,6 @@
                         const pin = v.pin || "N/A";
                         let tel = v.telephone || v.tel || "";
 
-                        // Nettoyage du numéro de téléphone pour WhatsApp (enlève les espaces, tirets, etc.)
                         tel = tel.toString().replace(/[\s\-\(\)]/g, '');
 
                         const veilleArrivee = new Date(arrDate);
