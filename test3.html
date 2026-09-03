@@ -28,9 +28,41 @@
             color: var(--white);
         }
         
-        .lang-switch { position: absolute; top: 15px; right: 15px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 4px; }
+        /* Contrôles regroupés en haut à droite (Langues + Espace Voyageur) */
+        .header-top-controls { position: absolute; top: 15px; right: 15px; display: flex; align-items: center; gap: 12px; }
+        
+        .lang-switch { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 4px; }
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 5px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
+
+        /* Bouton discret "Espace Voyageur" en haut à droite */
+        .btn-header-login { 
+            font-family: 'Segoe UI', sans-serif; 
+            font-size: 0.85rem; 
+            background: rgba(197, 168, 128, 0.25); 
+            border: 1px solid var(--accent); 
+            color: var(--white); 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-header-login:hover { background: var(--accent); color: var(--primary); }
+
+        /* Fenêtre modale de connexion qui s'ouvre au clic sur le bouton du haut */
+        #login-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(18, 38, 58, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
         .brand-logo-container { max-width: 220px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
         .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
@@ -39,6 +71,9 @@
         @media (max-width: 768px) { 
             .logo-text { font-size: 2.1rem; } 
             .brand-logo-container { max-width: 150px; }
+            .header-top-controls { top: 10px; right: 10px; gap: 6px; }
+            .lang-switch { font-size: 0.8rem; padding: 4px 6px; }
+            .btn-header-login { font-size: 0.75rem; padding: 5px 8px; }
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
@@ -49,17 +84,17 @@
         
         .container { max-width: 1100px; margin: 40px auto; padding: 0 25px; }
         
-        .top-portal-wrapper { background: #f4eee3; border-bottom: 2px solid var(--accent); padding: 40px 20px; text-align: center; }
         .oz-card {
             background: #ffffff;
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             width: 100%;
             max-width: 480px;
             margin: 0 auto;
             text-align: center;
             border: 1px solid var(--accent);
+            position: relative;
         }
         .oz-card h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 15px; font-weight: 400; font-family: 'Playfair Display', serif; }
         .oz-card p { font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; color: #666; margin-bottom: 25px; }
@@ -93,6 +128,8 @@
         }
         .oz-btn:hover { background-color: var(--accent); }
         .error-msg { color: #b94a48; font-size: 0.85rem; margin-top: 15px; display: none; font-family: 'Segoe UI', sans-serif; }
+        .close-modal-btn { position: absolute; top: 12px; right: 15px; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: #888; }
+        .close-modal-btn:hover { color: var(--primary); }
 
         .top-return-bar { margin-bottom: 20px; text-align: right; }
         .btn-return-top {
@@ -240,10 +277,20 @@
 <body>
 
     <header id="top-header">
-        <div class="lang-switch">
-            <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
-            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button> | 
-            <button onclick="setLanguage('de')" id="btn-de" class="lang-btn">DE</button>
+        <!-- CONTRÔLES EN HAUT À DROITE -->
+        <div class="header-top-controls">
+            <button type="button" class="btn-header-login" onclick="openLoginModal()">
+                <span>🔑</span> 
+                <span class="lang-fr">Espace Voyageur</span>
+                <span class="lang-en" style="display:none;">Guest Area</span>
+                <span class="lang-de" style="display:none;">Gäste-Bereich</span>
+            </button>
+
+            <div class="lang-switch">
+                <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
+                <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button> | 
+                <button onclick="setLanguage('de')" id="btn-de" class="lang-btn">DE</button>
+            </div>
         </div>
         
         <div class="brand-logo-container">
@@ -265,30 +312,32 @@
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
-    <div class="top-portal-wrapper">
-        <div id="login-container">
-            <div class="oz-card">
-                <h3 class="lang-fr">🔐 Espace Réservé Voyageurs</h3>
-                <h3 class="lang-en" style="display:none;">🔐 Guest Private Area</h3>
-                <h3 class="lang-de" style="display:none;">🔐 Privater Gäste-Bereich</h3>
-                
-                <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé.</p>
-                <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome.</p>
-                <p class="lang-de" style="display:none;">Geben Sie Ihren PIN-Code ein, um auf Ihre Begrüßung zuzugreifen.</p>
-                
-                <input type="password" id="pinCode" class="oz-input" placeholder="• • • • • •" maxlength="6">
-                <button type="button" class="oz-btn" ontouchstart="checkPin()" onclick="checkPin()">
-                    <span class="lang-fr">Accéder à mon espace</span>
-                    <span class="lang-en" style="display:none;">Access my space</span>
-                    <span class="lang-de" style="display:none;">Zu meinem Bereich</span>
-                </button>
+    <!-- FENÊTRE POP-UP DE CONNEXION (OUVERTE VIA LE BOUTON EN HAUT À DROITE) -->
+    <div id="login-modal">
+        <div class="oz-card">
+            <button type="button" class="close-modal-btn" onclick="closeLoginModal()">✕</button>
+            <h3 class="lang-fr">🔐 Espace Réservé Voyageurs</h3>
+            <h3 class="lang-en" style="display:none;">🔐 Guest Private Area</h3>
+            <h3 class="lang-de" style="display:none;">🔐 Privater Gäste-Bereich</h3>
+            
+            <p class="lang-fr">Entrez votre code PIN personnel pour accéder à votre accueil personnalisé.</p>
+            <p class="lang-en" style="display:none;">Enter your personal PIN code to access your personalized welcome.</p>
+            <p class="lang-de" style="display:none;">Geben Sie Ihren PIN-Code ein, um auf Ihre Begrüßung zuzugreifen.</p>
+            
+            <input type="password" id="pinCode" class="oz-input" placeholder="• • • • • •" maxlength="6">
+            <button type="button" class="oz-btn" ontouchstart="checkPin()" onclick="checkPin()">
+                <span class="lang-fr">Accéder à mon espace</span>
+                <span class="lang-en" style="display:none;">Access my space</span>
+                <span class="lang-de" style="display:none;">Zu meinem Bereich</span>
+            </button>
 
-                <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour expiré.</div>
-                <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or expired stay.</div>
-                <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder abgelaufener Aufenthalt.</div>
-            </div>
+            <div id="errorMsg" class="error-msg lang-fr">Code incorrect ou séjour expiré.</div>
+            <div id="errorMsg-en" class="error-msg lang-en" style="display:none;">Incorrect code or expired stay.</div>
+            <div id="errorMsg-de" class="error-msg lang-de" style="display:none;">Falscher Code oder abgelaufener Aufenthalt.</div>
         </div>
+    </div>
 
+    <div class="container" style="margin-top: 30px;">
         <div id="guest-portal" style="display: none;">
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
@@ -647,8 +696,8 @@
             document.querySelectorAll('.lang-' + lang).forEach(el => {
                 if (el.tagName === 'TITLE' || el.tagName === 'SPAN') {
                     el.style.display = 'block';
-                } else if (el.classList.contains('badge') || el.classList.contains('amenity-item')) {
-                    el.style.display = 'inline-block';
+                } else if (el.classList.contains('badge') || el.classList.contains('amenity-item') || el.classList.contains('btn-header-login')) {
+                    el.style.display = 'inline-flex';
                 } else {
                     el.style.display = ''; 
                 }
@@ -680,9 +729,21 @@
             }
         }
 
+        // Fonctions pour ouvrir/fermer la modale de connexion depuis le haut de page
+        function openLoginModal() {
+            document.getElementById("login-modal").style.display = "flex";
+            document.getElementById("pinCode").focus();
+        }
+
+        function closeLoginModal() {
+            document.getElementById("login-modal").style.display = "none";
+            document.getElementById("errorMsg").style.display = "none";
+            document.getElementById("pinCode").value = "";
+        }
+
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.getElementById("login-container").style.display = "block";
+            document.getElementById("login-modal").style.display = "none";
             document.getElementById("guest-portal").style.display = "none";
             document.getElementById("admin-dashboard").style.display = "none";
             document.getElementById("main-content").style.display = "block";
@@ -694,7 +755,7 @@
             if (!entered) return;
 
             if (entered === "140769") {
-                document.getElementById("login-container").style.display = "none";
+                closeLoginModal();
                 document.getElementById("main-content").style.display = "none";
                 document.getElementById("guest-portal").style.display = "none";
                 document.getElementById("admin-dashboard").style.display = "block";
@@ -729,7 +790,7 @@
                         }
                     }
 
-                    document.getElementById("login-container").style.display = "none";
+                    closeLoginModal();
                     document.getElementById("main-content").style.display = "none";
                     document.getElementById("admin-dashboard").style.display = "none";
                     document.getElementById("guest-portal").style.display = "block";
@@ -785,7 +846,6 @@
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
 
-                // Masquage de l'accès Waze et affichage du message "NAR TROUV'"
                 wazeCardBox.style.display = 'none';
                 farewellBox.style.display = 'block';
 
