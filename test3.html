@@ -290,7 +290,6 @@
         </div>
 
         <div id="guest-portal" style="display: none;">
-            <!-- BOUTON RETOUR À L'ACCUEIL EN HAUT À DROITE -->
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
@@ -340,16 +339,6 @@
             </p>
             
             <div class="guide-grid" id="guide-grid-container">
-                <!-- APÉRO D'ACCUEIL (Masqué automatiquement si départ proche) -->
-                <div class="guide-box" id="apero-box">
-                    <div>
-                        <h5 class="lang-fr">🥂 Apéro d'Accueil</h5>
-                        <p class="lang-fr">Nous vous offrons un moment de partage convivial pour bien commencer vos vacances <em>(proposé pour tout séjour de 3 nuits minimum)</em>.</p>
-                        <p><strong>Heure :</strong> 19h30</p>
-                    </div>
-                    <p style="font-style: italic; color: #777; font-size: 0.85rem; margin-top: 15px;">Rendez-vous sur le parking.</p>
-                </div>
-
                 <div class="guide-box">
                     <div>
                         <h5 class="lang-fr">📶 Connexion Wi-Fi</h5>
@@ -723,7 +712,6 @@
                 const voyageurTrouve = voyageurs.find(v => String(v.pin).trim() === entered);
 
                 if (voyageurTrouve) {
-                    // VÉRIFICATION DE LA VALIDITÉ (Expire 24h après la date de départ, soit le lendemain du départ)
                     const departStr = voyageurTrouve.dateDepart || voyageurTrouve.depart;
                     if (departStr) {
                         const depDate = new Date(departStr);
@@ -731,11 +719,9 @@
                         depDate.setHours(0, 0, 0, 0);
                         today.setHours(0, 0, 0, 0);
 
-                        // Date limite d'accès = lendemain du départ (24h après)
                         const limitDate = new Date(depDate);
                         limitDate.setDate(limitDate.getDate() + 1);
 
-                        // Si aujourd'hui dépasse le lendemain du départ, le code est expiré
                         if (today > limitDate) {
                             document.getElementById("errorMsg").style.display = "block";
                             document.getElementById("pinCode").value = "";
@@ -774,7 +760,6 @@
             const departureCard = document.getElementById('checkout-departure-card');
             const welcomeTitle = document.getElementById('welcome-message');
             const welcomeSubText = document.getElementById('welcome-subtitle-text');
-            const aperoBox = document.getElementById('apero-box');
             const wazeCardBox = document.getElementById('waze-card-box');
             const farewellBox = document.getElementById('farewell-message-box');
 
@@ -782,7 +767,6 @@
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
-                aperoBox.style.display = 'flex';
                 wazeCardBox.style.display = 'block';
                 farewellBox.style.display = 'none';
                 return;
@@ -796,13 +780,12 @@
             const diffTime = depDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            // S'affiche si on est dans les 2 jours avant le départ, le jour même, ou le jour suivant (les 24h après)
             if (diffDays >= -1 && diffDays <= 2) {
                 departureCard.style.display = 'block';
                 welcomeTitle.innerText = prenom;
                 welcomeSubText.style.display = 'none';
 
-                aperoBox.style.display = 'none';
+                // Masquage de l'accès Waze et affichage du message "NAR TROUV'"
                 wazeCardBox.style.display = 'none';
                 farewellBox.style.display = 'block';
 
@@ -822,7 +805,6 @@
                 departureCard.style.display = 'none';
                 welcomeTitle.innerText = `Bienvenue, ${prenom} !`;
                 welcomeSubText.style.display = 'block';
-                aperoBox.style.display = 'flex';
                 wazeCardBox.style.display = 'block';
                 farewellBox.style.display = 'none';
             }
