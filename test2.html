@@ -45,21 +45,19 @@
         .badges-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 950px; margin: 0 auto 20px auto; font-family: 'Segoe UI', sans-serif; }
         .badge { background: rgba(255, 255, 255, 0.08); color: var(--white); padding: 6px 14px; border-radius: 2px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 5px; }
         
-        /* DEVISE HISTORIQUE EN LAITON */
         .motto-brass { 
             font-family: 'Segoe UI', sans-serif; 
-            font-size: 0.95rem; 
-            letter-spacing: 2px; 
+            font-size: 1rem; 
+            letter-spacing: 3px; 
             color: var(--accent); 
             text-transform: uppercase; 
             margin: 15px auto 25px auto; 
-            font-weight: 600; 
+            font-weight: 700; 
             background: rgba(197, 168, 128, 0.1); 
             padding: 8px 20px; 
             border-radius: 4px; 
             display: inline-block; 
             border: 1px dashed var(--accent); 
-            font-style: italic;
         }
 
         .tagline { font-style: italic; color: #eae5db; max-width: 650px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(197,168,128,0.3); font-size: 1.05rem; }
@@ -137,7 +135,7 @@
             border: 1px solid var(--accent);
             border-radius: 8px;
             padding: 12px 20px;
-            margin: 0 auto 25px auto;
+            margin: 0 auto 20px auto;
             max-width: 450px;
             display: flex;
             align-items: center;
@@ -149,6 +147,16 @@
         .weather-compact span { font-size: 0.95rem; color: var(--primary); font-weight: 600; display: block; }
         .weather-compact p { font-size: 0.8rem; color: #555; margin: 0; }
 
+        /* ENCADRÉ DÉPART EN HAUT DE PAGE */
+        .departure-container { background: var(--bg-light); padding: 25px; border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 4px 15px rgba(18, 38, 58, 0.08); margin-bottom: 25px; font-family: 'Segoe UI', sans-serif; text-align: center; }
+        .departure-header h2 { color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 4px; }
+        .subtitle-text { font-style: italic; color: #666; margin-bottom: 15px; font-size: 0.85rem; }
+        .departure-section { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px solid #eee; text-align: center; }
+        .departure-section h3 { font-size: 1rem; color: var(--primary); margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+        .review-box { background: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent); text-align: center; margin-top: 10px; }
+        .btn-primary-review { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 10px 18px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
+        .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
+
         .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px; font-family: 'Segoe UI', sans-serif; }
         .guide-box { background: var(--bg-light); border: 1px solid #f0eadec; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; }
         .guide-box h5 { color: var(--primary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-family: 'Playfair Display', serif; border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
@@ -156,16 +164,6 @@
         .guide-box ul { padding-left: 18px; }
         .wifi-img-box { text-align: center; background: #fff; padding: 15px; border-radius: 8px; border: 1px dashed var(--accent); margin-top: 10px; }
         .wifi-img-box img { max-width: 100%; height: auto; max-height: 250px; object-fit: contain; display: block; margin: 0 auto; border-radius: 6px; }
-
-        .departure-container { background: var(--white); padding: 30px; border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 4px 15px rgba(18, 38, 58, 0.08); margin-top: 35px; font-family: 'Segoe UI', sans-serif; text-align: center; }
-        .departure-header h2 { color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 5px; }
-        .subtitle-text { font-style: italic; color: #666; margin-bottom: 20px; font-size: 0.9rem; }
-        .departure-section { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; text-align: center; }
-        .departure-section h3 { font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; font-family: 'Playfair Display', serif; }
-        .review-box { background: #f4f1ea; padding: 20px; border-radius: 8px; border-left: 4px solid var(--accent); text-align: center; }
-        .btn-primary-review { display: inline-block; background-color: var(--primary); color: #ffffff; padding: 12px 22px; text-decoration: none; border-radius: 6px; font-weight: 600; margin-top: 15px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
-        .btn-primary-review:hover { background-color: var(--accent); color: var(--primary); }
-        .departure-footer { text-align: center; margin-top: 25px; }
 
         #admin-dashboard { display: none; background: var(--white); border: 2px solid var(--accent); border-radius: 12px; padding: 30px 40px 40px 40px; max-width: 950px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; font-family: 'Segoe UI', sans-serif; }
         .admin-title { color: var(--primary); font-size: 1.8rem; margin-bottom: 8px; font-weight: 400; font-family: 'Playfair Display', serif; text-align: center; }
@@ -245,11 +243,10 @@
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
         </div>
         
-        <!-- Devise historique en laiton -->
         <div>
-            <div class="motto-brass lang-fr">"Florebo ubicumque ferar" • Je fleurirai partout où je serai porté</div>
-            <div class="motto-brass lang-en" style="display:none;">"Florebo ubicumque ferar" • I will flourish wherever I am carried</div>
-            <div class="motto-brass lang-de" style="display:none;">"Florebo ubicumque ferar" • Ich werde überall blühen, wohin ich auch getragen werde</div>
+            <div class="motto-brass lang-fr">✨ "La Réunion nou lé capab" ✨</div>
+            <div class="motto-brass lang-en" style="display:none;">✨ "La Réunion: We are capable" ✨</div>
+            <div class="motto-brass lang-de" style="display:none;">✨ "La Réunion: Wir schaffen das" ✨</div>
         </div>
         
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
@@ -292,6 +289,37 @@
                 <div>
                     <span>La Saline les Hauts (97422)</span>
                     <p>Grand soleil et douce brise sur les hauteurs</p>
+                </div>
+            </div>
+
+            <!-- BLOC DE FIN DE SÉJOUR POSITIONNÉ TOUT EN HAUT DE L'ESPACE (VISIBLE DANS LES 2 DERNIERS JOURS) -->
+            <div id="checkout-departure-card" class="departure-container" style="display: none;">
+                <div class="departure-header">
+                    <h2>Votre départ est proche</h2>
+                    <p class="subtitle-text">Précisions concernant la fin de votre séjour</p>
+                </div>
+
+                <div class="departure-section">
+                    <h3>📅 Date de départ</h3>
+                    <p id="departure-date-text" style="font-weight: 600; color: var(--primary); font-size: 1.05rem;">-</p>
+                </div>
+
+                <div class="departure-section">
+                    <h3>👋 Votre rendez-vous « Au revoir »</h3>
+                    <p style="font-size: 0.88rem; color: #555;">Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
+                </div>
+
+                <div class="departure-section">
+                    <h3>🛏️ Consignes pour le linge de maison</h3>
+                    <p style="font-size: 0.88rem; color: #555;">Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
+                </div>
+
+                <div class="review-box">
+                    <h3>⭐ Votre avis compte énormément</h3>
+                    <p style="font-size: 0.85rem; color: #555;">Si vous avez apprécié votre séjour, un grand merci de nous laisser un mot sur Google :</p>
+                    <a href="https://search.google.com/local/writereview?placeid=ChIJ8UOOyTt4Q4sRo0FMRBi4REw" target="_blank" class="btn-primary-review">
+                        Laisser un avis sur Google
+                    </a>
                 </div>
             </div>
 
@@ -353,40 +381,6 @@
                 </div>
             </div>
 
-            <div id="checkout-departure-card" class="departure-container" style="display: none;">
-                <div class="departure-header">
-                    <h2>Votre départ est proche</h2>
-                    <p class="subtitle-text">Précisions concernant la fin de votre séjour</p>
-                </div>
-
-                <div class="departure-section">
-                    <h3>📅 Date de départ</h3>
-                    <p id="departure-date-text" style="font-weight: 600; color: var(--primary); font-size: 1.05rem;">-</p>
-                </div>
-
-                <div class="departure-section">
-                    <h3>👋 Votre rendez-vous « Au revoir »</h3>
-                    <p>Nous espérons que votre séjour a été mémorable. Comme convenu avec Gérard, un point de rendez-vous est fixé pour votre départ afin de procéder ensemble à l'état des lieux de sortie et à la remise des clés.</p>
-                </div>
-
-                <div class="departure-section">
-                    <h3>🛏️ Consignes pour le linge de maison</h3>
-                    <p>Avant votre départ, nous vous remercions de bien vouloir regrouper les draps et le linge de lit utilisés et de les déposer à l'endroit indiqué dans le cottage.</p>
-                </div>
-
-                <div class="departure-section review-box">
-                    <h3>⭐ Votre avis compte énormément</h3>
-                    <p>Si vous avez apprécié votre séjour, un grand merci de nous laisser un mot sur Google :</p>
-                    <a href="https://search.google.com/local/writereview?placeid=ChIJ8UOOyTt4Q4sRo0FMRBi4REw" target="_blank" class="btn-primary-review">
-                        Laisser un avis sur Google
-                    </a>
-                </div>
-
-                <div class="departure-footer">
-                    <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
-                </div>
-            </div>
-
             <div style="margin-top: 30px;" class="card">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -412,6 +406,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
         </div>
 
