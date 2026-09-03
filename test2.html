@@ -310,17 +310,17 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ MÉTÉO -->
+            <!-- ENCADRÉ MÉTÉO LA SALINE LES HAUTS (97422) -->
             <div class="weather-card">
                 <div class="weather-info">
-                    <h5>🌤️ Météo Actuelle • La Saline les Hauts</h5>
+                    <h5>🌤️ Météo Actuelle • La Saline les Hauts (97422)</h5>
                     <p>Profitez d'un grand soleil et d'une douce brise sur les hauteurs de l'Ouest !</p>
                 </div>
                 <img src="https://i.postimg.cc/9Q5112X5/meteo.jpg" alt="Météo La Réunion" class="weather-img" onerror="this.src='https://images.unsplash.com/photo-1601297183305-6df142704ea2?w=150'">
             </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR -->
-            <div id="checkout-departure-card" class="departure-container" style="display: block;">
+            <!-- BLOC DE FIN DE SÉJOUR (AFFICHÉ SEULEMENT DANS LES 2 DERNIERS JOURS) -->
+            <div id="checkout-departure-card" class="departure-container" style="display: none;">
                 <div class="departure-header">
                     <h2>Votre départ est proche</h2>
                     <p class="subtitle-text">Précisions concernant la fin de votre séjour</p>
@@ -581,6 +581,12 @@
             document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+
+            // Si le portail voyageur est actif, on met à jour la phrase de départ dans la bonne langue
+            const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
+            if (savedData && !savedData.isAdmin) {
+                renderDepartureCard(savedData.dateDepart || savedData.depart);
+            }
         }
 
         window.onload = function() {
@@ -649,8 +655,10 @@
                     }
                     document.getElementById("wifi-qr-img").src = qrUrl;
 
-                    const dateDepartStr = voyageurTrouve.dateDepart || voyageurTrouve.depart || "Fin de séjour programmée";
-                    document.getElementById('departure-date-text').innerText = `📅 Votre départ est prévu le : ${dateDepartStr}`;
+                    // Sauvegarde et affichage conditionnel du départ (2 derniers jours)
+                    localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
+                    renderDepartureCard(voyageurTrouve.dateDepart || voyageurTrouve.depart);
+
                 } else {
                     document.getElementById("errorMsg").style.display = "block";
                     document.getElementById("pinCode").value = "";
@@ -658,6 +666,44 @@
             } catch(e) {
                 console.error("Erreur de connexion", e);
                 alert("Erreur de liaison avec la base de données. Vérifiez votre connexion.");
+            }
+        }
+
+        function renderDepartureCard(dateStr) {
+            const departureCard = document.getElementById('checkout-departure-card');
+            if (!dateStr) {
+                departureCard.style.display = 'none';
+                return;
+            }
+
+            const depDate = new Date(dateStr);
+            const today = new Date();
+            // Remise à minuit pour comparer proprement les jours
+            depDate.setHours(0,0,0,0);
+            today.setHours(0,0,0,0);
+
+            const diffTime = depDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            // Affichage uniquement si le départ est dans 2 jours ou moins (et pas déjà passé)
+            if (diffDays >= 0 && diffDays <= 2) {
+                departureCard.style.display = 'block';
+
+                // Formatage de la date dans la langue active
+                let locale = 'fr-FR';
+                if (currentLang === 'en') locale = 'en-US';
+                if (currentLang === 'de') locale = 'de-DE';
+
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = depDate.toLocaleDateString(locale, options);
+
+                let text = `📅 Votre départ est prévu le : ${formattedDate}`;
+                if (currentLang === 'en') text = `📅 Your departure is scheduled for: ${formattedDate}`;
+                if (currentLang === 'de') text = `📅 Ihre Abreise ist geplant für: ${formattedDate}`;
+
+                document.getElementById('departure-date-text').innerText = text;
+            } else {
+                departureCard.style.display = 'none';
             }
         }
 
