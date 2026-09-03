@@ -256,7 +256,7 @@
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
         <span class="subtitle lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</span>
         
-        <!-- Badges officiels avec origine et organismes des classements -->
+        <!-- Badges officiels avec origine, organismes et dates des classements -->
         <div class="badges-container">
             <div class="badge">⭐ Ptitzabris (3 Étoiles Clévacances depuis 2025) & Grandzabris (2 Étoiles Gîtes de France depuis 2024)</div>
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
@@ -634,6 +634,18 @@
             const entered = document.getElementById("pinCode").value.trim();
             if (!entered) return;
 
+            // CODE ADMINISTRATEUR UNIVERSEL (140769)
+            if (entered === "140769") {
+                const adminData = {
+                    prenom: "Gérard (Admin)",
+                    cottage: "Le Ptitzabris & Le Grandzabris"
+                };
+                localStorage.setItem("ozabris_auth", "true");
+                localStorage.setItem("ozabris_voyageur_data", JSON.stringify(adminData));
+                showPortal(adminData);
+                return;
+            }
+
             try {
                 const response = await fetch(sheetApiUrl);
                 const voyageurs = await response.json();
@@ -687,7 +699,7 @@
             document.getElementById("wifi-qr-img").src = qrUrl;
 
             // Gestion dynamique du bloc de fin de séjour personnalisé
-            const isDayBeforeDeparture = true; // Activé pour le test (ou basé sur data.dateDepart)
+            const isDayBeforeDeparture = true; // Activé pour le test
             if (isDayBeforeDeparture) {
                 document.getElementById('checkout-departure-card').style.display = 'block';
                 
