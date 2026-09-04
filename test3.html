@@ -25,7 +25,7 @@
         header { 
             background: var(--primary);
             text-align: center; 
-            padding: 40px 20px 40px 20px; 
+            padding: 45px 20px 40px 20px; 
             border-bottom: 2px solid var(--accent); 
             position: relative; 
             color: var(--white);
@@ -49,7 +49,7 @@
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 4px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        /* Bouton "Espace Voyageur" repositionné, large et centré sous le logo */
+        /* Bouton "Espace Voyageur" positionné entre le logo et le titre */
         .btn-header-login { 
             font-family: 'Segoe UI', sans-serif; 
             font-size: 0.88rem; 
@@ -65,7 +65,7 @@
             gap: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            margin: 15px auto 20px auto;
+            margin: 20px auto 15px auto;
             max-width: 280px;
             width: 100%;
         }
@@ -83,7 +83,7 @@
             padding: 20px;
         }
 
-        .brand-logo-container { max-width: 220px; margin: 0 auto 10px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
+        .brand-logo-container { max-width: 220px; margin: 0 auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
         .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
         
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; }
@@ -304,7 +304,12 @@
             </div>
         </div>
 
-        <!-- BOUTON ESPACE VOYAGEUR CENTRÉ SOUS LE LOGO -->
+        <!-- LOGO EN PREMIER -->
+        <div class="brand-logo-container">
+            <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
+        </div>
+
+        <!-- BOUTON ESPACE VOYAGEUR JUSTE EN DESSOUS DU LOGO -->
         <button type="button" class="btn-header-login" onclick="openLoginModal()">
             <span>🔑</span> 
             <span class="lang-fr">Espace Voyageur</span>
@@ -312,9 +317,6 @@
             <span class="lang-de" style="display:none;">Gäste-Bereich</span>
         </button>
         
-        <div class="brand-logo-container">
-            <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
-        </div>
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle lang-fr">Cottages de Prestige & Perles Rares • La Réunion</span>
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
