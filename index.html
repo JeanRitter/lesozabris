@@ -25,21 +25,17 @@
         header { 
             background: var(--primary);
             text-align: center; 
-            padding: 55px 20px 40px 20px; 
+            padding: 45px 20px 40px 20px; 
             border-bottom: 2px solid var(--accent); 
             position: relative; 
             color: var(--white);
         }
         
-        /* Contrôles regroupés en haut à droite (Langues + Espace Voyageur) optimisés mobile */
+        /* Sélecteur de langues propre tout en haut à droite */
         .header-top-controls { 
             position: absolute; 
             top: 15px; 
             right: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: flex-end; 
-            gap: 8px; 
         }
         
         .lang-switch { 
@@ -53,26 +49,29 @@
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 4px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        /* Bouton "Espace Voyageur" mis en valeur et élargi */
+        /* Bouton "Espace Voyageur" positionné entre le logo et le titre */
         .btn-header-login { 
             font-family: 'Segoe UI', sans-serif; 
-            font-size: 0.82rem; 
+            font-size: 0.88rem; 
             background: rgba(197, 168, 128, 0.2); 
             border: 1px solid var(--accent); 
             color: var(--white); 
-            padding: 7px 14px; 
-            border-radius: 20px; 
+            padding: 10px 20px; 
+            border-radius: 25px; 
             cursor: pointer; 
             display: inline-flex; 
             align-items: center; 
-            gap: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            white-space: nowrap;
+            margin: 20px auto 15px auto;
+            max-width: 280px;
+            width: 100%;
         }
         .btn-header-login:hover { background: var(--accent); color: var(--primary); }
 
-        /* Fenêtre modale de connexion qui s'ouvre au clic sur le bouton du haut */
+        /* Fenêtre modale de connexion qui s'ouvre au clic */
         #login-modal {
             display: none;
             position: fixed;
@@ -84,16 +83,15 @@
             padding: 20px;
         }
 
-        .brand-logo-container { max-width: 220px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
+        .brand-logo-container { max-width: 220px; margin: 0 auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
         .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
         
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; }
         @media (max-width: 768px) { 
             .logo-text { font-size: 2.1rem; } 
             .brand-logo-container { max-width: 150px; }
-            .header-top-controls { top: 12px; right: 12px; gap: 6px; }
+            .header-top-controls { top: 12px; right: 12px; }
             .lang-switch { font-size: 0.78rem; padding: 3px 6px; }
-            .btn-header-login { font-size: 0.78rem; padding: 5px 10px; border-radius: 15px; }
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
@@ -297,25 +295,28 @@
 <body>
 
     <header id="top-header">
-        <!-- CONTRÔLES EN HAUT À DROITE -->
+        <!-- SÉLECTEUR DE LANGUES EN HAUT À DROITE -->
         <div class="header-top-controls">
-            <button type="button" class="btn-header-login" onclick="openLoginModal()">
-                <span>🔑</span> 
-                <span class="lang-fr">Espace Voyageur</span>
-                <span class="lang-en" style="display:none;">Guest Area</span>
-                <span class="lang-de" style="display:none;">Gäste-Bereich</span>
-            </button>
-
             <div class="lang-switch">
                 <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
                 <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button> | 
                 <button onclick="setLanguage('de')" id="btn-de" class="lang-btn">DE</button>
             </div>
         </div>
-        
+
+        <!-- LOGO EN PREMIER -->
         <div class="brand-logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
         </div>
+
+        <!-- BOUTON ESPACE VOYAGEUR JUSTE EN DESSOUS DU LOGO -->
+        <button type="button" class="btn-header-login" onclick="openLoginModal()">
+            <span>🔑</span> 
+            <span class="lang-fr">Espace Voyageur</span>
+            <span class="lang-en" style="display:none;">Guest Area</span>
+            <span class="lang-de" style="display:none;">Gäste-Bereich</span>
+        </button>
+        
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle lang-fr">Cottages de Prestige & Perles Rares • La Réunion</span>
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
@@ -332,7 +333,7 @@
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
-    <!-- FENÊTRE POP-UP DE CONNEXION (OUVERTE VIA LE BOUTON EN HAUT À DROITE) -->
+    <!-- FENÊTRE POP-UP DE CONNEXION -->
     <div id="login-modal">
         <div class="oz-card">
             <button type="button" class="close-modal-btn" onclick="closeLoginModal()">✕</button>
@@ -363,7 +364,7 @@
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
-            <!-- WIDGET MÉTÉO COMPACT, CENTRÉ ET AJUSTÉ -->
+            <!-- WIDGET MÉTÉO COMPACT -->
             <div class="weather-compact">
                 <div style="font-size: 1.8rem;">☀️</div>
                 <div>
@@ -451,7 +452,7 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ ACCÈS WAZE (Masqué automatiquement si départ proche) -->
+            <!-- ENCADRÉ ACCÈS WAZE -->
             <div style="margin-top: 30px;" class="card" id="waze-card-box">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -479,7 +480,7 @@
                 </div>
             </div>
 
-            <!-- NOUVEL ENCADRÉ DE FIN (S'affiche uniquement quand le départ est proche) -->
+            <!-- ENCADRÉ DE FIN -->
             <div id="farewell-message-box" class="farewell-box" style="display: none;">
                 <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
                 <div class="creole-badge">NAR TROUV'</div>
@@ -749,7 +750,6 @@
             }
         }
 
-        // Fonctions pour ouvrir/fermer la modale de connexion depuis le haut de page
         function openLoginModal() {
             document.getElementById("login-modal").style.display = "flex";
             document.getElementById("pinCode").focus();
