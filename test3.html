@@ -698,6 +698,23 @@
 
         let currentLang = 'fr';
 
+        function formatHour(val) {
+            if (!val) return "";
+            let str = String(val).trim();
+            // Si Google renvoie une date ISO (ex: 1899-12-30T16:15:12.000Z)
+            if (str.includes("T")) {
+                let parts = str.split("T")[1];
+                if (parts) {
+                    return parts.substring(0, 5); // Extrait "16:15"
+                }
+            }
+            // Si c'est déjà un format "16:15" ou "16:15:12"
+            if (str.length >= 5 && str.includes(":")) {
+                return str.substring(0, 5);
+            }
+            return str;
+        }
+
         function setLanguage(lang) {
             currentLang = lang;
             document.querySelectorAll('.lang-fr, .lang-en, .lang-de').forEach(el => el.style.display = 'none');
@@ -716,8 +733,9 @@
 
             const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
             if (savedData && !savedData.isAdmin) {
-                const heureDep = savedData.heureDepart || savedData.heuredepart || savedData.heure_depart || savedData[Object.keys(savedData)[11]];
-                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom, heureDep);
+                const keys = Object.keys(savedData);
+                const rawHour = savedData.heureDepart || savedData.heuredepart || savedData.heure_depart || savedData[keys[11]] || savedData[keys[10]];
+                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom, formatHour(rawHour));
             }
         }
 
@@ -751,6 +769,7 @@
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            localStorage.removeItem("ozabris_voyageur_data");
             document.getElementById("login-modal").style.display = "none";
             document.getElementById("guest-portal").style.display = "none";
             document.getElementById("admin-dashboard").style.display = "none";
@@ -814,9 +833,9 @@
 
                     localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
                     
-                    // Récupération sécurisée de l'heure sur la colonne L (peu importe comment l'Apps Script nomme la clé)
-                    const heureDep = voyageurTrouve.heureDepart || voyageurTrouve.heuredepart || voyageurTrouve.heure_depart || voyageurTrouve[Object.keys(voyageurTrouve)[11]];
-                    renderDepartureCard(departStr, voyageurTrouve.prenom, heureDep);
+                    const keys = Object.keys(voyageurTrouve);
+                    const rawHour = voyageurTrouve.heureDepart || voyageurTrouve.heuredepart || voyageurTrouve.heure_depart || voyageurTrouve[keys[11]] || voyageurTrouve[keys[10]];
+                    renderDepartureCard(departStr, voyageurTrouve.prenom, formatHour(rawHour));
 
                 } else {
                     document.getElementById("errorMsg").style.display = "block";
@@ -867,7 +886,6 @@
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 const formattedDate = depDate.toLocaleDateString(locale, options);
                 
-                // Si l'heure est renseignée, on l'utilise, sinon 10:00 par défaut
                 const departureTime = (heureDepart && String(heureDepart).trim() !== "") ? heureDepart : "10:00";
 
                 let text = `Votre départ est prévu le ${formattedDate} à ${departureTime}`;
