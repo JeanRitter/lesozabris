@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez Les Ozabris, cottages de prestige avec espace bien-être et spa dans les Hauts de La Réunion (La Possession). Réservez votre séjour d'exception en ligne.">
-    <!-- Balise de validation Google Search Console -->
-    <meta name="google-site-verification" content="IDWT4QpwiiDT46m50qSJpK-nHCSZUA2BBPb7TBS9ffs" />
-    
     <title class="lang-fr">Les Ozabris | Location de Cottages d'Exception</title>
     <title class="lang-en" style="display:none;">Les Ozabris | Exceptional Cottages Rental</title>
     <title class="lang-de" style="display:none;">Les Ozabris | Außergewöhnliche Cottages Vermietung</title>
@@ -25,13 +22,12 @@
         header { 
             background: var(--primary);
             text-align: center; 
-            padding: 45px 20px 40px 20px; 
+            padding: 55px 20px 40px 20px; 
             border-bottom: 2px solid var(--accent); 
             position: relative; 
             color: var(--white);
         }
         
-        /* Sélecteur de langues propre tout en haut à droite */
         .header-top-controls { 
             position: absolute; 
             top: 15px; 
@@ -49,29 +45,26 @@
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 4px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        /* Bouton "Espace Voyageur" positionné entre le logo et le titre */
         .btn-header-login { 
             font-family: 'Segoe UI', sans-serif; 
-            font-size: 0.88rem; 
+            font-size: 0.9rem; 
             background: rgba(197, 168, 128, 0.2); 
             border: 1px solid var(--accent); 
             color: var(--white); 
-            padding: 10px 20px; 
+            padding: 10px 22px; 
             border-radius: 25px; 
             cursor: pointer; 
             display: inline-flex; 
             align-items: center; 
-            justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            margin: 20px auto 15px auto;
-            max-width: 280px;
-            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
         .btn-header-login:hover { background: var(--accent); color: var(--primary); }
 
-        /* Fenêtre modale de connexion qui s'ouvre au clic */
         #login-modal {
             display: none;
             position: fixed;
@@ -83,7 +76,7 @@
             padding: 20px;
         }
 
-        .brand-logo-container { max-width: 220px; margin: 0 auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
+        .brand-logo-container { max-width: 220px; margin: 0 auto 15px auto; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 2px solid var(--accent); }
         .brand-logo-container img { width: 100%; height: auto; object-fit: contain; display: block; }
         
         .logo-text { font-size: 3rem; font-weight: 300; letter-spacing: 6px; color: var(--white); text-transform: uppercase; margin-bottom: 3px; }
@@ -92,6 +85,7 @@
             .brand-logo-container { max-width: 150px; }
             .header-top-controls { top: 12px; right: 12px; }
             .lang-switch { font-size: 0.78rem; padding: 3px 6px; }
+            .btn-header-login { font-size: 0.82rem; padding: 8px 16px; }
         }
         .subtitle { font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-weight: 600; display: block; }
         
@@ -295,7 +289,6 @@
 <body>
 
     <header id="top-header">
-        <!-- SÉLECTEUR DE LANGUES EN HAUT À DROITE -->
         <div class="header-top-controls">
             <div class="lang-switch">
                 <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
@@ -303,20 +296,10 @@
                 <button onclick="setLanguage('de')" id="btn-de" class="lang-btn">DE</button>
             </div>
         </div>
-
-        <!-- LOGO EN PREMIER -->
+        
         <div class="brand-logo-container">
             <img src="https://i.postimg.cc/DzsCFbvh/IMG-0798.jpg" alt="Les Ozabris Logo">
         </div>
-
-        <!-- BOUTON ESPACE VOYAGEUR JUSTE EN DESSOUS DU LOGO -->
-        <button type="button" class="btn-header-login" onclick="openLoginModal()">
-            <span>🔑</span> 
-            <span class="lang-fr">Espace Voyageur</span>
-            <span class="lang-en" style="display:none;">Guest Area</span>
-            <span class="lang-de" style="display:none;">Gäste-Bereich</span>
-        </button>
-        
         <h1 class="logo-text">Les Ozabris</h1>
         <span class="subtitle lang-fr">Cottages de Prestige & Perles Rares • La Réunion</span>
         <span class="subtitle lang-en" style="display:none;">Prestigious Cottages & Rare Pearls • La Réunion</span>
@@ -327,13 +310,21 @@
             <div class="badge">⭐ Grandzabris (Meublé de Tourisme 2 Étoiles)</div>
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
         </div>
+
+        <div style="margin: 25px 0 15px 0; text-align: center;">
+            <button type="button" class="btn-header-login" onclick="openLoginModal()">
+                <span>🔑</span> 
+                <span class="lang-fr">Espace Voyageur</span>
+                <span class="lang-en" style="display:none;">Guest Area</span>
+                <span class="lang-de" style="display:none;">Gäste-Bereich</span>
+            </button>
+        </div>
         
         <div class="tagline lang-fr">"Une parenthèse d'exception, de sérénité absolue et d'excellence dans les Hauts de l'Île."</div>
         <div class="tagline lang-en" style="display:none;">"An exceptional, award-winning getaway in the Highlands of the Island."</div>
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
-    <!-- FENÊTRE POP-UP DE CONNEXION -->
     <div id="login-modal">
         <div class="oz-card">
             <button type="button" class="close-modal-btn" onclick="closeLoginModal()">✕</button>
@@ -364,7 +355,6 @@
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
-            <!-- WIDGET MÉTÉO COMPACT -->
             <div class="weather-compact">
                 <div style="font-size: 1.8rem;">☀️</div>
                 <div>
@@ -373,7 +363,6 @@
                 </div>
             </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR -->
             <div id="checkout-departure-card" class="departure-container" style="display: none;">
                 <div class="departure-header">
                     <h2>Votre départ est proche</h2>
@@ -452,7 +441,6 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ ACCÈS WAZE -->
             <div style="margin-top: 30px;" class="card" id="waze-card-box">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -480,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ DE FIN -->
             <div id="farewell-message-box" class="farewell-box" style="display: none;">
                 <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
                 <div class="creole-badge">NAR TROUV'</div>
@@ -627,7 +614,6 @@
                     </div>
                 </div>
 
-                <!-- SECTION L'ART DE VIVRE AU DOMAINE : NOS AMIS LES ANIMAUX -->
                 <div style="grid-column: 1 / -1; margin-top: 40px;">
                     <div class="section-title lang-fr" style="margin-top: 0;">L'Art de Vivre au Domaine</div>
                     
@@ -641,7 +627,6 @@
                         <div class="eco-card-body">
                             <p class="lang-fr" style="margin-bottom: 20px;">Niché au cœur d'une nature luxuriante et offrant une vue sur la mer, notre domaine accueille nos amis les animaux qui partagent notre quotidien avec douceur.</p>
                             
-                            <!-- Grille des 5 photos d'animaux -->
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px;">
                                 <div class="single-photo-container" style="height: 160px; border-radius: 6px;">
                                     <img src="https://i.postimg.cc/nLTyZyH0/3792.jpg" alt="Coco & Moorea">
@@ -668,7 +653,6 @@
                     </div>
                 </div>
 
-                <!-- ENCADRÉ ÉCOLOGIQUE & SOLAIRE -->
                 <div class="eco-card" style="grid-column: 1 / -1;">
                     <div class="eco-header">
                         <div class="eco-icon">🌍</div>
@@ -695,8 +679,11 @@
         <p class="lang-fr">Cottages d'Exception & Perles Rares • La Réunion</p>
         <div class="contact-info">
             <p class="lang-fr">Contactez-nous :</p>
-            <p style="margin: 8px 0;">📧 <a href="mailto:lesozabris@icloud.com">lesozabris@icloud.com</a></p>
-            <p style="margin: 8px 0;">📞 <a href="tel:+262692138727">+262 6 92 13 87 27</a></p>
+            <p style="margin: 12px 0;">
+                <a href="mailto:lesozabris@icloud.com?subject=Demande%20d%27informations%20ou%20disponibilit%C3%A9s&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20obtenir%20des%20informations%20supplémentaires%20concernant%20vos%20disponibilités%20:%0D%0A%0D%0A-%20Dates%20souhaitées%20(jour%20d%27arrivée%20inclus%20et%20jour%20de%20votre%20départ)%20:%0D%0A%0D%0A-%20Cottage%20:%0D%0A[%20]%20Le%20Ptitzabris%0D%0A[%20]%20Le%20Grandzabris%0D%0A%0D%0A-%20Nombre%20de%20voyageurs%20:%0D%0A%0D%0ACordialement," style="background: var(--accent); color: var(--primary); padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s;">
+                    ✉️ Nous contacter (Disponibilités & Infos)
+                </a>
+            </p>
         </div>
         
         <div class="visit-counter">
@@ -710,6 +697,23 @@
         const sheetApiUrl = "https://script.google.com/macros/s/AKfycbx8IpsGljXVcaPPMIU54K9aCsQqdIK_KzsvelChbG4dMUpeVSHaAnKu2Ww8CAsl-2Qq/exec";
 
         let currentLang = 'fr';
+
+        function formatHour(val) {
+            if (!val) return "";
+            let str = String(val).trim();
+            // Si Google renvoie une date ISO (ex: 1899-12-30T16:15:12.000Z)
+            if (str.includes("T")) {
+                let parts = str.split("T")[1];
+                if (parts) {
+                    return parts.substring(0, 5); // Extrait "16:15"
+                }
+            }
+            // Si c'est déjà un format "16:15" ou "16:15:12"
+            if (str.length >= 5 && str.includes(":")) {
+                return str.substring(0, 5);
+            }
+            return str;
+        }
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -729,7 +733,9 @@
 
             const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
             if (savedData && !savedData.isAdmin) {
-                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom);
+                const keys = Object.keys(savedData);
+                const rawHour = savedData.heureDepart || savedData.heuredepart || savedData.heure_depart || savedData[keys[11]] || savedData[keys[10]];
+                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom, formatHour(rawHour));
             }
         }
 
@@ -763,6 +769,7 @@
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            localStorage.removeItem("ozabris_voyageur_data");
             document.getElementById("login-modal").style.display = "none";
             document.getElementById("guest-portal").style.display = "none";
             document.getElementById("admin-dashboard").style.display = "none";
@@ -825,7 +832,10 @@
                     document.getElementById("wifi-qr-img").src = qrUrl;
 
                     localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
-                    renderDepartureCard(departStr, voyageurTrouve.prenom);
+                    
+                    const keys = Object.keys(voyageurTrouve);
+                    const rawHour = voyageurTrouve.heureDepart || voyageurTrouve.heuredepart || voyageurTrouve.heure_depart || voyageurTrouve[keys[11]] || voyageurTrouve[keys[10]];
+                    renderDepartureCard(departStr, voyageurTrouve.prenom, formatHour(rawHour));
 
                 } else {
                     document.getElementById("errorMsg").style.display = "block";
@@ -837,7 +847,7 @@
             }
         }
 
-        function renderDepartureCard(dateStr, prenom) {
+        function renderDepartureCard(dateStr, prenom, heureDepart) {
             const departureCard = document.getElementById('checkout-departure-card');
             const welcomeTitle = document.getElementById('welcome-message');
             const welcomeSubText = document.getElementById('welcome-subtitle-text');
@@ -875,10 +885,12 @@
 
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 const formattedDate = depDate.toLocaleDateString(locale, options);
+                
+                const departureTime = (heureDepart && String(heureDepart).trim() !== "") ? heureDepart : "10:00";
 
-                let text = `Votre départ est prévu le : ${formattedDate}`;
-                if (currentLang === 'en') text = `Your departure is scheduled for: ${formattedDate}`;
-                if (currentLang === 'de') text = `Ihre Abreise ist geplant für: ${formattedDate}`;
+                let text = `Votre départ est prévu le ${formattedDate} à ${departureTime}`;
+                if (currentLang === 'en') text = `Your departure is scheduled for ${formattedDate} at ${departureTime}`;
+                if (currentLang === 'de') text = `Ihre Abreise ist am ${formattedDate} um ${departureTime} geplant`;
 
                 document.getElementById('departure-date-text').innerText = text;
             } else {
