@@ -28,7 +28,6 @@
             color: var(--white);
         }
         
-        /* Sélecteur de langue seul en haut à droite */
         .header-top-controls { 
             position: absolute; 
             top: 15px; 
@@ -46,7 +45,6 @@
         .lang-btn { background: none; border: none; cursor: pointer; opacity: 0.6; padding: 2px 4px; color: var(--white); }
         .lang-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; color: var(--accent); }
 
-        /* Bouton "Espace Voyageur" centré sous le logo */
         .btn-header-login { 
             font-family: 'Segoe UI', sans-serif; 
             font-size: 0.9rem; 
@@ -67,7 +65,6 @@
         }
         .btn-header-login:hover { background: var(--accent); color: var(--primary); }
 
-        /* Fenêtre modale de connexion qui s'ouvre au clic sur le bouton */
         #login-modal {
             display: none;
             position: fixed;
@@ -292,7 +289,6 @@
 <body>
 
     <header id="top-header">
-        <!-- SÉLECTEUR DE LANGUE SEUL EN HAUT À DROITE -->
         <div class="header-top-controls">
             <div class="lang-switch">
                 <button onclick="setLanguage('fr')" id="btn-fr" class="lang-btn active">FR</button> | 
@@ -315,7 +311,6 @@
             <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
         </div>
 
-        <!-- BOUTON ESPACE VOYAGEUR CENTRÉ SOUS LE LOGO -->
         <div style="margin: 25px 0 15px 0; text-align: center;">
             <button type="button" class="btn-header-login" onclick="openLoginModal()">
                 <span>🔑</span> 
@@ -330,7 +325,6 @@
         <div class="tagline lang-de" style="display:none;">"Ein außergewöhnlicher, preisgekrönter Rückzugsort im Hochland der Insel."</div>
     </header>
 
-    <!-- FENÊTRE POP-UP DE CONNEXION -->
     <div id="login-modal">
         <div class="oz-card">
             <button type="button" class="close-modal-btn" onclick="closeLoginModal()">✕</button>
@@ -361,7 +355,6 @@
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
-            <!-- WIDGET MÉTÉO COMPACT, CENTRÉ ET AJUSTÉ -->
             <div class="weather-compact">
                 <div style="font-size: 1.8rem;">☀️</div>
                 <div>
@@ -370,7 +363,6 @@
                 </div>
             </div>
 
-            <!-- BLOC DE FIN DE SÉJOUR -->
             <div id="checkout-departure-card" class="departure-container" style="display: none;">
                 <div class="departure-header">
                     <h2>Votre départ est proche</h2>
@@ -449,7 +441,6 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ ACCÈS WAZE -->
             <div style="margin-top: 30px;" class="card" id="waze-card-box">
                 <div style="display: flex; flex-wrap: wrap;">
                     <div class="single-photo-container" style="flex: 1; min-width: 280px; height: 280px;">
@@ -477,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- ENCADRÉ DE FIN -->
             <div id="farewell-message-box" class="farewell-box" style="display: none;">
                 <h3>Au plaisir de vous accueillir lors d'un prochain séjour</h3>
                 <div class="creole-badge">NAR TROUV'</div>
@@ -624,7 +614,6 @@
                     </div>
                 </div>
 
-                <!-- SECTION ANIMAUX -->
                 <div style="grid-column: 1 / -1; margin-top: 40px;">
                     <div class="section-title lang-fr" style="margin-top: 0;">L'Art de Vivre au Domaine</div>
                     
@@ -664,7 +653,6 @@
                     </div>
                 </div>
 
-                <!-- ENCADRÉ ÉCOLOGIQUE & SOLAIRE -->
                 <div class="eco-card" style="grid-column: 1 / -1;">
                     <div class="eco-header">
                         <div class="eco-icon">🌍</div>
@@ -692,7 +680,7 @@
         <div class="contact-info">
             <p class="lang-fr">Contactez-nous :</p>
             <p style="margin: 12px 0;">
-                <a href="mailto:lesozabris@icloud.com?subject=Demande%20d%27informations%20ou%20disponibilit%C3%A9s&body=Bonjour,%0D%0A%0D%0AJardin%20des%20Ozabris,%0D%0AJe%20souhaite%20obtenir%20des%20informations%20supplémentaires%20concernant%20vos%20disponibilités%20:%0D%0A-%20Dates%20souhaitées%20:%0D%0A-%20Cottage%20(Ptitzabris%20ou%20Grandzabris)%20:%0D%0A-%20Nombre%20de%20voyageurs%20:%0D%0A%0D%0ACordialement," style="background: var(--accent); color: var(--primary); padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s;">
+                <a href="mailto:lesozabris@icloud.com?subject=Demande%20d%27informations%20ou%20disponibilit%C3%A9s&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20obtenir%20des%20informations%20supplémentaires%20concernant%20vos%20disponibilités%20:%0D%0A%0D%0A-%20Dates%20souhaitées%20(jour%20d%27arrivée%20inclus%20et%20jour%20de%20votre%20départ)%20:%0D%0A%0D%0A-%20Cottage%20:%0D%0A[%20]%20Le%20Ptitzabris%0D%0A[%20]%20Le%20Grandzabris%0D%0A%0D%0A-%20Nombre%20de%20voyageurs%20:%0D%0A%0D%0ACordialement," style="background: var(--accent); color: var(--primary); padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s;">
                     ✉️ Nous contacter (Disponibilités & Infos)
                 </a>
             </p>
@@ -728,7 +716,8 @@
 
             const savedData = JSON.parse(localStorage.getItem("ozabris_voyageur_data"));
             if (savedData && !savedData.isAdmin) {
-                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom, savedData.heureDepart);
+                const heureDep = savedData.heureDepart || savedData.heuredepart || savedData.heure_depart || savedData[Object.keys(savedData)[11]];
+                renderDepartureCard(savedData.dateDepart || savedData.depart, savedData.prenom, heureDep);
             }
         }
 
@@ -824,7 +813,10 @@
                     document.getElementById("wifi-qr-img").src = qrUrl;
 
                     localStorage.setItem("ozabris_voyageur_data", JSON.stringify(voyageurTrouve));
-                    renderDepartureCard(departStr, voyageurTrouve.prenom, voyageurTrouve.heureDepart);
+                    
+                    // Récupération sécurisée de l'heure sur la colonne L (peu importe comment l'Apps Script nomme la clé)
+                    const heureDep = voyageurTrouve.heureDepart || voyageurTrouve.heuredepart || voyageurTrouve.heure_depart || voyageurTrouve[Object.keys(voyageurTrouve)[11]];
+                    renderDepartureCard(departStr, voyageurTrouve.prenom, heureDep);
 
                 } else {
                     document.getElementById("errorMsg").style.display = "block";
@@ -874,6 +866,8 @@
 
                 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 const formattedDate = depDate.toLocaleDateString(locale, options);
+                
+                // Si l'heure est renseignée, on l'utilise, sinon 10:00 par défaut
                 const departureTime = (heureDepart && String(heureDepart).trim() !== "") ? heureDepart : "10:00";
 
                 let text = `Votre départ est prévu le ${formattedDate} à ${departureTime}`;
