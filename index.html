@@ -956,7 +956,7 @@
                         const canSend = today >= veilleArrivee && today <= depDate;
 
                         const siteUrl = window.location.href.split('?')[0];
-                        const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nLes Ozabris`;
+                        const msgText = `Bonjour ${prenom},\n\nVotre séjour aux Ozabris approche ! Voici votre code PIN personnel : ${pin}\n\nVous pouvez accéder à votre espace personnalisé et toutes les informations de votre séjour ici : ${siteUrl}\n\nAu plaisir de vous accueillir,\nJean`;
                         
                         const encodedMsg = encodeURIComponent(msgText);
                         const whatsappLink = tel ? `https://wa.me/${tel}?text=${encodedMsg}` : `https://wa.me/?text=${encodedMsg}`;
