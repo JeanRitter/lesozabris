@@ -282,7 +282,7 @@
         .section-title { font-size: 1.8rem; font-weight: 300; color: var(--primary); margin: 60px 0 25px 0; text-align: center; text-transform: uppercase; letter-spacing: 2.5px; position: relative; }
         .section-title::after { content: ''; display: block; width: 35px; height: 1px; background: var(--accent); margin: 12px auto 0 auto; }
         
-        .amenities-banner { background: var(--white); border: 1px solid #f0eadec; border-radius: 4px; padding: 20px; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); font-family: 'Segoe UI', sans-serif; }
+        .amenities-banner { background: var(--white); border: 1px solid #f0eadec; border-radius: 4px; padding: 20px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 25px; margin-bottom: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); font-family: 'Segoe UI', sans-serif; }
         .amenity-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--primary); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; text-align: center; }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 35px; margin-top: 20px; }
@@ -482,6 +482,17 @@
 
                 <div class="guide-box">
                     <div>
+                        <h5 class="lang-fr">🧺 Lave & Sèche-linge</h5>
+                        <h5 class="lang-en" style="display:none;">🧺 Washer & Dryer</h5>
+                        <h5 class="lang-de" style="display:none;">🧺 Waschmaschine & Trockner</h5>
+                        <p class="lang-fr" style="font-size: 0.85rem;">Accès gratuit à votre disposition. Utilisation conseillée <strong>en journée</strong> pour optimiser notre production d'énergie solaire !</p>
+                        <p class="lang-en" style="display:none; font-size: 0.85rem;">Free access at your disposal. Recommended use <strong>during the day</strong> to optimize our solar energy production!</p>
+                        <p class="lang-de" style="display:none; font-size: 0.85rem;">Kostenlose Nutzung. Empfohlene Nutzung <strong>tagsüber</strong> zur Optimierung unserer Solarenergie!</p>
+                    </div>
+                </div>
+
+                <div class="guide-box">
+                    <div>
                         <h5 class="lang-fr">♻️ Consignes Poubelles & Compost</h5>
                         <h5 class="lang-en" style="display:none;">♻️ Trash & Compost Guidelines</h5>
                         <h5 class="lang-de" style="display:none;">♻️ Müll- & Kompostrichtlinien</h5>
@@ -631,8 +642,7 @@
     <div id="main-content">
         <div class="container">
             <div class="amenities-banner">
-                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit</span><span class="lang-en" style="display:none;">Free Parking</span><span class="lang-de" style="display:none;">Kostenloser Parkplatz</span></div>
-                <div class="amenity-item"><span>🧺</span> <span class="lang-fr">Lave/Sèche-linge Gratuits<br><small style="font-weight: normal; font-size: 0.75rem; color: #666;">(Utilisation en journée pour optimiser le solaire)</small></span><span class="lang-en" style="display:none;">Free Washer/Dryer<br><small style="font-weight: normal; font-size: 0.75rem; color: #666;">(Use during the day to optimize solar energy)</small></span><span class="lang-de" style="display:none;">Kostenlose Waschmaschine/Trockner<br><small style="font-weight: normal; font-size: 0.75rem; color: #666;">(Tagsüber nutzen zur Optimierung der Solarenergie)</small></span></div>
+                <div class="amenity-item"><span>🅿️</span> <span class="lang-fr">Parking Gratuit (1 voiture par abris)</span><span class="lang-en" style="display:none;">Free Parking (1 car per shelter)</span><span class="lang-de" style="display:none;">Kostenloser Parkplatz (1 Auto pro Unterkunft)</span></div>
             </div>
 
             <div class="section-title lang-fr">Le Domaine & Nos Hébergements</div>
@@ -770,9 +780,9 @@
                         <p class="lang-en" style="display:none; margin-bottom: 12px;">At Les Ozabris, we combine the art of hosting with the preservation of our magnificent island. Our domain operates in total harmony with the sun thanks to photovoltaic panels coupled with batteries. Each Zabris also has its own solar water heater.</p>
                         <p class="lang-de" style="display:none; margin-bottom: 12px;">Im Les Ozabris verbinden wir Gastfreundschaft mit dem Schutz unserer wunderschönen Insel. Unser Anwesen arbeitet dank Photovoltaikanlagen in Harmonie mit der Sonne. Jedes Zabris verfügt zudem über einen eigenen Solarwarmwasserbereiter.</p>
 
-                        <p class="lang-fr" style="margin-bottom: 15px;">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique. L'utilisation du lave-linge et du sèche-linge mis à votre disposition est conseillée en journée pour profiter au maximum de notre production solaire !</p>
-                        <p class="lang-en" style="display:none; margin-bottom: 15px;">All our rooms feature high energy-efficiency inverter reversible air conditioners. We recommend using the provided washing machine and dryer during the day to make the most of our solar production!</p>
-                        <p class="lang-de" style="display:none; margin-bottom: 15px;">Alle Zimmer verfügen über energieeffiziente Inverter-Klimaanlagen. Wir empfehlen, die bereitgestellte Waschmaschine und den Trockner tagsüber zu nutzen, um unsere Solarenergie optimal zu nutzen!</p>
+                        <p class="lang-fr" style="margin-bottom: 15px;">Toutes nos chambres disposent de climatiseurs réversibles inverter à haute efficacité énergétique.</p>
+                        <p class="lang-en" style="display:none; margin-bottom: 15px;">All our rooms feature high energy-efficiency inverter reversible air conditioners.</p>
+                        <p class="lang-de" style="display:none; margin-bottom: 15px;">Alle Zimmer verfügen über energieeffiziente Inverter-Klimaanlagen.</p>
                         
                         <div style="border-top: 1px dashed var(--accent); padding-top: 15px; text-align: center; font-style: italic; font-size: 0.85rem; color: #666;">
                             "Florebo quocunque ferar" — "Je fleurirai partout où je serai porté" 
@@ -940,7 +950,6 @@
                     document.getElementById("admin-dashboard").style.display = "none";
                     document.getElementById("guest-portal").style.display = "block";
 
-                    // Définition automatique de la langue du voyageur depuis le sheet
                     let guestLang = (voyageurTrouve.langue || voyageurTrouve.lang || 'fr').toString().trim().toLowerCase();
                     if (guestLang.startsWith('en')) guestLang = 'en';
                     else if (guestLang.startsWith('de')) guestLang = 'de';
