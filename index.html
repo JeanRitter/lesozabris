@@ -1,4 +1,4 @@
-<!DOCTYPE html
+<!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
     <link rel="canonical" href="https://jeanritter.github.io/lesozabris/">
@@ -309,7 +309,7 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles pour l'encart dynamique des avis Airbnb (Fond bleu nuit et affichage des 3 derniers avis) */
+        /* Styles pour l'encart dynamique des avis par Cottage (Grandzabris à gauche, Ptitzabris à droite) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
             padding: 45px 35px; 
@@ -329,10 +329,46 @@
             letter-spacing: 2px; 
             font-family: 'Playfair Display', serif; 
         }
-        .grille-avis { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; justify-content: center; }
-        .carte-avis-airbnb { background: #ffffff; border-left: 4px solid var(--accent); padding: 20px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .texte-commentaire { font-style: italic; color: #333; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; line-height: 1.6; }
-        .info-voyageur { font-size: 0.85rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
+        .avis-layout-deux-colonnes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .colonne-cottage h3 {
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.4);
+            padding-bottom: 8px;
+        }
+        .liste-avis-cottage {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .carte-avis-airbnb { 
+            background: #ffffff; 
+            border-left: 4px solid var(--accent); 
+            padding: 18px 20px; 
+            border-radius: 6px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            max-height: none; /* Pas de coupe de texte */
+            overflow-y: visible; 
+        }
+        .texte-commentaire { 
+            font-style: italic; 
+            color: #333; 
+            margin-bottom: 10px; 
+            font-family: 'Segoe UI', sans-serif; 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            white-space: pre-line; /* Respecte les sauts de ligne d'origine */
+        }
+        .info-voyageur { font-size: 0.82rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
         .eco-card { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
         .eco-header { display: flex; align-items: center; gap: 15px; padding: 25px 30px 15px 30px; border-bottom: 1px solid var(--accent); }
@@ -756,12 +792,25 @@
                     </div>
                 </div>
 
-                <!-- ENCART DYNAMIQUE DES 3 DERNIERS AVIS AIRBNB -->
+                <!-- ENCART DYNAMIQUE DES 3 DERNIERS AVIS PAR COTTAGE (Grandzabris à gauche, Ptitzabris à droite) -->
                 <div style="grid-column: 1 / -1;">
                     <section class="section-avis-airbnb">
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
-                        <div class="grille-avis" id="conteneur-avis">
-                            <!-- Les 3 derniers avis triés s'afficheront ici -->
+                        <div class="avis-layout-deux-colonnes">
+                            <!-- Colonne Gauche : Le Grandzabris -->
+                            <div class="colonne-cottage">
+                                <h3>Le Grandzabris</h3>
+                                <div class="liste-avis-cottage" id="conteneur-avis-grandzabris">
+                                    <!-- Les 3 derniers avis du Grandzabris -->
+                                </div>
+                            </div>
+                            <!-- Colonne Droite : Le Ptitzabris -->
+                            <div class="colonne-cottage">
+                                <h3>Le Ptitzabris</h3>
+                                <div class="liste-avis-cottage" id="conteneur-avis-ptitzabris">
+                                    <!-- Les 3 derniers avis du Ptitzabris -->
+                                </div>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -917,18 +966,23 @@
         }
 
         window.onload = function() {
-            // Chargement, tri chronologique inverse et sélection des 3 derniers avis Airbnb
+            // Chargement, séparation et tri par cottage des avis Airbnb
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
                     const lines = csvText.split('\n');
                     if (lines.length > 1) {
                         const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, '').toLowerCase());
-                        const conteneur = document.getElementById('conteneur-avis');
-                        if (!conteneur) return;
-                        conteneur.innerHTML = "";
+                        const conteneurGrandzabris = document.getElementById('conteneur-avis-grandzabris');
+                        const conteneurPtitzabris = document.getElementById('conteneur-avis-ptitzabris');
+                        
+                        if (!conteneurGrandzabris || !conteneurPtitzabris) return;
+                        
+                        conteneurGrandzabris.innerHTML = "";
+                        conteneurPtitzabris.innerHTML = "";
 
-                        let avisList = [];
+                        let avisGrandzabris = [];
+                        let avisPtitzabris = [];
 
                         for (let i = 1; i < lines.length; i++) {
                             if (!lines[i].trim()) continue;
@@ -952,38 +1006,56 @@
                             }
 
                             if (commentaire) {
-                                avisList.push({
+                                const avisObj = {
                                     auteur,
                                     logement,
                                     dateBrute,
                                     timestamp: new Date(dateBrute).getTime() || 0,
                                     commentaire
-                                });
+                                };
+
+                                const logLower = logement.toLowerCase();
+                                if (logLower.includes('grand')) {
+                                    avisGrandzabris.push(avisObj);
+                                } else if (logLower.includes('ptit') || logLower.includes('petit')) {
+                                    avisPtitzabris.push(avisObj);
+                                }
                             }
                         }
 
-                        // Tri intelligent : du plus récent au plus ancien
-                        avisList.sort((a, b) => b.timestamp - a.timestamp);
+                        // Tri chronologique inverse (plus récents en premier)
+                        avisGrandzabris.sort((a, b) => b.timestamp - a.timestamp);
+                        avisPtitzabris.sort((a, b) => b.timestamp - a.timestamp);
 
-                        // On ne garde que les 3 derniers avis maximum
-                        const derniersAvis = avisList.slice(0, 3);
+                        // Sélection des 3 derniers avis pour chaque cottage
+                        const derniersGrandzabris = avisGrandzabris.slice(0, 3);
+                        const derniersPtitzabris = avisPtitzabris.slice(0, 3);
 
-                        // Affichage des 3 derniers avis
-                        derniersAvis.forEach(avis => {
-                            let dateFormatee = avis.dateBrute;
-                            if (avis.dateBrute.includes("-")) {
-                                const p = avis.dateBrute.split("-");
-                                if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                        // Fonction d'affichage pour alimenter chaque colonne
+                        function afficherAvis(liste, conteneur) {
+                            if (liste.length === 0) {
+                                conteneur.innerHTML = `<p style="color: #fff; font-size: 0.85rem; font-style: italic; text-align: center; font-family: 'Segoe UI', sans-serif;">Aucun avis pour le moment.</p>`;
+                                return;
                             }
+                            liste.forEach(avis => {
+                                let dateFormatee = avis.dateBrute;
+                                if (avis.dateBrute.includes("-")) {
+                                    const p = avis.dateBrute.split("-");
+                                    if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                                }
 
-                            const carte = document.createElement('div');
-                            carte.className = 'carte-avis-airbnb';
-                            carte.innerHTML = `
-                                <p class="texte-commentaire">« ${avis.commentaire} »</p>
-                                <p class="info-voyageur"><strong>${avis.auteur}</strong> — <em>${avis.logement}</em> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
-                            `;
-                            conteneur.appendChild(carte);
-                        });
+                                const carte = document.createElement('div');
+                                carte.className = 'carte-avis-airbnb';
+                                carte.innerHTML = `
+                                    <p class="texte-commentaire">« ${avis.commentaire} »</p>
+                                    <p class="info-voyageur"><strong>${avis.auteur}</strong> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
+                                `;
+                                conteneur.appendChild(carte);
+                            });
+                        }
+
+                        afficherAvis(derniersGrandzabris, conteneurGrandzabris);
+                        afficherAvis(derniersPtitzabris, conteneurPtitzabris);
                     }
                 })
                 .catch(error => console.error("Erreur lors du chargement des avis", error));
