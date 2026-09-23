@@ -309,30 +309,30 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles pour l'encart dynamique des avis Airbnb avec rappel de la couleur de l'en-tête (--primary) */
+        /* Styles pour l'encart dynamique des avis Airbnb avec le fond bleu de l'en-tête (--primary) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
-            padding: 35px 25px; 
+            padding: 40px 30px; 
             max-width: 1100px; 
-            background: #ffffff; 
-            border: 2px solid var(--primary); 
-            border-radius: 4px; 
-            box-shadow: 0 10px 25px rgba(18, 38, 58, 0.08); 
+            background-color: var(--primary); 
+            border: 2px solid var(--accent); 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
         }
         .section-avis-airbnb h2 { 
             text-align: center; 
-            margin-bottom: 25px; 
-            font-size: 1.4rem; 
-            color: var(--primary); 
+            margin-bottom: 30px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
             font-weight: 400; 
             text-transform: uppercase; 
-            letter-spacing: 1.5px; 
+            letter-spacing: 2px; 
             font-family: 'Playfair Display', serif; 
         }
         .grille-avis { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; justify-content: center; }
-        .carte-avis-airbnb { background: #fdfbf7; border-left: 4px solid #ff385c; padding: 20px; border-radius: 4px; border: 1px solid #f0eadec; border-left-width: 4px; }
-        .texte-commentaire { font-style: italic; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; }
-        .info-voyageur { font-size: 0.85rem; color: #777; font-family: 'Segoe UI', sans-serif; text-align: right; }
+        .carte-avis-airbnb { background: #ffffff; border-left: 4px solid var(--accent); padding: 20px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .texte-commentaire { font-style: italic; color: #333; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; line-height: 1.6; }
+        .info-voyageur { font-size: 0.85rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
         .eco-card { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
         .eco-header { display: flex; align-items: center; gap: 15px; padding: 25px 30px 15px 30px; border-bottom: 1px solid var(--accent); }
@@ -756,7 +756,7 @@
                     </div>
                 </div>
 
-                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB (Habillé avec la couleur principale) -->
+                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB (Habillé avec le fond bleu nuit de l'en-tête) -->
                 <div style="grid-column: 1 / -1;">
                     <section class="section-avis-airbnb">
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
