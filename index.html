@@ -4,7 +4,7 @@
     <link rel="canonical" href="https://jeanritter.github.io/lesozabris/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez Les Ozabris, cottages de prestige avec espace bien-être et spa dans les Hauts de La Réunion (La Possession). Réservez votre séjour d'exception en ligne.">
+    <meta name="description" content="Découvrez Les Ozabris, cottages de prestige avec espace bien-être et spa dans les Hauts de La Réunion (La Saline). Réservez votre séjour d'exception en ligne.">
     <title class="lang-fr">Les Ozabris | Location de Cottages d'Exception</title>
     <title class="lang-en" style="display:none;">Les Ozabris | Exceptional Cottages Rental</title>
     <title class="lang-de" style="display:none;">Les Ozabris | Außergewöhnliche Cottages Vermietung</title>
@@ -297,6 +297,10 @@
         .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
         .card p { font-size: 0.9rem; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; }
         
+        /* Bouton incitatif pour voir plus de photos */
+        .more-photos-link { display: block; text-align: center; font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #ff385c; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 5px 0; text-decoration: none; }
+        .more-photos-link:hover { text-decoration: underline; }
+
         .availability-box { background: #fdfbf7; border: 1px solid rgba(197, 168, 128, 0.4); border-radius: 4px; padding: 15px; margin: 18px 0; text-align: center; font-family: 'Segoe UI', sans-serif; }
         .availability-box p { font-size: 0.85rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
         .availability-btn { display: inline-block; background-color: var(--white); color: var(--primary); border: 1px solid var(--accent); padding: 8px 18px; border-radius: 2px; text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; }
@@ -304,6 +308,14 @@
 
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+        /* Styles pour l'encart dynamique des avis Airbnb */
+        .section-avis-airbnb { margin: 60px auto 40px auto; padding: 35px 25px; max-width: 1000px; background: #fff; border: 1px solid #f0eadec; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
+        .section-avis-airbnb h2 { text-align: center; margin-bottom: 25px; font-size: 1.4rem; color: var(--primary); font-weight: 400; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Playfair Display', serif; }
+        .grille-avis { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; justify-content: center; }
+        .carte-avis-airbnb { background: #fdfbf7; border-left: 4px solid #ff385c; padding: 20px; border-radius: 4px; border: 1px solid #f0eadec; border-left-width: 4px; }
+        .texte-commentaire { font-style: italic; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; }
+        .info-voyageur { font-size: 0.85rem; color: #777; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
         .eco-card { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
         .eco-header { display: flex; align-items: center; gap: 15px; padding: 25px 30px 15px 30px; border-bottom: 1px solid var(--accent); }
@@ -340,7 +352,7 @@
         <div class="badges-container">
             <div class="badge">⭐ Ptitzabris (Meublé de Tourisme 3 Étoiles)</div>
             <div class="badge">⭐ Grandzabris (Meublé de Tourisme 2 Étoiles)</div>
-            <div class="badge">❤️ Coup de Cœur Voyageurs Airbnb</div>
+            <div class="badge">❤️ 1% des logements préférés sur Airbnb</div>
         </div>
 
         <div style="margin: 25px 0 15px 0; text-align: center;">
@@ -650,17 +662,21 @@
             <div class="section-title lang-de" style="display:none;">Das Anwesen & Unsere Unterkünfte</div>
             
             <div class="grid">
+                <!-- Le Ptitzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/2jTZq8yF/IMG-4380.jpg" alt="Le Ptitzabris">
                         <div class="photo-label">Le Ptitzabris</div>
                     </div>
                     <div class="card-content">
-                        <h3>Le Ptitzabris</h3>
+                        <h3>« PtitZabris »</h3>
                         <div class="specs">✨ 1 Chambre King Size │ Meublé de Tourisme 3 Étoiles</div>    
                         <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
                         <p class="lang-en" style="display:none;">A haven of softness and refinement, designed specifically for romantic getaways.</p>
                         <p class="lang-de" style="display:none;">Ein Ort der Sanftheit und Raffinesse, speziell konzipiert für romantische Kurztrips.</p>
+                        
+                        <a href="https://www.airbnb.com/h/leptitzabris" target="_blank" rel="noopener noreferrer" class="more-photos-link">📸 Davantage de photos ici (sur Airbnb) ↗</a>
+
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
@@ -677,6 +693,7 @@
                     </div>
                 </div>
 
+                <!-- Le Grandzabris -->
                 <div class="card">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/m227V1Jq/IMG-4249.jpg" alt="Le Grandzabris">
@@ -688,6 +705,9 @@
                         <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
                         <p class="lang-en" style="display:none;">Generous, noble, and warm space, ideal for exceptional stays with family or friends.</p>
                         <p class="lang-de" style="display:none;">Großzügiger, edler und warmer Raum, ideal für außergewöhnliche Aufenthalte mit Familie oder Freunden.</p>
+                        
+                        <a href="https://www.airbnb.com/h/legrandzabris" target="_blank" rel="noopener noreferrer" class="more-photos-link">📸 Davantage de photos ici (sur Airbnb) ↗</a>
+
                         <div class="availability-box">
                             <p class="lang-fr">📅 Disponibilités en temps réel</p>
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
@@ -718,7 +738,17 @@
                     </div>
                 </div>
 
-                <div style="grid-column: 1 / -1; margin-top: 40px;">
+                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB -->
+                <div style="grid-column: 1 / -1;">
+                    <section class="section-avis-airbnb">
+                        <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
+                        <div class="grille-avis" id="conteneur-avis">
+                            <!-- Les avis se chargeront automatiquement via le fichier avis.json -->
+                        </div>
+                    </section>
+                </div>
+
+                <div style="grid-column: 1 / -1; margin-top: 20px;">
                     <div class="section-title lang-fr" style="margin-top: 0;">L'Art de Vivre au Domaine</div>
                     <div class="section-title lang-en" style="display:none; margin-top: 0;">The Art of Living at the Domain</div>
                     <div class="section-title lang-de" style="display:none; margin-top: 0;">Die Lebenskunst auf dem Anwesen</div>
@@ -800,7 +830,7 @@
         <div class="footer-logo">Les Ozabris</div>
         <p class="lang-fr">Cottages d'Exception & Perles Rares • La Réunion</p>
         <p class="lang-en" style="display:none;">Exceptional Cottages & Rare Pearls • La Réunion</p>
-        <p class="lang-de" style="display:none;">Prachtvolle Cottages & Seltene Perlen • La Réunion</p>
+        <p class="lang-de" style="display:none;">Außergewöhnliche Cottages & Seltene Perlen • La Réunion</p>
         
         <div class="contact-info">
             <p class="lang-fr">Contactez-nous :</p>
@@ -868,6 +898,26 @@
         }
 
         window.onload = function() {
+            // Chargement automatique des derniers avis depuis avis.json
+            fetch('avis.json')
+                .then(response => response.json())
+                .then(avisList => {
+                    const conteneur = document.getElementById('conteneur-avis');
+                    if (conteneur && avisList.length > 0) {
+                        conteneur.innerHTML = "";
+                        avisList.forEach(avis => {
+                            const carte = document.createElement('div');
+                            carte.className = 'carte-avis-airbnb';
+                            carte.innerHTML = `
+                                <p class="texte-commentaire">« ${avis.commentaire} »</p>
+                                <p class="info-voyageur"><strong>${avis.auteur}</strong> — <em>${avis.logement}</em> (${avis.date})</p>
+                            `;
+                            conteneur.appendChild(carte);
+                        });
+                    }
+                })
+                .catch(error => console.error("Chargement des avis ignoré ou en cours", error));
+
             let visits = localStorage.getItem("ozabris_visit_count") || 1240;
             visits = parseInt(visits) + 1;
             localStorage.setItem("ozabris_visit_count", visits);
