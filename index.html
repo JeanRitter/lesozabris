@@ -308,7 +308,7 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Encart des avis Airbnb */
+        /* Encart des avis Airbnb avec défilement propre (scroll discret) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
             padding: 45px 35px; 
@@ -351,16 +351,29 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            max-height: 480px; 
+            overflow-y: auto; 
+            padding-right: 8px;
         }
+        /* Personnalisation de la barre de défilement pour un look très propre */
+        .liste-avis-cottage::-webkit-scrollbar {
+            width: 6px;
+        }
+        .liste-avis-cottage::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        .liste-avis-cottage::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
         .carte-avis-airbnb { 
             background: #ffffff; 
             border-left: 4px solid var(--accent); 
             padding: 18px 20px; 
             border-radius: 6px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            height: auto !important;
-            max-height: none !important;
-            overflow: visible !important;
         }
         .texte-commentaire { 
             font-style: italic; 
@@ -371,7 +384,6 @@
             line-height: 1.6; 
             white-space: pre-wrap; 
             word-break: break-word;
-            overflow: visible !important;
         }
         .info-voyageur { font-size: 0.82rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
@@ -728,7 +740,7 @@
                     </div>
                     <div class="card-content">
                         <h3>« Le Ptitzabris »</h3>
-                        <div class="specs">✨ 1 Chambre │ Meublé de Tourisme 3 Étoiles</div>    
+                        <div class="specs">✨ 1 Chambre King Size │ Meublé de Tourisme 3 Étoiles</div>    
                         <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
                         <p class="lang-en" style="display:none;">A haven of softness and refinement, designed specifically for romantic getaways.</p>
                         <p class="lang-de" style="display:none;">Ein Ort der Sanftheit und Raffinesse, speziell konzipiert für romantische Kurztrips.</p>
@@ -967,7 +979,6 @@
         }
 
         window.onload = function() {
-            // Parser CSV ultra-robuste gérant les retours à la ligne intégrés dans les cellules
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
@@ -1063,7 +1074,6 @@
                                 };
 
                                 const logLower = logement.toLowerCase();
-                                // Vérification stricte du nom du logement pour éviter les confusions
                                 if (logLower.includes('grand')) {
                                     avisGrandzabris.push(avisObj);
                                 } else if (logLower.includes('ptit') || logLower.includes('petit')) {
@@ -1072,11 +1082,9 @@
                             }
                         }
 
-                        // Tri chronologique inverse (les plus récents en premier)
                         avisGrandzabris.sort((a, b) => b.timestamp - a.timestamp);
                         avisPtitzabris.sort((a, b) => b.timestamp - a.timestamp);
 
-                        // Sélection stricte des 3 derniers avis maximum
                         const derniersGrandzabris = avisGrandzabris.slice(0, 3);
                         const derniersPtitzabris = avisPtitzabris.slice(0, 3);
 
