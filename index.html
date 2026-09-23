@@ -309,9 +309,26 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles pour l'encart dynamique des avis Airbnb */
-        .section-avis-airbnb { margin: 60px auto 40px auto; padding: 35px 25px; max-width: 1000px; background: #fff; border: 1px solid #f0eadec; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
-        .section-avis-airbnb h2 { text-align: center; margin-bottom: 25px; font-size: 1.4rem; color: var(--primary); font-weight: 400; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Playfair Display', serif; }
+        /* Styles pour l'encart dynamique des avis Airbnb avec rappel de la couleur de l'en-tête (--primary) */
+        .section-avis-airbnb { 
+            margin: 60px auto 40px auto; 
+            padding: 35px 25px; 
+            max-width: 1100px; 
+            background: #ffffff; 
+            border: 2px solid var(--primary); 
+            border-radius: 4px; 
+            box-shadow: 0 10px 25px rgba(18, 38, 58, 0.08); 
+        }
+        .section-avis-airbnb h2 { 
+            text-align: center; 
+            margin-bottom: 25px; 
+            font-size: 1.4rem; 
+            color: var(--primary); 
+            font-weight: 400; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-family: 'Playfair Display', serif; 
+        }
         .grille-avis { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; justify-content: center; }
         .carte-avis-airbnb { background: #fdfbf7; border-left: 4px solid #ff385c; padding: 20px; border-radius: 4px; border: 1px solid #f0eadec; border-left-width: 4px; }
         .texte-commentaire { font-style: italic; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; }
@@ -614,18 +631,18 @@
 
                 <div class="admin-box">
                     <div>
-                        <h5>📊 Fichier Google Sheets</h5>
-                        <p>Consultez la base de données brute et l'historique complet des réservations.</p>
+                        <h5>⭐ Google Forms (Avis Airbnb)</h5>
+                        <p>Ajoutez un nouveau commentaire de voyageur pour l'afficher sur votre site.</p>
                     </div>
-                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeMv83jgbM1M61OCESTcbUXRmM19Xgk_Jp0VbrxlJ2_OkL-5Q/viewform?usp=publish-editor" target="_blank" class="admin-link-btn">Saisir un Avis ↗</a>
                 </div>
 
                 <div class="admin-box">
                     <div>
-                        <h5>⭐ Tableau de Bord Google</h5>
-                        <p>Accédez à votre profil d'établissement Google pour consulter vos statistiques et avis.</p>
+                        <h5>📊 Fichier Google Sheets</h5>
+                        <p>Consultez la base de données brute et l'historique complet des réservations.</p>
                     </div>
-                    <a href="https://business.google.com" target="_blank" class="admin-link-btn">Mon Dashboard Google ↗</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1SFMb86xogujUdNoC5t8LuWORI0HAm0i8EMIy-RFIiUo/edit?usp=sharing" target="_blank" class="admin-link-btn">Ouvrir le Sheets ↗</a>
                 </div>
 
                 <div class="admin-box">
@@ -724,7 +741,8 @@
                     </div>
                 </div>
 
-                <div class="card">
+                <!-- Espace ZenAbris centré sur une ligne dédiée -->
+                <div class="card" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto; width: 100%;">
                     <div class="single-photo-container">
                         <img src="https://i.postimg.cc/13yj8PKc/Image.jpg" alt="Espace ZenAbris">
                         <div class="photo-label">Le ZenAbris</div>
@@ -738,12 +756,12 @@
                     </div>
                 </div>
 
-                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB -->
+                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB (Habillé avec la couleur principale) -->
                 <div style="grid-column: 1 / -1;">
                     <section class="section-avis-airbnb">
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
                         <div class="grille-avis" id="conteneur-avis">
-                            <!-- Les avis se chargeront automatiquement via le fichier avis.json -->
+                            <!-- Les avis se chargeront automatiquement via le formulaire -->
                         </div>
                     </section>
                 </div>
@@ -855,6 +873,7 @@
 
     <script>
         const sheetApiUrl = "https://script.google.com/macros/s/AKfycbx8IpsGljXVcaPPMIU54K9aCsQqdIK_KzsvelChbG4dMUpeVSHaAnKu2Ww8CAsl-2Qq/exec";
+        const avisApiUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQP_SAPkwZT9AusjxC6npbaM_VT8B8auHE-UlgO5mdZ7JZ_sWrQkEykcWuXCckiIu5kOn0fz7AzpsIH/pub?output=csv";
 
         let currentLang = 'fr';
 
@@ -898,22 +917,50 @@
         }
 
         window.onload = function() {
-            // Chargement automatique des derniers avis depuis avis.json
-            fetch('avis.json')
-                .then(response => response.json())
-                .then(avisList => {
-                    const conteneur = document.getElementById('conteneur-avis');
-                    if (conteneur && avisList.length > 0) {
+            // Chargement automatique des derniers avis depuis ton Google Form / Sheets
+            fetch(avisApiUrl)
+                .then(response => response.text())
+                .then(csvText => {
+                    const lines = csvText.split('\n');
+                    if (lines.length > 1) {
+                        const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, '').toLowerCase());
+                        const conteneur = document.getElementById('conteneur-avis');
+                        if (!conteneur) return;
                         conteneur.innerHTML = "";
-                        avisList.forEach(avis => {
-                            const carte = document.createElement('div');
-                            carte.className = 'carte-avis-airbnb';
-                            carte.innerHTML = `
-                                <p class="texte-commentaire">« ${avis.commentaire} »</p>
-                                <p class="info-voyageur"><strong>${avis.auteur}</strong> — <em>${avis.logement}</em> (${avis.date})</p>
-                            `;
-                            conteneur.appendChild(carte);
-                        });
+
+                        // On lit du plus récent au plus ancien (en partant de la fin)
+                        for (let i = lines.length - 1; i >= 1; i--) {
+                            if (!lines[i].trim()) continue;
+                            const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                            const obj = {};
+                            for (let j = 0; j < headers.length; j++) {
+                                let val = currentLine[j] ? currentLine[j].trim() : '';
+                                obj[headers[j]] = val.replace(/^"|"$/g, '');
+                            }
+
+                            // Récupération dynamique selon tes libellés de formulaire (Prénom, Logement, Date, Commentaire)
+                            const auteur = obj['prénom du voyageur'] || obj['auteur'] || obj['prenom'] || "Voyageur";
+                            const logement = obj['logement'] || "Les Ozabris";
+                            const dateBrute = obj['date du séjour'] || obj['date'] || "";
+                            const commentaire = obj['commentaire'] || "";
+
+                            // Formatage propre de la date en JJ/MM/AAAA si possible
+                            let dateFormatee = dateBrute;
+                            if (dateBrute.includes("-")) {
+                                const p = dateBrute.split("-");
+                                if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                            }
+
+                            if (commentaire) {
+                                const carte = document.createElement('div');
+                                carte.className = 'carte-avis-airbnb';
+                                carte.innerHTML = `
+                                    <p class="texte-commentaire">« ${commentaire} »</p>
+                                    <p class="info-voyageur"><strong>${auteur}</strong> — <em>${logement}</em> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
+                                `;
+                                conteneur.appendChild(carte);
+                            }
+                        }
                     }
                 })
                 .catch(error => console.error("Chargement des avis ignoré ou en cours", error));
