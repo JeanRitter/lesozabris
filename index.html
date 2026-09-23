@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html
 <html lang="fr" dir="ltr">
 <head>
     <link rel="canonical" href="https://jeanritter.github.io/lesozabris/">
@@ -309,10 +309,10 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles pour l'encart dynamique des avis Airbnb avec le fond bleu de l'en-tête (--primary) */
+        /* Styles pour l'encart dynamique des avis Airbnb (Fond bleu nuit et affichage des 3 derniers avis) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
-            padding: 40px 30px; 
+            padding: 45px 35px; 
             max-width: 1100px; 
             background-color: var(--primary); 
             border: 2px solid var(--accent); 
@@ -322,7 +322,7 @@
         .section-avis-airbnb h2 { 
             text-align: center; 
             margin-bottom: 30px; 
-            font-size: 1.5rem; 
+            font-size: 1.6rem; 
             color: var(--white); 
             font-weight: 400; 
             text-transform: uppercase; 
@@ -756,12 +756,12 @@
                     </div>
                 </div>
 
-                <!-- ENCART DYNAMIQUE DES DERNIERS AVIS AIRBNB (Habillé avec le fond bleu nuit de l'en-tête) -->
+                <!-- ENCART DYNAMIQUE DES 3 DERNIERS AVIS AIRBNB -->
                 <div style="grid-column: 1 / -1;">
                     <section class="section-avis-airbnb">
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
                         <div class="grille-avis" id="conteneur-avis">
-                            <!-- Les avis se chargeront automatiquement via le formulaire -->
+                            <!-- Les 3 derniers avis triés s'afficheront ici -->
                         </div>
                     </section>
                 </div>
@@ -917,8 +917,8 @@
         }
 
         window.onload = function() {
-            // Chargement automatique des derniers avis depuis ton Google Form / Sheets
-            fetch(avisApiUrl)
+            // Chargement, tri chronologique inverse et sélection des 3 derniers avis Airbnb
+            fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
                     const lines = csvText.split('\n');
@@ -928,8 +928,9 @@
                         if (!conteneur) return;
                         conteneur.innerHTML = "";
 
-                        // On lit du plus récent au plus ancien (en partant de la fin)
-                        for (let i = lines.length - 1; i >= 1; i--) {
+                        let avisList = [];
+
+                        for (let i = 1; i < lines.length; i++) {
                             if (!lines[i].trim()) continue;
                             const currentLine = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                             const obj = {};
@@ -938,32 +939,54 @@
                                 obj[headers[j]] = val.replace(/^"|"$/g, '');
                             }
 
-                            // Récupération dynamique selon tes libellés de formulaire (Prénom, Logement, Date, Commentaire)
-                            const auteur = obj['prénom du voyageur'] || obj['auteur'] || obj['prenom'] || "Voyageur";
-                            const logement = obj['logement'] || "Les Ozabris";
-                            const dateBrute = obj['date du séjour'] || obj['date'] || "";
-                            const commentaire = obj['commentaire'] || "";
+                            let auteur = "Voyageur";
+                            let logement = "Les Ozabris";
+                            let dateBrute = "";
+                            let commentaire = "";
 
-                            // Formatage propre de la date en JJ/MM/AAAA si possible
-                            let dateFormatee = dateBrute;
-                            if (dateBrute.includes("-")) {
-                                const p = dateBrute.split("-");
-                                if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                            for (let key in obj) {
+                                if (key.includes('prénom') || key.includes('prenom') || key.includes('auteur')) auteur = obj[key];
+                                if (key.includes('logement') || key.includes('cottage')) logement = obj[key];
+                                if (key.includes('date')) dateBrute = obj[key];
+                                if (key.includes('commentaire') || key.includes('avis') || key.includes('message')) commentaire = obj[key];
                             }
 
                             if (commentaire) {
-                                const carte = document.createElement('div');
-                                carte.className = 'carte-avis-airbnb';
-                                carte.innerHTML = `
-                                    <p class="texte-commentaire">« ${commentaire} »</p>
-                                    <p class="info-voyageur"><strong>${auteur}</strong> — <em>${logement}</em> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
-                                `;
-                                conteneur.appendChild(carte);
+                                avisList.push({
+                                    auteur,
+                                    logement,
+                                    dateBrute,
+                                    timestamp: new Date(dateBrute).getTime() || 0,
+                                    commentaire
+                                });
                             }
                         }
+
+                        // Tri intelligent : du plus récent au plus ancien
+                        avisList.sort((a, b) => b.timestamp - a.timestamp);
+
+                        // On ne garde que les 3 derniers avis maximum
+                        const derniersAvis = avisList.slice(0, 3);
+
+                        // Affichage des 3 derniers avis
+                        derniersAvis.forEach(avis => {
+                            let dateFormatee = avis.dateBrute;
+                            if (avis.dateBrute.includes("-")) {
+                                const p = avis.dateBrute.split("-");
+                                if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                            }
+
+                            const carte = document.createElement('div');
+                            carte.className = 'carte-avis-airbnb';
+                            carte.innerHTML = `
+                                <p class="texte-commentaire">« ${avis.commentaire} »</p>
+                                <p class="info-voyageur"><strong>${avis.auteur}</strong> — <em>${avis.logement}</em> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
+                            `;
+                            conteneur.appendChild(carte);
+                        });
                     }
                 })
-                .catch(error => console.error("Chargement des avis ignoré ou en cours", error));
+                .catch(error => console.error("Erreur lors du chargement des avis", error));
 
             let visits = localStorage.getItem("ozabris_visit_count") || 1240;
             visits = parseInt(visits) + 1;
