@@ -309,7 +309,7 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles corrigés pour l'encart dynamique des avis par Cottage (Grandzabris à gauche, Ptitzabris à droite) */
+        /* Styles pour l'encart dynamique des avis par Cottage (Grandzabris à gauche, Ptitzabris à droite) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
             padding: 45px 35px; 
@@ -344,6 +344,13 @@
             text-transform: uppercase;
             border-bottom: 1px solid rgba(197, 168, 128, 0.4);
             padding-bottom: 8px;
+        }
+        /* Harmonisation des hauteurs de titres pour aligner parfaitement les blocs d'avis */
+        .colonne-cottage.grandzabris-col h3 {
+            margin-top: 8px;
+        }
+        .colonne-cottage.ptitzabris-col h3 {
+            margin-top: 0px;
         }
         .liste-avis-cottage {
             display: flex;
@@ -726,7 +733,7 @@
                         <div class="photo-label">Le Ptitzabris</div>
                     </div>
                     <div class="card-content">
-                        <h3>Le Ptitzabris</h3>
+                        <h3>« Le Ptitzabris »</h3>
                         <div class="specs">✨ 1 Chambre King Size │ Meublé de Tourisme 3 Étoiles</div>    
                         <p class="lang-fr">Écrin de douceur et de raffinement, conçu spécifiquement pour les escapades en amoureux.</p>
                         <p class="lang-en" style="display:none;">A haven of softness and refinement, designed specifically for romantic getaways.</p>
@@ -757,7 +764,7 @@
                         <div class="photo-label">Le Grandzabris</div>
                     </div>
                     <div class="card-content">
-                        <h3>Le Grandzabris</h3>
+                        <h3>« Le Grandzabris »</h3>
                         <div class="specs">✨ 2 Chambres │ Meublé de Tourisme 2 Étoiles</div>
                         <p class="lang-fr">Espace généreux, noble et chaleureux, idéal pour les séjours d'exception en famille ou entre amis.</p>
                         <p class="lang-en" style="display:none;">Generous, noble, and warm space, ideal for exceptional stays with family or friends.</p>
@@ -802,15 +809,15 @@
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
                         <div class="avis-layout-deux-colonnes">
                             <!-- Colonne Gauche : Le Grandzabris -->
-                            <div class="colonne-cottage">
-                                <h3>Le Grandzabris</h3>
+                            <div class="colonne-cottage grandzabris-col">
+                                <h3>« Le Grandzabris »</h3>
                                 <div class="liste-avis-cottage" id="conteneur-avis-grandzabris">
                                     <!-- Les 3 derniers avis du Grandzabris -->
                                 </div>
                             </div>
                             <!-- Colonne Droite : Le Ptitzabris -->
-                            <div class="colonne-cottage">
-                                <h3>Le Ptitzabris</h3>
+                            <div class="colonne-cottage ptitzabris-col">
+                                <h3>« Le Ptitzabris »</h3>
                                 <div class="liste-avis-cottage" id="conteneur-avis-ptitzabris">
                                     <!-- Les 3 derniers avis du Ptitzabris -->
                                 </div>
@@ -909,7 +916,7 @@
             <p class="lang-de" style="display:none;">Kontaktieren Sie uns:</p>
             
             <p style="margin: 12px 0;">
-                <a href="mailto:lesozabris@icloud.com?subject=Demande%20d%27informations%20ou%20disponibilit%C3%A9s&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20obtenir%20des%20informations%20supplémentaires%20concernant%20vos%20disponibilités%20:%0D%0A%0D%0A-%20Dates%20souhaitées%20(jour%20d%27arrivée%20inclus%20et%20jour%20de%20votre%20départ)%20:%0D%0A%0D%0A-%20Cottage%20:%0D%0A[%20]%20Le%20Horiz%0D%0A[%20]%20Le%20Ptitzabris%0D%0A[%20]%20Le%20Grandzabris%0D%0A%0D%0A-%20Nombre%20de%20voyageurs%20:%0D%0A%0D%0ACordialement," style="background: var(--accent); color: var(--primary); padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s;">
+                <a href="mailto:lesozabris@icloud.com?subject=Demande%20d%27informations%20ou%20disponibilit%C3%A9s&body=Bonjour,%0D%0A%0D%0AJe%20souhaite%20obtenir%20des%20informations%20supplémentaires%20concernant%20vos%20disponibilités%20:%0D%0A%0D%0A-%20Dates%20souhaitées%20(jour%20d%27arrivée%20inclus%20et%20jour%20de%20votre%20départ)%20:%0D%0A%0D%0A-%20Cottage%20:%0D%0A[%20]%20Le%20Ptitzabris%0D%0A[%20]%20Le%20Grandzabris%0D%0A%0D%0A-%20Nombre%20de%20voyageurs%20:%0D%0A%0D%0ACordialement," style="background: var(--accent); color: var(--primary); padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem; display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: all 0.3s;">
                     <span class="lang-fr">✉️ Nous contacter (Disponibilités & Infos)</span>
                     <span class="lang-en" style="display:none;">✉️ Contact us (Availability & Info)</span>
                     <span class="lang-de" style="display:none;">✉️ Kontakt (Verfügbarkeit & Info)</span>
@@ -970,7 +977,7 @@
         }
 
         window.onload = function() {
-            // Chargement robuste, nettoyage des en-têtes et séparation par cottage des avis Airbnb
+            // Chargement et lecture robuste des avis Airbnb avec correspondance exacte des colonnes
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
@@ -1012,11 +1019,24 @@
                             }
 
                             if (commentaire) {
+                                // Conversion sécurisée de la date du séjour (ex: JJ/MM/AAAA ou AAAA-MM-JJ)
+                                let timestamp = 0;
+                                if (dateBrute) {
+                                    if (dateBrute.includes('/')) {
+                                        const p = dateBrute.split('/');
+                                        if (p.length === 3) {
+                                            timestamp = new Date(`${p[2]}-${p[1]}-${p[0]}`).getTime() || 0;
+                                        }
+                                    } else {
+                                        timestamp = new Date(dateBrute).getTime() || 0;
+                                    }
+                                }
+
                                 const avisObj = {
                                     auteur,
                                     logement,
                                     dateBrute,
-                                    timestamp: new Date(dateBrute).getTime() || 0,
+                                    timestamp,
                                     commentaire
                                 };
 
@@ -1029,7 +1049,7 @@
                             }
                         }
 
-                        // Tri chronologique inverse (les plus récents en premier)
+                        // Tri chronologique inverse strict (les plus récents en premier)
                         avisGrandzabris.sort((a, b) => b.timestamp - a.timestamp);
                         avisPtitzabris.sort((a, b) => b.timestamp - a.timestamp);
 
