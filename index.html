@@ -297,7 +297,6 @@
         .specs { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; font-weight: 600; }
         .card p { font-size: 0.9rem; color: #555; margin-bottom: 12px; font-family: 'Segoe UI', sans-serif; }
         
-        /* Bouton incitatif pour voir plus de photos */
         .more-photos-link { display: block; text-align: center; font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #ff385c; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0 5px 0; text-decoration: none; }
         .more-photos-link:hover { text-decoration: underline; }
 
@@ -309,7 +308,7 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Styles pour l'encart dynamique des avis par Cottage (Grandzabris à gauche, Ptitzabris à droite) */
+        /* Encart des avis Airbnb */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
             padding: 45px 35px; 
@@ -345,13 +344,9 @@
             border-bottom: 1px solid rgba(197, 168, 128, 0.4);
             padding-bottom: 8px;
         }
-        /* Harmonisation des hauteurs de titres pour aligner parfaitement les blocs d'avis */
-        .colonne-cottage.grandzabris-col h3 {
-            margin-top: 8px;
-        }
-        .colonne-cottage.ptitzabris-col h3 {
-            margin-top: 0px;
-        }
+        .colonne-cottage.grandzabris-col h3 { margin-top: 8px; }
+        .colonne-cottage.ptitzabris-col h3 { margin-top: 0px; }
+        
         .liste-avis-cottage {
             display: flex;
             flex-direction: column;
@@ -374,10 +369,9 @@
             font-family: 'Segoe UI', sans-serif; 
             font-size: 0.9rem; 
             line-height: 1.6; 
-            white-space: pre-line; 
+            white-space: pre-wrap; 
+            word-break: break-word;
             overflow: visible !important;
-            text-overflow: clip !important;
-            display: block !important;
         }
         .info-voyageur { font-size: 0.82rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
@@ -803,7 +797,7 @@
                     </div>
                 </div>
 
-                <!-- ENCART DYNAMIQUE DES 3 DERNIERS AVIS PAR COTTAGE (Grandzabris à gauche, Ptitzabris à droite) -->
+                <!-- ENCART DYNAMIQUE DES 3 DERNIERS AVIS PAR COTTAGE -->
                 <div style="grid-column: 1 / -1;">
                     <section class="section-avis-airbnb">
                         <h2>Ce qu'en ont pensé nos derniers voyageurs d'Airbnb</h2>
@@ -942,13 +936,9 @@
             let str = String(val).trim();
             if (str.includes("T")) {
                 let parts = str.split("T")[1];
-                if (parts) {
-                    return parts.substring(0, 5);
-                }
+                if (parts) return parts.substring(0, 5);
             }
-            if (str.length >= 5 && str.includes(":")) {
-                return str.substring(0, 5);
-            }
+            if (str.length >= 5 && str.includes(":")) return str.substring(0, 5);
             return str;
         }
 
@@ -977,13 +967,48 @@
         }
 
         window.onload = function() {
-            // Chargement et lecture robuste des avis Airbnb avec correspondance exacte des colonnes
+            // Parser CSV ultra-robuste gérant les retours à la ligne intégrés dans les cellules
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
-                    const lines = csvText.split('\n');
-                    if (lines.length > 1) {
-                        const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, '').toLowerCase());
+                    const rows = [];
+                    let currentRow = [];
+                    let currentField = "";
+                    let inQuotes = false;
+
+                    for (let i = 0; i < csvText.length; i++) {
+                        let c = csvText[i];
+                        let nextC = csvText[i + 1];
+
+                        if (c === '"') {
+                            if (inQuotes && nextC === '"') {
+                                currentField += '"';
+                                i++;
+                            } else {
+                                inQuotes = !inQuotes;
+                            }
+                        } else if (c === ',' && !inQuotes) {
+                            currentRow.push(currentField.trim());
+                            currentField = "";
+                        } else if ((c === '\r' || c === '\n') && !inQuotes) {
+                            if (c === '\r' && nextC === '\n') { i++; }
+                            currentRow.push(currentField.trim());
+                            if (currentRow.length > 1 || currentRow[0] !== "") {
+                                rows.push(currentRow);
+                            }
+                            currentRow = [];
+                            currentField = "";
+                        } else {
+                            currentField += c;
+                        }
+                    }
+                    if (currentField !== "" || currentRow.length > 0) {
+                        currentRow.push(currentField.trim());
+                        rows.push(currentRow);
+                    }
+
+                    if (rows.length > 1) {
+                        const headers = rows[0].map(h => h.toLowerCase().replace(/^"|"$/g, ''));
                         const conteneurGrandzabris = document.getElementById('conteneur-avis-grandzabris');
                         const conteneurPtitzabris = document.getElementById('conteneur-avis-ptitzabris');
                         
@@ -995,19 +1020,15 @@
                         let avisGrandzabris = [];
                         let avisPtitzabris = [];
 
-                        for (let i = 1; i < lines.length; i++) {
-                            const lineStr = lines[i].trim();
-                            if (!lineStr) continue;
-                            
-                            const currentLine = lineStr.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                        for (let i = 1; i < rows.length; i++) {
+                            const cols = rows[i];
                             const obj = {};
                             for (let j = 0; j < headers.length; j++) {
-                                let val = currentLine[j] ? currentLine[j].trim() : '';
-                                obj[headers[j]] = val.replace(/^"|"$/g, '').replace(/""/g, '"');
+                                obj[headers[j]] = cols[j] ? cols[j].replace(/^"|"$/g, '').replace(/""/g, '"') : '';
                             }
 
-                            let auteur = "Voyageur";
-                            let logement = "Les Ozabris";
+                            let auteur = "";
+                            let logement = "";
                             let dateBrute = "";
                             let commentaire = "";
 
@@ -1018,8 +1039,9 @@
                                 if (key.includes('commentaire') || key.includes('avis') || key.includes('message')) commentaire = obj[key];
                             }
 
-                            if (commentaire) {
-                                // Conversion sécurisée de la date du séjour (ex: JJ/MM/AAAA ou AAAA-MM-JJ)
+                            if (!auteur) auteur = "Voyageur";
+
+                            if (commentaire && logement) {
                                 let timestamp = 0;
                                 if (dateBrute) {
                                     if (dateBrute.includes('/')) {
@@ -1041,6 +1063,7 @@
                                 };
 
                                 const logLower = logement.toLowerCase();
+                                // Vérification stricte du nom du logement pour éviter les confusions
                                 if (logLower.includes('grand')) {
                                     avisGrandzabris.push(avisObj);
                                 } else if (logLower.includes('ptit') || logLower.includes('petit')) {
@@ -1049,15 +1072,14 @@
                             }
                         }
 
-                        // Tri chronologique inverse strict (les plus récents en premier)
+                        // Tri chronologique inverse (les plus récents en premier)
                         avisGrandzabris.sort((a, b) => b.timestamp - a.timestamp);
                         avisPtitzabris.sort((a, b) => b.timestamp - a.timestamp);
 
-                        // Sélection stricte des 3 derniers avis maximum pour chaque cottage
+                        // Sélection stricte des 3 derniers avis maximum
                         const derniersGrandzabris = avisGrandzabris.slice(0, 3);
                         const derniersPtitzabris = avisPtitzabris.slice(0, 3);
 
-                        // Fonction d'affichage pour alimenter chaque colonne
                         function afficherAvis(liste, conteneur) {
                             if (liste.length === 0) {
                                 conteneur.innerHTML = `<p style="color: #fff; font-size: 0.85rem; font-style: italic; text-align: center; font-family: 'Segoe UI', sans-serif;">Aucun avis pour le moment.</p>`;
