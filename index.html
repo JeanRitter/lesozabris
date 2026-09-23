@@ -375,6 +375,15 @@
             border-radius: 6px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
+        
+        /* Style sobre et élégant pour les étoiles */
+        .etoiles-avis {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #d4af37;
+        }
+
         .texte-commentaire { 
             font-style: italic; 
             color: #333; 
@@ -1042,12 +1051,14 @@
                             let logement = "";
                             let dateBrute = "";
                             let commentaire = "";
+                            let note = "5/5"; // Valeur par défaut si vide
 
                             for (let key in obj) {
                                 if (key.includes('prénom') || key.includes('prenom') || key.includes('auteur')) auteur = obj[key];
                                 if (key.includes('logement') || key.includes('cottage')) logement = obj[key];
                                 if (key.includes('date')) dateBrute = obj[key];
                                 if (key.includes('commentaire') || key.includes('avis') || key.includes('message')) commentaire = obj[key];
+                                if (key.includes('note') || key.includes('notation') || key.includes('étoile')) note = obj[key];
                             }
 
                             if (!auteur) auteur = "Voyageur";
@@ -1070,7 +1081,8 @@
                                     logement,
                                     dateBrute,
                                     timestamp,
-                                    commentaire
+                                    commentaire,
+                                    note
                                 };
 
                                 const logLower = logement.toLowerCase();
@@ -1100,9 +1112,21 @@
                                     if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
                                 }
 
+                                // Transformation de la note (ex: "5/5" ou "5") en étoiles discrètes
+                                let nbEtoiles = 5;
+                                if (avis.note) {
+                                    let match = avis.note.match(/(\d+)/);
+                                    if (match) nbEtoiles = parseInt(match[1]);
+                                }
+                                if (nbEtoiles > 5) nbEtoiles = 5;
+                                if (nbEtoiles < 1) nbEtoiles = 1;
+
+                                let etoilesHtml = "⭐".repeat(nbEtoiles);
+
                                 const carte = document.createElement('div');
                                 carte.className = 'carte-avis-airbnb';
                                 carte.innerHTML = `
+                                    <div class="etoiles-avis">${etoilesHtml}</div>
                                     <p class="texte-commentaire">« ${avis.commentaire} »</p>
                                     <p class="info-voyageur"><strong>${avis.auteur}</strong> ${dateFormatee ? '(' + dateFormatee + ')' : ''}</p>
                                 `;
