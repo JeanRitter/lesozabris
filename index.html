@@ -753,7 +753,7 @@
             <div class="admin-schedule-section" style="margin-bottom: 30px;">
                 <h3>📝 Trame des Derniers Avis (Prêt pour Pages sur iPad)</h3>
                 <p style="font-size: 0.88rem; color: #555; margin-bottom: 15px;">
-                    Voici les derniers avis extraits automatiquement. Cliquez ci-dessous pour les copier et les coller directement dans votre document Pages :
+                    Voici les derniers avis extraits automatiquement. Cliquez ci-dessous pour les copier proprement sans les en-têtes techniques et les coller directement dans Pages :
                 </p>
                 <div style="text-align: center; margin-bottom: 15px;">
                     <button type="button" class="admin-link-btn" onclick="copyAvisForGerard()">📋 Copier les avis pour Pages</button>
@@ -1803,12 +1803,73 @@
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
-                    const textToCopy = "=== CHRONIQUE & AVIS AIRBNB - DOMAINE LES OZABRIS ===\n\n" + csvText.substring(0, 1500) + "\n\n(Texte pré-formaté pour intégration Pages)";
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        const feedback = document.getElementById('copy-feedback');
-                        feedback.style.display = 'inline';
-                        setTimeout(() => { feedback.style.display = 'none'; }, 3000);
-                    });
+                    const rows = [];
+                    let currentRow = [];
+                    let currentField = "";
+                    let inQuotes = false;
+
+                    for (let i = 0; i < csvText.length; i++) {
+                        let c = csvText[i];
+                        let nextC = csvText[i + 1];
+                        if (c === '"') {
+                            if (inQuotes && nextC === '"') { currentField += '"'; i++; }
+                            else { inQuotes = !inQuotes; }
+                        } else if (c === ',' && !inQuotes) {
+                            currentRow.push(currentField.trim());
+                            currentField = "";
+                        } else if ((c === '\r' || c === '\n') && !inQuotes) {
+                            if (c === '\r' && nextC === '\n') { i++; }
+                            currentRow.push(currentField.trim());
+                            if (currentRow.length > 1 || currentRow[0] !== "") rows.push(currentRow);
+                            currentRow = [];
+                            currentField = "";
+                        } else {
+                            currentField += c;
+                        }
+                    }
+                    if (currentField !== "" || currentRow.length > 0) {
+                        currentRow.push(currentField.trim());
+                        rows.push(currentRow);
+                    }
+
+                    if (rows.length > 1) {
+                        const headers = rows[0].map(h => h.toLowerCase().replace(/^"|"$/g, ''));
+                        let formattedText = "=== CHRONIQUE & AVIS AIRBNB - DOMAINE LES OZABRIS ===\n\n";
+
+                        for (let i = 1; i < rows.length; i++) {
+                            const cols = rows[i];
+                            const obj = {};
+                            for (let j = 0; j < headers.length; j++) {
+                                obj[headers[j]] = cols[j] ? cols[j].replace(/^"|"$/g, '').replace(/""/g, '"') : '';
+                            }
+
+                            let auteur = "";
+                            let logement = "";
+                            let dateBrute = "";
+                            let commentaire = "";
+                            let note = "5/5";
+
+                            for (let key in obj) {
+                                if (key.includes('prénom') || key.includes('prenom') || key.includes('auteur')) auteur = obj[key];
+                                if (key.includes('logement') || key.includes('cottage')) logement = obj[key];
+                                if (key.includes('date')) dateBrute = obj[key];
+                                if (key.includes('commentaire') || key.includes('avis') || key.includes('message')) commentaire = obj[key];
+                                if (key.includes('note') || key.includes('notation') || key.includes('étoile')) note = obj[key];
+                            }
+
+                            if (commentaire) {
+                                formattedText += `“ ${commentaire} ”\n`;
+                                formattedText += `— ${auteur || 'Voyageur'} (${logement || 'Cottage'}, ${dateBrute})\n`;
+                                formattedText += `⭐ ${note}\n\n----------------------------------------\n\n`;
+                            }
+                        }
+
+                        navigator.clipboard.writeText(formattedText).then(() => {
+                            const feedback = document.getElementById('copy-feedback');
+                            feedback.style.display = 'inline';
+                            setTimeout(() => { feedback.style.display = 'none'; }, 3000);
+                        });
+                    }
                 })
                 .catch(err => {
                     alert("Erreur lors de la copie des avis.");
