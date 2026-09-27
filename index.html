@@ -395,30 +395,26 @@
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
         .visit-counter { margin-top: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'Segoe UI', sans-serif; letter-spacing: 1px; opacity: 0.85; }
 
-        /* Styles par défaut (masqués à l'écran) */
-        .printable-page-cottage {
-            display: none;
-        }
-
+        /* Styles d'impression (partagés pour la fenêtre dédiée) */
         .cottage-print-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            color: var(--primary);
+            color: #12263a;
             margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: bold;
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 2px solid #c5a880;
             padding-bottom: 6px;
         }
         .month-sub-box {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .month-sub-title {
             text-align: left;
             font-family: 'Playfair Display', serif;
             font-size: 0.95rem;
-            color: var(--primary);
+            color: #12263a;
             margin-bottom: 4px;
             font-weight: bold;
         }
@@ -429,12 +425,12 @@
             font-size: 0.75rem;
         }
         .calendar-table th {
-            background-color: var(--primary) !important;
+            background-color: #12263a !important;
             -webkit-print-color-adjust: exact;
             color: white !important;
             padding: 4px;
             font-size: 0.7rem;
-            border: 1px solid var(--primary);
+            border: 1px solid #12263a;
         }
         .calendar-table td {
             border: 1px solid #999;
@@ -451,7 +447,7 @@
         .day-num {
             font-weight: bold;
             font-size: 0.75rem;
-            color: var(--primary);
+            color: #12263a;
             text-align: right;
             display: block;
             margin-bottom: 2px;
@@ -461,32 +457,6 @@
             text-align: left;
             color: #333;
             line-height: 1.1;
-        }
-
-        /* CONFIGURATION D'IMPRESSION PROPRE */
-        @media print {
-            @page {
-                size: A4 landscape;
-                margin: 5mm;
-            }
-            body > *:not(#admin-dashboard) {
-                display: none !important;
-            }
-            #admin-dashboard {
-                display: block !important;
-                background: white !important;
-                padding: 0 !important;
-                border: none !important;
-                box-shadow: none !important;
-                margin: 0 !important;
-                width: 100% !important;
-            }
-            #admin-dashboard > *:not(.printing-active) {
-                display: none !important;
-            }
-            .printing-active {
-                display: block !important;
-            }
         }
     </style>
 </head>
@@ -809,8 +779,8 @@
                 </div>
             </div>
 
-            <!-- PAGES DÉDIÉES À L'IMPRESSION -->
-            <div id="printable-ptitzabris" class="printable-page-cottage">
+            <!-- CONTENEURS CACHÉS UTILISÉS POUR LA GÉNÉRATION DES GRILLES -->
+            <div id="printable-ptitzabris" style="display:none;">
                 <div class="cottage-print-title">DOMAINE LES OZABRIS — PLANNING « LE PTITZABRIS »</div>
                 <div class="month-sub-box">
                     <div class="month-sub-title" id="ptitzabris-m1-title">Mois en cours</div>
@@ -822,7 +792,7 @@
                 </div>
             </div>
 
-            <div id="printable-grandzabris" class="printable-page-cottage">
+            <div id="printable-grandzabris" style="display:none;">
                 <div class="cottage-print-title">DOMAINE LES OZABRIS — PLANNING « LE GRANDZABRIS »</div>
                 <div class="month-sub-box">
                     <div class="month-sub-title" id="grandzabris-m1-title">Mois en cours</div>
@@ -1605,15 +1575,41 @@
         }
 
         function printCottage(cottageType) {
-            document.getElementById('printable-ptitzabris').classList.remove('printing-active');
-            document.getElementById('printable-grandzabris').classList.remove('printing-active');
+            const contentId = cottageType === 'ptitzabris' ? 'printable-ptitzabris' : 'printable-grandzabris';
+            const sourceHtml = document.getElementById(contentId).innerHTML;
 
-            if (cottageType === 'ptitzabris') {
-                document.getElementById('printable-ptitzabris').classList.add('printing-active');
-            } else if (cottageType === 'grandzabris') {
-                document.getElementById('printable-grandzabris').classList.add('printing-active');
-            }
-            window.print();
+            const printWindow = window.open('', '_blank', 'width=900,height=700');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Impression Planning</title>
+                    <style>
+                        @page { size: A4 landscape; margin: 8mm; }
+                        body { font-family: 'Playfair Display', serif; background: #fff; padding: 10px; }
+                        .cottage-print-title { text-align: center; font-size: 1.3rem; color: #12263a; margin-bottom: 12px; text-transform: uppercase; font-weight: bold; border-bottom: 2px solid #c5a880; padding-bottom: 6px; }
+                        .month-sub-box { margin-bottom: 15px; }
+                        .month-sub-title { text-align: left; font-size: 1rem; color: #12263a; margin-bottom: 5px; font-weight: bold; }
+                        .calendar-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.75rem; }
+                        .calendar-table th { background-color: #12263a !important; -webkit-print-color-adjust: exact; color: white !important; padding: 5px; font-size: 0.7rem; border: 1px solid #12263a; }
+                        .calendar-table td { border: 1px solid #999; height: 68px; vertical-align: top; padding: 3px; width: 14.28%; background: #fff; }
+                        .calendar-table td.empty { background: #f4f4f4 !important; -webkit-print-color-adjust: exact; }
+                        .day-num { font-weight: bold; font-size: 0.8rem; color: #12263a; text-align: right; display: block; margin-bottom: 2px; font-family: sans-serif; }
+                        .day-notes { font-size: 0.68rem; text-align: left; color: #333; line-height: 1.1; }
+                    </style>
+                </head>
+                <body>
+                    ${sourceHtml}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => {
+                printWindow.print();
+                printWindow.close();
+            }, 300);
         }
     </script>
 </body>
