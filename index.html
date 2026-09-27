@@ -751,16 +751,16 @@
             <p class="admin-subtitle">Espace de consultation exclusif — Domaine Les Ozabris</p>
 
             <div class="admin-schedule-section" style="margin-bottom: 30px;">
-                <h3>📝 Trame des Derniers Avis (Prêt pour Pages sur iPad)</h3>
+                <h3>📝 Copie des Avis (Prêt pour Pages sur iPad)</h3>
                 <p style="font-size: 0.88rem; color: #555; margin-bottom: 15px;">
-                    Voici les derniers avis extraits automatiquement. Cliquez ci-dessous pour les copier proprement sans les en-têtes techniques et les coller directement dans Pages :
+                    Choisissez le cottage dont vous souhaitez copier les avis formatés (avec encadrés et étoiles) pour les coller directement dans Pages :
                 </p>
-                <div style="text-align: center; margin-bottom: 15px;">
-                    <button type="button" class="admin-link-btn" onclick="copyAvisForGerard()">📋 Copier les avis pour Pages</button>
-                    <span id="copy-feedback" style="margin-left: 10px; font-size: 0.85rem; color: #20ba5a; display: none;">Copié dans le presse-papier !</span>
+                <div style="text-align: center; margin-bottom: 15px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <button type="button" class="admin-link-btn" onclick="copyAvisGerardCottage('ptitzabris')">📋 Copier les avis du Ptitzabris</button>
+                    <button type="button" class="admin-link-btn" onclick="copyAvisGerardCottage('grandzabris')" style="background: var(--accent); color: var(--primary);">📋 Copier les avis du Grandzabris</button>
                 </div>
-                <div id="gerard-avis-preview" style="background: #fff; padding: 15px; border: 1px solid var(--accent); border-radius: 6px; max-height: 250px; overflow-y: auto; font-family: 'Segoe UI', sans-serif; font-size: 0.85rem;">
-                    Chargement des avis...
+                <div style="text-align: center;">
+                    <span id="copy-feedback" style="font-size: 0.85rem; color: #20ba5a; display: none; font-weight: bold;">Copié dans le presse-papier avec succès !</span>
                 </div>
             </div>
 
@@ -1722,16 +1722,6 @@
 
             buildCalendarGridForGerard(currentYear, currentMonth, 'ptit', 'gerard-ptitzabris-grid');
             buildCalendarGridForGerard(currentYear, currentMonth, 'grand', 'gerard-grandzabris-grid');
-
-            // Charge un aperçu des avis pour Gérard
-            fetch(avisApiUrl + "&t=" + new Date().getTime())
-                .then(response => response.text())
-                .then(csvText => {
-                    document.getElementById('gerard-avis-preview').innerHTML = "Trame des derniers avis prête à être copiée d'un clic pour Pages sur iPad.";
-                })
-                .catch(err => {
-                    document.getElementById('gerard-avis-preview').innerHTML = "Impossible de charger les avis.";
-                });
         }
 
         function buildCalendarGridForGerard(year, month, cottageKeyword, gridElementId) {
@@ -1799,7 +1789,7 @@
             document.getElementById(gridElementId).innerHTML = tableHtml;
         }
 
-        function copyAvisForGerard() {
+        function copyAvisGerardCottage(targetCottage) {
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
@@ -1834,7 +1824,8 @@
 
                     if (rows.length > 1) {
                         const headers = rows[0].map(h => h.toLowerCase().replace(/^"|"$/g, ''));
-                        let formattedText = "=== CHRONIQUE & AVIS AIRBNB - DOMAINE LES OZABRIS ===\n\n";
+                        let cottageTitle = targetCottage === 'ptitzabris' ? 'LE PTITZABRIS' : 'LE GRANDZABRIS';
+                        let formattedText = `=== CHRONIQUE & AVIS AIRBNB : ${cottageTitle} ===\n\n`;
 
                         for (let i = 1; i < rows.length; i++) {
                             const cols = rows[i];
@@ -1857,10 +1848,31 @@
                                 if (key.includes('note') || key.includes('notation') || key.includes('étoile')) note = obj[key];
                             }
 
-                            if (commentaire) {
-                                formattedText += `“ ${commentaire} ”\n`;
-                                formattedText += `— ${auteur || 'Voyageur'} (${logement || 'Cottage'}, ${dateBrute})\n`;
-                                formattedText += `⭐ ${note}\n\n----------------------------------------\n\n`;
+                            if (commentaire && logement) {
+                                let logLower = logement.toLowerCase();
+                                let matchCottage = (targetCottage === 'ptitzabris' && (logLower.includes('ptit') || logLower.includes('petit'))) ||
+                                                   (targetCottage === 'grandzabris' && logLower.includes('grand'));
+
+                                if (matchCottage) {
+                                    let dateFormatee = dateBrute;
+                                    if (dateBrute.includes("-")) {
+                                        const p = dateBrute.split("-");
+                                        if (p.length === 3) dateFormatee = `${p[2]}/${p[1]}/${p[0]}`;
+                                    }
+
+                                    let nbEtoiles = 5;
+                                    if (note) {
+                                        let match = note.match(/(\d+)/);
+                                        if (match) nbEtoiles = parseInt(match[1]);
+                                    }
+                                    let etoilesStr = "⭐".repeat(nbEtoiles);
+
+                                    formattedText += `┌────────────────────────────────────────\n`;
+                                    formattedText += `│ “ ${commentaire} ”\n`;
+                                    formattedText += `│ — ${auteur || 'Voyageur'} (${dateFormatee})\n`;
+                                    formattedText += `│ ${etoilesStr}\n`;
+                                    formattedText += `└────────────────────────────────────────\n\n`;
+                                }
                             }
                         }
 
