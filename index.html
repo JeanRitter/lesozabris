@@ -303,7 +303,6 @@
         .availability-box { background: #fdfbf7; border: 1px solid rgba(197, 168, 128, 0.4); border-radius: 4px; padding: 15px; margin: 18px 0; text-align: center; font-family: 'Segoe UI', sans-serif; }
         .availability-box p { font-size: 0.85rem; color: var(--primary); margin-bottom: 10px; font-weight: 600; }
         
-        /* Style pour les calendriers Google intégrés */
         .calendar-container {
             margin: 15px 0;
             border: 1px solid var(--accent);
@@ -322,7 +321,6 @@
         .btn-container { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
         .btn { display: inline-block; text-align: center; background-color: var(--primary); color: var(--white); padding: 12px; border-radius: 2px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* Encart des avis Airbnb avec défilement propre (scroll discret) */
         .section-avis-airbnb { 
             margin: 60px auto 40px auto; 
             padding: 45px 35px; 
@@ -369,17 +367,9 @@
             overflow-y: auto; 
             padding-right: 8px;
         }
-        .liste-avis-cottage::-webkit-scrollbar {
-            width: 6px;
-        }
-        .liste-avis-cottage::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-        .liste-avis-cottage::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 4px;
-        }
+        .liste-avis-cottage::-webkit-scrollbar { width: 6px; }
+        .liste-avis-cottage::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+        .liste-avis-cottage::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
         .carte-avis-airbnb { 
             background: #ffffff; 
@@ -389,23 +379,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
-        .etoiles-avis {
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            color: #d4af37;
-        }
-
-        .texte-commentaire { 
-            font-style: italic; 
-            color: #333; 
-            margin-bottom: 10px; 
-            font-family: 'Segoe UI', sans-serif; 
-            font-size: 0.9rem; 
-            line-height: 1.6; 
-            white-space: pre-wrap; 
-            word-break: break-word;
-        }
+        .etoiles-avis { font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 8px; color: #d4af37; }
+        .texte-commentaire { font-style: italic; color: #333; margin-bottom: 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
         .info-voyageur { font-size: 0.82rem; color: #666; font-family: 'Segoe UI', sans-serif; text-align: right; }
 
         .eco-card { background: var(--white); border-radius: 4px; overflow: hidden; border: 1px solid #f0eadec; box-shadow: 0 10px 25px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; font-family: 'Segoe UI', sans-serif; }
@@ -419,6 +394,36 @@
         .contact-info { background: rgba(255,255,255,0.03); max-width: 550px; margin: 25px auto 0 auto; padding: 20px; border-radius: 2px; border: 1px solid rgba(197, 168, 128, 0.2); }
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
         .visit-counter { margin-top: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'Segoe UI', sans-serif; letter-spacing: 1px; opacity: 0.85; }
+
+        /* Style spécifique pour imprimer les plannings du frigo */
+        @media print {
+            body * { visibility: hidden; }
+            #printable-calendar-section, #printable-calendar-section * { visibility: visible; }
+            #printable-calendar-section {
+                position: absolute;
+                left: 0; top: 0; width: 100%;
+                display: block !important;
+                background: white;
+                padding: 10px;
+            }
+            .print-grid {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                gap: 20px;
+            }
+            .print-item {
+                flex: 1;
+                border: 1px solid #12263a;
+                padding: 10px;
+                border-radius: 6px;
+                text-align: center;
+            }
+            .print-item iframe {
+                width: 100% !important;
+                height: 480px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -564,7 +569,7 @@
             <p id="welcome-subtitle-text" style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
                 <span class="lang-en" style="display:none;">Find below all useful information for your stay at Les Ozabris.</span>
-                <span class="lang-de" style="display:none;">Unten finden Sie alle nützlichen Informationen für Ihren Aufenthalt im Les Ozabris.</span>
+                <span class="lang-de" style="display:none;">Unten finden Sie alle nützlichen Informationen für Ihr Aufenthalt im Les Ozabris.</span>
             </p>
             
             <div class="guide-grid" id="guide-grid-container">
@@ -687,7 +692,8 @@
         </div>
 
         <div id="admin-dashboard" style="display: none;">
-            <div class="top-return-bar">
+            <div class="top-return-bar" style="display: flex; justify-content: space-between; align-items: center;">
+                <button type="button" onclick="window.print()" class="admin-link-btn" style="background: var(--accent); color: var(--primary);">🖨️ Imprimer les plannings (Frigo)</button>
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
             </div>
 
@@ -733,6 +739,21 @@
                 <h3>📅 Prochaines Arrivées (7 Jours) & Envoi WhatsApp</h3>
                 <div class="admin-cards-container" id="admin-schedule-cards">
                     <p style="text-align: center; color: #777; padding: 15px;">Chargement du planning...</p>
+                </div>
+            </div>
+
+            <!-- SECTION CACHÉE À L'ÉCRAN MAIS VISIBLE UNIQUEMENT LORS DE L'IMPRESSION POUR LE FRIGO -->
+            <div id="printable-calendar-section" style="display: none; margin-top: 30px;">
+                <h2 style="text-align: center; color: #12263a; font-family: 'Playfair Display', serif; margin-bottom: 20px;">DOMAINE LES OZABRIS — PLANNINGS FRIGO</h2>
+                <div class="print-grid">
+                    <div class="print-item">
+                        <h3 style="color: #12263a; margin-bottom: 10px;">Le Ptitzabris (3 Étoiles)</h3>
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&src=3a0thukb2dtsj75euqbvfbc4rqu0roaq%40import.calendar.google.com&ctz=Indian%2FReunion" style="border: 0" width="100%" height="480" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="print-item">
+                        <h3 style="color: #12263a; margin-bottom: 10px;">Le Grandzabris (2 Étoiles)</h3>
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=AGENDA&src=rrs34qnotv0ejdh0ts9adq56jkro7q1h%40import.calendar.google.com&ctz=Indian%2FReunion" style="border: 0" width="100%" height="480" frameborder="0" scrolling="no"></iframe>
+                    </div>
                 </div>
             </div>
 
@@ -1428,7 +1449,7 @@
                                 <span style="font-size: 0.75rem; color: #777;">${canSend ? 'Prêt à l\'envoi' : 'Envoi possible J-1'}</span>
                                 <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
                             </div>
-                        </div>`;
+                        `;
                     }
                 });
 
