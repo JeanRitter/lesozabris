@@ -855,9 +855,9 @@
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
                             
-                            <!-- Agenda Ptitzabris -->
+                            <!-- Agenda Ptitzabris avec ID -->
                             <div class="calendar-container">
-                                <iframe src="https://calendar.google.com/calendar/embed?src=3a0thukb2dtsj75euqbvfbc4rqu0roaq%40import.calendar.google.com&ctz=Indian%2FReunion" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
+                                <iframe id="calendar-ptitzabris" src="" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
                             </div>
                         </div>
 
@@ -891,9 +891,9 @@
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
                             
-                            <!-- Agenda Grandzabris avec ctz=Indian/Reunion -->
+                            <!-- Agenda Grandzabris avec ID -->
                             <div class="calendar-container">
-                                <iframe src="https://calendar.google.com/calendar/embed?src=rrs34qnotv0ejdh0ts9adq56jkro7q1h%40import.calendar.google.com&ctz=Indian%2FReunion" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
+                                <iframe id="calendar-grandzabris" src="" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
                             </div>
                         </div>
 
@@ -1089,6 +1089,24 @@
         }
 
         window.onload = function() {
+            // Configuration des iframes Google Agenda pour démarrer au mois en cours
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const startDate = `${year}${month}01`;
+
+            const basePtitzabris = "https://calendar.google.com/calendar/embed?src=3a0thukb2dtsj75euqbvfbc4rqu0roaq%40import.calendar.google.com&ctz=Indian%2FReunion";
+            const ptitzabrisFrame = document.getElementById('calendar-ptitzabris');
+            if (ptitzabrisFrame) {
+                ptitzabrisFrame.src = `${basePtitzabris}&dates=${startDate}%2F20271231`;
+            }
+
+            const baseGrandzabris = "https://calendar.google.com/calendar/embed?src=rrs34qnotv0ejdh0ts9adq56jkro7q1h%40import.calendar.google.com&ctz=Indian%2FReunion";
+            const grandzabrisFrame = document.getElementById('calendar-grandzabris');
+            if (grandzabrisFrame) {
+                grandzabrisFrame.src = `${baseGrandzabris}&dates=${startDate}%2F20271231`;
+            }
+
             fetch(avisApiUrl + "&t=" + new Date().getTime())
                 .then(response => response.text())
                 .then(csvText => {
