@@ -395,7 +395,7 @@
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
         .visit-counter { margin-top: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'Segoe UI', sans-serif; letter-spacing: 1px; opacity: 0.85; }
 
-        /* Styles par défaut pour les blocs d'impression (masqués à l'écran) */
+        /* Styles par défaut (masqués à l'écran) */
         .printable-page-cottage {
             display: none;
         }
@@ -405,19 +405,19 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: bold;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 6px;
         }
         .month-sub-box {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .month-sub-title {
             text-align: left;
             font-family: 'Playfair Display', serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--primary);
             margin-bottom: 4px;
             font-weight: bold;
@@ -429,61 +429,63 @@
             font-size: 0.75rem;
         }
         .calendar-table th {
-            background-color: var(--primary);
-            color: white;
-            padding: 5px;
+            background-color: var(--primary) !important;
+            -webkit-print-color-adjust: exact;
+            color: white !important;
+            padding: 4px;
             font-size: 0.7rem;
             border: 1px solid var(--primary);
         }
         .calendar-table td {
             border: 1px solid #999;
-            height: 68px; /* Grandes cases confortables */
+            height: 62px;
             vertical-align: top;
             padding: 3px;
             width: 14.28%;
             background: #fff;
         }
         .calendar-table td.empty {
-            background: #f4f4f4;
+            background: #f4f4f4 !important;
+            -webkit-print-color-adjust: exact;
         }
         .day-num {
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--primary);
             text-align: right;
             display: block;
             margin-bottom: 2px;
         }
         .day-notes {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             text-align: left;
             color: #333;
             line-height: 1.1;
         }
 
-        /* Impression forcée en paysage sur une seule feuille A4 propre */
+        /* CONFIGURATION D'IMPRESSION PROPRE */
         @media print {
             @page {
                 size: A4 landscape;
-                margin: 6mm;
+                margin: 5mm;
             }
-            body * { display: none !important; }
-            .printing-active, .printing-active * { display: block !important; }
+            body > *:not(#admin-dashboard) {
+                display: none !important;
+            }
+            #admin-dashboard {
+                display: block !important;
+                background: white !important;
+                padding: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            #admin-dashboard > *:not(.printing-active) {
+                display: none !important;
+            }
             .printing-active {
-                position: absolute;
-                left: 0; top: 0; width: 100%;
-                background: white;
-                padding: 0;
-            }
-            .printing-active .calendar-table {
-                display: table !important;
-            }
-            .printing-active .calendar-table tr {
-                display: table-row !important;
-            }
-            .printing-active .calendar-table th, 
-            .printing-active .calendar-table td {
-                display: table-cell !important;
+                display: block !important;
             }
         }
     </style>
@@ -807,14 +809,14 @@
                 </div>
             </div>
 
-            <!-- PAGES DÉDIÉES À L'IMPRESSION (UNE PAGE PAR COTTAGE, 2 MOIS EN PILE AVEC GRANDES CASES) -->
+            <!-- PAGES DÉDIÉES À L'IMPRESSION -->
             <div id="printable-ptitzabris" class="printable-page-cottage">
                 <div class="cottage-print-title">DOMAINE LES OZABRIS — PLANNING « LE PTITZABRIS »</div>
                 <div class="month-sub-box">
                     <div class="month-sub-title" id="ptitzabris-m1-title">Mois en cours</div>
                     <div id="ptitzabris-m1-grid"></div>
                 </div>
-                <div class="month-sub-box" style="margin-top: 10px;">
+                <div class="month-sub-box" style="margin-top: 8px;">
                     <div class="month-sub-title" id="ptitzabris-m2-title">Mois suivant</div>
                     <div id="ptitzabris-m2-grid"></div>
                 </div>
@@ -826,7 +828,7 @@
                     <div class="month-sub-title" id="grandzabris-m1-title">Mois en cours</div>
                     <div id="grandzabris-m1-grid"></div>
                 </div>
-                <div class="month-sub-box" style="margin-top: 10px;">
+                <div class="month-sub-box" style="margin-top: 8px;">
                     <div class="month-sub-title" id="grandzabris-m2-title">Mois suivant</div>
                     <div id="grandzabris-m2-grid"></div>
                 </div>
