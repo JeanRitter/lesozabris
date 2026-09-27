@@ -395,55 +395,51 @@
         .contact-info a { color: var(--accent); text-decoration: none; font-weight: bold; }
         .visit-counter { margin-top: 20px; font-size: 0.8rem; color: var(--accent); font-family: 'Segoe UI', sans-serif; letter-spacing: 1px; opacity: 0.85; }
 
-        /* Styles pour les plannings imprimables séparés par cottage (grands tableaux de frigo aérés) */
+        /* Styles par défaut pour les blocs d'impression (masqués à l'écran) */
         .printable-page-cottage {
-            background: #ffffff;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            display: none; /* Caché à l'écran, affiché uniquement lors de l'impression ciblée */
+            display: none;
         }
+
         .cottage-print-title {
             text-align: center;
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             font-weight: bold;
             border-bottom: 2px solid var(--accent);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
         .month-sub-box {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         .month-sub-title {
             text-align: left;
             font-family: 'Playfair Display', serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--primary);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: bold;
         }
         .calendar-table {
             width: 100%;
             border-collapse: collapse;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         .calendar-table th {
             background-color: var(--primary);
             color: white;
-            padding: 6px;
-            font-size: 0.75rem;
+            padding: 5px;
+            font-size: 0.7rem;
             border: 1px solid var(--primary);
         }
         .calendar-table td {
             border: 1px solid #999;
-            height: 75px; /* Très grandes cases pour pouvoir écrire confortablement à la main */
+            height: 68px; /* Grandes cases confortables */
             vertical-align: top;
-            padding: 4px;
+            padding: 3px;
             width: 14.28%;
             background: #fff;
         }
@@ -452,33 +448,42 @@
         }
         .day-num {
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--primary);
             text-align: right;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
         .day-notes {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             text-align: left;
             color: #333;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
-        /* Impression forcée en paysage sur une seule feuille A4 propre par cottage */
+        /* Impression forcée en paysage sur une seule feuille A4 propre */
         @media print {
             @page {
-                size: landscape;
-                margin: 8mm;
+                size: A4 landscape;
+                margin: 6mm;
             }
-            body * { visibility: hidden; }
-            .printing-active, .printing-active * { visibility: visible; }
+            body * { display: none !important; }
+            .printing-active, .printing-active * { display: block !important; }
             .printing-active {
                 position: absolute;
                 left: 0; top: 0; width: 100%;
-                display: block !important;
                 background: white;
                 padding: 0;
+            }
+            .printing-active .calendar-table {
+                display: table !important;
+            }
+            .printing-active .calendar-table tr {
+                display: table-row !important;
+            }
+            .printing-active .calendar-table th, 
+            .printing-active .calendar-table td {
+                display: table-cell !important;
             }
         }
     </style>
@@ -809,7 +814,7 @@
                     <div class="month-sub-title" id="ptitzabris-m1-title">Mois en cours</div>
                     <div id="ptitzabris-m1-grid"></div>
                 </div>
-                <div class="month-sub-box" style="margin-top: 15px;">
+                <div class="month-sub-box" style="margin-top: 10px;">
                     <div class="month-sub-title" id="ptitzabris-m2-title">Mois suivant</div>
                     <div id="ptitzabris-m2-grid"></div>
                 </div>
@@ -821,7 +826,7 @@
                     <div class="month-sub-title" id="grandzabris-m1-title">Mois en cours</div>
                     <div id="grandzabris-m1-grid"></div>
                 </div>
-                <div class="month-sub-box" style="margin-top: 15px;">
+                <div class="month-sub-box" style="margin-top: 10px;">
                     <div class="month-sub-title" id="grandzabris-m2-title">Mois suivant</div>
                     <div id="grandzabris-m2-grid"></div>
                 </div>
