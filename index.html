@@ -314,7 +314,7 @@
         }
         .calendar-container iframe {
             width: 100%;
-            height: 300px;
+            height: 280px;
             border: none;
             border-radius: 4px;
         }
@@ -564,7 +564,7 @@
             <p id="welcome-subtitle-text" style="text-align: center; font-family: 'Segoe UI', sans-serif; color: #666; margin-bottom: 25px;">
                 <span class="lang-fr">Retrouvez ci-dessous toutes les informations utiles pour votre séjour aux Ozabris.</span>
                 <span class="lang-en" style="display:none;">Find below all useful information for your stay at Les Ozabris.</span>
-                <span class="lang-de" style="display:none;">Unten finden Sie alle nützlichen Informationen für Ihr Aufenthalt im Les Ozabris.</span>
+                <span class="lang-de" style="display:none;">Unten finden Sie alle nützlichen Informationen für Ihren Aufenthalt im Les Ozabris.</span>
             </p>
             
             <div class="guide-grid" id="guide-grid-container">
@@ -773,8 +773,9 @@
                             <p class="lang-en" style="display:none;">📅 Real-time availability</p>
                             <p class="lang-de" style="display:none;">📅 Echtzeit-Verfügbarkeit</p>
                             
+                            <!-- Nouveau calendrier Google du Ptitzabris mis à jour -->
                             <div class="calendar-container">
-                                <iframe src="https://calendar.google.com/calendar/embed?src=vpiileu41rrh7g8c7p5nfhtbbjb1br2o%40import.calendar.google.com&ctz=Europe%2FParis" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
+                                <iframe src="https://calendar.google.com/calendar/embed?src=rrs34qnotv0ejdh0ts9adq56jkro7q1h%40import.calendar.google.com&ctz=Europe%2FParis" style="border: 0" width="100%" height="280" frameborder="0" scrolling="no"></iframe>
                             </div>
                         </div>
 
@@ -1426,7 +1427,7 @@
                                 <span style="font-size: 0.75rem; color: #777;">${canSend ? 'Prêt à l\'envoi' : 'Envoi possible J-1'}</span>
                                 <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
                             </div>
-                        </div>`;
+                        `;
                     }
                 });
 
