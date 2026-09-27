@@ -458,6 +458,20 @@
             color: #333;
             line-height: 1.1;
         }
+        .booking-badge {
+            background-color: #fdf2e9;
+            border-left: 2px solid #c5a880;
+            padding: 2px 4px;
+            margin-top: 2px;
+            font-size: 0.62rem;
+            font-family: 'Segoe UI', sans-serif;
+            color: #12263a;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -1037,6 +1051,7 @@
         const avisApiUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQP_SAPkwZT9AusjxC6npbaM_VT8B8auHE-UlgO5mdZ7JZ_sWrQkEykcWuXCckiIu5kOn0fz7AzpsIH/pub?output=csv";
 
         let currentLang = 'fr';
+        let cachedVoyageurs = [];
 
         function formatHour(val) {
             if (!val) return "";
@@ -1405,9 +1420,9 @@
 
             try {
                 const response = await fetch(sheetApiUrl);
-                const voyageurs = await response.json();
+                cachedVoyageurs = await response.json();
 
-                if (!voyageurs || voyageurs.length === 0) {
+                if (!cachedVoyageurs || cachedVoyageurs.length === 0) {
                     container.innerHTML = `<p style="text-align: center; color: #777; padding: 15px;">Aucun voyageur enregistré dans la base pour le moment.</p>`;
                     return;
                 }
@@ -1421,7 +1436,7 @@
                 let html = "";
                 let displayedCount = 0;
 
-                voyageurs.forEach(v => {
+                cachedVoyageurs.forEach(v => {
                     const arriveeStr = v.dateArrivee || v.arrivee;
                     const departStr = v.dateDepart || v.depart;
 
@@ -1508,7 +1523,7 @@
             }
         }
 
-        function buildCalendarGrid(year, month, titleElementId, gridElementId) {
+        function buildCalendarGrid(year, month, cottageKeyword, titleElementId, gridElementId) {
             const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
             document.getElementById(titleElementId).innerText = `${monthNames[month]} ${year}`;
 
@@ -1536,9 +1551,34 @@
                 if (currentCell > 0 && currentCell % 7 === 0) {
                     tableHtml += `</tr><tr>`;
                 }
+
+                // Vérifier s'il y a des réservations pour ce jour et ce cottage
+                let bookingsHtml = "";
+                if (cachedVoyageurs && cachedVoyageurs.length > 0) {
+                    const currentDateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayCounter).padStart(2, '0')}`;
+                    const currentDateTime = new Date(currentDateStr).setHours(0,0,0,0);
+
+                    cachedVoyageurs.forEach(v => {
+                        const cottageName = String(v.cottage || "").toLowerCase();
+                        if (cottageName.includes(cottageKeyword)) {
+                            const arrStr = v.dateArrivee || v.arrivee;
+                            const depStr = v.dateDepart || v.depart;
+                            if (arrStr && depStr) {
+                                const arrTime = new Date(arrStr).setHours(0,0,0,0);
+                                const depTime = new Date(depStr).setHours(0,0,0,0);
+
+                                if (currentDateTime >= arrTime && currentDateTime <= depTime) {
+                                    const prenom = v.prenom || "Résa";
+                                    bookingsHtml += `<div class="booking-badge" title="${prenom}">${prenom}</div>`;
+                                }
+                            }
+                        }
+                    });
+                }
+
                 tableHtml += `<td>
                     <span class="day-num">${dayCounter}</span>
-                    <div class="day-notes"></div>
+                    <div class="day-notes">${bookingsHtml}</div>
                 </td>`;
                 dayCounter++;
                 currentCell++;
@@ -1553,7 +1593,16 @@
             document.getElementById(gridElementId).innerHTML = tableHtml;
         }
 
-        function buildAllCottageCalendars() {
+        async function buildAllCottageCalendars() {
+            if (!cachedVoyageurs || cachedVoyageurs.length === 0) {
+                try {
+                    const response = await fetch(sheetApiUrl);
+                    cachedVoyageurs = await response.json();
+                } catch(e) {
+                    console.error("Impossible de charger les réservations pour les plannings", e);
+                }
+            }
+
             const now = new Date();
             const currentYear = now.getFullYear();
             const currentMonth = now.getMonth();
@@ -1566,12 +1615,12 @@
             }
 
             // Ptitzabris
-            buildCalendarGrid(currentYear, currentMonth, 'ptitzabris-m1-title', 'ptitzabris-m1-grid');
-            buildCalendarGrid(nextYear, nextMonth, 'ptitzabris-m2-title', 'ptitzabris-m2-grid');
+            buildCalendarGrid(currentYear, currentMonth, 'ptit', 'ptitzabris-m1-title', 'ptitzabris-m1-grid');
+            buildCalendarGrid(nextYear, nextMonth, 'ptit', 'ptitzabris-m2-title', 'ptitzabris-m2-grid');
 
             // Grandzabris
-            buildCalendarGrid(currentYear, currentMonth, 'grandzabris-m1-title', 'grandzabris-m1-grid');
-            buildCalendarGrid(nextYear, nextMonth, 'grandzabris-m2-title', 'grandzabris-m2-grid');
+            buildCalendarGrid(currentYear, currentMonth, 'grand', 'grandzabris-m1-title', 'grandzabris-m1-grid');
+            buildCalendarGrid(nextYear, nextMonth, 'grand', 'grandzabris-m2-title', 'grandzabris-m2-grid');
         }
 
         function printCottage(cottageType) {
@@ -1597,6 +1646,7 @@
                         .calendar-table td.empty { background: #f4f4f4 !important; -webkit-print-color-adjust: exact; }
                         .day-num { font-weight: bold; font-size: 0.8rem; color: #12263a; text-align: right; display: block; margin-bottom: 2px; font-family: sans-serif; }
                         .day-notes { font-size: 0.68rem; text-align: left; color: #333; line-height: 1.1; }
+                        .booking-badge { background-color: #fdf2e9; border-left: 2px solid #c5a880; padding: 2px 4px; margin-top: 2px; font-size: 0.62rem; font-family: 'Segoe UI', sans-serif; color: #12263a; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 2px; }
                     </style>
                 </head>
                 <body>
