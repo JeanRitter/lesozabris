@@ -762,7 +762,7 @@
             </div>
         </div>
 
-        <!-- ESPACE DÉDIÉ À GÉRARD (Lecture seule / Code 240743) AVEC NAVIGATION DE MOIS CORRIGÉE -->
+        <!-- ESPACE DÉDIÉ À GÉRARD (Lecture seule / Code 240743) -->
         <div id="gerard-portal" style="display: none;">
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
@@ -1122,7 +1122,6 @@
         let cachedVoyageurs = [];
         let selectedCottageForCopy = '';
         
-        // Variables pour la navigation de Gérard dans les mois
         let gerardCurrentYear = new Date().getFullYear();
         let gerardCurrentMonth = new Date().getMonth();
 
@@ -1612,7 +1611,7 @@
                                 <span style="font-size: 0.75rem; color: #777;">${canSend ? 'Prêt à l\'envoi' : 'Envoi possible J-1'}</span>
                                 <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
                             </div>
-                        `;
+                        </div>`;
                     }
                 });
 
@@ -1794,7 +1793,6 @@
 
                     cachedVoyageurs.forEach(v => {
                         const cottageName = String(v.cottage || "").toLowerCase();
-                        // Vérifie si le cottage correspond bien (ex: 'grand' pour Le Grandzabris, 'ptit' pour Le Ptitzabris)
                         if (cottageName.includes(cottageKeyword)) {
                             const arrStr = v.dateArrivee || v.arrivee;
                             const depStr = v.dateDepart || v.depart;
@@ -1892,6 +1890,7 @@
                             }
 
                             let auteur = "";
+                            let provenance = "";
                             let logement = "";
                             let dateBrute = "";
                             let commentaire = "";
@@ -1899,6 +1898,7 @@
 
                             for (let key in obj) {
                                 if (key.includes('prénom') || key.includes('prenom') || key.includes('auteur')) auteur = obj[key];
+                                if (key.includes('provenance') || key.includes('pays') || key.includes('ville')) provenance = obj[key];
                                 if (key.includes('logement') || key.includes('cottage')) logement = obj[key];
                                 if (key.includes('date')) dateBrute = obj[key];
                                 if (key.includes('commentaire') || key.includes('avis') || key.includes('message')) commentaire = obj[key];
@@ -1920,13 +1920,14 @@
                                             timestamp = new Date(dateBrute).getTime() || 0;
                                         }
                                     }
-                                    parsedAvis.push({ auteur, dateBrute, timestamp, commentaire, note });
+                                    parsedAvis.push({ auteur, provenance, dateBrute, timestamp, commentaire, note });
                                 }
                             }
                         }
 
                         let avisFiltres = parsedAvis.filter(a => a.timestamp >= targetDateLimit);
-                        avisFiltres.sort((a, b) => b.timestamp - a.timestamp);
+                        // Tri dans l'ordre croissant (du plus ancien au plus récent)
+                        avisFiltres.sort((a, b) => a.timestamp - b.timestamp);
 
                         if (avisFiltres.length === 0) {
                             alert("Aucun avis trouvé à partir de cette date.");
@@ -1949,14 +1950,19 @@
                             }
                             let etoilesStr = "⭐".repeat(nbEtoiles);
 
-                            formattedText += `“ ${avis.commentaire} ”\n`;
-                            formattedText += `— ${avis.auteur || 'Voyageur'} (${dateFormatee})\n`;
-                            formattedText += `${etoilesStr}\n\n----------------------------------------\n\n`;
+                            // Mise en forme style Airbnb avec nom/provenance/date en tête
+                            let headerInfo = `— ${avis.auteur || 'Voyageur'}`;
+                            if (avis.provenance) headerInfo += ` (${avis.provenance})`;
+                            if (dateFormatee) headerInfo += ` — ${dateFormatee}`;
+
+                            formattedText += `${headerInfo}\n`;
+                            formattedText += `${etoilesStr}\n`;
+                            formattedText += `“ ${avis.commentaire} ”\n\n----------------------------------------\n\n`;
                         });
 
                         navigator.clipboard.writeText(formattedText).then(() => {
                             const feedback = document.getElementById('copy-feedback');
-                            feedback.innerText = `${avisFiltres.length} avis copié(s) depuis le ${dateInput} avec succès !`;
+                            feedback.innerText = `${avisFiltres.length} avis copié(s) (chronologiques) depuis le ${dateInput} avec succès !`;
                             feedback.style.display = 'inline';
                             setTimeout(() => { feedback.style.display = 'none'; }, 4000);
                         });
