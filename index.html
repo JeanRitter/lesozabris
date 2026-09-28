@@ -762,7 +762,7 @@
             </div>
         </div>
 
-        <!-- ESPACE DÉDIÉ À GÉRARD (Lecture seule / Code 240743) AVEC BOUTONS DE NAVIGATION MOIS -->
+        <!-- ESPACE DÉDIÉ À GÉRARD (Lecture seule / Code 240743) AVEC NAVIGATION DE MOIS CORRIGÉE -->
         <div id="gerard-portal" style="display: none;">
             <div class="top-return-bar">
                 <button type="button" onclick="scrollToTop()" class="btn-return-top">⬅️ Retour à l'accueil</button>
@@ -1612,7 +1612,7 @@
                                 <span style="font-size: 0.75rem; color: #777;">${canSend ? 'Prêt à l\'envoi' : 'Envoi possible J-1'}</span>
                                 <a href="${canSend ? whatsappLink : '#'}" class="${btnClass}" ${canSend ? 'target="_blank"' : ''}>${btnText}</a>
                             </div>
-                        </div>`;
+                        `;
                     }
                 });
 
@@ -1794,6 +1794,7 @@
 
                     cachedVoyageurs.forEach(v => {
                         const cottageName = String(v.cottage || "").toLowerCase();
+                        // Vérifie si le cottage correspond bien (ex: 'grand' pour Le Grandzabris, 'ptit' pour Le Ptitzabris)
                         if (cottageName.includes(cottageKeyword)) {
                             const arrStr = v.dateArrivee || v.arrivee;
                             const depStr = v.dateDepart || v.depart;
